@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>充值</title>
+    {include file="index/header" /}
+    <link rel="stylesheet" href="../../../../public/static/lib/layui/css/layui.css ">
+    <link href="../../../../public/static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" /> 
+    <link href="../../../../public/static/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <script src="../../../../public/static/js/jquery.min.js"></script>
+    <script src="../../../../public/static/js/qrcode.min.js"></script>
+    <script src="../../../../public/static/js/mobile-util.js"></script>
+    <script src="../../../../public/static/js/swipeSlide.min.js"></script>
+    <script src="../../../../public/static/lib/layui/layui.js"></script>
+    <script src="../../../../public/static/lib/layer_mobile/layer.js "></script>
+    <script src="../../../../public/static/js/style.js"></script>
+    <script src="../../../../public/static/js/global.js "></script>
+</head>
+<style>
+  html, body {
+    background: #fff;
+  }
+  .rechange-wrap{
+    background: #fff;
+    font-size: 16px;
+    color: #333;
+    padding: 20px;
+  }
+  .rechange-input {
+    height: 24px;
+    line-height: 24px;
+    margin-left: 6px;
+    padding-left: 2px;
+  }
+  .rechange-btn-group {
+    margin: 30px 0;
+  }
+  .rechange-btn-item {
+    margin: 0 10px 8px 0;
+  }
+  .layui-btn+.layui-btn {
+    margin-left: 0;
+  }
+</style>
+<body>
+<!--顶部搜索栏-s-->
+
+<!--顶部搜索栏-e-->
+  <div class="rechange-wrap">
+    <div>
+      充值金额: <input type="text" class="rechange-input">
+    </div>
+    <div class="rechange-btn-group">
+      <button onclick="checkAmount(event)" class="layui-btn layui-btn-normal rechange-btn-item">充值100块送10块</button>
+      <button onclick="checkAmount(event)" class="layui-btn layui-btn-normal rechange-btn-item">充值200块送20块</button>
+    </div>
+    <button onclick="checkAmount(event)" class="layui-btn layui-btn-normal submit-btn">确认支付</button>
+  </div>
+<!--底部-start-->
+
+<!--底部-end-->
+<!--底部导航-start-->
+  <script type="text/javascript">
+    function checkAmount (ev) {
+
+    }
+  </script>
+</body>
+</html>

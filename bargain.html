@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>扫一扫砍价</title>
+    {include file="index/header" /}
+    <link rel="stylesheet" href="../../../../public/static/lib/layui/css/layui.css ">
+    <link href="../../../../public/static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" /> 
+    <link href="../../../../public/static/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <script src="../../../../public/static/js/jquery.min.js"></script>
+    <script src="../../../../public/static/js/qrcode.min.js"></script>
+    <script src="../../../../public/static/js/mobile-util.js"></script>
+    <script src="../../../../public/static/js/swipeSlide.min.js"></script>
+    <script src="../../../../public/static/lib/layui/layui.js"></script>
+    <script src="../../../../public/static/lib/layer_mobile/layer.js "></script>
+    <script src="../../../../public/static/js/style.js"></script>
+    <script src="../../../../public/static/js/global.js "></script>
+</head>
+<style>
+  html, body {
+    /*background: #fff;*/
+    color: #333;
+  }
+  .bargain-wrap, .qr-code-wrap {
+    font-size: 16px;
+    padding: 20px;
+    background: #fff;
+    margin: 0 auto;
+  }
+  .bargain-wrap {
+    width: calc(50% - 40px);
+    padding: 20px 30px;  
+    position: relative;
+    margin-top: 200px;
+  }
+  .bargain-wrap::after,  .bargain-wrap::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    top: 0;
+  }
+  .bargain-wrap::after {
+    right: -20px;
+    border-radius: 0 10px 10px 0;
+    background: radial-gradient(circle at 100% 50% ,transparent 0%, transparent 16px,#fff 16px);
+  }
+  .bargain-wrap::before {
+    left: -20px;
+    border-radius: 10px 0 0 10px;
+    background: radial-gradient(circle at 0 50% ,transparent 0%, transparent 16px,#fff 16px);
+  }
+  .bargain-wrap .btn-group {
+    text-align: center;
+  }
+  
+  .had-bargain {
+    margin-top: 20px;
+  }
+  .layui-progress-title {
+    margin-bottom: 10px;
+  }
+  .progress-point {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .progress-end {
+    float: right;
+  }
+  .qr-code-wrap {
+    width: 50%;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .qr-code {
+    width: 160px;
+    height: 160px;
+  }
+</style>
+<body>
+<!--顶部搜索栏-s-->
+
+<!--顶部搜索栏-e-->
+  <div class="bargain-wrap">
+    <div class="btn-group">
+      <a href="./pay-direct.html" type="button" class="layui-btn">支付</a>
+      <a href="./rechange.html" type="button" class="layui-btn layui-btn-normal">充值</a>
+    </div>
+    <div class="had-bargain">
+      <p class="layui-progress-title">已砍价xxx元，最高可砍xxx元</p>
+      <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+        <div class="layui-progress-bar layui-bg-orange" lay-percent="50%"></div>
+      </div>
+      <div class="progress-point">
+        <span>0%</span>
+        <span class="progress-end">100%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="qr-code-wrap">
+    <div class="qr-code-title">扫码助力砍价</div>
+    <img src="" alt="" class="qr-code">
+  </div>
+<!--底部-start-->
+
+<!--底部-end-->
+<!--底部导航-start-->
+<script type="text/javascript">
+//注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+layui.use('element', function(){
+  var element = layui.element;
+});
+</script>
+</body>
+</html>

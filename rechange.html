@@ -48,21 +48,47 @@
 <!--顶部搜索栏-e-->
   <div class="rechange-wrap">
     <div>
-      充值金额: <input type="text" class="rechange-input">
+      充值金额: <input id="rechange_amount" type="text" class="rechange-input">
     </div>
     <div class="rechange-btn-group">
-      <button onclick="checkAmount(event)" class="layui-btn layui-btn-normal rechange-btn-item">充值100块送10块</button>
-      <button onclick="checkAmount(event)" class="layui-btn layui-btn-normal rechange-btn-item">充值200块送20块</button>
+      <button onclick="checkAmount(event, 100)" class="layui-btn layui-btn-normal rechange-btn-item">充值100块送10块</button>
+      <button onclick="checkAmount(event, 200)" class="layui-btn layui-btn-normal rechange-btn-item">充值200块送20块</button>
     </div>
-    <button onclick="checkAmount(event)" class="layui-btn layui-btn-normal submit-btn">确认支付</button>
+    <button onclick="rechange(event)" class="layui-btn layui-btn-normal submit-btn">确认支付</button>
   </div>
 <!--底部-start-->
 
 <!--底部-end-->
 <!--底部导航-start-->
   <script type="text/javascript">
-    function checkAmount (ev) {
+    function checkAmount (ev, amount) {
+      $('#rechange_amount').val(amount)
+    }
 
+    // 是否是微信客户端
+    function isWechat () {
+      var userAgent = window.navigator.userAgent.toLowerCase()
+      if (userAgent.match(/MicroMessenger/i) === 'micromessenger') {
+        return true
+      } else {
+        return false
+      }
+      
+    }
+    // 确认支付
+    function rechange () {
+      var money = $('#rechange_amount').val()
+      var reg = /^(0\.)?\d+$/
+      if (!reg.test(money)) {
+        layui.use('layer', function(){
+          layer.msg('请正确输入金额', {time: 1000})
+        })
+        return false
+      }
+      
+      if (isWechat()) {
+
+      }
     }
   </script>
 </body>

@@ -50,17 +50,22 @@
     </div>
   </div>
   <script type="text/javascript">
-  function toPayDirect () {
-    var money = $('#input_money').val()
-    var reg = /^(0\.)?\d+$/
-    if (!reg.test(money)) {
-      layui.use('layer', function(){
+    var layer = null
+    layui.use('layer', function(){
+      layer = layui.layer
+    })
+    function toPayDirect () {
+      var money = $('#input_money').val()
+      var reg = /^(0\.)?\d+$/
+      if (!reg.test(money)) {
         layer.msg('请正确输入金额', {time: 1000})
-      })
-      return false
+        // layui.use('layer', function(){
+        //   layui.layer.msg('请正确输入金额', {time: 1000})
+        // })
+        return false
+      }
+      window.location.href = './pay-direct.html?amount=' + money
     }
-    window.location.href = './pay-direct.html?amount=' + money
-  }
   </script>
 </body>
 </html>

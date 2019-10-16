@@ -61,6 +61,11 @@
 <!--底部-end-->
 <!--底部导航-start-->
   <script type="text/javascript">
+    var layer = null
+    layui.use('layer', function(){
+      layer = layui.layer
+    })
+    
     function checkAmount (ev, amount) {
       $('#rechange_amount').val(amount)
     }
@@ -80,9 +85,7 @@
       var money = $('#rechange_amount').val()
       var reg = /^(0\.)?\d+$/
       if (!reg.test(money)) {
-        layui.use('layer', function(){
-          layer.msg('请正确输入金额', {time: 1000})
-        })
+        layer.msg('请正确输入金额', {time: 1000})
         return false
       }
       

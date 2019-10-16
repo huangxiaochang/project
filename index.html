@@ -54,14 +54,12 @@
     layui.use('layer', function(){
       layer = layui.layer
     })
+
     function toPayDirect () {
       var money = $('#input_money').val()
       var reg = /^(0\.)?\d+$/
       if (!reg.test(money)) {
         layer.msg('请正确输入金额', {time: 1000})
-        // layui.use('layer', function(){
-        //   layui.layer.msg('请正确输入金额', {time: 1000})
-        // })
         return false
       }
       window.location.href = './pay-direct.html?amount=' + money

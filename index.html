@@ -28,10 +28,15 @@
     background: #fff;
     font-size: 16px;
     color: #333;
-    padding: 20px;
+    width: 80%;
+    margin: 200px auto 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+    background: #eee;
+    box-shadow: 0 0 5px #eee;
   }
   .btn-group {
-    margin-top: 16px;
+    margin-top: 20px;
   }
 </style>
 <body>
@@ -62,7 +67,7 @@
         layer.msg('请正确输入金额', {time: 1000})
         return false
       }
-      window.location.href = './pay-direct.html?amount=' + money
+      window.location.href = './pay_direct.html?amount=' + money
     }
   </script>
 </body>

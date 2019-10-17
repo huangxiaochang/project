@@ -108,7 +108,6 @@
       width: 40%;
       text-align: right;
     }
-
   </style>
 </head>
 <body>
@@ -146,23 +145,26 @@
       </div>
     </div>
   </section>
-
+      
   <script type="text/javascript">
     //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
     var layer = null
-    layui.use('element', function(){
+    layui.use(['element', 'layer'], function(){
       var element = layui.element
       layer = layui.layer
     });
 
     function showActiveRule () {
-      layui.use('layer', function(){
-        var rule = '<div>ad</div>'
-        layer.open({
-          title: '活动规则',
-          content: rule,
-          btn: ['关闭']
-        })
+      var rule = '<h4>本次砍价活动规则如下：</h4>' +
+                 '<p>(1)相同的商品，只能给不同的用户砍。</p>' +
+                 '<p>(2)砍价有时间限制，一般为2小时，超时不能继续砍价。</p>' + 
+                 '<p>(3)砍价金额作为订单优惠金额，能抵扣订单支付。</p>' +
+                 '<p>(4)邀请越多好友砍价越多，新用户还会返还优惠券哦！</p>'
+      layer.open({
+        title: '活动规则',
+        content: rule,
+        btn: ['关闭'],
+        maxWidth: 400,
       })
     }
   </script>

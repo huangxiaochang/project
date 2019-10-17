@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>直接支付</title>
     {include file="index/header" /}
+    <!-- 正式上线，需要删除以下内容 -->
     <link rel="stylesheet" href="../../../../public/static/lib/layui/css/layui.css ">
     <link href="../../../../public/static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" /> 
     <link href="../../../../public/static/css/iconfont.css" rel="stylesheet" type="text/css" />
@@ -12,9 +13,11 @@
     <script src="../../../../public/static/js/mobile-util.js"></script>
     <script src="../../../../public/static/js/swipeSlide.min.js"></script>
     <script src="../../../../public/static/lib/layui/layui.js"></script>
-    <script src="../../../../public/static/lib/layer_mobile/layer.js "></script>
     <script src="../../../../public/static/js/style.js"></script>
     <script src="../../../../public/static/js/global.js "></script>
+    <!-- 上面的需要删除 -->
+    <!-- 注意：这里的layer换成了2.4的版本 -->
+    <script src="../../../../public/static/lib/layer_mobile2.4/layer.js"></script>
 </head>
 <style>
   html, body {
@@ -26,20 +29,15 @@
     color: #333;
     padding: 20px 20px 90px 20px;
   }
-  .coupon-list, .bargain-amount, .total-discount {
+  .coupon-wrap, .bargain-amount, .total-discount {
     padding: 18px 0;
     border-bottom: 1px solid #eeeeee;
   }
-  .coupon-list .coupon {
-    margin-bottom: 14px;
+
+  .coupon-num {
+    float: right;
   }
-  .coupon-list .coupon-item {
-    margin: 10px 0;
-    padding: 10px 0; 
-  }
-  .coupon-list .coupon-item:last-child {
-    margin-bottom: 0;
-  }
+
   .total-discount {
     text-align: right;
   }
@@ -74,20 +72,43 @@
     font-size: 16px;
     vertical-align: middle;
   }
+
+  .coupon-list-dialog {
+    display: none;
+  }
+  .coupon-list-wrap {
+    padding: 20px;
+    color: #333;
+    font-size: 20px;
+  }
+  .dialog-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .coupon-item {
+    padding: 20px 12px;
+    height: 28px;
+    line-height: 28px;
+  }
+  .coupon-btn {
+    height: 28px;
+    width: 28px;
+    text-align: right;
+  }
+  .check-save {
+    display: block;
+    width: 50%;
+    margin: 20px auto 10px auto;
+  }
 </style>
 <body>
 <!--顶部搜索栏-s-->
 
 <!--顶部搜索栏-e-->
   <div class="pay-direct-wrap">
-    <div class="coupon-list">
-      <p class="coupon">优惠券</p>
-      <div class="coupon-item">
-        优惠券1
-      </div>
-      <div class="coupon-item">
-        优惠券2
-      </div>
+    <div class="coupon-wrap">
+      优惠券
+      <span onclick="openDialog()" class="coupon-num">xx张优惠券 ></span>
     </div>
     <div class="bargain-amount">
       砍价金额: ￥xxxx
@@ -103,6 +124,28 @@
     </div>
     <button onclick="submitOrder(event)" class="layui-btn layui-btn-normal submit-btn">提交订单</button>
   </div>
+  <div id="dialog" class="coupon-list-dialog">
+    <div class="coupon-list-wrap">
+      <h4 class="dialog-title">优惠券</h4>
+      <ul>
+        <li class="coupon-item">
+          <label class="layui-row">
+            <span class="layui-col-xs8">不使用优惠券</span>
+            <span class="layui-col-xs2">￥11</span>
+            <input type="radio" name="couponItem" class="coupon-btn layui-col-xs2" value="2">
+          </label>
+        </li>
+        <li class="coupon-item">
+          <label class="layui-row">
+            <span class="layui-col-xs8">不使用优惠券</span>
+            <span class="layui-col-xs2">￥11</span>
+            <input type="radio" name="couponItem" class="coupon-btn layui-col-xs2" value="1">
+          </label>
+        </li>
+      </ul>
+      <button onclick="checkCoupon()" type="button" class="layui-btn layui-btn-radius layui-btn-danger check-save">确定</button>
+    </div>
+  </div>
 <!--底部-start-->
 
 <!--底部-end-->
@@ -111,6 +154,22 @@
     // 提交订单
     function submitOrder (ev) {
       window.location.href = './rechange.html'
+     
+    }
+
+    function openDialog () {
+      layer.open({
+        type: 1,
+        content: $('#dialog').html(),
+        anim: 'up',
+        style: 'position:fixed; bottom:0; left:0; width: 100%; border:none;'
+      })
+    }
+
+    function checkCoupon () {
+      var val = $("input[name='couponItem']:checked").val();
+      console.log(val)
+      layer.closeAll();
     }
   </script>
 </body>

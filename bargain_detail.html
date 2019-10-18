@@ -36,77 +36,72 @@
     }
 
     .bargain-detail {
-      margin-top: 100px;
+      margin-top: 60px;
       border-radius: 20px;
       padding: 20px;
       border: 1px solid #f2f2f2;
       box-shadow: 0 0 4px #eee;
       text-align: center;
     }
-    .bargain-detail .bargain-amount {
-      font-size: 20px;
-      margin-bottom: 18px;
-    }
 
     .bargain-progress {
       display: inline-block;
-      width: 86%;
+      width: 50%;
+    }
+    .bargain-amount {
+      position: absolute;
+      right: -34px;
     }
     .remain-amount {
-      margin-top: 8px;
-      text-align: left;
+      margin-bottom: 20px;
     }
     .remain-time {
       margin-top: 20px;
       font-size: 18px;
     }
     .invite-btn {
-      width: 50%;
       margin-top: 20px;
     }
 
     .bargain-item-wrap {
       border-radius: 20px;
       padding: 20px;
-      border: 1px solid #f2f2f2;
       box-shadow: 0 0 4px #eee;
-      background: #f2f2f2;
+      background: #E85772;
+      color: #fff;
       margin-top: 20px;
-    }
-    .join-member {
-      margin: 10px 0;
     }
     .bargain-item-title {
       text-align: center;
-      margin: 16px 0;
+      margin: 16px 0 24px 0;
       font-size: 24px;
     }
 
-    .bargain-item {
-      padding: 10px 0;
+    .bargain-row {
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #e2e2e2;
+      padding: 20px;
+      background: #fff;
+      color: #333;
     }
-    .bargain-item:last-child {
-      border-bottom: none;
+    .bargain-header {
+      border-bottom: 3px solid #d2d2d2;
     }
-    .bargain-item .rank {
-      width: 10%;
+    .avtor-img {
+      width: 80px;
     }
-    .bargain-item .user-info {
-      width: 50%;
-    }
-    .bargain-item .avtor {
+    .avtor {
       width: 60px;
       height: 60px;
       border-radius: 50%;
       background: #ccc;
-      margin-right: 8px;
     }
-    .bargain-item .amount {
-      width: 40%;
+    .amount {
+      width: 100px;
       text-align: right;
+    }
+    .nick-name {
+      flex: 1;
     }
   </style>
 </head>
@@ -114,34 +109,54 @@
   <section class="bargain-detail-wrap">
     <button type="button" class="activity-rule layui-btn layui-btn-radius layui-btn-warm layui-btn-sm" onclick="showActiveRule()">活动规则</button>
   	<div class="bargain-detail">
-  		<h4 class="bargain-amount">您成功砍掉￥<span class="strong-text">0.23</span></h4>
+      <div class="remain-amount">还剩余<span class="strong-text">￥15</span>, 继续努力哦!</div>
       <div class="layui-progress layui-progress-big bargain-progress" lay-showPercent="yes">
         <div class="layui-progress-bar layui-bg-orange" lay-percent="50%"></div>
+        <span class="strong-text bargain-amount">￥11</span>
       </div>
-      <span class="strong-text">￥11</span>
-      <div class="remain-amount">还剩余￥15</div>
+      
       <p class="remain-time">距离活动结束：<span class="strong-text">15天10:10:10</span></p>
-      <button type="button" class="invite-btn layui-btn layui-btn-lg layui-btn-radius layui-btn-danger">邀请好友来砍价</button>
+      <button type="button" class="invite-btn layui-btn layui-btn-lg layui-btn-radius layui-btn-danger">帮他砍一刀</button>
   	</div>
 
     <div class="bargain-item-wrap">
-      <h4 class="bargain-item-title">--&nbsp;&nbsp;砍价详情&nbsp;&nbsp;--</h4>
-      <p class="join-member">已有<span class="strong-text">1</span>人参与，成功砍掉￥<span class="strong-text">0.95</span></p>
-      <div class="bargain-item">
-        <span class="rank">1</span>
-        <div class="user-info">
-          <img src="" alt="" class="avtor">
-          <span class="name">hxc</span>
-        </div>
-        <span class="amount">￥0.22</span>
+      <h4 class="bargain-item-title">//&nbsp;&nbsp;好友帮忙&nbsp;&nbsp;//</h4>
+
+      <div class="bargain-row bargain-header">
+        <span class="avtor-img">头像</span>
+        <span class="nick-name">昵称</span>
+        <span class="amount">砍掉</span>
       </div>
-      <div class="bargain-item">
-        <span class="rank">1</span>
-        <div class="user-info">
+      <div class="bargain-row">
+        <div class="avtor-img">
           <img src="" alt="" class="avtor">
-          <span class="name">hxc</span>
         </div>
-        <span class="amount">￥0.22</span>
+        <div class="nick-name">
+          <p style="margin-bottom: 10px;">xxxxx</p>
+          <span>12-12 10:10</span>
+        </div>
+        <span class="amount strong-text">-11元</span>
+      </div>
+
+      <div class="bargain-row">
+        <div class="avtor-img">
+          <img src="" alt="" class="avtor">
+        </div>
+        <div class="nick-name">
+          <p style="margin-bottom: 10px;">xxxxx</p>
+          <span>12-12 10:10</span>
+        </div>
+        <span class="amount strong-text">-11元</span>
+      </div>
+      <div class="bargain-row">
+        <div class="avtor-img">
+          <img src="" alt="" class="avtor">
+        </div>
+        <div class="nick-name">
+          <p style="margin-bottom: 10px;">xxxxx</p>
+          <span>12-12 10:10</span>
+        </div>
+        <span class="amount strong-text">-11元</span>
       </div>
     </div>
   </section>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>充值</title>
-    {include file="index/header" /}
+    <!-- {include file="index/header" /} -->
     <link rel="stylesheet" href="../../../../public/static/lib/layui/css/layui.css ">
     <link href="../../../../public/static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" /> 
     <link href="../../../../public/static/css/iconfont.css" rel="stylesheet" type="text/css" />
@@ -26,36 +26,106 @@
     color: #333;
     padding: 20px;
   }
-  .rechange-input {
-    height: 24px;
-    line-height: 24px;
-    margin-left: 6px;
-    padding-left: 2px;
+  .rechange-header {
+    padding: 10px 0 14px 0;
+    border-bottom: 2px solid #d2d2d2;
   }
-  .rechange-btn-group {
-    margin: 30px 0;
+  .remainder {
+    float: right;
   }
-  .rechange-btn-item {
-    margin: 0 10px 8px 0;
+
+  .rechange-amount-wrap {
+    margin: 20px 0;
   }
-  .layui-btn+.layui-btn {
-    margin-left: 0;
+  .btn-group {
+    margin-top: 12px;
+    text-align: center;
+  }
+  .btn-item {
+    display: inline-block;
+    background: #dddddd;
+    padding: 20px 0;
+    width: 100%;
+  }
+  input[name="rechangeBtn"]:checked + .btn-item {
+    background: #E6A23C;
+    color: #fff;
+  }
+
+  .other-amount {
+    margin-top: 20px;
+    display: none;
+  }
+  .other-amount input {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 6px;
+  }
+
+  .save-btn {
+    display: block;
+    width: 90%;
+    margin: 40px auto;
   }
 </style>
 <body>
 <!--顶部搜索栏-s-->
 
 <!--顶部搜索栏-e-->
-  <div class="rechange-wrap">
-    <div>
-      充值金额: <input id="rechange_amount" type="text" class="rechange-input">
+  <section class="rechange-wrap">
+    <div class="rechange-header">
+      <span>账户：324123</span>
+      <span class="remainder">余额：2134元</span>
     </div>
-    <div class="rechange-btn-group">
-      <button onclick="checkAmount(event, 100)" class="layui-btn layui-btn-normal rechange-btn-item">充值100块送10块</button>
-      <button onclick="checkAmount(event, 200)" class="layui-btn layui-btn-normal rechange-btn-item">充值200块送20块</button>
+    <div class="rechange-amount-wrap">
+      <h4>充值金额：</h4>
+      <div class="layui-row layui-col-space30 btn-group">
+        <div class="layui-col-xs4">
+          <input id="btn1" type="radio" checked hidden name="rechangeBtn">
+          <label for="btn1" class="btn-item active-btn" onclick="getRechangeAmount('100')">
+            <span>100元</span>
+          </label>
+        </div>
+        <div class="layui-col-xs4">
+          <input id="btn2" type="radio" hidden name="rechangeBtn">
+          <label for="btn2" class="btn-item active-btn" onclick="getRechangeAmount('200')">
+            <span>100元</span>
+          </label>
+        </div>
+        <div class="layui-col-xs4">
+          <input id="btn3" type="radio" hidden name="rechangeBtn">
+          <label for="btn3" class="btn-item active-btn" onclick="getRechangeAmount('200')">
+            <span>100元</span>
+          </label>
+        </div>
+      </div>
+      <div class="layui-row layui-col-space30 btn-group">
+        <div class="layui-col-xs4">
+          <input id="btn4" type="radio" hidden name="rechangeBtn">
+          <label for="btn4" class="btn-item active-btn" onclick="getRechangeAmount('200')">
+            <span>100元</span>
+          </label>
+        </div>
+        <div class="layui-col-xs4">
+          <input id="btn5" type="radio" hidden name="rechangeBtn">
+          <label for="btn5" class="btn-item active-btn" onclick="getRechangeAmount('200')">
+            <span>100元</span>
+          </label>
+        </div>
+        <div class="layui-col-xs4">
+          <input id="btn6" type="radio" hidden name="rechangeBtn">
+          <label for="btn6" class="btn-item active-btn" onclick="getRechangeAmount('other')">
+            <span>其他金额</span>
+          </label>
+        </div>
+      </div>
+      <div class="other-amount" id="otherAmountWrap">
+        其他金额：
+        <input type="text" id="otherAmount" placeholder="请输入要充值的金额">
+      </div>
     </div>
-    <button onclick="rechange(event)" class="layui-btn layui-btn-normal submit-btn">确认支付</button>
-  </div>
+     <button onclick="rechange()" type="button" class="layui-btn layui-btn-warm save-btn">确认充值</button>
+  </section>
 <!--底部-start-->
 
 <!--底部-end-->
@@ -65,9 +135,16 @@
     layui.use('layer', function(){
       layer = layui.layer
     })
-    
-    function checkAmount (ev, amount) {
-      $('#rechange_amount').val(amount)
+
+    var rechangeMoney = '100'
+    // 获取选择的充值金额
+    function getRechangeAmount (val) {
+      if (val === 'other') {
+        $('#otherAmountWrap').show()
+      } else {
+        $('#otherAmountWrap').hide()
+      }
+      rechangeMoney = val
     }
 
     // 是否是微信客户端
@@ -82,13 +159,16 @@
     }
     // 确认支付
     function rechange () {
-      var money = $('#rechange_amount').val()
+      var money = rechangeMoney
+      if (rechangeMoney === 'other') {
+        money = $('#otherAmount').val()
+      }
       var reg = /^(0\.)?\d+$/
       if (!reg.test(money)) {
         layer.msg('请正确输入金额', {time: 1000})
         return false
       }
-      
+      console.log(money)
       if (isWechat()) {
 
       }

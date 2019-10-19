@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>【{$title}】相册_效果图_楼盘照片</title>
+        <META NAME="keywords" CONTENT="【{$title}】相册, 【{$title}】效果图, 【{$title}】楼盘照片">
+        <META name="description" CONTENT="新房频道，为您提供【{$title}】相册， 【{$title}】效果图， 【{$title}】楼盘照片，想了解最新最全的{$title}相册信息。">
+
+     <link rel="stylesheet" href="static/css/frozen.css" />
+    <link rel="stylesheet" href="static/css/public.css" />
+    <link rel="stylesheet" href="static/css/photos.css" />
+  <style>
+            .ui-slider{padding-top: 0;}
+            .photos-i-video{
+	        	display:block;
+	        	background:url("static/images/video1.png") center no-repeat;
+	        	width:50px;
+	        	height:50px;
+	        	position: absolute;
+	        	background-size: contain;
+	   			left: 50%;
+	    		top: 50%;
+	    		z-index: 2;
+	   		    margin-left: -25px;
+	    		margin-top: -25px;
+	        }
+        </style>
+    </head>
+    <body ontouchstart="" class="bg-black">
+    <!-- 头部 start-->
+        <header class="ui-header">
+            <i class="hf-icon-return hf-font-white" onclick="history.back()"></i>
+        </header>
+        <!-- 头部 end-->
+    <!-- 主体内容 start-->
+    <section class="ui-container">
+        <!--样板房 start-->
+        <div class="ui-slider hf-full-img" id="photos-content">
+            <ul class="ui-slider-content  hf-full-box">
+            <!--
+                <li class="photos-img" onclick="location.href = ''">
+                    	<img src="!640x480" width="100%" height="300px" name="photos" alt="{$title} 1/1"/>
+                        <i class="photos-i-video"></i>
+                    </li>   -->
+                              
+                    <!--{php $tags=tag("moduleid=12&&condition=houseid=$itemid&pagesize=5&order=itemid desc&template=null");}-->
+{loop $tags $k $y}
+  <!--{php $tag=tag("moduleid=12&table=".$AJ_PRE."photo_12 m,".$AJ_PRE."photo_item_12 c&prefix=&condition=m.itemid=c.item  and m.houseid=$itemid&catid=".$y[catid]."&pagesize=5&order=c.itemid asc&template=null");}-->
+ {loop $tag $i $t}
+   <li class="photos-img" id="photos-img"><img src="{get_oldpic($t[thumb],1)}"  title="{get_oldpic($t[thumb],2)}" width="100%" height="300px" name="photos-{$y[catid]}" alt="{$t[alt]} "/></li>{/loop}
+   {/loop}
+                     </ul>
+        </div>
+        <!--样板房 end-->
+
+        <!-- 相册信息 star
+        <ul class="ui-row hf-full-info">
+            <li class="ui-col ui-col-80 hf-left" id="photos-info-name">{$title}</li>
+                <li class="ui-col ui-col-20 hf-right">
+                    <i class="hf-font-orange" id="curPagesNum">1</i>/<i>1</i>
+                </li>
+                
+        </ul>t -->
+        <!-- 相册信息 end -->
+
+        <!--全屏相册导航条 start-->
+        <div class="ui-scroller hf-full-photos-bg">
+            <ul class="hf-full-photos-nav">
+                 <!--<li class="hf-full-photos-nav-list on" id="photos">楼盘视频</li>-->    <!--{php $tags=tag("moduleid=12&&condition=houseid=$itemid&showcat=1&pagesize=5&order=itemid desc&template=null");}-->
+{loop $tags $k $t}        <li class="hf-full-photos-nav-list {if $k==0}on{/if}" id="photos-{$t[catid]}">{$t[catname]}</li>{/loop}  </ul>
+        </div>
+        <!--全屏相册导航条 end-->
+    </section>
+    <!-- 主体内容 start-->
+
+    <!-- frozenUI 框架 js start-->
+    <script src="static/js/zepto.min.js"></script>
+
+    <script type="text/javascript">
+        var height = document.body.scrollWidth * 0.8;
+        if (height > 420)
+            height = 420;
+        var mrgTop = (document.body.scrollHeight - height - 119) / 2;
+        $(".hf-full-img").css("height", height);
+        $(".hf-full-img").css("marginTop", mrgTop);
+
+        var navLiWidth = 0;
+        for (var i = 0; i < $(".hf-full-photos-nav li").length; i++)
+        {
+            navLiWidth += $(".hf-full-photos-nav li")[i].offsetWidth+10;
+        }
+        $(".hf-full-photos-nav").css("width", navLiWidth);
+
+
+        $(function(){
+            $('#photos-img img').click(function(){
+                var url=this.title;
+                var encodeUrl=encodeURIComponent(url);
+                window.location.href=url;
+            });
+        });
+    </script>
+
+    <script src="static/js/frozen.js"></script>
+    <!-- frozenUI 框架 js end-->
+    <script src="static/js/fullPhotos.js"></script>
+
+
+</body>
+</html>

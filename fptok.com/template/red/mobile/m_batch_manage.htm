@@ -1,0 +1,63 @@
+<style>
+.check-menu-in textarea {position:relative;
+	top:5px;
+	width: 100px; height:30px;
+	-webkit-appearance: none;
+	padding: 0px 15px;
+	margin: 0 5px 5px 0;
+	line-height: 30px;
+	-webkit-user-select: text;
+	background-color: #fff;
+	border-radius: 3px;
+	outline: none;
+	font-size:14px;
+}
+.check-menu select { margin-right:5px;}
+.check-menu input[type="submit"] {
+	position:relative;
+	top:5px;
+				display: -webkit-box;
+				-webkit-box-orient: horizontal;
+				-webkit-box-pack: center;
+				-webkit-box-align: center;
+				display: box;
+				box-orient: horizontal;
+				box-pack: center;
+				box-align: center;
+				padding: 0px 15px;
+				margin-bottom:10px;
+				border-radius: 4px;
+				color: #fff;
+				font-size: 12px;
+			}
+</style>
+<ul class="aui-list-view check-menu-in" id="check-menu">
+<li>
+<div class="aui-list-view-cell aui-img" style="width:100%">
+<div class="aui-pull-left check-menu">
+<textarea name="reason" id="reason" onfocus="if(this.value=='操作原因')this.value='';">操作原因</textarea>
+<select onchange="if(this.value)Dd('reason').value=this.value;">
+<option value="">常用原因</option>
+{loop $REASON $v}
+<option value="{$v}">{$v}</option>
+{/loop}
+</select>
+<input class="aui-checkbox" type="checkbox" name="message" id="message" value="1"{if $MOD[manage_message]} checked{/if}{if $MOD[manage_message]==2} disabled{/if}/><div class="aui-checkbox-name fz12">通知作者</div>
+</div>
+</div>
+</li>
+<li>
+<div class="aui-list-view-cell aui-img" style="width:100%">
+<input class="aui-pull-left aui-checkbox" type="checkbox" onclick="checkall(this.form);">
+    <div class="aui-pull-left check-menu">
+    {if $action=='post'}<select name="level" onchange="this.form.action='?mid={$mid}&job={$job}&gid={$gid}&action=level';this.form.submit();"><option value="0">加精</option><option value="0">取消</option><option value="1">精华1</option><option value="2">精华2</option><option value="3">精华3</option></select>
+
+<select name="style" onchange="this.form.action='?mid={$mid}&job={$job}&gid={$gid}&action=style';this.form.submit();"><option value="0">高亮</option><option value="0">取消</option><option value="red">红色</option><option value="blue">蓝色</option><option value="orange">橙色</option></select>
+
+<select name="ontop" onchange="this.form.action='?mid={$mid}&job={$job}&gid={$gid}&action=ontop';this.form.submit();"><option value="0">置顶</option><option value="0">取消</option><option value="1">本圈置顶</option></select>{/if}
+<input type="submit" value="删除" class="check-del fz12" onclick="{if $action=='post'}if(confirm('确定要删除选中帖子吗？')){this.form.action='?mid={$mid}&job={$job}&gid={$gid}&action=delete'}else{return false;}{elseif $action=='reply'}if(confirm('确定要删除选中回复吗？')){this.form.action='?mid={$mid}&job={$job}&gid={$gid}&action=reply_delete'}else{return false;}{/if}"/>
+</div>
+</div>
+                
+</li>
+</ul>

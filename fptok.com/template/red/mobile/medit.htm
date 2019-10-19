@@ -1,0 +1,320 @@
+{template 'header_member', 'mobile'}
+{template 'cssjs', 'mobile'}
+<style>
+#area-select { max-width:80px !important;}
+#type { margin-left:15px;}
+.aui-content-padded {
+    margin-top: 15px;
+}
+.aui-tab {
+    margin-bottom: 15px;
+}
+.aui-tab li.active { color:#FFF !important;}
+</style>
+<header class="aui-bar aui-bar-nav aui-bar-info" id="aui-header">
+        <a class="aui-btn aui-btn-info aui-pull-left" href="my.php?action=member">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+    {if $action=='member'}
+    <a href="javascript:Dsheet('<a href=&#34;logout.php&#34;><span style=&#34;color:red&#34;>注销登录</span></a>', '取消', '确定要注销本次登录吗？');" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add h5">注销</span>
+    </a>
+{elseif $action == 'info'}
+    <a href="channel.php" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add h5">频道</span>
+    </a>
+{elseif $action == 'home'}
+    <a href="index.php?moduleid=4&username={$_username}" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add h5">预览</span>
+    </a>
+    {/if}
+</header>
+<div class="aui-bar-fix"></div>
+<div class="aui-content-padded">
+        <div class="aui-tab aui-tab-info">
+            <ul class="aui-tab-nav aui-tab-border">
+                <li class="active" id="Tab0" onclick="javascript:Tab(0);">资料</li>
+                <li id="Tab1" onclick="javascript:Tab(1);">密码</li>
+                <li id="Tab2" onclick="javascript:Tab(2);">其他</li>
+                <li id="Tab3" onclick="javascript:Tab(3);">标签四</li>
+            </ul>
+        </div>
+    </div>
+
+<form id="edit-form" class="fromset">
+	<input type="hidden" name="action" value="edit"/>
+	<input type="hidden" name="ok" value="1"/>
+    <input type="hidden" name="tab" id="tab" value="{$tab}"/>
+<div id="Tabs0" style="display:;">
+{template 'edit_avatar', 'mobile'}
+<div class="aui-content">
+<div class="aui-form">
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">会员名</span>
+      <input type="text" class="aui-input" readonly="readonly" value="{$_username}"/>
+
+    </div>
+{if $vtruename}
+<div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">真实姓名</span>
+<input type="text" class="aui-input" name="post[truename]" id="truename" readonly="readonly" value="{$truename}"/><span class="aui-input-addon"><i class="aui-input-addon aui-iconfont aui-icon-people"></i></span>
+    </div>
+{else}
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">真实姓名</span>
+      <input type="text" class="aui-input" name="post[truename]" id="truename" value="{$truename}" placeholder="真实姓名"/>
+
+    </div>
+{/if}
+{if $email}
+<div class="aui-input-row">
+     <span class="aui-input-addon">邮件</span><input type="tel" class="aui-input" name="post[email]" id="email" value="{$_email}" readonly="readonly"/><span class="aui-input-addon"><i class="aui-input-addon aui-iconfont aui-icon-baby">{if $AJ[mail_type] != 'close'}&nbsp;&nbsp;<a href="send.php?action=email" class="t">[修改]</a>{/if}</i></span></div>
+</tr>
+{else}
+    <div class="aui-input-row">
+     <span class="aui-input-addon">手机号码</span>
+      <input type="number" name="post[email]" class="aui-input" id="email" value="{$_email}" placeholder="邮件"/>
+      
+    </div>
+
+{/if}
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">性别</span>
+     <span class="aui-input-radio aui-padded-l-10">
+      <input type="radio" name="post[gender]" value="1" {if $gender==1}checked="checked"{/if} class="aui-checkbox aui-checkbox-info" /><label class="aui-input-addon">先生</label>
+<input type="radio" name="post[gender]" value="2" {if $gender==2}checked="checked"{/if} class="aui-checkbox aui-checkbox-info"/><label class="aui-input-addon">女士</label></span>
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">地区</span>
+      {ajax_area_select('post[areaid]', '请选择', $areaid,'id="area-select"')}
+      
+    </div>
+    
+{if !$is_company}
+    <div class="aui-input-row">
+     <span class="aui-input-addon">联系地址</span>
+      <input type="text" name="post[address]" class="aui-input" id="daddress" value="{$address}" placeholder="联系地址"/>
+      
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon">联系电话</span>
+      <input type="text" name="post[telephone]" class="aui-input" id="telephone" value="{$telephone}" placeholder="联系电话"/>
+      
+    </div>
+
+{/if}
+
+{if $vmobile}
+<div class="aui-input-row">
+     <span class="aui-input-addon">手机号码</span><input type="tel" class="aui-input" name="post[mobile]" id="mobile" value="{$mobile}" readonly="readonly"/><span class="aui-input-addon"><i class="aui-input-addon aui-iconfont aui-icon-mobile">{if $AJ[sms]}&nbsp;&nbsp;<a href="/member/send.php?action=mobile" class="t">[修改]</a>{/if}</i></span></div>
+</tr>
+{else}
+    <div class="aui-input-row">
+     <span class="aui-input-addon">手机号码</span>
+      <input type="number" name="post[mobile]" class="aui-input" id="mobile" value="{$mobile}" placeholder="手机号码"/>
+      
+    </div>
+
+{/if}
+
+    
+{if $is_company}
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">公司名</span>
+      <input type="text" class="aui-input" name="post[company]" id="company" value="{$company}" readonly="readonly"/>
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">公司电话</span>
+      <input type="text" class="aui-input" name="post[telephone]" id="telephone" value="{$telephone}" placeholder="公司电话"/>
+      
+    </div>
+     {if $catid}
+     <input type="hidden" name="post[catid]" id="catid" class="aui-input" value="{$catid}" placeholder="" />
+   {else}
+     <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red aui-mr-10">主营行业</span>
+      {ajax_category_select('post[catid]', '请选择', 0, 4)}
+      
+    </div>
+     {/if}
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">公司类型</span>
+      {dselect($COM_TYPE, 'post[type]', '请选择', $type, 'id="type"', 0)}
+      
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">经营范围</span>
+      <input type="text" class="aui-input" name="post[business]" id="business" value="{$business}" placeholder="主要经营范围"  maxlength="30" />
+      
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">成立年份</span>
+      <input type="number" class="aui-input" name="post[regyear]" id="regyear" value="{$regyear}" placeholder="成公司立年份"/>
+      
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon aui-text-red">公司地址</span>
+      <input type="text" class="aui-input" name="post[address]" id="address" value="{$address}" placeholder="公司地址"/>
+      
+    </div>
+    {if $content}
+    <textarea name="post[content]" id="content" class="H-textarea H-form-text H-flex-item" style="display:none !important;">{$content}</textarea>
+    {else}
+    <div class="aui-input-row">
+     <span class="aui-input-addon">公司介绍</span>
+      <textarea name="post[content]" id="content" class="H-textarea H-form-text H-flex-item" ></textarea>
+    </div>
+  {/if}
+
+{/if}
+
+            
+</div>
+
+</div>
+</div>
+
+<div id="Tabs1" style="display:none;">
+<div class="aui-content">
+<div class="aui-form">
+    <div class="aui-input-row">
+     <span class="aui-input-addon">新登录密码</span>
+      <input type="password" class="aui-input" name="post[password]" id="password" value="" placeholder="如不更改密码,请留空"/>
+      
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon">重复登录密码</span>
+      <input type="password" class="aui-input" name="post[cpassword]" id="cpassword" value="" placeholder="重复登录密码"/>
+      
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon">现有密码</span>
+      <input type="password" class="aui-input" name="post[oldpassword]" id="oldpassword" value="" placeholder="如要更改密码，需输入现有密码"/>
+      
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon">新支付密码</span>
+      <input type="password" class="aui-input" name="post[payword]" id="payword" value="" placeholder="新支付密码"/>
+      
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon">重复支付密码</span>
+      <input type="password" class="aui-input" name="post[cpayword]" id="cpayword" value="" placeholder="如不更改支付密码，请留空"/>
+      
+    </div>
+    <div class="aui-input-row">
+     <span class="aui-input-addon">新支付密码</span>
+      <input type="password" class="aui-input" name="post[oldpayword]" id="oldpayword" value="" placeholder="支付密码默认和注册设置密码相同"/><span class="aui-input-addon aui-text-red"><a href="/member/send.php?action=payword"  class="t">找回支付密码</a></span>
+      
+    </div>
+
+ </div>
+</div>
+</div>
+
+<div id="Tabs2" style="display:none;">
+<div class="aui-content">
+<ul class="aui-list-view">
+        <li class="aui-list-view-cell">tag3</li>
+        </ul>
+</div>
+</div>
+
+<div id="Tabs3" style="display:none;">
+<div class="aui-content">
+<ul class="aui-list-view">
+        <li class="aui-list-view-cell">tag4</li>
+        </ul>
+</div>
+</div>
+
+</div>
+</form>    
+
+<div class="aui-btn-row" id="btn-main" onclick="Daddr();">
+                <div class="aui-btn aui-btn-info fz16" style="width:90%;" id="btn-submit"><span id="btnload"></span>提 交</div>
+            </div>
+<script type="text/javascript">
+
+function Daddr() {
+	
+	var len;
+		len = Dd('areaid_1').value;
+	if(len == 0) {
+		laymsg('请选择地区');
+		return false;
+	}
+	len = Dd('truename').value.length;
+	if(len < 1) {
+		laymsg('请填真实姓名');
+		return false;
+	}
+	
+	{if $is_company}
+	var isPhone = /[0-9-()（）]{7,18}/;
+	if(!isPhone.test(Dd('telephone').value)){
+    laymsg("请正确填写电话号码");
+    return false;
+}
+	len = Dd('telephone').value.length;
+	if(len < 3) {
+		laymsg('请填公司电话');
+		return false;
+	}
+	{if !$catid}
+	if(Dd('catid_1').value == 0) {
+		laymsg('请选择公司主营行业', 'catid');
+		return false;
+	}
+	{/if}
+	if(Dd('type').value == '') {
+		laymsg('请选择公司类型', 'type');
+		return false;
+	}
+	len = Dd('business').value.length;
+	if(len < 3) {
+		laymsg('请填写经营范围');
+		return false;
+	}
+	len = Dd('regyear').value.length;
+	if(len < 4) {
+		laymsg('请填写公司成立年份');
+		return false;
+	}
+	len = Dd('address').value.length;
+	if(len < 5) {
+		laymsg('请填写详细地址');
+		return false;
+	}
+	{/if}
+	$("#btn-submit").text("正在处理...");
+	$("#btn-main").removeAttr("onclick");
+	
+    $.post('medit.php', $('#edit-form').serialize(), function(data) {
+		if(data.error == 'ok') {
+			{if $action=='add'}laymsg('添加成功');{else}laymsg('修改成功');{/if}
+		$("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("成 功");
+			setTimeout(function() {
+				Go('medit.php');
+			}, 1000);
+		} else {
+			laymsg(data.error);
+		$("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("重 新 提 交");
+
+		}
+	},'json');
+}
+
+</script>
+<script type="text/javascript">
+s('medit');
+{if $tab}
+Tab({$tab});
+{else}
+tabbar('Tab0');
+{/if}
+</script>
+{template 'footer_member', 'mobile'}

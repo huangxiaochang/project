@@ -1,0 +1,79 @@
+<script type="text/javascript">
+var mid ='{$moduleid}';
+var moduleid = '{$moduleid}';
+var itemid = '{$itemid}';
+var catid = '{$catid}';
+var areaid = '{$areaid}';
+var userid = '{$_userid}';
+var kw ='{$kw}';
+var popup = new auiPopup();
+function showPopup(){
+   popup.show(document.getElementById("top-right"))
+}
+function showsearchbar(){
+   popup.show(document.getElementById("dt-search-bar"))
+}
+</script>
+
+<script type="text/javascript">
+    var searchBar = document.querySelector(".dt-searchbar-input");
+    if(searchBar){
+        searchBar.onclick = function(){
+            document.querySelector(".dt-searchbar-cancel").style.marginRight = 0;
+        }
+    }
+    document.querySelector(".dt-searchbar-cancel").onclick = function(){
+        this.style.marginRight = "-"+this.offsetWidth+"px";
+        document.getElementById("search-input").value = '';
+        document.getElementById("search-input").blur();
+		popup.hide(document.getElementById("dt-search-bar"));
+    }
+    function doSearch(){
+        var searchValue = document.getElementById("search-input").value;
+        if(searchValue){
+			Dd('dform').submit();
+            //openDialog('text','您输入的内容是',searchValue);
+        }else{
+		openDialog('text','请输入搜索关键词','请输入搜索关键词');
+		}
+    }
+</script>
+</div>
+  
+
+
+<script>
+var scroll = new auiScroll({
+        listen:true,
+        distance:200 //判断到达底部的距离，isToBottom为true
+    },function(ret){
+        if(ret.scrollTop>=30){
+	       $('.returnTop .topIcon').show()
+
+        }else{
+		   $('.returnTop .topIcon').hide()
+        }
+
+    });
+$('div.returnTop .topIcon').click(function()
+   {
+  $('html,body').animate({scrollTop: 0}, 400);
+  return false;
+ });
+
+{if $AJ_MOB[browser] == 'weixin' || $AJ_MOB[browser] == 'qq'}
+$(document).on('pageshow', function(event) {
+	$("[data-role='page']").each(function(i) {
+		if($(this).attr('class').indexOf('-active') != -1) {
+			$(this).find('.share_icon img').css('display', 'block');
+		} else {
+			$(this).find('.share_icon img').css('display', 'none');
+		}
+	});
+});
+{/if}
+</script>
+<div style="display:none">
+</div>
+</body>
+</html>

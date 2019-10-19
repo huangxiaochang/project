@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>【{$title}】相册_效果图_楼盘照片</title>
+        <META NAME="keywords" CONTENT="【{$title}】相册, 【{$title}】效果图, 【{$title}】楼盘照片">
+        <META name="description" CONTENT="新房频道，为您提供【{$title}】相册， 【{$title}】效果图， 【{$title}】楼盘照片，想了解最新最全的{$title}相册信息。">
+
+     <link rel="stylesheet" href="static/css/frozen.css" />
+    <link rel="stylesheet" href="static/css/public.css" />
+    <link rel="stylesheet" href="static/css/photos.css" />
+  <style>
+            .ui-slider{padding-top: 0;}
+            .photos-i-video{
+	        	display:block;
+	        	background:url("static/images/video1.png") center no-repeat;
+	        	width:50px;
+	        	height:50px;
+	        	position: absolute;
+	        	background-size: contain;
+	   			left: 50%;
+	    		top: 50%;
+	    		z-index: 2;
+	   		    margin-left: -25px;
+	    		margin-top: -25px;
+	        }
+        </style>
+    </head>
+    <body ontouchstart="" class="bg-black">
+    <!-- 头部 start-->
+        <header class="ui-header">
+            <i class="hf-icon-return hf-font-white" onClick="history.back()"></i>
+        </header>
+        <!-- 头部 end-->
+    <!-- 主体内容 start-->
+    <section class="ui-container">
+        <!--样板房 start-->
+        <div class="ui-slider hf-full-img" id="photos-content">
+            <ul class="ui-slider-content  hf-full-box">
+            <!--
+                <li class="photos-img" onclick="location.href = ''">
+                    	<img src="!640x480" width="100%" height="300px" name="photos" alt="{$title} 1/1"/>
+                        <i class="photos-i-video"></i>
+                    </li>   -->
+                              
+                 
+    <!--{php $tag=tag("table=newhouse_xiangce&condition=status=3 and houseid=$itemid and catid=23&pagesize=10&order=addtime desc&template=null");}-->
+ {loop $tag $i $t}
+   <li class="photos-img" id="photos-img"><img src="{get_oldpic($t[thumb],1)}"  title="{get_oldpic($t[thumb],2)}" width="100%" height="300px" name="photos-1" alt="{$t[alt]} "/></li>{/loop}
+    <!--{php $tag=tag("table=newhouse_huxing&condition=status=3 and houseid=$itemid&pagesize=10&order=addtime desc&template=null");}-->
+ {loop $tag $i $t}
+   <li class="photos-img" id="photos-img"><img src="{get_oldpic($t[thumb],1)}"  title="{get_oldpic($t[thumb],2)}" width="100%" height="300px" name="photos-2" alt="{$t[alt]} "/></li>{/loop}
+    <!--{php $tag=tag("table=newhouse_xiangce&condition=status=3 and houseid=$itemid and catid=25&pagesize=10&order=addtime desc&template=null");}-->
+ {loop $tag $i $t}
+   <li class="photos-img" id="photos-img"><img src="{get_oldpic($t[thumb],1)}"  title="{get_oldpic($t[thumb],2)}" width="100%" height="300px" name="photos-3" alt="{$t[alt]} "/></li>{/loop}
+    <!--{php $tag=tag("table=newhouse_xiangce&condition=status=3 and houseid=$itemid and catid=26&pagesize=10&order=addtime desc&template=null");}-->
+ {loop $tag $i $t}
+   <li class="photos-img" id="photos-img"><img src="{get_oldpic($t[thumb],1)}"  title="{get_oldpic($t[thumb],2)}" width="100%" height="300px" name="photos-4" alt="{$t[alt]} "/></li>{/loop}
+    <!--{php $tag=tag("table=newhouse_xiangce&condition=status=3 and houseid=$itemid and catid=27&pagesize=10&order=addtime desc&template=null");}-->
+ {loop $tag $i $t}
+   <li class="photos-img" id="photos-img"><img src="{get_oldpic($t[thumb],1)}"  title="{get_oldpic($t[thumb],2)}" width="100%" height="300px" name="photos-5" alt="{$t[alt]} "/></li>{/loop}
+   
+                     </ul>
+        </div>
+        <!--样板房 end-->
+
+        <!-- 相册信息 star
+        <ul class="ui-row hf-full-info">
+            <li class="ui-col ui-col-80 hf-left" id="photos-info-name">{$title}</li>
+                <li class="ui-col ui-col-20 hf-right">
+                    <i class="hf-font-orange" id="curPagesNum">1</i>/<i>1</i>
+                </li>
+                
+        </ul>t -->
+        <!-- 相册信息 end -->
+
+        <!--全屏相册导航条 start-->
+        <div class="ui-scroller hf-full-photos-bg">
+            <ul class="hf-full-photos-nav">
+                 <!--<li class="hf-full-photos-nav-list on" id="photos">楼盘视频</li>-->
+                 
+                  <li class="hf-full-photos-nav-list on" id="photos-1">效果图</li>                <li class="hf-full-photos-nav-list " id="photos-2">户型图</li><li class="hf-full-photos-nav-list " id="photos-3">样板间</li><li class="hf-full-photos-nav-list " id="photos-4">实景图</li><li class="hf-full-photos-nav-list " id="photos-5">交通图</li
+                  
+                  ></ul>
+        </div>
+        <!--全屏相册导航条 end-->
+    </section>
+    <!-- 主体内容 start-->
+
+    <!-- frozenUI 框架 js start-->
+    <script src="static/js/zepto.min.js"></script>
+
+    <script type="text/javascript">
+        var height = document.body.scrollWidth * 0.8;
+        if (height > 420)
+            height = 420;
+        var mrgTop = (document.body.scrollHeight - height - 119) / 2;
+        $(".hf-full-img").css("height", height);
+        $(".hf-full-img").css("marginTop", mrgTop);
+
+        var navLiWidth = 0;
+        for (var i = 0; i < $(".hf-full-photos-nav li").length; i++)
+        {
+            navLiWidth += $(".hf-full-photos-nav li")[i].offsetWidth+10;
+        }
+        $(".hf-full-photos-nav").css("width", navLiWidth);
+
+
+        $(function(){
+            $('#photos-img img').click(function(){
+                var url=this.title;
+                var encodeUrl=encodeURIComponent(url);
+                window.location.href=url;
+            });
+        });
+    </script>
+
+    <script src="static/js/frozen.js"></script>
+    <!-- frozenUI 框架 js end-->
+    <script src="static/js/fullPhotos.js"></script>
+
+
+</body>
+</html>

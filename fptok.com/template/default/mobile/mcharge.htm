@@ -1,0 +1,257 @@
+{template 'header_member', 'mobile'}
+{template 'othercss', 'mobile'}
+<style>
+.paytype { margin: 10px 0;}
+.aui-list-view .aui-img-object {
+	max-width: 50px;
+	height: 50px;
+	line-height: 50px;
+}
+.aui-btn-row:after {
+	border-bottom: 0px !important;
+}
+</style>
+<script type="text/javascript" src="script/iScroll5/iscroll.js"></script>
+<header class="aui-bar aui-bar-nav aui-bar-danger" id="aui-header">
+        <a class="aui-btn aui-btn-danger aui-pull-left" href="{if $action}javascript:history.go(-1);{else}my.php{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+            <a href="my.php" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-my fz14">我的</span>
+    </a>
+
+</header>
+<div class="aui-bar-fix"></div>
+<div class="aui-content">
+			<div class="bbs-wrapper">
+				<div id="scroller">
+					<ul>
+            <li id="action_pay"><a href="mcharge.php?action=pay">在线充值</a></li>
+            <li id="action_card"><a href="mcharge.php?action=card">充值卡充值</a></li>
+            <li id="action_record"><a href="mcharge.php?action=record">充值记录</a></li>
+					</ul>
+				</div>
+			</div>
+<script type="text/javascript">
+myScroll = new IScroll('.bbs-wrapper', {
+eventPassthrough : false,
+scrollX : true,
+scrollY : false,
+preventDefault : true,
+click:true
+});
+//myScroll.scrollToElement(that[0], 800);
+</script>
+</div>
+
+{if $action == 'record'}
+<div class="aui-content">
+<ul class="aui-list-view">
+  <li class="aui-list-view-cell">
+  <div class="aui-money-title">已充值：<span class="aui-text-danger" id="cmoneys">{$amount}</span>&nbsp;&nbsp;元</div>
+  <div class="aui-pull-right"></div>
+</li>
+</ul>
+
+  <ul class="aui-list-view">
+  <li class="aui-list-view-cell"><span class="aui-text-money">充值记录</span><div class="my_title_right fz16">充值金额：<span class="aui-text-danger fz16" id="moneys">{$amount}</span>&nbsp;&nbsp;实收金额：<span class="aui-text-danger" id="amounts">{$money}</span></div>
+    </li>
+  </ul>
+
+<ul class="aui-list-view">
+{loop $charges $k $v}
+					<li class="aui-list-view-cell aui-padded-style">
+                <div class="aui-img-body aui-pull-right">
+                    <p class="aui-ellipsis-2"><span>{$PAY[$v[bank]][name]}--{$v[dstatus]}</span>&nbsp;&nbsp;{$v[sendtime]}</p>
+                </div>
+                <span class="aui-credits-left fz18 aui-text-red">{$v[amount]}</span>
+            </li>
+{/loop}
+</ul>
+<div class="pages">{$pages}</div>
+<div id="loading_page" class="aui-padded-10"></div>
+</div>
+<script type="text/javascript">tabbar('action_record');</script>
+{elseif $action == 'card'}
+<script type="text/javascript">tabbar('action_card');</script>
+{elseif $action == 'pay'}
+{if $MOD[pay_online]}
+<form method="post" action="?" onsubmit="return check();" id="dform">
+<input type="hidden" name="auto" value="{$auto}"/>
+<input type="hidden" name="reason" value="{$reason}"/>
+<input type="hidden" name="action" value="confirm"/>
+<div class="aui-form" id="pay_amount">
+<div class="aui-input-row">
+<span class="aui-input-addon fz16">充值金额</span>
+{if $charges}
+{loop $charges $k $v}
+<input type="radio" name="amount" value="{$v}" id="amount_{$k}"{if $k==0}checked{/if}/ class="aui-radio aui-radio-info" /><div class="aui-radio-name">{$v}{$AJ[money_unit]}</div>
+{/loop}
+{else}
+<input type="number" name="amount" value="{$amount}" id="amount" class="aui-input fz16"/><span class="aui-input-addon aui-text-gray">{$AJ[money_unit]}</span></div>
+{/if}
+</div>
+<p class="aui-text-center paytype fz16">支付方式</p>
+<div class="aui-content">
+        <ul class="aui-list-view paytype">
+    {php $i=0;}
+	{loop $PAY $k=>$v}
+	{if $v[enable]}
+
+            <li class="aui-list-view-cell aui-img">
+            <div class="aui-pull-left">
+                <img class="aui-img-object aui-pull-left apipaypng" src="image/b{$k}.png">
+                <div class="aui-img-body">
+                    手续费 {$v[percent]}%
+                    <p>推荐{if $k=='alipay'}支付宝{elseif $k=='weixin'}微信{/if}用户使用</p>
+                    </div>
+                </div>
+                <div class="aui-pull-right">
+                    <input class="aui-radio aui-radio-danger" type="radio" name="bank" value="{$k}" id="bank-{$k}"{if $i==0} checked{/if}>
+                </div>
+            </li>
+	{php $i++;}
+	{/if}
+	{/loop}
+	{if $i==0}
+                <li class="aui-list-view-cell aui-img">
+            <div class="aui-pull-left">
+                <div class="">
+                    <p>抱歉，系统未设置支付平台，暂时无法在线支付</p>
+                    </div>
+                </div>
+            </li>
+
+	{/if}
+
+        </ul>
+    </div> 
+<div class="aui-btn-row aui-border-nobottom">
+                <input type="submit" value="下一步" style="width: 88%;" id="Gopay" class="aui-btn aui-btn-danger fz16"/>
+                </div>           
+</form>
+{/if}  
+<script type="text/javascript">
+{if $i==1}Dh('pay_type');{/if}
+function check() {
+{if !$charges}
+	if(!Dd('amount').value) {
+		laymsg('请填写充值金额', 'amount');
+		return false;
+	}
+{if $mincharge}
+	if(Dd('amount').value < {$mincharge}) {
+		laymsg('金额最少{$mincharge}', 'amount');
+		return false;
+	}
+{/if}
+{/if}
+	return true;
+}
+{if $auto}
+{if $i==1}
+Dd('dform').submit();
+{elseif $i>1}
+{if $barname}$('#action_pay').text('在线支付');{/if}
+$('#pay_amount').hide();
+$('#pay_type li').click(function() {
+	$(this).find(':radio').attr('checked', 'checked');
+	Dd('dform').submit();
+});
+{/if}
+{else}
+$('#pay_type li').click(function() {
+	$(this).find(':radio').attr('checked', 'checked');
+});
+{/if}
+</script>
+<script type="text/javascript">s('charge');tabbar('action_pay');</script>
+{elseif $action == 'confirm'}
+<form method="post" action="?" id="dform">
+<input type="hidden" name="goto" value="1"/>
+<input type="hidden" name="action" value="confirm"/>
+<input type="hidden" name="amount" value="{$amount}"/>
+<input type="hidden" name="bank" value="{$bank}"/>
+<input type="hidden" name="reason" value="{$reason}"/>
+<p class="aui-text-center paytype fz16">充值确认</p>
+<div class="aui-content">
+<div class="aui-form">
+    <div class="aui-input-row">
+     <span class="aui-input-addon">支付平台</span>
+      <input type="hidden" class="aui-input" value="" readonly="readonly"/><img src="image/{$bank}.png" width="40" class="aui-padded-top10 aui-ml-10"/>
+</div> 
+    <div class="aui-input-row">
+     <span class="aui-input-addon">充值金额</span>
+      <input type="text" class="aui-input aui-text-red" value="{$amount}{$AJ[money_unit]}" readonly="readonly"/>
+</div>     
+
+    <div class="aui-input-row">
+     <span class="aui-input-addon">手续费</span>
+      <input type="text" class="aui-input aui-text-red" value="{$fee}{$AJ[money_unit]}" readonly="readonly"/>
+</div>     
+
+    <div class="aui-input-row">
+     <span class="aui-input-addon">实收金额</span>
+      <input type="text" class="aui-input aui-text-red" value="{$charge}{$AJ[money_unit]}" readonly="readonly"/>
+</div>     
+
+    <div class="aui-input-row">
+     <span class="aui-input-addon">提示信息</span>
+      <p class="fz12 aui-padded-t10 aui-ml-15 aui-line-height22">点击确认充值，系统将跳转至第三方支付平台，支付成功后系统将自动为您入账。<br/>
+如果在支付过程中遇到任何问题，请及时与客服中心取得联系，以便及时处理。<br/></p>
+</div>     
+   
+</div>
+
+
+</div> 
+     
+            <div class="aui-btn-row aui-border-nobottom">
+                <div class="aui-btn aui-btn-danger fz16" style="width: 88%;" id="paybtn" onclick="$('form').submit();">确认充值</div>&nbsp;&nbsp;
+            </div>
+</form>           
+{if $auto}<script type="text/javascript">Dd('dform').submit();</script>{/if}
+<script type="text/javascript">s('charge');tabbar('action_pay');</script>
+{else}
+{if $charge_status == 2}
+<p class="aui-text-center paytype fz16">支付结果</p>
+<div class="aui-content">
+        <ul class="aui-list-view paytype">
+        <li class="aui-list-view-cell aui-img aui-text-center"><img class="aui-img-object aui-text-center apipaypng" src="image/alipayok.png"></li>
+            <li class="aui-list-view-cell aui-img aui-text-center"><span class="aui-text-danger">支付异常</span></li>
+            <li class="aui-list-view-cell aui-img aui-text-center"><span class="aui-text-danger">- 错误代码“{$charge_errcode}”，请与<a href="ask.php?action=add" class="b">客服联系</a>并告知错误代码。<br/>
+- <a href="?action=pay" class="b">重新充值请点这里。</a></span></li>
+
+           </ul>
+</div>
+
+{elseif $charge_status == 1}
+<p class="aui-text-center paytype fz16">支付结果</p>
+<div class="aui-content">
+        <ul class="aui-list-view paytype">
+        <li class="aui-list-view-cell aui-img aui-text-center"><img src="{AJ_STATIC}{$MODULE[2][moduledir]}/image/ok.gif" alt="" align="absmiddle"/></li>
+            <li class="aui-list-view-cell aui-img aui-text-center"><span class="aui-text-danger">支付成功，已经为您入账 <span class="f_red">{$charge_amount}</span> {$AJ[money_unit]}</span></li>
+            <li class="aui-list-view-cell aui-img aui-text-center"><span class="aui-text-danger">- <a href="?action=record" class="b">查询记录请点这里</a><br/>
+- <a href="?action=pay" class="b">继续充值请点这里</a><br/>
+</span></li>
+
+           </ul>
+</div>
+
+{else}
+<p class="aui-text-center paytype fz16">支付结果</p>
+<div class="aui-content">
+        <ul class="aui-list-view paytype">
+            <li class="aui-list-view-cell aui-img aui-text-center"><span class="aui-text-danger">支付失败</span></li>
+           <li class="aui-list-view-cell aui-img aui-text-center"><span class="aui-text-danger">如果您确认支付成功，请立即<a href="ask.php?action=add" class="b">联系客服</a>解决。<br/>
+- <a href="?action=pay" class="b">重新充值请点这里。</a></span></li>
+
+           </ul>
+</div>
+
+{/if}
+{if $charge_forward}<script type="text/javascript">setTimeout(function(){Go('{$charge_forward}');}, 2000);</script>{/if}
+<script type="text/javascript">s('charge');tabbar('action_pay');</script>
+{/if}
+{template 'footer_member', 'mobile'}

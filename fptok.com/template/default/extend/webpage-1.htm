@@ -1,0 +1,278 @@
+{template 'header'}
+ 
+<link type="text/css" href="css/base.css" rel="stylesheet">
+<link type="text/css" href="css/main.css" rel="stylesheet">
+<link type="text/css" href="css/swiper.css" rel="stylesheet">
+<!--幻灯片S-->
+<div class="swiper-container swiper-container1">
+    <div class="swiper-wrapper">
+		<div class="swiper-slide" style="background-image:url(images/banner.jpg);" onclick="window.location.href='http://www.fptok.com/member/my.php?mid=13&action=add'"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+<!--幻灯片E-->
+<div class="main">
+	<!-- container start -->
+	<div class="container">
+		<div class="home-title title"><img src="./images/line01.png"><h1>装修流程&nbsp;透明规范</h1><img src="./images/line01.png"></div>
+		<div class="home-finish">
+			<a class="J-Icon-Tab" href="#" target="_blank"><i class="zxzj-icon-shoufang"></i><br>收房量房</a>
+			<a class="J-Icon-Tab" href="#" target="_blank"><i class="zxzj-icon-zhunbei"></i><br>前期准备</a>
+			<a class="J-Icon-Tab" href="#" target="_blank"><i class="zxzj-icon-xuangongsi"></i><br>选装修公司</a>
+			<a class="J-Icon-Tab" href="#" target="_blank"><i class="zxzj-icon-design"></i><br>设计阶段</a>
+			<a class="J-Icon-Tab" href="#" target="_blank"><i class="zxzj-icon-cailiao"></i><br>材料选购</a>
+			<a class="J-Icon-Tab" href="#" target="_blank"><i class="zxzj-icon-shigong"></i><br>施工阶段</a>
+			<a class="J-Icon-Tab" href="#" target="_blank"><i class="zxzj-icon-jungong-list"></i><br>竣工验收</a>
+			<a class="J-Icon-Tab" href="#" target="_blank"><i class="zxzj-icon-ruanzhuang"></i><br>软装配饰</a>
+			<a class="J-Icon-Tab" href="#" target="_blank"><i class="zxzj-icon-baozhang"></i><br>装修保障</a>
+		</div>
+		<div class="home-title title">
+			<img src="./images/line01.png"><h1><a href="/photo/">装修效果图</a></h1><img src="./images/line01.png">
+		</div>
+		<div class="home-txt">提供100万张海量高清效果图，50万张精美搭配图片供你挑选与参与</div>
+		<div class="sec-case">
+    		<div class="case-list">
+  				<div class="pic01">
+					<div class="hotel-l">
+						<div class="s-lun-car">
+							<div class="lun-wrap-car nclearfix">
+								<a href="/photo/" target="_blank" class="sma-lun-car">
+									<img src="./images/index_01.jpg" alt="装修美图">
+								</a>
+							</div>
+						</div>
+						<div class="yel-bei">
+							<p class="ins-name">装修美图</p>
+							<p class="english">BEAUTY&nbsp;DECORATION</p>
+							<p class="say">不一样的风格<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多装修灵感</p>
+							<ul class="pin-lei">
+								<li><a href="/photo/" target="_blank">进入美图频道</a></li>
+							</ul>
+						</div>
+       				</div>
+    			</div>
+				<div class="case-list-right">
+					<div class="case-list-fir">
+						<ul>
+					   <!--{php $tags=tag("moduleid=12&condition=level=3 and thumb!='' and style ='' &pagesize=2&order=itemid desc&template=null")}-->
+						{loop $tags $i $t}
+						<li class="xtu{$i+1}">
+								<a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">
+									<img class="lazy img-hover" src="{$t[thumb]}" alt="{$t[title]}">
+									<div class="open">
+										<div class="black-screen"></div>
+										<span>{$t[title]}</span>
+									</div>
+								</a>
+ 						{/loop}
+						</ul>
+					</div>
+					<div class="case-list-sec">
+						<ul>
+						<!--{php $tags=tag("moduleid=12&condition=level=2 and thumb!='' and style ='' &pagesize=2&order=itemid desc&template=null")}-->
+						{loop $tags $i $t}
+						<li class="pic{$i+3}">
+								<a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">
+									<img class="lazy img-hover" src="{$t[thumb]}" alt="{$t[title]}">
+									<div class="open">
+										<div class="black-screen"></div>
+										<span>{$t[title]}</span>
+									</div>
+								</a>
+ 						{/loop}
+						</ul>
+						</ul>
+					</div>
+        		</div>
+  			</div>
+		</div>
+		<div class="home-list cf">
+			<ul>
+				<li><a href="/photo/list.php?catid=23&fengge=1" target="_blank"><img src="./images/index_xgt_gzxgt_img6.jpg">客厅</a></li>
+				<li><a href="/photo/list.php?catid=25&fengge=1" target="_blank"><img src="./images/index_xgt_gzxgt_img8.jpg">卧室</a></li>
+				<li><a href="/photo/list.php?catid=70&fengge=1" target="_blank"><img src="./images/index_xgt_gzxgt_img3.jpg">餐厅</a></li>
+				<li><a href="/photo/list.php?catid=24&fengge=1" target="_blank"><img src="./images/index_xgt_gzxgt_img4.jpg">厨房</a></li>
+				<li><a href="/photo/list.php?catid=26&fengge=1" target="_blank"><img src="./images/index_xgt_gzxgt_img7.jpg">卫生间</a></li>
+				<li><a href="/photo/list.php?catid=71&fengge=1" target="_blank"><img src="./images/index_xgt_gzxgt_img1.jpg">阳台</a></li>
+				<li><a href="/photo/list.php?catid=163&fengge=1" target="_blank"><img src="./images/index_xgt_gzxgt_img2.jpg">背景墙</a></li>
+				<li><a href="/photo/list.php?catid=164&fengge=1" target="_blank"><img src="./images/index_xgt_gzxgt_img5.jpg">吊顶</a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+ 
+		<div class="home-title title">
+			<img src="./images/line01.png"><h1><a href="#">优秀装修公司</a></h1><img src="./images/line01.png">
+		</div>
+		<div class="home-txt">高性价比装修公司任您选择，一对一专业服务</div>
+		<div class="fourbox">
+			<div class="sec-logos">
+				<div class="logos">
+					<dl>
+						<!--{php $tags=tag("table=company&condition=groupid=11&thumb !=''&order=hits desc&pagesize=20&template=null");}-->
+						{loop $tags $t}
+						 <dd>
+							<a href="{$t[linkurl]}" target="_blank" title="">
+								<img src="{$t[thumb]}" alt="{$t[company]}">
+							</a>
+						</dd> 
+						{/loop}
+					</dl>
+				</div>
+			</div>
+			<div class="mainBox02">
+				<div class="mainTab hd">
+					<ul class="hdhead">
+						<li class="on">设计师排名</li>
+						<li>安装师傅排名</li>
+					</ul>
+				</div>
+				<div class="clear_both"></div>
+				<div class="mainTabBox bd">
+					<div class="con_one_1">
+						<div class="painame">
+							<ul>
+
+					     	<!--{php $tags=tag("table=member&condition=groupid=9&areaid=$cityid&order=userid desc&pagesize=5&template=null");}-->
+							{loop $tags $i $t}
+							<li>
+
+							<a class="jAvatar" href="{userurl($t[username], '')}" target="_blank">
+									<div class="painame_left"><i class="no{$i+1}"></i></div>
+										<div class="painame_mid">
+											<img src="{useravatar($t[username], 'large')}" width="54" height="54" alt="">
+										</div>
+										<div class="painame_right">
+											<h3 class="painame_right_txt1">{userinfos($t[username])}<span title="{area_pos($t[areaid], '')}" style="font-size: 10px;}">[{dsubstr( area_pos($t[areaid], ''), 16, '…')}]</span></h3>
+											<p class="painame_right_txt2">电话：<span>{$t[mobile]}</span></p>
+										</div>
+										<div class="clear_both"></div>
+							</a>
+							</li>
+							{/loop}
+ 
+							</ul>
+						</div>
+					</div>
+					<div class="con_one_1" style="display: none;">
+						<div class="painame">
+							<ul>
+								<!--{php $tags=tag("table=member&condition=groupid=14&areaid=$cityid&order=userid desc&pagesize=5&template=null");}-->
+							{loop $tags $i $t}
+							<li>
+
+							<a class="jAvatar" href="{userurl($t[username], '')}" target="_blank">
+									<div class="painame_left"><i class="no{$i+1}"></i></div>
+										<div class="painame_mid">
+											<img src="{useravatar($t[username], 'large')}" width="54" height="54" alt="">
+										</div>
+										<div class="painame_right">
+											<h3 class="painame_right_txt1">{userinfos($t[username])}<span title="{area_pos($t[areaid], '')}" style="font-size: 10px;}">[{dsubstr( area_pos($t[areaid], ''), 16, '…')}]</span></h3>
+											<p class="painame_right_txt2">电话：<span>{$t[mobile]}</span></p>
+										</div>
+										<div class="clear_both"></div>
+							</a>
+							</li>
+							{/loop}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear_both"></div>
+		</div>
+ 
+		<div class="home-title title">
+			<img src="./images/line01.png"><h1><a href="#">装修攻略</a></h1><img src="./images/line01.png">
+		</div>
+		<div class="home-txt">学习装修知识，避免装修猫腻，上万篇装修干货分享，另有装修达人为您在线答疑解惑。</div>
+		<div class="gonglvebox cf">
+			<div class="gonglve_left">
+				<div class="gonglvelist">
+				<!--{php $tags=tag("moduleid=8&condition=catid='154' and level = '1' and thumb!='' and style ='' &pagesize=1&order=addtime  desc&template=null")}-->
+				{loop $tags $t}
+					<a href="#" target="_blank" class="gonglve_a"><img src="{$t[thumb]}" width="275" height="192" class="img-hover"></a>
+					<div class="shequtxt4 cf">
+						<p><a href="{$t[linkurl]}" target="_blank">{dsubstr($t[title], 36, '…')}</a></p>
+					</div>
+				{/loop}			 
+					<div class="gonglve_tiao">
+						<ul>
+							<!--{php $tags=tag("moduleid=8&condition=catid='154' and style ='' &pagesize=3&order=addtime  desc&template=null")}-->
+							{loop $tags $t}
+							<li><a href="{$t[linkurl]}" target="_blank">{dsubstr($t[title], 44, '…')}</a></li>
+							{/loop}	
+						</ul>
+					</div>
+				</div>
+				<div class="space2">&nbsp;</div>
+				<div class="gonglvelist">
+				<!--{php $tags=tag("moduleid=8&condition=catid='154' and level = '1' and thumb!='' and style ='' &pagesize=1&page=2&order=addtime  desc&template=null")}-->
+				{loop $tags $t}
+					<a href="#" target="_blank" class="gonglve_a"><img src="{$t[thumb]}" width="275" height="192" class="img-hover"></a>
+					<div class="shequtxt4 cf">
+						<p><a href="{$t[linkurl]}" target="_blank">{dsubstr($t[title], 36, '…')}</a></p>
+					</div>
+				{/loop}			 
+					<div class="gonglve_tiao">
+						<ul>
+							<!--{php $tags=tag("moduleid=8&condition=catid='154' and style ='' &pagesize=3&page=2&order=addtime  desc&template=null")}-->
+							{loop $tags $t}
+							<li><a href="{$t[linkurl]}" target="_blank">{dsubstr($t[title], 44, '…')}</a></li>
+							{/loop}	
+						</ul>
+					</div>
+				</div>
+				<div class="space2">&nbsp;</div>
+				<div class="gonglvelist">
+				<!--{php $tags=tag("moduleid=8&condition=catid='154' and level = '1' and thumb!='' and style ='' &pagesize=1&page=3&order=addtime  desc&template=null")}-->
+				{loop $tags $t}
+					<a href="#" target="_blank" class="gonglve_a"><img src="{$t[thumb]}" width="275" height="192" class="img-hover"></a>
+					<div class="shequtxt4 cf">
+						<p><a href="{$t[linkurl]}" target="_blank">{dsubstr($t[title], 36, '…')}</a></p>
+					</div>
+				{/loop}			 
+					<div class="gonglve_tiao">
+						<ul>
+							<!--{php $tags=tag("moduleid=8&condition=catid='154' and style ='' &pagesize=3&page=3&order=addtime  desc&template=null")}-->
+							{loop $tags $t}
+							<li><a href="{$t[linkurl]}" target="_blank">{dsubstr($t[title], 44, '…')}</a></li>
+							{/loop}	
+						</ul>
+					</div>
+				</div>
+		        <div class="clear_both"></div>
+		    </div>
+		    <div class="gonglve_right">
+		    	<div class="gonglve_right_list">
+		    		<ul>
+ 
+							<!--{php $tags=tag("moduleid=8&condition=catid='154' and style ='' &pagesize=3&page=3&order=addtime  desc&template=null")}-->
+							{loop $tags $t}
+							<li>
+			    				<div class="gonglve_right_img"><a href="{$t[linkurl]}" target="_blank"><img src="{$t[thumb]}"></a></div>
+			    				<div class="gonglve_right_con">
+			    					<h5 class="gonglve_right_con_txt1"><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></h5>
+			    					<p class="gonglve_right_con_txt2"></p>
+			    				</div>
+			    				<div class="clear_both"></div>
+		    				</li>
+							{/loop}	
+			 
+		    		</ul>
+		    	</div>
+		    </div>
+		    <div class="clear_both"></div>
+		</div>
+
+</div>
+<script src="js/swiper.min.js"></script>
+<script type="text/javascript">
+	var swiper = new Swiper('.swiper-container1', {spaceBetween: 30,centeredSlides: true,autoplay: {delay: 5000,disableOnInteraction: false,},pagination: {el: '.swiper-pagination',clickable: true,},navigation: {nextEl: '.swiper-button-next',prevEl: '.swiper-button-prev',},});
+	$('.hdhead').find('li').hover(function(){
+		$(this).addClass("on").siblings().removeClass("on");
+        $(".mainTabBox > div").eq($(this).index()).show().siblings().hide();//选中菜单，出现对应的内容
+    });
+</script>
+{template 'footer'}

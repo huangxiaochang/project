@@ -1,0 +1,20 @@
+   <ul class="news-list1">
+{loop $tags $i $t}
+    <li  {if $t[thumb]}class="image-li"{/if}>
+    {if $t[thumb]}
+                    <div class="image">
+                        <a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{imgurl($t[thumb])}" alt="{$t[alt]}"/></a>
+                    </div>{/if}
+                    <div class="text">
+                        <h3><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></h3>
+                        <p class="description">{$t[introduce]}<a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">[阅读全文]</a></p>
+                        <p class="other">
+                            <i class="time-icon"></i>{timetodate($t[addtime], 3)}&nbsp;&nbsp;{$t[catname]}            
+                        </p>
+                    </div>
+                    <div class="clearit"></div>
+                </li>             
+{/loop}
+</ul>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}
+

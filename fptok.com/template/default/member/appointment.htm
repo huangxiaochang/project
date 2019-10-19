@@ -1,0 +1,320 @@
+
+{template 'header', 'member'}
+    <style>
+	.STYLE1 {
+	color: #FF0000;
+	font-size: 16px;
+}
+/* LeftNav */
+.memberLeftNav { width:200px; margin:10px 10px 0 10px; _display:inline; overflow:hidden; background:url(../images/memberLeftNavBgk.gif) 201px 0; }
+.memberLeftNav .title { width:200px; height:60px; background:url(../images/memberLeftNavBgk.gif); }
+.memberLeftNav .navList .item { clear:both; padding-left:20px; }
+.memberLeftNav .navList li p { width:150px; height:23px; line-height:23px; border:1px solid #b4c91a; display:block; background:url(../images/memberLeftNavItemBgk.gif) repeat-x; text-align:center; font-size:14px; font-weight:bold; color:#660; }
+.memberLeftNav .navList li ul li { width:150px; line-height:23px; text-align:center; border:1px solid #CCC; margin-top:5px;}
+.memberLeftNav .navList li ul li a { color:#2b7ccd; }
+.memberLeftNav .navList li ul li a:hover { color:#f90; }
+.memberLeftNav .endLeft { width:200px; height:60px; background:url(../images/memberLeftNavBgk.gif) 402px 0; }
+
+/* RightBox 出售发布|出租发布 */
+.memberBox { width:776px; float:left; margin:10px 0 0; }
+.bigNote { width:774px; height:30px; margin-top:10px; border:1px solid #fbc393; background:#ffd;}
+.bigNote .noteTxt { width:90%; height:30px; background:url(../images/bigNote.gif) no-repeat 0 3px; padding:10px 0 0 30px; margin-left:5px; overflow:hidden; }
+.bigNote .closeNote { float:right; margin:9px 5px 0 0; display:inline;}
+.memberBoxTab { width:100%; margin-top:10px; border-bottom:2px solid #eee; }
+.memberBoxTab ul { width:100%; float:left; border-bottom:1px solid #b4c91a; padding-left:10px; }
+.memberBoxTab ul li { height:23px; overflow:hidden; float:left; margin-right:3px }
+.memberBoxTab ul li a { font-size:12px; color:#333; line-height:23px; _line-height:25px; float:left; padding-left:10px; background:url(../images/memberTabBgk.gif) top left; }
+.memberBoxTab ul li a span { height:23px; float:left; padding-right:10px; cursor:pointer; background:url(../images/memberTabBgk.gif) top right; }
+.memberBoxTab ul li a:hover, .memberBoxTab ul li a.linkOn { color:#660; text-decoration:none; background:url(../images/memberTabBgkLinkOn.gif) top left; }
+.memberBoxTab ul li a:hover span, .memberBoxTab ul li a.linkOn span { background:url(../images/memberTabBgkLinkOn.gif) top right; }
+.memberBoxTab ul li a.linkOn { font-weight:bold; }
+
+.memberBoxTable { width:100%; float:left; margin-top:10px; background:url(../images/memberTableBgk.gif) repeat-x left top; }
+.memberBoxTable th { text-align:center; font-size:14px; padding:5px 0; }
+.memberBoxTable .concentTitle { font-size:14px; color:#719601; font-weight:bold; padding:10px 0 6px 45px; display:block; background:url(../images/icon05.gif) no-repeat 21px 9px; }
+.memberBoxTable tbody td { color:#333; padding:5px 0; border-bottom:1px solid #eee; border-right:1px solid #eee;}
+span.must { color:#c9620f; font-family:verdana, "宋体", sans-serif; padding-right:10px; }
+.memberBoxTable tbody td p { margin-bottom:8px; }
+.memberBoxTable tbody td p.errorMessage {  color:#c9620f; padding-left:13px; margin:0px 8px; background:url(../images/iconNote.gif) no-repeat left top; }
+.memberBoxTable tbody .tip { color:#aaa!important; }
+.memberBoxTable tbody .row1 { width:15%; text-align:right; padding:8px 10px 0 0; _padding:11px 10px 0 0; }
+.memberBoxTable tbody .row2 { width:40%; }
+.memberBoxTable tbody .row3 { width:35%; }
+.memberBoxTable tbody .br { height:8px; }
+.memberBox .submitPromsie {width:100%; text-align:center; color:#666; }
+.memberBox .submitBtn { width:99%; padding:15px 0; text-align:center; }
+.memberBox .submitBtn input {background:url({AJ_SKIN}images/memberLeftNavItemBgk.gif) repeat-x; border:1px solid #b4c91a; color:#660; font-size:14px; font-weight:bold; padding:3px 10px; *padding:3px 0 0; }
+
+/* RightBox 出售管理|出租管理 */
+.manageSub { width:776px; height:px; margin:10px auto auto; border-bottom:1px solid #dedede; overflow:visible;}
+.manageSubNav { position:absolute; top:1px; right:-5px; }
+.manageSubNav li { height:24px; overflow:hidden; float:left; margin-right:5px; display:inline; }
+.manageSubNav li a { font-size:12px; color:#000; line-height:26px; _line-height:28px; float:left; padding-left:12px; background:url({AJ_SKIN}images/manageSubNav.gif) left -24px; }
+.manageSubNav li a span { height:24px; float:left; padding-right:12px; cursor:pointer; background:url({AJ_SKIN}/images/manageSubNav.gif)  right -24px; }
+.manageSubNav li a:hover, .manageSubNav li.linkOn a { color:#f90; text-decoration:none; background-position:top left; }
+.manageSubNav li a:hover span, .manageSubNav li.linkOn a span { background-position:top right; }
+.manageSubNav li.linkOn a { font-weight:bold; }
+
+.manageBox { width:764px; height:auto; border-left:1px solid #dedede; border-bottom:1px solid #dedede; border-right:1px solid #dedede; padding:5px; }
+
+.manageBox .houseSearch {float:none; padding:2px; color:#999;}
+.manageBox .houseSearch input { color:#999; margin-left:0px; }
+.manageBox .houseSearch select { color:#999; margin-left:0px; }
+.manageBox .houseSearch .tip { color:#999; margin-left:50px;}
+.manageBox .houseList { float:none; }
+.manageBox .houseList table { width:100%; margin-top:5px; border:1px solid #ccc; }
+.manageBox .houseList .tableTitle { background:#d9d9d9; height:20px; font-size:14px; font-weight:bold; text-align:center; color:#666; }
+.manageBox .houseList .tableTitle td { padding-top:5px; }
+.manageBox .houseList .tableSubTitle { background:#efefef; height:18px; font-size:12px; font-weight:bold; text-align:center; color:#999; }
+.manageBox .houseList .tableSubTitle td { padding-top:2px; }
+.manageBox .houseList tbody {text-align:center;}
+.manageBox .houseList tbody td { height:26px; *height:24px; padding-top:2px; border-right:1px solid #eee; border-bottom:1px solid #eee; color:#333; }
+.listOperation { text-align:left; background:#efefef; padding:5px 5px 0!important; height:25px!important; }
+.listOperationBtn{ background:url({AJ_SKIN}images/memberLeftNavItemBgk.gif) repeat-x; border:1px solid #b4c91a; color:#660; font-size:12px; padding:3px 8px; *padding:3px 0 0; }
+.note { width:774px; margin-top:10px; border:1px solid #fbc393; background:#ffd;}
+.note p { margin:10px; font-size:14px;}
+.note ul {margin:10px 10px 10px 35px; }
+.note ul li {list-style:decimal; margin-top:5px; color:#666;}
+	</style>
+<script type="text/javascript">c(1);</script>
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="{$AJ[file_my]}?mid={$mid}&action=add"><span>预约刷新</span></a></td>
+
+</tr>
+</table>
+</div> <div class="memberBox">
+                  
+                    <div class="manageSub">
+                        <ul class="manageSubNav">
+                            <li class="linkOn"><a href="#"><span>预约房源修改</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="manageBox">
+
+                   {if $action=='appoRefresh'}
+                        <div class="houseList">
+                            <form name="myform" enctype="text/html" action="" method="POST">
+                                <input type="hidden" name="mid" value="{$mid}" />
+                               {loop $house $v}
+                                <table border="0" cellpadding="0" cellspacing="1">
+                                    <input type="hidden" name="appo_house_id[{$v[itemid]}]" value="{$v[itemid]}" />
+                                    <input type="hidden" name="appo_house_title[{$v[itemid]}]" value="{$v[title]}" />
+                                    <input type="hidden" name="site" value="{$site}" />
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">本次预约的房源为<span style=" color:#E55600;"><b>[{$v[title]}]</b></span></td>
+                                        </tr>
+                                          <tr>
+                                           <td colspan="2">第一次刷新  <select name="appo_hours[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $hour $hours}
+                                                <option value="{$hours}">{$hours}</option>
+                                                   {/loop}
+                                                </select>
+                                                点
+                                                <select name="appo_minute[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $minute $minutes}
+                                                <option value="{$minutes}">{$minutes}</option>
+                                                   {/loop}
+                                                  
+                                                </select>
+                                                分
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                         <tr>
+                                            <td colspan="2">第二次刷新
+                                               <select name="appo_hours[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $hour $hours}
+                                                <option value="{$hours}">{$hours}</option>
+                                                   {/loop}
+                                                </select>
+                                                点
+                                                <select name="appo_minute[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $minute $minutes}
+                                                <option value="{$minutes}">{$minutes}</option>
+                                                   {/loop}
+                                                  
+                                                </select>
+                                                分
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                         <tr>
+                                            <td colspan="2">第三次刷新
+                                               <select name="appo_hours[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $hour $hours}
+                                                <option value="{$hours}">{$hours}</option>
+                                                   {/loop}
+                                                </select>
+                                                点
+                                                <select name="appo_minute[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $minute $minutes}
+                                                <option value="{$minutes}">{$minutes}</option>
+                                                   {/loop}
+                                                  
+                                                </select>
+                                                分
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                         <tr>
+                                            <td colspan="2">第四次刷新
+                                                 <select name="appo_hours[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $hour $hours}
+                                                <option value="{$hours}">{$hours}</option>
+                                                   {/loop}
+                                                </select>
+                                                点
+                                                <select name="appo_minute[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $minute $minutes}
+                                                <option value="{$minutes}">{$minutes}</option>
+                                                   {/loop}
+                                                  
+                                                </select>
+                                                分
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                         <tr>
+                                           <td colspan="2">第五次刷新
+                                                  <select name="appo_hours[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $hour $hours}
+                                                <option value="{$hours}">{$hours}</option>
+                                                   {/loop}
+                                                </select>
+                                                点
+                                                <select name="appo_minute[{$v[itemid]}][]">
+                                                    <option>---</option>
+													{loop $minute $minutes}
+                                                <option value="{$minutes}">{$minutes}</option>
+                                                   {/loop}
+                                                  
+                                                </select>
+                                                分
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                选择天数
+                                                <select name="appo_date[{$v[itemid]}]">
+												{loop $date  $k $v}
+                                                    
+                                                    <option value="{$k}">{$v}</option>
+                                                    {/loop}
+                                                </select>&nbsp;按以上设置自动刷新
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              {/loop}
+                                <div style="width:100%;margin-top:5px;text-align: center;"><input class="listOperationBtn" style="width:100px;" type="button"  value="提交" onclick="myform.action='?action=submitAppo';myform.submit();" /></div>
+                            </form>
+                        </div>
+{elseif $action == 'appoShowHouse'}
+ <div class="houseList">
+                            <form name="myform" enctype="text/html" action="" method="POST">
+                                <input type="hidden" name="to_url" value="<!--{$to_url}-->" />
+                            
+                                <table border="0" cellpadding="0" cellspacing="1">
+                                    <input type="hidden" name="house_id" value="{$house[house_id]}" />
+                                    <input type="hidden" name="house_title" value="{$house[house_title]}" />
+                                    <input type="hidden" name="site" value="{$site}" />
+                                    <tbody>
+                                        <tr>
+                                               <td colspan="2">您的房源<span style=" color:#E55600;"><b>[{$house[house_title]}]</b></span>已设置的预约刷新时间</td>
+                                        </tr>
+                                         {loop $house['update_limit'] $limit_id $v}
+										
+											<tbody id="limit{$limit_id}" name="limit" style="{if $s==''}{else}display:none;{/if}">
+											{loop $house['update'][$limit_id]  $s $time}
+												<tr>
+													<td>
+														{$limit_id}&nbsp;
+														<select name="appo_hours[{$limit_id}][{$s}]">
+														
+															<option>---</option>
+														{loop $hour $hours}
+                                                <option value="{$hours}" {if $time[hour]==$hours}selected=""{/if}>{$hours}</option>
+                                                   {/loop}
+														</select>
+														点
+														<select name="appo_minute[{$limit_id}][{$s}]">
+															<option>---</option>
+															{loop $minute $minutes}
+                                                <option value="{$minutes}" {if $time[minute]==$minutes}selected=""{/if}>{$minutes}</option>
+                                                   {/loop}
+														</select>
+														分
+													</td>
+													<td></td>
+												</tr>
+											{/loop}
+                                            
+											</tbody>
+                                            
+										{/loop}
+                                        <tr>
+                                            <td colspan="2">
+                                                查看已经预约的日期
+                                                <select name="appo_date" onchange="showUpdate(this);" onfocus="showLimit(this)">
+												{loop $house['update_limit']  $k $v}
+                                                    <option value="{$k}">{$v}</option>
+                                                    {/loop}
+                                                   
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+  
+                                <div style="width:100%;margin-top:5px;text-align: center;"><input class="listOperationBtn" style="width:100px;" type="button"  value="修改" onclick="myform.action='?action=editAppo';myform.submit();" /></div>
+                            </form>
+                        </div>
+{/if}
+                    </div>
+		                   <div class="note">
+                        <p><a name="notice" id="notice"></a>预约刷新必读：</p>
+                        <ul> <li>每条房源刷新一次需{$AJ['yycredit_refresh']}{$AJ[credit_name]}，你当然的积分为{$_credit}{$AJ[credit_name]}，可以设置<span class="STYLE1">{$tiaoshu}</span>次房源刷新。如果积分不够，则跳过该房源的预约刷新。</li>
+                            <li>系统将根据每日可刷新的次数执行。如果刷新条数超过系统可刷新的条数，则跳过该房源的预约刷新。</li>
+                            <li>本日的操作的预约时间将到当天的时间才执行。</li>
+                            <li>如果预约的时间点操作系统设置每个时间点最多的刷新次数，则该房源预约的时间将会自动转到一个次数较少的时间。</li>
+                            <li>如果预约的时间已经落后现在的时间，则预约时间会根据现在的小时数增加30分钟到60分钟不等。</li>
+                            <li>预约时间的天数由系统设置。</li>
+                            <li>如果预约的时间没有选择则自动跳过该时间段或删除该时间段。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+     </div>  
+       <script language="javascript">
+          
+			var limit_close = '';
+			function showLimit(MyClick){
+				if(!limit_close){
+					limit_close = MyClick.value;
+				}
+			}
+			function showUpdate(MyClick){
+				if(limit_close)	{
+					document.getElementById('limit'+limit_close).style.display = "none";
+				}
+				limit_close = MyClick.value;
+				document.getElementById('limit'+MyClick.value).style.display = "";
+			}
+        </script> 
+
+{template 'footer', 'member'}

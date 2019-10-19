@@ -1,0 +1,38 @@
+{if $typeid==1}
+{$code}
+{elseif $typeid==2}
+<a href="{$url}" title="{$text_title}" target="_blank">{$text_name}</a>
+{elseif $typeid==3}
+{if $url}<a href="{$url}" target="_blank">{/if}<img src="{$image_src}" width="{$width}" height="{$height}" alt="{$image_alt}"/>{if $url}</a>{/if}<div class="ad-guanggao" style="margin:0px;">广告</div>
+{elseif $typeid==4}
+<embed pluginspage=http://www.macrom edia.com/go/getflashplayer src={$flash_src} type=application/x-shockwave-flash width={$width} height={$height} wmode=transparent quality=high></embed>{if $url}<br /><a href='{$url}' style='display:block;width:{$width}px;height:60px;position:absolute;margin-top:-{$height}px; z-index:999;background:#000;filter:alpha(opacity=0);-moz-opacity:0;opacity: 0' ></a>{/if}
+{elseif $typeid == 5}
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> 
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+   {loop $tags $i $t}
+    <li data-target="#carousel-example-generic" data-slide-to="{$i}" {if $i==0}class="active"{/if}></li>
+    {/loop}
+   
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+   {loop $tags $i $t}
+<div class="item {if $i==0}active{/if}" style="width:100%;"> <a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}"> <img alt="{$t[alt]}" src="{imgurl($t[thumb])}" alt="{$t[alt]}"/></a></div>
+
+{/loop}
+ 
+  </div>
+  <!-- Controls --> 
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+  
+  
+
+
+{elseif $typeid==6}
+	{if $tags}
+		<div id="adword">
+		<div class="adword">{template 'list-'.$ad_module, 'tag'}</div>
+		</div>
+	{/if}
+{/if}

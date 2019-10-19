@@ -1,0 +1,128 @@
+  <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            {$AJ[copyright]}
+            <a href="{$MODULE[1][linkurl]}">{$AJ[sitename]}</a>
+        </div>
+    </div>
+    <script src="./plugins/layui/layui.js"></script>
+   <script>
+        layui.config({
+            base: 'build/js/'
+        }).use(['app'], function() {
+            var app = layui.app,
+                $ = layui.jquery,
+                layer = layui.layer
+            //主入口
+            app.set({
+                type: 'iframe'
+            }).init();
+            $('dl.skin > dd').on('click', function() {
+                var $that = $(this);
+                var skin = $that.children('a').data('skin');
+console.log(skin);
+set_cookie('glskin',skin)
+                switchSkin(skin);
+            });
+$(".glui-side-fold").on("click",function(){
+    var t = $("body");
+var i=t.find("div.glui-side");
+i.hasClass("glui-sided")?(i.removeClass("glui-sided"),t.find("div.layui-body").removeClass("glui-body-folded"),t.find("div.layui-body-content").removeClass("glui-footer-folded-content"),t.find("div.layui-footer").removeClass("glui-footer-folded")):(i.addClass("glui-sided"),t.find("div.layui-body").addClass("glui-body-folded"),t.find("div.layui-body-content").addClass("glui-footer-folded-content"),t.find("div.layui-footer").addClass("glui-footer-folded"))
+});
+$(".glui-side").find("dd[glui-target]").each(function() {
+                var t = $(this), n = void 0;
+                t.hover(function() {
+                    n = layer.tips($(this).find("span").text(), this);
+                }, function() {
+                    n && layer.close(n);
+                })
+});
+            var setSkin = function(value) {
+                    layui.data('glui_skin', {
+                        key: 'skin',
+                        value: value
+                    });
+                },
+                getSkinName = function() {
+                    return layui.data('glui_skin').skin;
+                },
+                switchSkin = function(value) {
+                    var _target = $('link[glui-skin]')[0];
+                    _target.href = _target.href.substring(0, _target.href.lastIndexOf('/') + 1) + value + _target.href.substring(_target.href.lastIndexOf('.'));
+                    setSkin(value);
+                },
+                initSkin = function() {
+                    var skin = getSkinName();
+                    switchSkin(skin === undefined ? 'default' : skin);
+                }();
+        });
+function ca_show(id, obj, sep) {
+Eh();
+if(Dd('d_calendar') == null) {
+var d_ca_div = document.createElement("div");
+with(d_ca_div.style) {zIndex = 9999; position = 'absolute'; display = 'none'; width = '196px'; padding = '1px'; top = 0; left = 0; border = '#A0A0A0 1px solid'; backgroundColor = '#FFFFFF';}
+d_ca_div.id = 'd_calendar';
+document.getElementById('container').appendChild(d_ca_div);
+}
+var aTag = obj;
+var leftpos = toppos = 0;
+do {aTag = aTag.offsetParent; leftpos += aTag.offsetLeft; toppos += aTag.offsetTop;
+} while(aTag.offsetParent != null);
+ca_sep = sep;
+ca_id = id;
+if(Dd(id).value) {
+if(sep) {
+var arr = Dd(id).value.split(sep);
+c_year = v_year = arr[0];
+c_month = v_month = ca_cutzero(arr[1]);
+v_day = ca_cutzero(arr[2]);
+} else {
+c_year = v_year = Dd(id).value.substring(0, 4);
+c_month = v_month = ca_cutzero(Dd(id).value.substring(4, 6));
+v_day = ca_cutzero(Dd(id).value.substring(6, 8));
+}
+} else {
+c_year = t_year;
+c_month = t_month;
+}
+console.log(obj.offsetTop+'-'+toppos+'-'+document.body.clientHeigth);
+Dd('d_calendar').style.left = (obj.offsetLeft + leftpos - 200) + 'px';
+Dd('d_calendar').style.top = (obj.offsetTop + toppos - 15) + 'px';
+Dd('d_calendar').innerHTML = ca_htm;
+Dd('d_calendar').style.display = '';
+ca_setup(c_year, c_month);
+}
+</script>
+
+<!--[以下为系统关键代码，请勿删除]-->
+<div class="back2top"><a href="javascript:void(0);" title="返回顶部">&nbsp;</a></div>
+<script type="text/javascript">
+if(document.body.clientHeight > Dd('main').scrollHeight) Dd('main').style.height=document.body.clientHeight+'px';
+if(get_local('m_side') == 'Y' && Dd('side_oh').className == 'side_h') {Dh('side');Dd('side_oh').className = 'side_s';}
+var aijiacms_message = {$_message};
+var aijiacms_chat = {$_chat};
+{if $_message && $_sound}
+if(window.location.href.indexOf('message.php') == -1) $('#aijiacms_space').html(sound('message_{$_sound}'));
+{/if}
+{if $_chat}
+if(window.location.href.indexOf('chat.php') == -1) $('#aijiacms_space').html(sound('chat_new'));
+{/if}
+{if $_message}
+Dnotification('new_message', '{$MODULE[2][linkurl]}message.php', '{useravatar($_username, 'large')}', '站内信 ({$_message})', '收到新的站内信件，点击查看');
+{/if}
+{if $_chat}
+Dnotification('new_chat', '{$MODULE[2][linkurl]}chat.php', '{useravatar($_username, 'large')}', '新对话 ({$_chat})', '收到新的对话请求，点击交谈');
+{/if}
+{if $_userid && $AJ[pushtime]}
+window.setInterval('PushNew()',{$AJ[pushtime]}*1000);
+{/if}
+if($('#mini_profile').length > 0) {
+	$('#my_profile').mouseover(function(){
+		$('#mini_profile').show('fast');
+		$('#my_profile').bind('mouseleave',function(){ 
+			$('#mini_profile').hide(); 
+		});
+	}); 
+}
+</script>
+
+</body></html>

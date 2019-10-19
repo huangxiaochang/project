@@ -1,0 +1,218 @@
+{template 'header_member', 'mobile'}
+{template 'othercss', 'mobile'}
+
+<header class="aui-bar aui-bar-nav aui-bar-danger" id="aui-header">
+        <a class="aui-btn aui-btn-danger aui-pull-left" href="{if $action=='pay'}my.php{else}my.php?action=member{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+</header>
+<div class="aui-bar-fix"></div>
+<div class="aui-content">
+<div class="aui-tab" id="aui-tab">
+        <ul class="aui-tab-nav" id="sell_info">
+            <li id="action_buy"><a href="?action=buy">{$AJ[credit_name]}购买</a></li>
+            <li id="action"><a href="?action=index">{$AJ[credit_name]}记录</a></li>
+            <li id="action_invite"><a href="?action=invite">推广赚{$AJ[credit_name]}</a></li>
+            {if $MOD[credit_exchange]}
+            <li id="action_invite"><a href="?action=exchange">{$AJ[credit_name]}兑换</a></li>
+{/if}
+            
+        </ul>
+</div>
+</div>
+
+{if $action == 'exchange'}
+{elseif $action == 'buy'}
+<form method="post" action="?" onsubmit="return check();" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+    <style>
+.aui-input-row {
+    padding: 0;
+	font-size:16px !important;
+}
+.dt-list-input { padding: 6px 15px !important;}
+.aui-input-row .aui-input-addon { padding: 0;}
+.aui-input-row:first-child:after { border:0 !important;}
+.aui-input-row:after { border:0 !important;}
+</style>    
+
+    <div class="aui-content">
+    <ul class="aui-list-view">
+     <li class="aui-list-view-cell">
+            <span class="aui-pull-left aui-mr-10">账户余额</span><span class="aui-pull-left"><span class="aui-text-red">{$_money}</span> {$AJ[money_unit]}</span>
+        </li>
+
+    <div class="aui-input-row">
+     <span class="aui-input-addon fz16">&nbsp;&nbsp;&nbsp;&nbsp;购买额度</span>
+      {loop $C $k $v}
+      <div class="aui-pull-left aui-padded-t10 aui-ml-15" onclick="Dd('type_{$k}').checked=true;k={$k};">
+                   
+                    <input class="aui-radio" type="radio" name="type"  id="type_{$k}" value="{$k}" {if $k==$select}checked{/if}><div class="aui-radio-name fz16" id="c_{$k}">&nbsp;&nbsp;{$v}{$AJ[credit_name]}&nbsp;&nbsp;&nbsp;&nbsp;<span class="aui-text-red" id="p_{$k}">{$P[$k]}</span>({$AJ[money_unit]})</div><br />
+
+       </div>{/loop}
+
+
+</div>
+
+        <li class="aui-list-view-cell dt-list-input" id="payword" style="display:none;">
+            <div class="aui-input-row">
+                <span class="aui-input-addon fz16">支付密码</span>
+                <input type="password" name="password" id="password" class="aui-input fz16" {if isset($password)} value="{$password}"{/if} placeholder="支付密码"/>
+            </div>
+        </li>
+
+        <li class="aui-list-view-cell aui-mb-15 aui-text-center"><span class="aui-text-center">
+		<input type="submit" name="submit" value=" 立即购买 " class="aui-btn aui-btn-danger" style="width:30%;"/>&nbsp;&nbsp;<input type="button" value=" 返 回 "  class="aui-btn" style="width:30%;"onclick="history.back(-1);"/>
+</span>
+        </li>
+        </ul>
+
+</div> 
+
+</form>
+<script type="text/javascript">
+var k = {$select};
+function check() {
+	if($('#p_'+k).html() > {$_money}) {
+		Go('mcharge.php?action=pay&reason=credit|'+k+'&amount='+($('#p_'+k).html() - {$_money}));
+		return false;
+	}
+	var f,l;
+	f = 'password';
+	l = Dd(f).value.length;
+	if(l < 6) {
+		laymsg('请填写支付密码', f);
+		return false;
+	}
+	return true;
+}
+window.setInterval(
+	function() {
+		$('#p_'+k).html() > {$_money} ? Dh('payword') : Ds('payword');
+	}, 
+500);
+</script>
+<script type="text/javascript">tabbar('action_buy');</script>
+{elseif $action == 'invite'}
+<div class="aui-content">
+<div class="aui-form">
+    <div class="aui-input-row">
+     <span class="aui-input-addon">引导至</span>
+      <div class="aui-pull-left">
+                    <input class="aui-radio" type="radio" name="goto" value="1" id="goto_1" onclick="Dd('codes').value='{$url}';" checked><div class="aui-radio-name fz12 aui-mr-0">首页</div>
+                    <input class="aui-radio" type="radio" name="goto" value="2" id="goto_2" onclick="Dd('codes').value='{$url}&goto=register';"><div class="aui-radio-name fz12 aui-mr-0">注册页</div>
+                    <input class="aui-radio" type="radio" name="goto" value="3" id="goto_3" onclick="Dd('codes').value='{$url}&goto=homepage';"><div class="aui-radio-name fz12 aui-mr-0">我的主页</div>
+                </div>
+
+</div> 
+    <div class="aui-input-row">
+     <span class="aui-input-addon">网址</span>
+      <input type="text" class="aui-input" name="code" value="{$url}" size="80" id="codes" onClick="copyUrl()" readonly="readonly" /><span class="aui-input-addon aui-text-danger fz12" onclick="goshare();">分享<i class="aui-iconfont aui-icon-share"></i></span>
+</div>     
+
+    <div class="aui-input-row">
+     <span class="aui-input-addon">方法</span>
+      <p class="fz12 aui-padded-t10 aui-ml-15 aui-line-height22">
+      - 将上面的网址发给您QQ/MSN/Email等好友<br/>
+- 在论坛签名,博客链接,网站等加上上面的网址<br/>
+
+      </p>
+</div>     
+<div class="aui-input-row">
+     <span class="aui-input-addon">奖励1</span>
+      <p class="fz12 aui-padded-t10 aui-ml-15 aui-line-height22">
+- 每引导一个IP访问您可以获赠 <strong class="aui-text-blue">{$MOD[credit_ip]}</strong> {$AJ[credit_name]} (24小时内最多积{$MOD[credit_maxip]}{$AJ[credit_name]})<br/>
+- 每引导一个用户注册您可以获赠 <strong class="aui-text-blue">{$MOD[credit_user]}</strong> {$AJ[credit_name]}<br/>
+      </p>
+</div>     
+
+<div class="aui-input-row">
+     <span class="aui-input-addon">奖励2</span>
+      <p class="fz12 aui-padded-t10 aui-ml-15 aui-line-height22">
+- 无论引导至那个页面，系统均会自动记录您为用户注册推荐人<br/>
+- 引导用户需注册成功完善资料后方可为您加分<br/>
+- 同一IP 24小时内计算一次<br/>
+      </p>
+</div>     
+<div class="aui-input-row">
+     <span class="aui-input-addon">记录</span>
+      <p class="fz12 aui-padded-t10 aui-ml-15 aui-line-height22">
+<a href="?kw={urlencode('推广')}" class="t">点击查看&raquo;</a></p>
+</div>     
+
+</div>
+
+
+</div>
+<div id="sharehtml" class="displaynone">
+<div class=""></div>
+</div>
+<script type="text/javascript">
+function goshare(){
+	var url = Dd('codes').value;
+	url = encodeURIComponent(url);
+	//alert(encodeURIComponent(url));
+	window.location.href='share.php?url='+url;
+	}
+function copyUrl() {
+	var Url=document.getElementById("codes"); Url.select(); // 选择对象
+	//document.execCommand("Copy"); // 执行浏览器复制命令 
+	laymsg("长按复制");
+	}
+
+function pophtml(divhtm){
+		var divhtm = document.getElementById(divhtm).innerHTML;
+		var htm = '<div class="am-window-con">';
+		htm += divhtm+'</div>';
+		$('.am-window').html(htm);
+
+		$(".am-window").addClass("am-modal-active");	
+		if($(".windowbg").length>0){
+			$(".windowbg").addClass("windowbg-active");
+		}else{
+			$("body").append('<div class="windowbg"></div>');
+			$(".windowbg").addClass("windowbg-active");
+		}
+		$(".windowbg-active,#closeam").click(function(){
+			$(".am-window").removeClass("am-modal-active");	
+			setTimeout(function(){
+				$(".windowbg-active").removeClass("windowbg-active");	
+				$(".windowbg").remove();	
+			},300);
+		})
+	}	
+
+</script> 
+<script type="text/javascript">tabbar('action_invite');</script>
+{elseif $action == 'less'}
+{else}
+<div class="aui-content">
+<ul class="aui-list-view">
+  <li class="aui-list-view-cell">
+  <div class="aui-money-title">已兑换积分：<span style="color:#00bb9c;">0个</span></div>
+<button class="aui-btn aui-btn-success aui-pull-right">兑换记录</button></li>
+</ul>
+
+  <ul class="aui-list-view">
+  <li class="aui-list-view-cell"><span class="aui-text-money">积分支出明细</span><div class="my_title_right">总收入：<span class="aui-text-danger" id="credits">{$income}</span>&nbsp;&nbsp;支出：<span class="aui-text-danger" id="amounts">{$expense}</span></div>
+    </li>
+  </ul>
+
+<ul class="aui-list-view">
+{loop $records $k $v}
+					<li class="aui-list-view-cell aui-padded-style">
+                <div class="aui-img-body">
+                    <p class="aui-ellipsis-2">{$v[addtime]}——<span>{$v[reason]}{if $keyword}({$v[note]}){/if}</span></p>
+                </div>
+                <span class="aui-credits-right fz18 aui-text-red">{$v[amount]}</span>
+            </li>
+{/loop}            
+</ul>
+<div class="aui-content"><div class="pages" id="scroller">{$pages}</div></div>
+<div id="loading_page" class="aui-padded-10"></div>
+</div>
+<script type="text/javascript">tabbar('action');</script>
+{/if}
+{template 'footer_member', 'mobile'}

@@ -1,0 +1,84 @@
+{template 'header'}
+{template 'menu', 'newhouse'}
+
+<div class="house-huxing-view" style="overflow: hidden;">
+        <div class="pic">
+            <div class="control">
+                <ul class="change">
+                    <li>
+                        <div>
+                            <img src="{$hxinfo[thumb]}">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>  
+        <link type="text/css" rel="stylesheet" href="{AJ_SKIN}album.css" />
+        <div class="info">
+            <div class="title"><h2>{$hxinfo[title]}</h2></div>
+            <div class="price">
+                <label>参考总价：</label>
+                <strong>{floor($hxinfo['dj']*$hxinfo['mj']/10000)}</strong>万元/套({$hxinfo[dj]}元/㎡)
+                                <br>
+                <a href="{$MODULE[1][linkurl]}tool"><i></i>房贷计算器</a>
+            </div>
+            <div class="attr">
+                <span><label>编号：</label>{$hxinfo[bh]}</span>
+                <span><label>户型：</label>{$hxinfo[shi]}室{$hxinfo[ting]}厅{$hxinfo[wei]}卫</span>
+                <span><label>面积：</label>{$hxinfo[mj]}㎡</span>
+                <span><label>类型：</label>{cat_pos($CAT, ' &raquo; ')}</span>
+            </div>
+            <div class="tel"><span>{$telephone}</span><!--<a href="javascript:;" class="btn dialog-btn" data-url="#"  data-width="440" data-height="410">户型预订</a>--> </div>
+            <div class="sharebar">
+                <ul style="float:none">
+                    <li class="share bdsharebuttonbox">
+                        <span>分享：</span>
+                        <a href="javascript:void(0);" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                        <a href="javascript:void(0);" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="javascript:void(0);" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="javascript:void(0);" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                        <a href="javascript:void(0);" class="bds_more" data-cmd="more"></a>
+                    </li>
+                </ul>
+            </div>
+           
+            <script>
+                window._bd_share_config = {
+                    common: {
+                        bdText: '{$hxinfo[title]}',
+                        bdDesc: '{$hxinfo[title]}',
+                        bdUrl: '{$hxinfo[thumb]}',
+                        bdPic: '{$hxinfo[thumb]}'
+                    },
+                    share: [{
+                        "bdSize": 16
+                    }]
+                }
+                //以下为js加载部分
+                with (document)
+                    0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+            </script>
+        </div>  
+        <div class="clearit"></div>
+    </div>
+    <div class="clearit"></div>
+    <div class="house-main-huxing" style="margin-top:0; margin-bottom:30px; overflow:  hidden;">
+        <h2><span>{$title}的其他户型</span></h2>
+        <div class="cate-con">
+            <a href="{$linkurl}huxing.html">更多»</a></div>
+        <div class="list-con">
+            <ul>
+             <!--{php $tags=tag("table=newhouse_huxing&condition=status=3 and houseid=$itemid and itemid!=$id&pagesize=5&order=addtime desc&template=null");}-->
+                                          <!--{loop $tags $i $value}-->
+                <li>
+                  <a href="{$linkurl}hxinfo-{$value[itemid]}.html"  class="b"><img src="{$value[thumb]}" title="{$value[title]} " alt="{$value[title]} " /></a>
+                    <span>
+                        <a href="{$linkurl}hxinfo-{$value[itemid]}.html" title="{$value[bh]}{$value[title]}">{$value[bh]}{$value[title]}</a>
+                        {$value[mj]}㎡                    </span>
+                </li>{/loop}    </ul>   
+            <div class="clearit"></div>
+        </div>
+    </div>
+</div>
+<div class="clearit"></div>
+{template 'footer'}

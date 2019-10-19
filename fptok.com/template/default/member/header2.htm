@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta charset="utf-8"/>
+{if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+
+{if $head_mobile}
+<meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">
+{/if}
+{if $EXT[archiver_enable]}
+<link rel="archives" title="{$AJ[sitename]}" href="{$EXT[archiver_url]}"/>
+{/if}
+<link rel="shortcut icon" type="image/x-icon" href="{AJ_STATIC}favicon.ico"/>
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+<link href="{AJ_SKIN}reset.css" rel="stylesheet" type="text/css" />
+{if $moduleid>8}<link rel="stylesheet" type="text/css" href="{AJ_SKIN}{$module}.css"/>{/if}
+{if $moduleid==3}<link rel="stylesheet" type="text/css" href="{AJ_SKIN}style.css"/>{/if}
+{if $moduleid!=8 && $moduleid!=6  && $moduleid!=1}<link href="{AJ_SKIN}esf.css" rel="stylesheet" type="text/css" />{/if}
+<script type="text/javascript" src="{AJ_STATIC}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>
+{if $lazy}<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.lazyload.js"></script>{/if}
+<script src="{AJ_SKIN}js/sea.js" type="text/javascript"></script>
+<title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{/if}</title>
+<script type="text/javascript">
+{if $head_mobile && $EXT[mobile_goto]}
+GoMobile('{$head_mobile}');
+{/if}
+{php $searchid = ($moduleid > 3 && $MODULE[$moduleid]['ismenu'] && !$MODULE[$moduleid]['islink']) ?$moduleid : 6;}
+ var apptype = "{$MODULE[$searchid][moduledir]}";
+</script>
+</head>
+<body>
+    <div id="top_bar">
+	<div class="cf wrap">
+		<div class="fl" id="aijiacms_member">	</div>
+		<div class="fr">
+			<ul>
+            	<li class="home"><a class="a" href="{$MODULE[1][linkurl]}" title="首页">首页</a></li>
+				<li class="favorite" id="favorite"><a class="a" href="{$MODULE[3][linkurl]}shortcut.php" title="保存桌面">保存桌面</a></li>
+				<li class="phone"><a class="a" href="{$EXT[wap_url]}mobile/" target="_blank">手机房产</a></li>
+                <li class="top_nav" ><a class="a" href="javascript:Dqrcode();">小程序</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+ 
+<h1 class="hide_title">{$head_title}</h1><div class="header18">
+  	<h1><a href="{$MODULE[1][linkurl]}"><img src="{if $MODULE[$moduleid][logo]}{AJ_SKIN}image/logo.gif{elseif $AJ[logo]}{$AJ[logo]}{else}{AJ_SKIN}images/logo.gif{/if}" alt="{$AJ[sitename]}"/></a></h1>
+  <div class="logo18">
+  	{if $AJ[city]}<div id="city_change"><span>{$city_name}</span><a href="{AJ_PATH}city.php" id="city_c">更改城市<i></i></a></div> {/if}
+  </div>
+  <div class="Hadv"><!-- 广告位：页头广告 -->{ad(11)}</div>
+  <div class="Hewm">
+   <ul>
+     <li><img src="/skin/default/images/qrcode.png" width="90" height="90"></li>
+     <li><img src="/skin/default/images/qrcode.png" width="90" height="90"></li>
+   </ul>
+  </div>
+</div>
+<div id="nav18">
+	<div class="nav18 xcontent_row1 cf">
+		<div class="menu" id="tab_5">
+			<ul class="cf">
+    			<li >
+            		<a id="zjmenubt_index" title="首页" href="{$MODULE[1][linkurl]}">首页</a>
+				</li>
+    			<li class="ht">
+            		<a id="zjmenubt_xf" target="_blank" title="新房" href="{$MODULE[6][linkurl]}" >新房</a>
+					<ul class="sub_menu">			
+						<li><a target="_blank" title="新开楼盘" href="{$MODULE[6][linkurl]}list.html">新开楼盘</a></li>
+						<li><a target="_blank" title="优惠楼盘" href="{$MODULE[6][linkurl]}list-h2.html">优惠楼盘</a></li>
+						<li><a target="_blank" title="房平台直销" href="{$MODULE[6][linkurl]}list-h3.html">房平台直销</a></li>
+						<li><a target="_blank" title="看房团" href="{$MODULE[15][linkurl]}">看房团</a></li>
+						<li><a target="_blank" title="帮我找房" href="{$MODULE[2][linkurl]}my.php?mid=16&action=add">帮我找房</a></li>
+					</ul>
+				</li>
+    			<li class="ht">
+            		<a id="zjmenubt_esf" target="_blank" title="二手房" href="{$MODULE[5][linkurl]}" >二手房</a>
+					<ul class="sub_menu">						
+						<li><a target="_blank" title="在售房源" href="{$MODULE[5][linkurl]}list.html">在售房源</a></li>
+						<li><a target="_blank" title="在售别墅" href="{$MODULE[5][linkurl]}list-t10.html">在售别墅</a></li>
+						<li><a target="_blank" title="求购房源" href="{$MODULE[16][linkurl]}list-u1.html">求购房源</a></li>
+						<li><a target="_blank" title="小区找房" href="{$MODULE[18][linkurl]}list.html">找小区</a></li>
+						<li><a target="_blank" title="找经纪人" href="{$MODULE[4][linkurl]}list-u1.html">找经纪人</a></li>
+						<li><a target="_blank" title="帮我卖房" href="{$MODULE[2][linkurl]}my.php?mid=5&action=add">帮我卖房</a></li>
+					</ul>
+				</li>
+    			<li class="ht">
+            		<a id="zjmenubt_zf" target="_blank" title="租房" href="{$MODULE[7][linkurl]}" >租房</a>
+					<ul class="sub_menu">						
+						<li><a target="_blank" title="在租房源" href="{$MODULE[7][linkurl]}list.html">在租房源</a></li>
+						<li><a target="_blank" title="个人房源" href="{$MODULE[7][linkurl]}list-n0-u1.html">个人房源</a></li>
+						<li><a target="_blank" title="别墅房源" href="{$MODULE[7][linkurl]}list-t15.html">别墅房源</a></li>
+						<li><a target="_blank" title="合租房源" href="{$MODULE[7][linkurl]}list-z2.html">合租房源</a></li>
+						<li><a target="_blank" title="求租" href="{$MODULE[16][linkurl]}list-u2.html">求租</a></li>
+						<li><a target="_blank" title="免费发布出租" href="{$MODULE[2][linkurl]}my.php?mid=7&action=add">免费发布出租</a></li>
+					</ul>
+				</li>
+    			<li class="ht">
+            		<a id="zjmenubt_sp" target="_blank" title="商铺写字楼" href="{$MODULE[6][linkurl]}list-t5.html" >商铺写字楼</a>
+					<ul class="sub_menu">						
+						<li><a target="_blank" title="商铺新盘" href="{$MODULE[6][linkurl]}list-t5.html">商铺新盘</a></li>
+						<li><a target="_blank" title="商铺出售" href="{$MODULE[5][linkurl]}list-t11.html">商铺出售</a></li>
+						<li><a target="_blank" title="商铺出租" href="{$MODULE[7][linkurl]}list-t16.html">商铺出租</a></li>
+						<li><a target="_blank" title="写字楼新盘" href="{$MODULE[6][linkurl]}list-t6.html">写字楼新盘</a></li>
+						<li><a target="_blank" title="写字楼出售" href="{$MODULE[5][linkurl]}list-t12.html">写字楼出售</a></li>
+						<li><a target="_blank" title="写字楼出租" href="{$MODULE[7][linkurl]}list-t17.html">写字楼出租</a></li>
+						<li><a target="_blank" title="帮我找写字楼" href="{$MODULE[2][linkurl]}my.php?mid=5&action=add">帮我找写字楼</a></li>
+					</ul>
+			    </li>
+			    <li class="ht">
+            		<a id="zjmenubt_sp" target="_blank" title="厂房地皮" href="{$MODULE[5][linkurl]}list-t10.html" >厂房地皮</a>
+					<ul class="sub_menu">						
+						<li><a target="_blank" title="厂房出售" href="{$MODULE[5][linkurl]}list-t67.html">厂房出售</a></li>
+						<li><a target="_blank" title="厂房出租" href="{$MODULE[7][linkurl]}list-t73.html">厂房出租</a></li>
+						<li><a target="_blank" title="地皮出售" href="{$MODULE[5][linkurl]}list-t68.html">地皮出售</a></li>
+						<li><a target="_blank" title="地皮出租" href="{$MODULE[7][linkurl]}list-t74.html">地皮出租</a></li>
+						<li><a target="_blank" title="帮我找地皮" href="{$MODULE[2][linkurl]}my.php?mid=5&action=add">帮我找地皮</a></li>
+					</ul>
+			    </li>
+			    <li><a id="" target="_blank" title="担保贷款" href="{$MODULE[21][linkurl]}" >担保贷款</a></li>
+			    <li class="ht">
+            		<a id="zjmenubt_sp" target="_blank" title="装修维修" href="{$MODULE[13][linkurl]}" >装修维修</a>
+					<ul class="sub_menu">						
+						<li><a target="_blank" title="免费装修报价" href="{$MODULE[2][linkurl]}my.php?mid=13&action=add">免费装修报价</a></li>
+						<li><a target="_blank" title="找设计师" href="{$MODULE[4][linkurl]}list-u4.html">找设计师</a></li>
+						<li><a target="_blank" title="找装修公司" href="{$MODULE[4][linkurl]}list-u6.html">找装修公司</a></li>
+						<li><a target="_blank" title="找装修监理" href="{$MODULE[4][linkurl]}list-u5.html">找装修监理</a></li>
+						<li><a target="_blank" title="装修效果图" href="{$MODULE[12][linkurl]}">装修效果图</a></li>
+						<li><a target="_blank" title="帮我维修" href="{$MODULE[2][linkurl]}my.php?mid=13&action=add">帮我维修</a></li>
+						<li><a target="_blank" title="装修招标" href="{$MODULE[13][linkurl]}">装修招标</a></li>
+					</ul>
+			    </li>
+			    <li><a id="" target="_blank" title="建材家具" href="{$MODULE[19][linkurl]}" >建材家具</a></li>
+				<li class="ht">
+            		<a id="" target="_blank" title="房产资讯" href="{$MODULE[8][linkurl]}" >房产资讯</a>
+					<ul class="sub_menu">						
+						<li><a target="_blank" title="房产知识" href="{$MODULE[8][linkurl]}list-30.html">房产知识</a></li>
+						<li><a target="_blank" title="房产问答" href="{$MODULE[8][linkurl]}list-31.html">房产问答</a></li>
+					</ul>
+				</li>
+				<li><a id="" target="_blank" title="公告" href="{$MODULE[1][linkurl]}announce/" >公告</a></li>
+			</ul>
+		</div>
+		<div class="Hnav">
+  	 <ul>
+  	 	 {if $EXT[ad_enable]} <li><a href="{$EXT[ad_url]}">我要推广</a></li>{/if}
+  	 	 <li><a id="zjmenubt_index" target="_blank" title="新房分销" href="{$MODULE[1][linkurl]}fenxiao">新房分销</a></li>
+  	 </ul>
+  </div>
+	</div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}index/css.css">
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}index/swiper.css">
+<div class="tong_yi">
+	<div class="swiper-container swiper-container1">
+	    <div class="swiper-wrapper">
+			<div class="swiper-slide" style="background-image:url({AJ_SKIN}index/images/banner.jpg);"></div>
+			<div class="swiper-slide" style="background-image:url({AJ_SKIN}index/images/banner0.jpg);"></div>
+	    </div>
+	    <div class="swiper-pagination"></div>
+	</div>
+	<div class="sousk_yi">
+		<div class="searchbox">
+			<form id="i_search1" method="post" target="_blank" autocomplete="off" >
+		    <div class="mod_select">
+		        <div class="select_box">
+		            <ul class="option  search_item_list">
+		                <li class="selected" data-type="sale">新房</li>
+		                <li data-type="sale">二手房</li>
+		                <li data-type="rent">出租房</li>
+		                <li data-type="news">资讯</li>
+		                <li data-type="video">视频</li>
+		                <li data-type="buy">求租求购</li>
+		                <li data-type="home">装修维修</li>
+		            </ul>
+		            <div class="search_item" style="display: none" data-type="{$MODULE[$searchid][moduledir]}"><span>{$MODULE[$searchid][name]}</span>  </div>
+		            <div class="gu_ding">
+		            	<a class="gu_ding_dt" href="{$MODULE[1][linkurl]}map">地图找房</a>
+		            	<a class="gu_ding_fb" href="{$MODULE[2][linkurl]}my.php">免费发布房源</a>
+		            </div>
+		        </div>
+		    </div>
+		         <input type="text" name="keyword" class="keyword  import"  x-webkit-speech value="{if $moduleid==6 || $moduleid<3}请输入楼盘名称(中文/拼音/简拼)、地址{elseif $moduleid==5 || $moduleid==7 }请输入小区名称/地址/标题{else}请输入搜索内容{/if}">
+		        <input type="submit" value="搜   索" class="btn-search">
+		    </form>
+	  	</div>
+ 	</div>
+</div>
+<!--幻灯片E-->
+<script type="text/javascript" src="{AJ_SKIN}index/swiper.min.js"></script>
+<script>
+	var swiper = new Swiper('.swiper-container1', {spaceBetween: 30,centeredSlides: true,autoplay: {delay: 5000,disableOnInteraction: false,},pagination: {el: '.swiper-pagination',clickable: true,},navigation: {nextEl: '.swiper-button-next',prevEl: '.swiper-button-prev',},});
+
+seajs.use("hsearch",function(hs){
+	hs("#i_search1",{
+		house:{
+			url:"{$MODULE[6][linkurl]}list-k",
+			initUrl:"{$MODULE[6][linkurl]}list.html",
+			hz:".html",
+			msg:"请输入楼盘名称(中文/拼音/简拼)、地址",
+			autoUrl:"{$MODULE[6][linkurl]}house.php?action=house"
+		},
+		sale:{
+			url:"{$MODULE[5][linkurl]}list-k",
+			initUrl:"{$MODULE[5][linkurl]}list.html",
+			hz:".html",
+			msg:"请输入小区名称/地址/标题",
+			autoUrl:"{$MODULE[6][linkurl]}house.php?action=xiaoqu"
+		},
+		rent:{
+			url:"{$MODULE[7][linkurl]}list-k",
+			initUrl:"{$MODULE[7][linkurl]}list.html",
+			hz:".html",
+			msg:"请输入小区名称/地址/标题",
+			autoUrl:"{$MODULE[6][linkurl]}house.php?action=xiaoqu"
+		},
+		buy:{
+			url:"{$MODULE[16][linkurl]}list-k",
+			initUrl:"{$MODULE[16][linkurl]}list.html",
+			hz:".html",
+			msg:"请输入搜索内容",
+			autoUrl:""
+		},
+		group:{
+			url:"{$MODULE[15][linkurl]}list-k",
+			initUrl:"{$MODULE[15][linkurl]}list.html",
+			hz:".html",
+			msg:"请输入搜索内容",
+			autoUrl:""
+		},
+		community:{
+			url:"{$MODULE[18][linkurl]}list-k",
+			initUrl:"{$MODULE[15][linkurl]}list.html",
+			hz:".html",
+			msg:"请输入搜索内容",
+			autoUrl:"{$MODULE[6][linkurl]}house.php?action=xiaoqu"
+		},
+		video:{
+			url:"{$MODULE[14][linkurl]}search-k",
+			initUrl:"{$MODULE[14][linkurl]}list.html",
+			hz:".html",
+			msg:"请输入搜索内容",
+			autoUrl:""
+		},
+		home:{
+			url:"{$MODULE[13][linkurl]}search-k",
+			hz:".html",
+			initUrl:"{$MODULE[13][linkurl]}list.html",
+			msg:"请输入搜索内容",
+			autoUrl:""
+		},
+		company:{
+			url:"{$MODULE[4][linkurl]}search-k",
+			hz:".html",
+			initUrl:"{$MODULE[4][linkurl]}list.html",
+			msg:"请输入搜索内容",
+			autoUrl:""
+		},
+		news:{
+			url:"{$MODULE[8][linkurl]}search-k",
+			initUrl:"{$MODULE[8][linkurl]}list.html",
+			hz:".html",
+			msg:"请输入搜索内容",
+			autoUrl:""
+		}
+		
+	});
+});
+</script>

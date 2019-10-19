@@ -1,0 +1,227 @@
+{template 'header_v2', 'mobile'}
+{template 'cssjs_v2', 'mobile'}
+
+<header class="aui-bar aui-bar-nav" id="aui-header">
+        <a class="aui-pull-left aui-btn" href="javascript:history.go(-1);">
+           <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+        <div class="aui-title">重新定位</div>
+        <a class="aui-pull-right" href="channel.php">
+        <span class="dt-iconfont dt-icon-caidan"></span>
+    </a>
+</header>
+
+<div class="aui-bar-fix"></div>
+<style>
+#h-city { width: 100%;background-color: #ffffff;display: table;table-layout: fixed;}
+#h-city  span { float:left; padding-right:0.5rem; width:20%;
+	position: relative;
+    text-align: left;
+    vertical-align: middle;}
+#letter{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 0.25rem;
+    font-size: 3.75rem;
+    color: #555;
+    text-align: center;
+    line-height: 5rem;
+    background: rgba(145,145,145,0.6);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin:-2.5rem 0px 0px -2.5rem;
+    z-index: 99;
+    display: none;
+}
+
+.sort_box{
+    width: 100%;
+    padding-top: 0.25rem;
+    overflow: hidden;
+}
+.sort_list{
+    padding:0 0 0 0.75rem;
+    position: relative;
+    height: 2.5rem;
+    line-height: 2.5rem;
+	background:#FFF;
+    border-bottom:1px solid #ddd;
+}
+
+.sort_list .num_logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+}
+.sort_list .num_logo img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.sort_list .num_name{
+    color: #000;
+}
+
+.sort_letter{
+    height: 1.6rem;
+    line-height: 1.6rem;
+    padding-left: 1rem;
+    color:#787878;
+    font-size: 0.7rem;
+    border-bottom:1px solid #ddd;
+	background:#f4f4f4;
+}
+.initials{
+    position: fixed;
+    top: 2.5rem;
+    right: 0px;
+    height: 100%;
+    width: 1rem;
+    padding-right: 0.75rem;
+    text-align: center;
+    font-size: 0.6rem;
+    z-index: 999;
+    background: rgba(145,145,145,0);
+}
+.initials li .aui-iconfont { right:0.2rem}
+    </style>
+
+    <div class="aui-searchbar" id="search" style="position:relative; height:2.75rem;">
+        <div class="aui-searchbar-input aui-border-radius" style="height:1.75rem; border-radius:1.15rem; padding-top:4px;">
+            <i class="aui-iconfont aui-icon-search aui-text-info aui-font-size-20" onclick="doSearch()"></i>
+            <form action="javascript:search();">
+                <input type="search" placeholder="输入首个字母查询" id="search-input" class="aui-font-size-16">
+            </form>
+        </div>
+        <div class="aui-searchbar-cancel" tapmod>取消</div>
+    </div>
+
+
+<div class="aui-content aui-margin-b-5">
+    <ul class="aui-list aui-list-in">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-title">当前定位：<span class="dt-text-red aui-padded-l-5" id="cur-city">{$areaname}</span></div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-title" style="min-width:4.25rem;width:4.25rem;">历史定位：</div>
+                <div class="dt-text-red aui-pull-left" id="h-city"></div>
+            </div>
+        </li>
+</ul>
+</div>
+
+<div class="aui-content aui-margin-b-15">
+<div id="letter" ></div>
+<div class="sort_box">
+	{if $lists}
+    	<div class="sort_list">
+		<div class="num_name" onclick="Setmycity(0);">全国</div>
+	</div>
+
+	<div class="sort_list">
+		<div class="num_name">2016</div>
+	</div>
+	{loop $lists $v}
+	<div class="sort_list" onclick="Setmycity({$v[areaid]});"><div class="num_name">{$v[areaname]}</div></div>
+    {/loop}
+    {/if}
+</div>
+<div class="initials">
+	<ul>
+		<li><i class="aui-iconfont aui-icon-favor"></i></li>
+	</ul>
+</div>
+
+<div class="aui-header-fix"></div>
+<script src="script/jquery.charfirst.pinyin.js"></script>
+<script src="script/sort.js"></script>
+<script type="text/javascript">
+    var searchBar = document.querySelector(".aui-searchbar-input");
+    if(searchBar){
+        searchBar.onclick = function(){
+            document.querySelector(".aui-searchbar-cancel").style.marginRight = 0;
+        }
+    }
+    document.querySelector(".aui-searchbar-cancel").onclick = function(){
+        this.style.marginRight = "-"+this.offsetWidth+"px";
+        document.getElementById("search-input").value = '';
+        document.getElementById("search-input").blur();
+    }
+    function doSearch(){
+        var searchValue = document.getElementById("search-input").value;
+        if(searchValue){
+            alert("您输入的内容是:"+searchValue);
+        }
+    }
+
+historyc();
+    var curcity = localStorage.getItem("mbcity"); //获取b的值
+	{if $AJ['local_bdmap']}$('#cur-city').html(curcity);{/if}
+	var searchser = document.getElementById("search");
+	var searchbtn = document.querySelector(".aui-icon-search");
+	var searchipt = document.getElementById("search-input");
+	var indexedWrap = document.querySelector(".sort_box");
+
+        searchbtn.addEventListener("touchend", function (e) {
+            this.style.cssText = "display:none;";
+            searchipt.setAttribute("placeholder", "");
+			searchipt.value="";
+            searchser.removeAttribute("style");
+        });
+		searchipt.addEventListener("input",function(){
+			var keyword = searchipt.value;
+			keyword = (keyword || '').toUpperCase();
+			setTimeout(function(){
+				
+				var letter = keyword;
+                if($('#'+letter).length>0){
+                    //var LetterTop = $('#'+letter).position().top;
+                    //$('html,body').animate({scrollTop: LetterTop-90+'px'}, 300);
+                }
+
+				var groupElement = indexedWrap.querySelector('[id="' + keyword + '"]');
+				if (groupElement) {
+					console.log(groupElement.offsetTop);
+					document.body.scrollTop = groupElement.offsetTop-90;
+				}
+			},100)
+		},false)
+
+function Setmycity(cityid){
+	laymsg('开始定位...');
+   $.post("{$AJ_PATH}ajax.php", { "action": "gllocal","job": "setcity","mcityid": cityid},
+            function(data){
+				if(data.error=='ok'){
+					laymsg('定位成功,跳转中...');
+					window.location.href='index.php'
+				}
+				//alert(data);
+				//$("#citylist").empty().prepend(html);
+            }, "json");
+
+}
+
+function historyc(){
+   $.post("{$AJ_PATH}ajax.php", { "action": "gllocal","job": "history"},
+            function(data){
+				//alert(data);
+				var html = "";
+                for(var i in data){
+                html += "<span onclick=\"Setmycity("+data[i].areaid+")\" class='dt-text-ellipsis'>"+data[i].areaname+"</span>";
+                  };
+				$("#h-city").empty().prepend(html);
+            }, "json");
+
+}
+
+</script>
+
+
+{template 'footer_v2', 'mobile'}

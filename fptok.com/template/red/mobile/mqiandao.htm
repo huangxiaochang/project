@@ -1,0 +1,157 @@
+{template 'header_member', 'mobile'}
+{template 'cssjs', 'mobile'}
+<style>
+.aui-grid-sixteen li {
+	float: none !important;
+	position: none !important;
+}
+	.aui-grid-sixteen:after {
+		border:none;
+	}
+	.aui-grid-sixteen li:after {
+		border:none;
+	}
+	.aui-grid-sixteen li .aui-iconfont {
+	    color: #ffffff;
+	    width: 55px;
+	    height: 55px;
+	    line-height: 55px;
+	    border-radius: 50%;
+	    font-size: 25px;
+	}
+</style>
+<header class="aui-bar aui-bar-nav aui-bar-primary" id="aui-header">
+        <a class="aui-btn aui-bar-primary aui-pull-left" href="my.php">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+</header>
+<div class="aui-bar-fix"></div>
+<div class="aui-content qiandao_no">
+        <ul class="aui-grid-sixteen aui-text-center">
+            <li class="aui-text-center" onclick="Goqiandao()">
+                <a href="javascript:void(0);" class="m_qiandao"><span class="aui-iconfont aui-icon-write aui-bg-info"></span></a>
+                <p><span class="fz14">您今天尚未签到，请点击签到！</span></p>
+            </li>
+        </ul>
+  </div>
+<div class="aui-content qiandao_ok">
+        <ul class="aui-grid-sixteen aui-text-center">
+            <li class="aui-text-center" onclick="Goqiandao()">
+                <span class="aui-iconfont aui-icon-write aui-bg-warning"></span>
+                <p><span class="fz14 aui-text-red">您今天已签到，记得明天再来哦！</span></p>
+            </li>
+        </ul>
+  </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	{if $signed==1}
+	$(".qiandao_no").hide();
+	$(".qiandao_ok").show();
+	{else}
+	$(".qiandao_no").show();
+	$(".qiandao_ok").hide();
+	{/if}
+});
+function Goqiandao(){
+		$.ajax({
+			type:"POST",
+			url:"mqiandao.php",
+			data: {"action":"add"},
+			dataType:'json',
+			async : false,
+			success:function(data){
+				if(data.status==0){
+					$("#qiandao-content").empty();
+					qiandao();
+					laymsg('连续签到'+data.signday+'天获得'+data.signget+'积分！');
+					//window.location.reload();
+					$(".qiandao_no").hide();
+					$(".qiandao_ok").show();
+				}else{
+					laymsg(data.content);
+				}
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){ //上传失败
+			   laymsg(XMLHttpRequest);
+			   //layer.msg('签到失败，请重新签到');
+			}
+		});
+	}
+</script>
+
+{if $action=='add' || $action == 'edit'}
+{else}
+<div class="aui-content">
+<ul class="aui-list-view">
+        <li class="aui-list-view-cell">
+<div class="aui-pull-left"><span class="qiandaolist">签到记录</span><span><a href="javascript:void(0);" class="myqiandao">我的签到</a></span></div>
+    <div class="qiandao_num">今日签到：<span class="aui-text-red">{$items}人</span></div>
+    </li></ul>
+         <script id="qiandao-template" type="text/x-dot-template">
+                    {{ for(var i=0, len=it.length; i<len; i++) {}}
+							<li class="aui-list-view-cell">								
+								 	<span>{{=it[i].username}} 连续签到 {{=it[i].signdays}} 天，获得 {{=it[i].feeadd}} 积分</span>
+
+							</li>
+                    {{ } }}
+                </script>
+
+  	<ul class="aui-list-view" id="qiandao-content">
+    
+    <li class="aui-list-view-cell">
+  	<div class="m_more aui-text-center"><a href="javascript:void(0);" class="news_more">加载更多</a></div>
+    </li>
+    </ul>
+  </div>
+  </div>
+<script type="text/javascript">
+function qiandao(page,uid){
+	$(".news_more").html(loadpage);
+	var aciton = "list";
+	$.ajax({
+		type:"get",
+		url:"mqiandao.php",
+		dataType:'json',
+		data:{'action':aciton,'page':page,'uid':uid},
+		success:function(data){
+			    var content = $('#qiandao-content');
+                var tpl = $('#qiandao-template').text();
+                var tempFn = doT.template(tpl);
+                //content.innerHTML = tempFn(data);
+                //content.innerHTML = tempFn(data);
+			content.prepend(tempFn(data));
+			if(data == ''){
+				$(".news_more").html('已全部加载完成');
+			}else{
+				$(".news_more").html('加载更多');
+			}
+		}
+	});
+}
+
+$(document).ready(function(){
+	qiandao();
+	var page = 1;
+	var uid = '';
+	$(".qiandaolist").click(function(){
+		location.reload();
+	});
+	$(".myqiandao").click(function(){
+		$("#qiandao-content").empty();
+		$(".aui-title").text('我的签到');
+		uid = {$_userid};
+		page = 1;
+		qiandao(page,uid);
+	});
+	$(".news_more").click(function(){
+		page++;
+		qiandao(page,uid);
+	});	
+	
+});
+</script>
+{/if}
+
+</div>
+{template 'footer_member', 'mobile'}

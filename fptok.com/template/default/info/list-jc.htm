@@ -1,0 +1,38 @@
+{template 'header'}
+<div id="main">
+<div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a> &gt; <a href="{$MOD[linkurl]}">{$MOD[name]}</a></div>
+  <div class="boxfl">
+    <dl>
+      <dt>分类：</dt>
+      <dd>
+        <span><a href="{$MOD[linkurl]}" {if $catid=='' || $catid==0}class="cur"{/if}>全部</a></span>
+        {loop $maincat $k $v}
+        <span><a href="{$MOD[linkurl]}{$v[linkurl]}" class="{if $v[catid]==$catid}cur{/if}">{set_style($v[catname],$v[style])}</a></span>
+        {/loop}
+      </dd>
+    </dl>
+    <dl>
+      <dt>品牌：</dt>
+      <dd><span><a href="{$MOD[linkurl]}list.php?catid={$catid}" {if $pinpai==''}class="cur"{/if}>全部</a></span>
+        {php $pinpai_arr = getbox_name('pinpai','info_19')}
+          {loop $pinpai_arr $k $v}
+          <span><a {if $pinpai==$k}class="cur"{/if} href="{$MOD[linkurl]}list.php?catid={$catid}&pinpai={$k}">{$v}</a></span>{/loop}</dd>
+    </dl>
+  </div>
+  <div class="jcList">
+    {loop $tags $k $t}
+    <ul>
+      <li class="pic"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img alt="{$t[alt]}" src="{imgurl($t[thumb])}"></a></li>
+      <li class="mid">
+        <div class="mid1"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></div>
+        <div class="mid2"><span>品牌：{$pinpai_arr[$t[pinpai]]}</span><span>型号：{$t[xinghao]}</span><span>规格：{$t[guige]}</span><span>{area_pos($t[areaid], ' ')}</span></div>
+      </li>
+      <li class="jg">￥<span>{$t[jiage]}</span></li>
+      <li class="dh"><a href="tel:{$t[dianhua]}"><span class="span1">预约到店</span></a><span>{$t[dianhua]}</span></li>
+    </ul>
+{/loop}		
+
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}
+  </div>
+</div>
+{template 'footer'}

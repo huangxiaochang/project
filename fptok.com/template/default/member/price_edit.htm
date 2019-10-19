@@ -1,0 +1,83 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={AJ_CHARSET}"/>
+<title>{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{$AJ[sitename]}</title>
+<link rel="stylesheet" type="text/css" href="{AJ_STATIC}{$MODULE[2][moduledir]}/image/style.css" />
+<script type="text/javascript" src="{AJ_STATIC}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/admin.js"></script>
+</head>
+<form method="post" action="?" id="dform" onsubmit="return check();">
+<input type="hidden" name="moduleid" value="{$moduleid}"/>
+<input type="hidden" name="file" value="{$file}"/>
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="itemid" value="{$itemid}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<input type="hidden" name="post[pid]" value="{$pid}"/>
+<input type="hidden" name="post[title]" value="{$title}"/>
+<input name="post[username]" type="hidden"  size="20" value="{$username}" id="username"/> 
+<input type="hidden" name="post[status]" value="3"/>
+<input type="hidden" name="pid" value="{$pid}"/>
+<div class="tt">{if $action == 'add'}添加{else}修改{/if}报价</div>
+<table cellpadding="2" cellspacing="1" class="tb">
+
+<tr>
+<td class="tl"><span class="f_red">*</span> 价格</td>
+<td><input name="post[price]" type="text" size="10" value="{$price}" id="price"/> <span id="dprice" class="f_red">(必须为数字，不要写单位)</span></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 涨跌</td>
+      <td><label class="ib" style="width:80px"><input name="post[trend]" id="trend_0" checked="" value="0" type="radio"> -</label><label class="ib" style="width:80px"><input name="post[trend]" id="trend_1" value="1" type="radio"> ↑</label><label class="ib" style="width:80px"><input name="post[trend]" id="trend_2" value="2" type="radio"> ↓</label>  </td>
+    </tr>
+
+</tbody>
+<tr>
+<td class="tl"><span class="f_hid">*</span> 备注</td>
+<td><input name="post[note]" type="text" size="60" value="{$note}" id="note"/></td>
+</tr>
+
+<tr>
+<td class="tl"><span class="f_hid">*</span> 报价时间</td>
+<td><input type="text" size="22" name="post[addtime]" value="{$addtime}"/></td>
+</tr>
+</table>
+<div class="sbt"><input type="submit" name="submit" value=" 确 定 " class="btn"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="reset" value=" 重 置 " class="btn"/></div>
+</form>
+{load('guest.js')}
+<script type="text/javascript">
+function check() {
+	var l;
+	var f;
+	f = 'price';
+	l = Dd(f).value.length;
+	if(l < 1) {
+		Dmsg('请填写报价', f);
+		return false;
+	}
+	if(Dd('ismember_1').checked) {
+		f = 'username';
+		l = Dd(f).value.length;
+		if(l < 2) {
+			Dmsg('请填写会员名', f);
+			return false;
+		}
+	} else {
+		f = 'company';
+		l = Dd(f).value.length;
+		if(l < 2) {
+			Dmsg('请填写公司名称', f);
+			return false;
+		}
+		if(Dd('areaid_1').value == 0) {
+			Dmsg('请选择所在地区', 'areaid');
+			return false;
+		}
+	}
+	return true;
+}
+</script>
+<script type="text/javascript">Menuon({$menuid});</script>

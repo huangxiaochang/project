@@ -1,0 +1,445 @@
+{template 'header_member', 'mobile'}
+{template 'cssjs', 'mobile'}
+<header class="aui-bar aui-bar-nav aui-bar-info" id="aui-header">
+        <a class="aui-btn aui-bar-info aui-pull-left" href="{if $action == ''}{$MYURL}?action=info{else}javascript:history.go(-1);{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+<a href="my.php" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-my fz14">我的</span>
+    </a></header>
+<div class="aui-bar-fix"></div>
+<span id="msg"></span>
+{if $action == 'email'}
+{elseif $action == 'mobile'}
+<div class="aui-content">
+{if $itemid==1}<div class="warn">尊敬的用户，为了保证信息的真实有效，请先<strong>认证</strong>您的<strong>手机号码</strong>，认证通过之后即可发布信息</div>{/if}
+
+<div class="aui-tab" id="aui-tab">
+        <ul class="aui-tab-nav" id="sell_info">
+                <li id="tabbar0"><a href="?action={$action}"><span>1、发送短信</span></a></li>
+                <li id="tabbar1"><a href="?action={$action}"><span>2、短信验证</span></a></li>
+                <li id="tabbar2"><a href="?action={$action}"><span>3、通过认证</span></a></li>
+        </ul>
+</div>
+</div>
+{if $step == 2}
+<div class="aui-content">
+<div class="aui-input-row">
+<span class="aui-ellipsis-2 aui-ml-10 aui-padded-t5 fz14">恭喜！手机号码 <span class="aui-text-red">{$mobile}</span> 认证成功，<a href="{$MYURL}" class="t">点此返回</a></span>
+</div>
+</div>
+{elseif $step == 1}
+<div class="aui-content">
+<form method="post" action="mvalidate.php" onsubmit="return check();" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="step" value="2"/>
+        <div class="aui-form">
+
+            <div class="aui-input-row">
+                <label class="aui-input-addon aui-text-red">短信验证码</label>
+                <input type="text" name="code" id="code" class="aui-input" value="" placeholder="短信验证码"/>
+            </div>
+
+            <div class="aui-input-row">
+            <div class="aui-input-addon">提示</div>
+            <span class="aui-ellipsis-2 aui-ml-10 aui-padded-t5 fz14">系统已发送一条验证短信至{$mobile}，请查收短信获取验证码</span>
+            </div>
+</div>
+<div class="aui-btn-row aui-borderb-no" id="btn-main">
+                <input type="submit" value=" 下一步 " class="aui-btn aui-btn-danger" style="width:30%;"/> &nbsp; 
+	<input type="button" value=" 重新发送 " class="aui-btn" style="width:30%;" onclick="Go('?action={$action}&mobile={$mobile}');"/>
+            </div>
+</form>
+</div>
+<script type="text/javascript">
+function check() {
+	if(Dd('code').value.length < 6) {
+		laymsg('请填写您收到的短信验证码', 'code');
+		return false;
+	}
+	return true;
+}
+</script>
+{else}
+<div class="aui-content">
+<form method="post" action="mvalidate.php" onsubmit="return check();" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="step" value="1"/>
+        <div class="aui-form">
+            <div class="aui-input-row">
+                <label class="aui-input-addon aui-text-red">您的手机号码</label>
+                <input type="text" name="mobile" id="mobile" class="aui-input" value="{$mobile}" placeholder="您的手机号码"/>
+            </div>
+            <div class="aui-input-row">
+                <label class="aui-input-addon aui-text-red">验证码</label>
+<div class="aui-list-item" id="captcha-bar">{template 'captcha', 'chip'}</div>
+            </div>
+            <div class="aui-input-row">
+            <div class="aui-input-addon">提示</div>
+            <span class="aui-ellipsis-2 aui-ml-10 aui-padded-t5 fz14">认证提交后，系统将发送一条验证短信至您的手机号码，请接收短信完成认证</span>
+            </div>
+            <div class="aui-btn-row aui-borderb-no" id="btn-main">
+                <input type="submit" value=" 下一步 " class="aui-btn aui-btn-danger" style="width:40%;"/> &nbsp; 
+	<input type="button" value=" 返 回 " class="aui-btn" style="width:40%;" onclick="history.back(-1);"/>
+            </div>
+           
+</div>
+</form>
+</div>
+<script type="text/javascript">
+function check() {
+	if(Dd('mobile').value.length < 11) {
+		laymsg('请填写手机号码', 'mobile');
+		return false;
+	}
+	if(!is_captcha(Dd('captcha').value)) {
+		laymsg('请填写正确的验证码', 'captcha');
+		return false;
+	}
+	return true;
+}
+</script>
+{/if}
+<script type="text/javascript">tabbar('tabbar{$step}');</script>
+{elseif $action == 'vmobile'}
+<div class="aui-content">
+<div class="aui-tab" id="aui-tab">
+        <ul class="aui-tab-nav" id="sell_info">
+                <li id="tabbar0"><a href="?action={$action}"><span>手机认证</span></a></li>
+        </ul>
+</div>
+</div>
+
+<div class="aui-content">
+        <div class="aui-form">
+
+            <div class="aui-input-row">
+                <div class="aui-input-addon">手机号码</div>
+                <input type="text" name="mobile" id="mobile" class="aui-input" value="{$user[mobile]}"  readonly="readonly"/><div class="aui-input-addon"><a href="/member/send.php?action=mobile" class="t">[修改]</a></div>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">认证状态</span>
+                <input type="text" class="aui-input aui-text-red" value="已认证" readonly="readonly"/>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">tabbar('tabbar0');</script>
+{elseif $action == 'truename'}
+<div class="aui-content">
+<div class="aui-tab" id="aui-tab">
+        <ul class="aui-tab-nav" id="sell_info">
+                <li id="tabbar3" class="active"><a href="?action={$action}"><span>1、提交证件</span></a></li>
+                <li id="tabbar2"><a href="?action={$action}"><span>2、审核证件</span></a></li>
+                <li id="tabbar1"><a href="?action={$action}"><span>3、通过认证</span></a></li>
+        </ul>
+</div>
+</div>
+
+<div class="aui-content">
+<form method="post" action="?" id="dform">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="ok" value="1"/>
+    <p class="aui-padded-t0 aui-padded-b5 aui-text-center">尊敬的用户，为了保证信息的真实有效，请先<strong>认证</strong>您的<strong>真实姓名</strong>，认证通过之后即可发布信息</p>
+        <div class="aui-form">
+
+            <div class="aui-input-row">
+                <label class="aui-input-addon aui-text-red">真实姓名</label>
+                <input type="text" name="truename" id="truename" class="aui-input" value="{$user[truename]}" placeholder="公司名"/>
+            </div>
+
+            <script src="user/dist/lrz.bundle.js"></script>
+            <div class="aui-input-row">
+
+                <span class="aui-input-addon aui-text-red">证件图片</span>
+                <div class="pic-list baguetteBoxOne gallery" id="imgslist">
+                {if $thumb}<li><a href="{$thumb}"><img src="{$thumb}"></a></li>{/if}
+                {if $thumb1}<li><a href="{$thumb1}"><img src="{$thumb1}"></a></li>{/if}
+                {if $thumb2}<li><a href="{$thumb2}"><img src="{$thumb2}"></a></li>{/if}
+				<li id="addpic"><img src="image/add.jpg"></li>	
+			</div>
+                    <input accept="image/*" type="file" id="uploadimg" multiple/>
+<div class="aui-upprogress aui-text-center displaynone" id="uploading"><svg id="containerp"></svg></div></div>
+<script>
+var maxnums = 3;
+var moduleid = 2;
+$(function(){
+	{if $action == 'edit'}
+	$('#imgslist li:not(#addpic)').each(function() {
+	addPress($(this));
+	});
+    baguetteBox.run('.baguetteBoxOne');
+	//$('#imgslist li:not(#addpic)').touchTouch();
+	{/if}
+});
+</script>
+<script type="text/javascript" id="uploadjs" src="script/upother.js" data="2"></script>
+<!--            <div class="aui-input-row">
+                <label class="aui-input-addon aui-text-red">验证码</label>
+<div class="aui-list-item" id="captcha-bar">{template 'captcha', 'chip'}</div>
+            </div>
+-->            
+           <div class="aui-input-row">
+            <div class="aui-input-addon">认证说明</div>
+            <span class="fz14"><p class="aui-padded-t10 aui-ml-10">请上传个人有效证件（身份证或护照等）电子版本，以便网站核实认证<br/>
+证件上的姓名必须与填写的真实姓名一致，并且图片需要清晰可辨<br/>
+<span class="aui-text-red">最少需要上传1张，最多可上传3张</span></p></span>
+            </div>
+
+
+            <div class="aui-btn-row aui-borderb-no" id="btn-main" >
+                <div class="aui-btn aui-btn-danger fz16 aui-mr-10" style="width:40%;" id="btn-submit" onclick="Daddr();">下一步</div><div class="aui-btn fz16" style="width:40%;" id="btn-submit" onclick="history.back(-1);">返回</div>
+            </div>
+
+        </div>
+</form>
+    </div>
+{if $MOD[vfax]}
+<div class="aui-content">
+        <div class="aui-form">
+
+            <div class="aui-input-row">
+           <div class="aui-input-row">
+            <div class="aui-input-addon">传真认证</div>
+            <span class="aui-ellipsis-2 aui-ml-10 aui-padded-t5 fz14">您可以传真有效证件至 {$MOD[vfax]} 进行认证，复印件上需注明会员名</span>
+            </div>
+            </div>
+</div>
+</div>
+{/if}
+<script type="text/javascript">
+function showother() {
+        var $show = $('#otherinfo');
+        if ($show.hasClass('displaynone')) {
+            $show.removeClass('displaynone'); 
+        } else {
+            $show.addClass('displaynone');
+        }
+    }
+function Daddr() {
+	var arrImgs = [];
+   $('#imgslist li:not(#addpic)').each(function() {
+   // 将图片追加到数组中
+   arrImgs.push($(this).find("img").attr("src"));
+   });
+
+	var len;
+	len = Dd('truename').value.length;
+	if(len < 2 || len > 50) {
+		laymsg('请填写真实姓名');
+		return false;
+	}
+
+	len = arrImgs.length;
+	if(len==0) {
+		laymsg('至少上传一张证件图片');
+		return false;
+	}
+	//if(!is_captcha(Dd('captcha').value)) {
+		//laymsg('请填写正确的验证码', 'captcha');
+		//return false;
+	//}
+	$("#btn-submit").text("正在处理...");
+	$("#btn-main").removeAttr("onclick");
+	setTimeout(function () {
+        $("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("提 交");
+    }, 5000);
+
+    $.post('mvalidate.php?thumbs='+arrImgs+'', $('#dform').serialize(), function(data) {
+		if(data.error == 'ok') {
+			{if $action=='add'}laymsg('提交成功');{else}laymsg('提交成功');{/if}
+			setTimeout(function() {
+				Go('mvalidate.php?action={$action}');
+			}, 1000);
+		} else {
+			laymsg(data.error);
+		}
+	},'json');
+}
+
+</script>
+<script type="text/javascript" src="script/addpan.js" charset="utf-8"></script>
+{elseif $action=='vtruename'}
+<div class="aui-content">
+        <div class="aui-form">
+
+            <div class="aui-input-row">
+                <label class="aui-input-addon">真实姓名</label>
+                <input type="text" name="truename" id="truename" class="aui-input" value="{$user[truename]}"  readonly="readonly"/>
+            </div>
+{if $user[vcompany] || $va[status] == 3}
+            <div class="aui-input-row">
+                <span class="aui-input-addon">认证状态</span>
+                <input type="text" class="aui-input aui-text-red" value="已认证" readonly="readonly"/>
+            </div>
+{else}
+            <div class="aui-input-row">
+                <span class="aui-input-addon">认证状态</span>
+                <input type="text" class="aui-input aui-text-red" value="审核中" readonly="readonly"/>
+            </div>
+{/if}
+
+            <div class="aui-input-row">
+
+                <span class="aui-input-addon">证件图片</span>
+                <div class="pic-list baguetteBoxOne gallery" id="imgslist">
+                {if $va[thumb]}<li><a href="{$va[thumb]}"><img src="{$va[thumb]}"></a></li>{/if}
+                {if $va[thumb1]}<li><a href="{$va[thumb1]}"><img src="{$va[thumb1]}"></a></li>{/if}
+                {if $va[thumb2]}<li><a href="{$va[thumb2]}"><img src="{$va[thumb2]}"></a></li>{/if}
+			</div>
+        </div>
+    </div>
+<script>
+$(function(){
+    baguetteBox.run('.baguetteBoxOne');
+});
+</script>
+
+{elseif $action=='company'}
+<div class="aui-content">
+<div class="aui-tab" id="aui-tab">
+        <ul class="aui-tab-nav" id="sell_info">
+                <li id="tabbar3" class="active"><a href="?action={$action}"><span>1、提交证件</span></a></li>
+                <li id="tabbar2"><a href="?action={$action}"><span>2、审核证件</span></a></li>
+                <li id="tabbar1"><a href="?action={$action}"><span>3、通过认证</span></a></li>
+        </ul>
+</div>
+</div>
+
+<div class="aui-content">
+	<form id="sell-form">
+	<input type="hidden" name="action" value="{$action}"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<input type="hidden" name="ok" value="1"/>
+    <p class="aui-padded-10 aui-text-center">尊敬的用户，为了保证信息的真实有效，请先<strong>认证</strong>您的<strong>公司信息</strong>，认证通过之后即可发布信息</p>
+        <div class="aui-form">
+
+            <div class="aui-input-row">
+                <label class="aui-input-addon aui-text-red">公司名</label>
+                <input type="text" name="company" id="company" class="aui-input" value="{$company}" placeholder="公司名"/>
+            </div>
+
+            <script src="user/dist/lrz.bundle.js"></script>
+            <div class="aui-input-row">
+
+                <span class="aui-input-addon aui-text-red">证件图片</span>
+                <div class="pic-list baguetteBoxOne gallery" id="imgslist">
+                {if $thumb}<li><a href="{$thumb}"><img src="{$thumb}"></a></li>{/if}
+                {if $thumb1}<li><a href="{$thumb1}"><img src="{$thumb1}"></a></li>{/if}
+                {if $thumb2}<li><a href="{$thumb2}"><img src="{$thumb2}"></a></li>{/if}
+				<li id="addpic"><img src="image/add.jpg"></li>	
+			</div>
+                    <input accept="image/*" type="file" id="uploadimg" multiple/>
+<div class="aui-upprogress aui-text-center displaynone" id="uploading"><svg id="containerp"></svg></div></div>
+<script>
+var maxnums = 3;
+var moduleid = 2;
+$(function(){
+	{if $action == 'edit'}
+	$('#imgslist li:not(#addpic)').each(function() {
+	addPress($(this));
+	});
+    baguetteBox.run('.baguetteBoxOne');
+	//$('#imgslist li:not(#addpic)').touchTouch();
+	{/if}
+});
+</script>
+<script type="text/javascript" id="uploadjs" src="script/upother.js" data="2"></script>
+
+            <div class="aui-btn-row" id="btn-main" onclick="Daddr();">
+                <div class="aui-btn aui-btn-info fz16" style="width:90%;" id="btn-submit">确认</div>
+            </div>
+
+        </div>
+</form>
+    </div>
+<script type="text/javascript">
+function showother() {
+        var $show = $('#otherinfo');
+        if ($show.hasClass('displaynone')) {
+            $show.removeClass('displaynone'); 
+        } else {
+            $show.addClass('displaynone');
+        }
+    }
+function Daddr() {
+	var arrImgs = [];
+   $('#imgslist li:not(#addpic)').each(function() {
+   // 将图片追加到数组中
+   arrImgs.push($(this).find("img").attr("src"));
+   });
+
+	var len;
+	len = Dd('company').value.length;
+	if(len < 2 || len > 100) {
+		laymsg('请输入公司名称');
+		return false;
+	}
+
+	len = arrImgs.length;
+	if(len==0) {
+		laymsg('至少上传一张证件图片');
+		return false;
+	}
+	
+	$("#btn-submit").text("正在处理...");
+	$("#btn-main").removeAttr("onclick");
+	setTimeout(function () {
+        $("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("提 交");
+    }, 5000);
+	
+    $.post('mvalidate.php?thumbs='+arrImgs+'', $('#sell-form').serialize(), function(data) {
+		if(data.error == 'ok') {
+			{if $action=='add'}laymsg('提交成功');{else}laymsg('提交成功');{/if}
+			setTimeout(function() {
+				Go('mvalidate.php?action={$action}');
+			}, 1000);
+		} else {
+			laymsg(data.error);
+		}
+	},'json');
+}
+
+</script>
+<script type="text/javascript" src="script/addpan.js" charset="utf-8"></script>
+{elseif $action == 'vcompany'}
+<div class="aui-content">
+        <div class="aui-form">
+
+            <div class="aui-input-row">
+                <label class="aui-input-addon">公司名</label>
+                <input type="text" name="company" id="company" class="aui-input" value="{$user[company]}"  readonly="readonly"/>
+            </div>
+{if $user[vcompany] || $va[status] == 3}
+            <div class="aui-input-row">
+                <span class="aui-input-addon">认证状态</span>
+                <input type="text" class="aui-input aui-text-red" value="已认证" readonly="readonly"/>
+            </div>
+{else}
+            <div class="aui-input-row">
+                <span class="aui-input-addon">认证状态</span>
+                <input type="text" class="aui-input aui-text-red" value="审核中" readonly="readonly"/>
+            </div>
+{/if}
+
+            <div class="aui-input-row">
+
+                <span class="aui-input-addon">证件图片</span>
+                <div class="pic-list baguetteBoxOne gallery" id="imgslist">
+                {if $va[thumb]}<li><a href="{$va[thumb]}"><img src="{$va[thumb]}"></a></li>{/if}
+                {if $va[thumb1]}<li><a href="{$va[thumb1]}"><img src="{$va[thumb1]}"></a></li>{/if}
+                {if $va[thumb2]}<li><a href="{$va[thumb2]}"><img src="{$va[thumb2]}"></a></li>{/if}
+			</div>
+        </div>
+    </div>
+<script>
+$(function(){
+    baguetteBox.run('.baguetteBoxOne');
+});
+</script>
+
+{/if}
+<script type="text/javascript">tabbar('tabbar{$status}');</script>
+{template 'footer_member', 'mobile'}

@@ -1,0 +1,30 @@
+
+
+
+.nowarp {display: block;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap;}
+.pagination li{display:inline;}
+.pagination li.active span{background: #5ab431 none repeat scroll 0 0; border: 1px solid #5ab431;  color: #fff;  }
+.hongbao{width:41px;height:41px;background-image: url(images/hongbao/index_hongbao_03.png);position:absolute;left:0;top:0;display: block;}
+.hb-right{position:fixed;z-index:99;right:10px;top:45%;width:182px;height:205px;background-image: url(images/hongbao/moneyBtn.png);}
+.hb-p1{color: #ff3300; font-size: 16px;  line-height: 28px;  margin-left: 13px;  margin-top: 100px;  text-align: center;}
+.hb-p1 strong{font-weight: bold;font-size:24px;}
+.hb-p2 { color: #e83532;  font-size: 12px;  margin-left: 30px;  }
+.detailPopClose {cursor:pointer;background: rgba(0, 0, 0, 0) url("images/hongbao/tc_close.png") no-repeat scroll left center;  height: 30px;  position: absolute;  right: 0;  top: -30px;  width: 30px;  }
+/*红包*/
+.red_shade{  width:100%;  height:100%;  background:rgba(0,0,0,.6);  z-index:999;  position:fixed;  margin-top:-203px;  display:block;  top:203px;  left:0;  }
+.red_common_width{  width:706px;  }
+.red_common_position{  text-align:center;  position:absolute;  }
+.hongb{  height:596px;  margin:-298px auto 0;  top:50%;  background:url(images/hongbao/hongb.png) no-repeat;  position:relative;  }
+.red_price{  width:660px;  font-size:40px;  margin-top:138px;  font-weight:bolder;  color:#ec4d35;}
+.red_title{  font-size:28px;  margin-top:360px;  color:#d97c00;  }
+.start_time{padding-left:55px;font-size:22px;margin-top:425px;color:#fcc707;  }
+.last_time{  padding-left:405px;  font-size:12px;  margin-top:335px;  color:#fcc707;}
+.red_btn{  margin-top:440px;  padding-left:15px;}
+.red_close{  float:right;  margin-top:20px;  display:block;  background:url(images/hongbao/briberym_close.png) no-repeat;  width:38px;  height:38px;  }
+.red_form{  width:198px;  height:142px;  background:#fff;  margin-top:115px;  margin-left:259px;}
+.red_form p{  font-size:15px;  }
+.red_form input{  margin-top:10px;  font-size:14px;  color:#ccc;  border: 1px #cccccc solid;  height: 26px;  line-height: 26px;  }
+#red_submit{  display:none;  }
+
+
+

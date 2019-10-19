@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$head_title}</title>
+    <META NAME="keywords" CONTENT="{$keywords}">
+    <META name="description" CONTENT="{$description}" />
+    <link rel="stylesheet" href="static/css/frozen.css" />
+    <link rel="stylesheet" href="static/css/public.css" />
+    <link rel="stylesheet" href="static/css/house1.css" />
+       <link rel="stylesheet" href="static/css/map.css" />
+ 
+
+</head>
+<body class="map">
+   <!-- 头部 start-->
+    <header class="ui-header hf-header hf-header-gradient" id="header-transparent">
+        <i class="hf-icon-return" ><a href="index.php?moduleid=5">返回</a></i>
+        <div class="hf-header-r"><i class="hf-icon-share" id="shareBtn1"></i></div>
+    </header>
+    <!-- 头部 end-->
+
+    <!-- 头部2 start-->
+    <header class="ui-header hf-header" id="header-blue" style="display:none">
+        <i class="hf-icon-return" onClick="history.back()"><a href="index.php?moduleid=5">返回</a></i>
+        <h2 class="ui-nowrap" style="padding-right:88px;">{$title}</h2>
+        <div class="hf-header-r"><i class="hf-icon-share" id="shareBtn2"></i></div>
+    </header>
+    <!-- 头部2 end-->
+<!-- 主体内容 start-->
+{if $share_icon && $share_icon != 'auto'}<div class="share_icon" style="display:none;"><img src="{$share_icon}"/></div>{/if}
+<link rel="stylesheet" href="static/css/swipe.css" />
+<section class="ui-container">
+    <div class="hf-detail-photo">
+    
+  <div id="swipe" >
+			<div class="swipe" >
+			
+				  <!--{php $tags=tag("table=house_pic&condition=item=$itemid and mid=5&pagesize=5&order=itemid desc&template=null");}-->
+                  {if $tags}
+ {loop $tags $i $t}  
+   <a href="#" class="fl"><u style="background-image:url({get_oldpic($t[thumb],1)})"></u></a>{/loop}{else}
+ <a href="#" class="fl"><u style="background-image:url({get_oldpic($thumb,1)})"></u></a>{/if}
+						  
+				
+							</div>
+			<p>
+							
+				
+							
+			
+				  <!--{php $tags=tag("table=house_pic&condition=item=$itemid and mid=5&pagesize=5&order=itemid desc&template=null");}-->
+ {loop $tags $i $t}  <i {if $i==0}class="on"{/if} ></i>{/loop}
+							</p>
+   
+    </div></div>
+    <div class="ui-whitespace hf-detail-title">
+        <h1 class="hf-badge-wrap ui-nowrap-multi">{$title}</h1>
+        <div class="hf-badge-wrap" style="padding-bottom:15px;">
+                        <span class="hf-badge-pos"><a href="message.php?action=send&typeid=1&touser={$username}&title={encrypt('我对您发布的“'.$title.'”很感兴趣')}" class="ui-btn ui-btn-green2">预约看房</a></span></div>
+
+        <ul class="hf-detail-list detail-fixw-s ui-border-t">
+            <li><label>售价</label>{if $price}{$price}万元{else}面议{/if} &nbsp;<span class="hf-fred">({floor($price*10000/$houseearm)}元/㎡)</span>&nbsp;&nbsp;<a  href="tool.php"><i class="hf-icon-toolcounter hf-fred"></i></a>&nbsp;&nbsp;<span class="hf-fgray">{$editdate}</span></li>
+            <li><label>户型</label>{if $room}{$room}室{/if}{if $hall}{$hall}厅{/if}{if $toilet}{$toilet}卫{/if}<span class="detail-r"><label>面积</label>{$houseearm}㎡</span></li>
+            <li><label>装修</label>{getbox_diaoval('fix','checkbox',$fix,'sale_5')}<span class="detail-r"><label>朝向</label>{getbox_diaoval('toward','checkbox',$toward,'sale_5')}</span></li>
+            <li><label>楼层</label>{$floor1}/{$floor2}<span class="detail-r"><label>年代</label>{$houseyear}</span></li>
+            <li><label>地址</label>{$address}</li>
+             <!-- JiaThis Button BEGIN -->
+   <li style="height:auto;line-height: normal;padding:10px 0;" id="ckepop">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_weixin">微信</a> 
+<a href="http://www.jiathis.com/share"  class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a> </div> 
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1" charset="utf-8"></script>
+</li> <!-- JiaThis Button END -->
+        </ul>
+
+    </div>
+    <!-- 配套信息 start-->
+    <div class="ui-whitespace hf-detail-box" style="margin-top:15px;">
+        <h2 class="hf-f14 hf-fgray">配套信息</h2>
+        <ul class="hf-detail-list detail-fixw">
+            <li><label>小区名称</label>{$housename}</li>
+            <li class=""><label>区域</label>{area_pos($areaid, ' ')}<span class="detail-r"><label>类型</label>{cat_pos($CAT, ' &raquo; ')}</span></li>
+            <li class=""><label>公交</label>{$bus}</li>
+            <li class=""><label>特色</label>{$fyts}</li>
+            <li class=""><label>配套</label>{$peitao}</li>
+            
+        </ul>
+    </div>
+    <!-- 配套信息 end-->
+    <!-- 简介 start-->
+        <div class="ui-whitespace hf-detail-box" style="margin-top:15px;">
+            <h2 class="hf-f14 hf-fgray">房源简介</h2>            
+			<div class="hf-f14" id="aboutContent" style="margin:5px 0;">{$content}</div>
+        </div>
+        <!-- 简介 end-->
+    
+
+    <!-- start-->
+    <div style="margin-top:15px;">
+
+        <!-- 周边配套 start-->
+            <div class=" hf-detail-box">
+                <div class="hf-panel-info">
+                    <ul class="detail-fixw">
+                        <li class="detail-fixw-map-title "><label>地址</label>{$address}</li>
+                        <li class="ui-border-t" style="padding:0 15px;">
+                       
+<div class="content_header"></div>
+
+	<div id="map">
+
+	</div>
+	<nav>
+		<a href="javascript:" class="m_n_1" data-url="static/images/1.png" data-type="公交车站"><i></i></a><i class="l"></i>
+		<a href="javascript:" class="m_n_3" data-url="static/images/3.png" data-type="学校"><i></i></a><i class="l"></i>
+		<a href="javascript:" class="m_n_4" data-url="static/images/4.png" data-type="医院"><i></i></a><i class="l"></i>
+		<a href="javascript:" class="m_n_5" data-url="static/images/5.png" data-type="银行"><i></i></a><i class="l"></i>
+		<a href="javascript:" class="m_n_6" data-url="static/images/6.png" data-type="购物"><i></i></a><i class="l"></i>
+		<a href="javascript:" class="m_n_7" data-url="static/images/7.png" data-type="楼盘"><i></i></a>
+	</nav>
+	<div id="zoom"><a href="javascript:" class="in"></a><a href="javascript:" class="out"></a><a href="javascript:" class="drive"></a></div>
+       <script src="static/js/zepto.js?v=3" type="text/javascript"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A0d7a1091e5b98f5430228d016ee0ac7"></script>
+<script>
+var point=new BMap.Point({if $map}{$map}{else}{$AJ[map_mid]}{/if}),
+	map = new BMap.Map("map"),
+	i_w=false,
+	marker,info,type,markerOptions,
+	setCenter=function(){
+		marker = new BMap.Marker(point);
+		info = "<a href='{$linkurl}' class='lp_con'><label class='lpic' style='background:url({get_oldpic($thumb,1)})'></label><p class='ltxt'><label class='h1'>{$title}</label><label class='jg'>{$price}元/平</label><label class='wz'>{$address}</label></p> </a>";
+		map.centerAndZoom(point, 15);
+		map.clearOverlays();
+		if(i_w!=false){
+			i_w.close()
+		}
+		map.addOverlay(marker);
+		(function(info){
+			marker.addEventListener("click", function(){
+				i_w=new BMap.InfoWindow(info)
+				this.openInfoWindow(i_w);
+			});
+		})(info)
+	};
+setCenter();
+map.addControl(new BMap.ScaleControl({offset: new BMap.Size(4, 36)}));
+
+$("#zoom").on("click",".in",function(){
+	map.zoomIn();
+}).on("click",".out",function(){
+	map.zoomOut();
+}).on("click",".drive",function(){
+	if (navigator.geolocation) {
+		var geo = navigator.geolocation.getCurrentPosition(function(position) {
+			var gpsPoint = new BMap.Point(position.coords.longitude,position.coords.latitude),
+				driving = new BMap.DrivingRoute(map, {
+					renderOptions: {
+						map: map,
+						autoViewport: true
+					}
+				});
+				driving.search(gpsPoint, point);
+		}, function(error) {
+			switch (error.code) {
+				case error.TIMEOUT:
+					alert("连接超时");
+					break;
+				case error.PERMISSION_DENIED:
+					alert("您拒绝了使用位置共享服务，查询已取消 ");
+					break;
+				case error.POSITION_UNAVAILABLE:
+					alert("经纬度信息查询失败");
+					break;
+			}
+		}, {
+			enableHighAccuracy: true,
+			maximumAge: 30000,
+			timeout: 30000
+		});
+	} else {
+		alert("抱歉，您的浏览器不支持自动定位")
+	}
+})
+var $nav_a=null,
+	$nav =$("nav a").on("click",function(){
+		$nav.filter(".on").removeClass("on")
+		$nav_a=$(this).addClass("on")
+		type=$nav_a.data("type");
+		localSearch.searchNearby(type, point ,999);
+	}),
+	localSearch = new BMap.LocalSearch(map, {onSearchComplete:function(results){
+		if (localSearch.getStatus() != BMAP_STATUS_SUCCESS){
+			alert("抱歉，没有找到周边的"+type)
+			$nav_a.removeClass("on")
+			return;
+		}
+		setCenter();
+		markerOptions={icon:new BMap.Icon($nav_a.data("url"),new BMap.Size(17,24),{imageSize:new BMap.Size(17,24)})};
+		var result;
+		for (var i=0,l=results.getCurrentNumPois(); i<l; i++) {
+			result=results.getPoi(i);
+			marker = new BMap.Marker(result.point,markerOptions);
+			map.addOverlay(marker);
+			info='<h5><strong>'+result.title.replace(/&#39;/g, '&acute;')+'</strong></h5>';
+			if(type=="公交车站")
+				info+='<p><b>车次：</b>'+result.address.replace(/&#39;/g, '&acute;')+'</p>';
+			else
+				info+='<p><b>地址：</b>'+result.address.replace(/&#39;/g, '&acute;')+'</p>';
+			if(result.phoneNumber) {
+				info+='<p><b>电话：</b>'+result.phoneNumber+'</p>';
+			}
+			(function(info){
+				marker.addEventListener("click", function(){
+					i_w=new BMap.InfoWindow(info)
+					this.openInfoWindow(i_w);
+				});
+			})(info)
+		}
+	}});
+
+</script>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+              <!-- 周边楼盘 加载前八个 start-->
+        <section class="ui-panel hf-panel-house" style="margin-top:15px;">
+          <div class="ui-whitespace hf-detail-box" style="margin-top:15px;">
+          
+                <h2 style="background: white;color:#9E9E9E;">你可能感兴趣</h2>
+                <ul class="ui-list ui-list-active hf-house">
+                 <!--{php $tags=tag("table=sale_5&condition=status=3 and thumb<>''&pagesize=4&fields=*&order=hits desc&template=null");}-->
+{loop $tags $t} <li>
+                            <a href="{mobileurl(5, 0, $t['itemid'])}">
+                                <div class="hf-house-box">
+                                    <div class="ui-list-img">
+                                        <img src="{imgurl($t[thumb])}" />
+                                    </div>
+                                    <div class="ui-list-info">
+                                        <h4 class="ui-nowrap">{$t[title]}</h4>
+                                        <div class="hf-f12 hf-badge-wrap" style="color: #A2A2A2">[{area_pos($t[areaid], '')}]<span class="hf-f15 hf-badge-pos hf-fred">{if $t[price]}{$t[price]}万元{else}面议{/if}</span></div>
+                                        <div class="hf-f12 hf-fgray">面积：{$t[houseearm]}平米</div>
+                                        <div class="ui-nowrap hf-fyellow hf-f13">{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if}{if $t[toilet]}{$t[toilet]}卫{/if}<i class="hf-badge-blue tip" style=" float: right;">{if $t[typeid]}中介{else}个人{/if}</i></div>
+                                    </div>
+                                </div>
+                            </a>	
+                        </li>
+                       {/loop}
+                     
+                              
+
+                </ul>
+            </section>        <!-- 周边楼盘 end-->
+            <!-- 周边配套 start-->
+
+        <!-- 点评 start-->
+
+<style>a.b:link,a.b:visited,a.b:active,a.b:hover{text-decoration:none;color:#007AFF;}
+.bd-t {border-top:#D9D9D9 1px solid;}
+.bd-r {border-right:#D9D9D9 1px solid;}
+.bd-b {border-bottom:#D9D9D9 1px solid;}
+.bd-l {border-left:#D9D9D9 1px solid;}
+.foot-bar-fix {height:48px;clear:both;}
+.foot-bar {width:100%;height:48px;overflow:hidden;background:#F8F8F8;border-top:#B2B2B2 1px solid;position:fixed;z-index:9;left:0;bottom:50px;}
+.foot-bar li {width:25%;height:48px;float:left;text-align:center;font-size:11px;}
+.foot-bar span {display:block;padding-top:32px;}
+.foot-bar em {font-style:normal;font-size:10px;position:relative;z-index:10;display:block;width:5px;height:5px;left:50%;margin:-38px 0 0 8px;background:#FF0000;border:1px solid #F43531;border-radius:5px;}
+.foot-comment {text-align:right;margin:10px 10px 0 0;line-height:28px;font-size:16px;}
+.foot-comment div {position:absolute;z-index:10;left:10px;right:60px;text-align:center;background:#FFFFFF;color:#999999;font-size:14px;}
+</style>
+     {if in_array($moduleid, explode(',', $EXT['comment_module']))}     
+           <div class="foot-bar-fix"></div>
+<div class="foot-bar">
+	<div class="foot-comment">
+		<div class="bd-t bd-r bd-b bd-l" ><a href="comment.php?mid={$moduleid}&itemid={$itemid}">发表评论</a></div>
+		<a href="comment.php?mid={$moduleid}&itemid={$itemid}" class="b" id="comment-count"></a>
+	</div>
+</div>
+
+   {/if}               
+        <!-- 点评 end-->
+    </div>
+
+</section>
+<!-- 主体内容 start-->
+
+<!-- 固定尾部 start-->
+<div style="height:50px;"></div>
+<footer class="ui-footer hf-footer-info">
+    <ul class="ui-row-flex">
+        <li class="ui-col-2 ui-flex ui-flex-align-center" style="height:50px"><div class="hf-fwhite">&nbsp;&nbsp;{$truename}：{$telephone}</div></li>
+        <li class="hf-oldinfo-btn ui-whitespace-right">
+		<button class="ui-btn ui-btn-green" onClick="window.location.href='tel:{$telephone}'"><i class="hf-icon-fixtel"></i><br />电话</button>
+        <!--<button class="ui-btn ui-btn-primary"><i class="hf-icon-fixmessage"></i><br />短信</button></li>-->
+
+    </ul>
+</footer>
+<!-- 固定尾部 end-->
+
+<!-- gotop start-->
+<div class="hf-gotop" id="goTop" style="display:none;">
+    <a href="#"><i class="hf-icon-gotop"></i></a>
+</div>
+<!-- gotop end-->
+
+<!-- 分享 start-->
+   
+<!-- 分享 start-->
+<div class="ui-actionsheet" id="share">
+        <div class="ui-actionsheet-cnt">
+            <h4>分享</h4>
+            <ul class="ui-row hf-share" id="share_box">
+                <!-- <li class="ui-col ui-col-25" onclick="javascript:bShare.share(event,'weixin');return false;"><span class="hf-share-green"><i class="hf-icon-sharewx"></i></span><h6>微信</h6></li> -->
+                <li class="ui-col ui-col-25" onClick="javascript:bShare.share(event, 'qzone', 0);
+                            return false;"><span class="hf-share-blue"><i class="hf-icon-sharezone"></i></span><h6>QQ空间</h6></li>
+                <li class="ui-col ui-col-25" onClick="javascript:bShare.share(event, 'sinaminiblog', 0);
+                            return false;"><span class="hf-share-red"><i class="hf-icon-sharesina"></i></span><h6>新浪</h6></li>
+                <li class="ui-col ui-col-25" onClick="javascript:bShare.share(event, 'qqmb', 0);
+                            return false;"><span class="hf-share-lblue"><i class="hf-icon-sharewb"></i></span><h6>微博</h6></li>
+				<li class="ui-col ui-col-25" onClick="javascript:bShare.share(event,'neteasemb');return false;"><span class="hf-share-ora"><i class="hf-icon-share163"></i></span><h6>网易微博</h6></li>
+                </ul>
+            <button id="shareCancelBtn">取消</button>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid={$AJ[uuid]}&style=-1"></script><!-- 分享 end-->
+
+
+<!-- frozenUI 框架 js start-->
+
+<script src="static/js/frozen.js"></script>
+<!-- frozenUI 框架 js end-->
+<script src="static/js/public.js"></script>
+<script src="static/js/houseInfo.js"></script>
+<script src="static/js/swipe.js"></script>
+<script>
+var $swi=$("#swipe i");
+swipe = Swipe(document.getElementById('swipe'), {
+startSlide: 0,
+auto: 4000,
+transitionEnd: function(index, element) {
+$swi.removeClass("on").eq(index).addClass("on")
+}
+});
+
+</script>  
+<script type="text/javascript">
+   hideText('aboutContent',105);
+    $(function () {
+	$("#shareBtn1").actionsheet({sheetContent : "#share", cancelBtn : "#shareCancelBtn", cssName : "show"});
+	$("#shareBtn2").actionsheet({sheetContent : "#share", cancelBtn : "#shareCancelBtn", cssName : "show"});
+        $(window).scroll(function () {
+            var scrolls = parseInt($(this).scrollTop()), navElem = $("#house-tab-fixed");
+            //头部
+            if (scrolls > 44) {
+                $("#header-transparent").hide();
+                $("#header-blue").show();
+            } else {
+                $("#header-transparent").show();
+                $("#header-blue").hide();
+            }
+        });
+    });
+    
+</script>
+
+
+
+</body>
+</html>

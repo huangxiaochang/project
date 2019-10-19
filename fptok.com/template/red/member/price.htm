@@ -1,0 +1,73 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={AJ_CHARSET}"/>
+<title>{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{$AJ[sitename]}</title>
+<link rel="stylesheet" type="text/css" href="{AJ_STATIC}{$MODULE[2][moduledir]}/image/style.css" />
+<script type="text/javascript" src="{AJ_STATIC}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/admin.js"></script>
+</head>
+<form action="?">
+
+<input type="hidden" name="moduleid" value="{$moduleid}"/>
+<input type="hidden" name="file" value="{$file}"/>
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="pid" value="{$pid}"/>
+<table cellpadding="2" cellspacing="1" class="tb">
+<tr>
+<td>
+
+
+{$order_select}&nbsp;
+
+
+<input type="submit" value="搜 索" class="btn"/>&nbsp;
+
+</td>
+</tr>
+</table>
+</form>
+<form method="post">
+
+<div class="tt">报价管理</div>
+<table cellpadding="2" cellspacing="1" class="tb">
+<tr>
+<th width="25"><input type="checkbox" onclick="checkall(this.form);"/></th>
+
+<th>价格</th>
+<th>价格走势</th>
+<th>备注</th>
+
+<th width="120">时间</th>
+<th width="50">操作</th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td><input type="checkbox" name="itemid[]" value="{$v[itemid]}"/></td>
+
+<td>{$v[price]}</td>
+<td>{$v[trend]}</td>
+<td>{$v[note]}</td>
+
+
+<td class="px11" title="增加时间{timetodate($v[addtime], 3)}>">{timetodate($v[addtime], 3)}</td>
+
+<td>
+<a href="?&action=edit&itemid={$v[itemid]}&pid={$v[pid]}">修改</a>&nbsp;
+<a href="?&action=delete&itemid={$v[itemid]}&pid={$v[pid]}" onclick="return _delete();">删除</a>
+</td>
+</tr>
+{/loop}
+</table>
+<div class="btns">
+<input type="submit" value=" 删除 " class="button_1" onClick="if(confirm('确定要删除选中{$MOD[name]}吗？')){this.form.action='?mid={$mid}&status={$status}&action=delete'}else{return false;}"/>
+
+</div>
+</form>
+<div class="pages">{$pages}</div>
+<br/>
+

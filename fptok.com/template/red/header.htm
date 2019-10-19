@@ -1,0 +1,143 @@
+<!DOCtype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    {if $head_keywords}
+<meta name="keywords" content="{$head_keywords}"/>
+{/if}
+{if $head_description}
+<meta name="description" content="{$head_description}"/>
+{/if}
+
+{if $head_mobile}
+<meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">
+{/if}
+{if $EXT[archiver_enable]}
+<link rel="archives" title="{$AJ[sitename]}" href="{$EXT[archiver_url]}"/>
+{/if}
+<link rel="shortcut icon" type="image/x-icon" href="{AJ_STATIC}favicon.ico"/>
+{if $head_canonical}
+<link rel="canonical" href="{$head_canonical}"/>
+{/if}
+<link href="{AJ_SKIN}style2016.css" rel="stylesheet" type="text/css" />
+<link href="{AJ_SKIN}global.css" rel="stylesheet" type="text/css" />
+
+{if $moduleid!=15}<link href="{AJ_SKIN}reset{if $moduleid==1}index{/if}.css" rel="stylesheet" type="text/css" />{/if}
+{if $moduleid>8}<link rel="stylesheet" type="text/css" href="{AJ_SKIN}{$module}.css"/>{/if}
+{if $moduleid==3}<link rel="stylesheet" type="text/css" href="{AJ_SKIN}style.css"/>{/if}
+{if $moduleid!=8 && $moduleid!=6  && $moduleid!=1}<link href="{AJ_SKIN}esf.css" rel="stylesheet" type="text/css" />{/if}
+   <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{/if}</title>
+   <script type="text/javascript" src="{AJ_STATIC}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/page.js"></script>    
+<script src="{AJ_SKIN}js/sea.js" type="text/javascript"></script>
+<script src="{AJ_SKIN}js/int.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+{if $head_mobile && $EXT[mobile_goto]}
+GoMobile('{$head_mobile}');
+{/if}
+{php $searchid = ($moduleid > 3 && $MODULE[$moduleid]['ismenu'] && !$MODULE[$moduleid]['islink']) ?$moduleid : 6;}
+ var apptype = "{$MODULE[$searchid][moduledir]}";
+
+</script>
+ <script type="text/javascript">
+function gocity(s) {
+	Go('{$MODULE[1][linkurl]}api/city.php?action=go&'+s);
+}
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+                
+    </head>
+    <body>
+    <div id="header-bar">
+        <div class="wrapper">
+            <a href="/" style="display:block; width:126px; height:42px; float:left; background:url({if $MODULE[$moduleid][logo]}{AJ_SKIN}image/logo_{$moduleid}.gif{elseif $AJ[logo]}{$AJ[logo]}{else}{AJ_SKIN}image/logo.gif{/if}) no-repeat; margin-top:4px"></a>
+            <div class="change-city">
+                <dt>{if $AJ[city]}{$city_name}<i class="iconfont">&#xe60c;</i>{else}{$AJ[city_sitename]}{/if}</dt>
+               {if $AJ[city]} <dl>
+                    <em></em>
+                                     {php $citys = get_city(0)}
+			{loop $citys $k $v}<dd ><a href="{if $v[domain]}{$v[domain]}{else}javascript:gocity('areaid={$v[areaid]}');{/if}">{$v[name]}</a></dd>{/loop} <dd ><a href="api/city.php">切换分站</a></dd>  </dl>{/if}
+        
+            </div>
+            <div class="top-nav">
+                <ul>
+    <li><a href="{$MODULE[1][linkurl]}" {if $moduleid==1}class="current"{/if} >首页</a></li>
+    <li><a href="{$MODULE[8][linkurl]}" {if $moduleid==8}class="current"{/if} >资讯</a>
+        <dl>  {php $maincata = get_maincat(0,8)}
+        {loop $maincata $k $v}
+                        <dd> <a href="{$MODULE[8][linkurl]}{$v[linkurl]}"  ><em>{$v[catname]}</em></a></dd>{/loop}
+                             </dl>
+    </li>
+    <li><a href="{$MODULE[6][linkurl]}"  {if $moduleid==6}class="current"{/if}>楼盘项目</a>
+        <dl>							
+            <dd><a href="{$MODULE[6][linkurl]}" class="first"><em>楼盘</em></a></dd> 
+            <dd><a href="{$MODULE[6][linkurl]}list-t3.html">商业</a></dd>
+            <dd><a href="{$MODULE[1][linkurl]}map/house.html">地图找房</a></dd>
+        </dl>
+    </li>
+    <li><a href="{$MODULE[15][linkurl]}"  {if $moduleid==15}class="current"{/if}>团购</a></li>
+    <li><a href="{$MODULE[1][linkurl]}fenxiao"  >赚佣金</a></li>
+    <li><a href="{$MODULE[5][linkurl]}" {if $moduleid==5 || $moduleid==18 || $moduleid==4}class="current"{/if}>二手房</a>
+        <dl>							
+            <dd><a href="{$MODULE[5][linkurl]}" class="first"><em>二手房</em></a></dd>
+            <dd><a href="{$MODULE[18][linkurl]}">小区</a></dd>
+            <dd><a href="{$MODULE[4][linkurl]}list-u1.html">经纪人</a></dd>
+            <dd><a href="{$MODULE[16][linkurl]}list-u1.html" rel="nofollow">求购</a></dd>
+        </dl>
+    </li>
+   
+    <li><a href="{$MODULE[7][linkurl]}" {if $moduleid==7}class="current"{/if}>出租房</a></li>  
+    <li><a href="{$MODULE[13][linkurl]}" {if $moduleid==13}class="current"{/if}>家装</a></li>
+     <li><a href="javascript:;">更多</a>
+        <dl>							
+            <dd><a href="{$MODULE[12][linkurl]}" class="first"><em>图库</em></a></dd>
+            <dd><a href="{$MODULE[14][linkurl]}">视频</a></dd>
+            <dd><a href="{$EXT[mobile_url]}mobile.php"  rel="nofollow">手机找房</a></dd>
+            <dd><a href="{$MODULE[1][linkurl]}tool">房贷计算器</a></dd>
+        </dl>
+    </li>
+</ul>
+            </div>
+            <div class="login-link" id="aijiacms_member"></div>
+        </div>
+    </div>
+ {if $moduleid!=1 && $moduleid!=8 && $moduleid!=2}
+    <div id="house-top">
+    <div class="wrapper">	
+        <form method="get" action="{$MODULE[$moduleid][linkurl]}search.php">
+        <div class="house-search">
+            <input type="text" class="input" name="k" placeholder="请输入内容" value="" />
+            <input type="hidden" name="type" value="ershou" />
+            <button type="submit"><i class="iconfont">&#xe604;</i></button>
+        </div>
+        </form>
+        <div class="house-search-keywords">
+            <span>热门搜索：</span>
+<!--{tag("moduleid=$searchid&table=keyword&condition=moduleid=$moduleid and status=3&pagesize=10&order=total_search desc&template=list-search_kw")}-->
+        </div>
+        <!--
+        <div class="house-search-type">
+            <a href="{$MODULE[1][linkurl]}map" class="map-icon">地图</a>
+            <a class="current list-icon"  href="{$MOD[linkurl]}list.html">列表</a>
+        </div>	-->	
+        <div class="clearit"></div>
+    </div>
+   {/if}

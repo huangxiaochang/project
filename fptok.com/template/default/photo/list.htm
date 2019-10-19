@@ -1,0 +1,44 @@
+{template 'header'}
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}style.css"/>
+{if $moduleid>4}<link rel="stylesheet" type="text/css" href="{AJ_SKIN}{$module}.css"/>{/if}
+<script type="text/javascript">var sh = '{$MOD[linkurl]}search.php?catid={$catid}';</script>
+<div class="m">
+	<div class="bread">当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a> &raquo; {cat_pos($CAT, ' &raquo; ')}</div>
+	<div class="boxfl">
+		<dl>
+			<dt>分类</dt>
+			<dd>{loop $maincat $k $v}
+				<span><a href="{$MOD[linkurl]}{$v[linkurl]}&fengge={$fengge}" class="{if $v[catid]==$catid}cur{/if}">{set_style($v[catname],$v[style])}{if !$cityid}({$v[item]}){/if}</a></span>{/loop}
+			</dd>
+		</dl>
+		<dl>
+			<dt>风格</dt>
+			<dd>
+				{php $fengge_arr = getbox_name('fengge','photo_12')}
+					{loop $fengge_arr $k $v}
+					<span><a {if $fengge==$k}class="cur"{/if} href="{$MOD[linkurl]}list.php?catid={$catid}&fengge={$k}">{$v}</a></span>{/loop}
+			</dd>
+		</dl>
+	</div>
+	<div class="boxxgt">
+		{if $CP}
+	{loop $PPT $p}
+		<div class="boxtitle">
+			<table cellpadding="0" cellspacing="0" width="100%">
+				<tr>
+				<td class="ppt_l" valign="top">按{$p[name]}</td>
+				<td class="ppt_r" valign="top">
+				{loop $p[options] $o}
+				<a href="###" onclick="Go(sh+'&ppt_{$p[oid]}={urlencode($o)}');">{$o}</a>&nbsp;|&nbsp;
+				{/loop}
+				</td>
+				</tr>
+			</table>
+		</div>
+		{/loop}
+		{/if}
+		<div class="boxlist2">{if $tags}{template 'list-'.$module, 'tag'}{/if}</div>
+	</div>
+</div>
+
+{template 'footer'}

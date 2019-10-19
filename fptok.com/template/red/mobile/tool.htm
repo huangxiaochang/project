@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>贷款计算器</title>
+    <link rel="stylesheet" href="static/css/frozen.css">
+    <link rel="stylesheet" href="static/css/public.css">
+    <link rel="stylesheet" href="static/css/fan.css">
+</head>
+<body ontouchstart="">
+<header class="ui-header hf-header">
+    <i class="hf-icon-return" onclick="history.back()"></i>
+    <h1>贷款计算器</h1>
+  
+</header><section class="ui-container ">
+<div class="ui-tab">
+<ul class="ui-tab-nav ui-border-b ui-tab-nav-house">
+    <li class="current">商业贷款</li>
+    <li>公积金贷款</li>
+    <li>组合贷款</li>
+</ul>
+<ul class="ui-tab-content" style="width:300%">
+<li class="current">
+    <div class="plr15 count-canvas">
+        <br>
+        <a href="toolhelp.php">
+        <p class="hf-f12 hf-fblue">
+            <span class="icon-help" style="position:relative;top:-2px;"></span>&nbsp;帮助说明
+        </p>
+        </a>
+        <canvas  width="166" height="166"></canvas>
+        <div class="content">
+
+        </div>
+    </div>
+    <section class="ui-panel count-tips">
+        <ul class="ui-row border-bottom ">
+            <li class="ui-col ui-col-33 border-right pl15 ptb13">
+                <h4 class="hf-f15 ">还款总额</h4>
+                <p class="hf-f15 hf-fred"><span class="loancount"></span> <span class="hf-f12 hf-fgray">元</span></p>
+            </li>
+            <li class="ui-col ui-col-33 border-right pl15 ptb13">
+                <h4 class="hf-f15 ">贷款总额</h4>
+                <p class="hf-f15 hf-fred"><span class="count"></span> <span class="hf-f12 hf-fgray">元</span></p>
+            </li>
+            <li class="ui-col ui-col-33 pl15 ptb13">
+                <h4 class="hf-f15 ">支付利息</h4>
+                <p class="hf-f15 hf-fred"><span class="locanaccrual"></span> <span class="hf-f12 hf-fgray">元</span></p>
+            </li>
+        </ul>
+        <p class="cout-tips-bottom pl15"></p>
+    </section>
+    <section class="ui-panel form">
+        <ul class="ui-list ui-list-pure  hf-f15">
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-25">
+                    <span class="hf-fgray">还款方式</span>
+                </div>
+                <div class="ui-col ui-col-75">
+                    <div class="ui-col ui-col-50">
+                        <label class="ui-radio small">
+                            <input type="radio" name="radio-1" value="1">
+                            等额本息
+                        </label>
+                    </div>
+                    <div class="ui-col ui-col-50">
+                        <label class="ui-radio small">
+                            <input type="radio" name="radio-1" value="2">
+                            等额本金
+                        </label>
+                    </div>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">商业贷款</span>
+                </div>
+                <div class="ui-col ui-col-67">
+                    <label for="" class="f-input">
+                        <input type="number" placeholder="请输入贷款金额"><span class="tip">万元</span>
+                    </label>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">贷款年限</span>
+                </div>
+                <div class="ui-col ui-col-67 ui-nowrap">
+                    <div class="ui-select" >
+                        <select disabled="disabled" class="hf-fgray666 select-year">
+                            <option value="">请选择年限</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">贷款利率</span>
+                </div>
+                <div class="ui-col ui-col-67">
+                    <div class="ui-select" >
+                        <select disabled="disabled" class="hf-fgray666 select-rate">
+                            <option value="">请选择利率</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+</li>
+<li  style="height: 0px;">
+    <div class="plr15 count-canvas">
+        <br>
+        <a href="toolhelp.php">
+        <p class="hf-f12 hf-fblue">
+            <span class="icon-help" style="position:relative;top:-2px;"></span>&nbsp;帮助说明
+        </p>
+            </a>
+        <canvas  width="166" height="166"></canvas>
+        <div class="content">
+        </div>
+    </div>
+    <section class="ui-panel count-tips">
+        <ul class="ui-row border-bottom ">
+            <li class="ui-col ui-col-33 border-right pl15 ptb13">
+                <h4 class="hf-f15 ">还款总额</h4>
+                <p class="hf-f15 hf-fred"><span class="loancount"></span> <span class="hf-f12 hf-fgray">元</span></p>
+            </li>
+            <li class="ui-col ui-col-33 border-right pl15 ptb13">
+                <h4 class="hf-f15 ">贷款总额</h4>
+                <p class="hf-f15 hf-fred"><span class="count"></span> <span class="hf-f12 hf-fgray">元</span></p>
+            </li>
+            <li class="ui-col ui-col-33 pl15 ptb13">
+                <h4 class="hf-f15 ">支付利息</h4>
+                <p class="hf-f15 hf-fred"><span class="locanaccrual"></span> <span class="hf-f12 hf-fgray">元</span></p>
+            </li>
+        </ul>
+        <p class="cout-tips-bottom pl15"></p>
+    </section>
+
+    <section class="ui-panel form">
+        <ul class="ui-list ui-list-pure  hf-f15">
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-25">
+                    <span class="hf-fgray">还款方式</span>
+                </div>
+                <div class="ui-col ui-col-75">
+                    <div class="ui-col ui-col-50">
+                        <label class="ui-radio small" >
+                            <input type="radio" name="radio-2" value="1">
+                            等额本息
+                        </label>
+                    </div>
+                    <div class="ui-col ui-col-50">
+                        <label class="ui-radio small" >
+                            <input type="radio" name="radio-2" value="2">
+                            等额本金
+                        </label>
+                    </div>
+
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">公积金贷款</span>
+                </div>
+                <div class="ui-col ui-col-67">
+                    <label for="" class="f-input">
+                        <input type="number" placeholder="请输入贷款金额"><span class="tip">万元</span>
+                    </label>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">贷款年限</span>
+                </div>
+                <div class="ui-col ui-col-67 ui-nowrap">
+                    <div class="ui-select" >
+                        <select disabled="disabled" class="hf-fgray666 select-year two">
+                            <option value="">请选择年限</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">贷款利率</span>
+                </div>
+                <div class="ui-col ui-col-67">
+                    <div class="ui-select" >
+                        <select disabled="disabled" class="hf-fgray666 select-rate two">
+                            <option value="">请选择利率</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+</li>
+<li  style="height: 0px;">
+    <div class="plr15 count-canvas">
+        <br>
+        <a href="/member/tools/help">
+        <p class="hf-f12 hf-fblue">
+            <span class="icon-help" style="position:relative;top:-2px;"></span>&nbsp;帮助说明
+        </p>
+            </a>
+        <canvas  width="166" height="166"></canvas>
+        <div class="content">
+        </div>
+    </div>
+    <section class="ui-panel count-tips">
+        <ul class="ui-row border-bottom ">
+            <li class="ui-col ui-col-33 border-right pl15 ptb13">
+                <h4 class="hf-f15 ">还款总额</h4>
+                <p class="hf-f15 hf-fred"><span class="loancount"></span> <span class="hf-f12 hf-fgray">元</span></p>
+            </li>
+            <li class="ui-col ui-col-33 border-right pl15 ptb13">
+                <h4 class="hf-f15 ">贷款总额</h4>
+                <p class="hf-f15 hf-fred"><span class="count"></span> <span class="hf-f12 hf-fgray">元</span></p>
+            </li>
+            <li class="ui-col ui-col-33 pl15 ptb13">
+                <h4 class="hf-f15 ">支付利息</h4>
+                <p class="hf-f15 hf-fred"><span class="locanaccrual"></span> <span class="hf-f12 hf-fgray">元</span></p>
+            </li>
+        </ul>
+        <p class="cout-tips-bottom pl15"></p>
+    </section>
+    <section class="ui-panel form">
+        <ul class="ui-list ui-list-pure  hf-f15">
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-25">
+                    <span class="hf-fgray">还款方式</span>
+                </div>
+                <div class="ui-col ui-col-75">
+                    <div class="ui-col ui-col-50">
+                        <label class="ui-radio small" >
+                            <input type="radio" name="radio-3" value="1">
+                            等额本息
+                        </label>
+                    </div>
+                    <div class="ui-col ui-col-50">
+                        <label class="ui-radio small" >
+                            <input type="radio" name="radio-3" value="2">
+                            等额本金
+                        </label>
+                    </div>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">商业贷款</span>
+                </div>
+                <div class="ui-col ui-col-67">
+                    <label for="" class="f-input">
+                        <input type="number" placeholder="请输入贷款金额"><span class="tip">万元</span>
+                    </label>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">贷款年限</span>
+                </div>
+                <div class="ui-col ui-col-67 ui-nowrap">
+                    <div class="ui-select" >
+                        <select disabled="disabled" class="hf-fgray666 select-year">
+                            <option value="">请选择年限</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">贷款利率</span>
+                </div>
+                <div class="ui-col ui-col-67">
+                    <div class="ui-select" >
+                        <select disabled="disabled" class="hf-fgray666 select-rate">
+                            <option value="">请选择利率</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="ui-panel form">
+        <ul class="ui-list ui-list-pure  hf-f15">
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">公积金贷款</span>
+                </div>
+                <div class="ui-col ui-col-67">
+                    <label for="" class="f-input">
+                        <input type="number" placeholder="请输入贷款金额"><span class="tip">万元</span>
+                    </label>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">贷款年限</span>
+                </div>
+                <div class="ui-col ui-col-67 ui-nowrap">
+                    <div class="ui-select" >
+                        <select disabled="disabled" class="hf-fgray666 select-year two">
+                            <option value="">请选择年限</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="ui-row border-bottom mgnone plr15">
+                <div class="ui-col ui-col-33">
+                    <span class="hf-fgray">贷款利率</span>
+                </div>
+                <div class="ui-col ui-col-67">
+                    <div class="ui-select" >
+                        <select disabled="disabled" class="hf-fgray666 select-rate two">
+                            <option value="">请选择利率</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+</li>
+</ul>
+</div>
+<div class="ui-btn-wrap plr15">
+    <button class="ui-btn-lg ui-btn-primary btn-count">
+        立即计算
+    </button>
+</div>
+</section>
+
+<div class="ui-actionsheet ">
+    <div class="ui-actionsheet-cnt f-select ">
+        <ul class="ui-list ui-list-pure  hf-f15 mb10 f-select-top">
+            <li class="ui-row border-bottom mgnone plr15 ">
+                <div class="ui-col ui-col-33">
+                    <span>自定义利率</span>
+                </div>
+                <div class="ui-col ui-col-67">
+                    <label for="" class="f-input text-right">
+                        <input class="text-right f-select-input" type="number" placeholder="请输入百分比数值"  max="99.99" min="0"><span class="tip">%</span>
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <div class="ui-scroller">
+            <ul class="ui-list ui-list-pure  hf-f15 f-select-content"></ul>
+        </div>
+        <button class="f-select-submit">确定</button>
+    </div>
+</div>
+<script src="static/js/zepto.min.js"></script>
+<script src="static/js/frozen.js"></script>
+<script src="static/js/counter.js"></script>
+<script>
+    window.addEventListener('load', function(){
+        var tab = new fz.Scroll('.ui-tab', {
+            role: 'tab',
+            autoplay: false,
+            interval: 3000
+        });
+        /* 滑动开始前 */
+        tab.on('beforeScrollStart', function(from, to) {
+            // from 为当前页，to 为下一页
+        })
+        /* 滑动结束 */
+        tab.on('scrollEnd', function(curPage) {
+            // curPage 当前页
+        });
+    })
+</script>
+<script>
+    $(function(){
+
+
+    })
+</script>
+<script>
+    $(".btn-count").click(function(){
+        var $this = $('.ui-tab-content li.current'),
+                $panel = $this.find('.ui-panel.form'),
+                loanType = 0,
+                loanNum = [],
+                loanMonth = [],
+                loanRate = [],
+                state = true;
+
+        if($this.find('input[type=radio]:checked').length == 0){
+            $.tips({content:'请选择还款方式'});
+            state = false;
+            return;
+        }else{
+            loanType = $this.find('input[type=radio]:checked').val();
+        }
+
+        $panel.each(function(index){
+            console.log(this)
+            if($(this).find('input[type=number]').val().trim() == ''){
+                $.tips({content:'请输入贷款金额'});
+                state = false;
+                return false;
+            }else{
+                loanNum.push($(this).find('input[type=number]').val().trim());
+            }
+
+            // console.log($(this).find('.select-year'))
+
+            if($(this).find('.select-year').val().trim() == ''){
+                $.tips({content:'请选择贷款年限'});
+                state = false;
+                return false;
+            }else{
+                loanMonth.push($(this).find('.select-year').val().trim());
+            }
+
+            if($(this).find('.select-rate').val().trim() == ''){
+                $.tips({content:'请选择贷款利率'});
+                state = false;
+                return false;
+            }else{
+                loanRate.push($(this).find('.select-rate').val().trim());
+            }
+
+        })
+        if(state){
+            count({
+                element : $this,
+                loanType : loanType,
+                loanNum : loanNum,
+                loanMonth : loanMonth,
+                loanRate : loanRate
+            },function(){})
+        }
+    });
+
+</script>
+
+</body>
+</html>

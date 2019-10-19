@@ -1,0 +1,233 @@
+{template 'header', $module}
+      
+        <style>
+.row,.col,.panel_word,.panel_icon{ box-sizing:border-box; -webglui-box-sizing:border-box; -moz-box-sizing:border-box; -o-box-sizing:border-box;}
+.row{ margin-left:-10px; overflow:hidden;}
+.col{ padding-left:10px;}
+.panel{float: left; text-align: center; width:16.666%; min-width:210px; margin-bottom: 10px;}
+.panel_box a{display:block; background-color:#f2f2f2; border-radius:5px; overflow:hidden; }
+.panel_icon{ width:40%; display: inline-block; padding:22px 0; background-color:#54ade8;float:left;}
+.panel_icon i{ font-size:3em; color:#fff;}
+.panel a:hover .panel_icon i{ display:inline-block; transform:rotate(360deg); -webglui-transform:rotate(360deg); -moz-transform:rotate(360deg); -o-transform:rotate(360deg); -ms-transform:rotate(360deg);}
+.panel_word{ width:60%; display: inline-block; float:right; margin-top: 22px; }
+.panel_word span{ font-size:25px; display:block; height:30px; line-height:30px; }
+.allNews em{ font-style:normal; font-size:16px;display: block; }
+.panel_box a .allNews cite{ display:none; }
+.panel_box a cite{ font-size:16px; display: block; font-style:normal; }
+.sysNotice{ width:50%; float: left; }
+.sysNotice .layui-elem-quote{ line-height:26px; position: relative;}
+.sysNotice .layui-table{ margin-top:0; border-left:5px solid #e2e2e2; }
+.sysNotice .title .icon-new1{ position: absolute; top:8px; margin-left: 10px; color:#f00; font-size:25px; }
+.explain .layui-btn{ margin:5px 5px 5px 0; }
+.sysNotice .layui-elem-quote { border-left: 5px solid #ff6700;}
+.sysNotice .layui-elem-title{ border-left: 0px !important}
+.sysNotice .layui-elem-title em { font-size:12px; color:#666; padding:0 5px;}
+.sysNotice-info { color:#FF5722}
+.sysNotice-info a { color:#FF5722}
+.warning-bar { background-color:#F2DEDE !important; border-left: 5px solid #e51c23;}
+.warning-bar .dt-icon-warning { position:relative; font-size:24px; color:#e51c23; margin-right:10px; top:2px;}
+.module-total ul{width:99%;float:left; margin-bottom:10px;}
+.module-total li{width:30%;float:left;padding:5px 8px;}
+.module-total li span{float:left;width:100%; overflow:hidden;line-height:18px;padding-left:5px}
+.module-total li span.g2{width:120px;padding-left:5px}
+.module-total li em{font-size:13px;font-weight:700;color:#dd530f;font-style:normal; padding:0 5px;}
+.module-total li .gt{float:left;width:210px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;padding-left:5px}
+.module-total li .date{float:right}
+.module-total li.tisp{ width:100%;background:#fafafa;color:#999;letter-spacing:2px;border-top:1px solid #f0f0f0;padding-left:12px;margin-top:5px}
+</style>
+    
+<div class="childrenBody">
+<div class="panel_box row">
+<div class="panel col">
+<a href="message.php">
+<div class="panel_icon">
+<i class="dt-icon dt-icon-message"></i>
+</div>
+<div class="panel_word newMessage">
+<span>{$_message}</span>
+<cite>新消息</cite>
+</div>
+</a>
+</div>
+<div class="panel col">
+<a href="chat.php">
+<div class="panel_icon" style="background-color:#FF5722;">
+<i class="dt-icon dt-icon-exhibit"></i>
+</div>
+<div class="panel_word userAll">
+<span>{$_chat}</span>
+<cite>新对话</cite>
+</div>
+</a>
+</div>
+<div class="panel col">
+<a href="trade.php">
+<div class="panel_icon" style="background-color:#009688;">
+<i class="dt-icon dt-icon-shop"></i>
+</div>
+<div class="panel_word userAll">
+<span>0</span>
+<cite>我的订单</cite>
+</div>
+</a>
+</div>
+<div class="panel col">
+<a href="charge.php">
+<div class="panel_icon" style="background-color:#5FB878;">
+<i class="dt-icon dt-icon-money"></i>
+</div>
+<div class="panel_word imgAll">
+<span>{$_money}</span>
+<cite>我的{$AJ[money_name]}</cite>
+</div>
+</a>
+</div>
+<div class="panel col">
+<a href="credit.php" data-url="">
+<div class="panel_icon" style="background-color:#F7B824;">
+<i class="dt-icon dt-icon-gift"></i>
+</div>
+<div class="panel_word waitNews">
+<span>{$_credit}</span>
+<cite>我的{$AJ[credit_name]}</cite>
+</div>
+</a>
+</div>
+</div>
+ 
+ <div class="row">
+<div class="sysNotice col">
+<blockquote class="layui-elem-quote title">账户概览</blockquote>
+<table class="layui-table">
+<colgroup>
+<col width="150">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td>会员名称</td>
+<td class="sysNotice-info"><a href="{userurl($_username)}" target="_blank">{$_truename} ({$_username})</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{$MODULE[2][linkurl]}line.php" title="{if $_online}在线，点击隐身{else}隐身，点击上线{/if}"><img src="{AJ_SKIN}image/user_{if $_online}on{else}off{/if}line.png" width="10" height="10" align="absmiddle"/></a>  {if $_groupid == 4}
+	<b style="color:red;">尊敬的会员，您的帐号<span class="f_red f_b">正在审核中..</span>{if $MOD[checkuser]==2}<a href="send.php?action=check" class="l">请点这里验证您的邮箱</a>，系统将自动审核{else}请稍候，等待网站审核{/if}</b>
+{/if}</td>
+</tr>
+
+<tr>
+<td>公司名称</td>
+<td class="sysNotice-info"><a href="{userurl($_username)}" target="_blank" title="{$_company}"><span class="f_black">{$_company}</span></a>&nbsp;&nbsp;<a href="profile.php"><span class="f_dblue">账户详情&raquo;</span></a>  {if $_groupid > 5 && !$_edittime}<b style="color:red;">未完善详细资，<a href="edit.php?tab=2" class="t f_b">现在就去完善</a>。</b>
+{/if}</td>
+</tr>
+<tr>
+<td>会员等级</td>
+<td class="sysNotice-info">{$MG[groupname]}  {if $vip && $havedays < 11}
+	尊敬的{$MG[groupname]}，您的{VIP}服务将在 <strong class="f_red">{$havedays}</strong> 天后到期，请您尽快续费。&nbsp;&nbsp;<a href="renew.php" class="t f_b">点击续费</a>
+{/if}<font style="color:red;">已经开通</font></td>
+</tr>
+<tr>
+<td>认证情况</td>
+<td class="sysNotice-info">
+
+{if $MOD[vmember]}<i class="dt-icon dt-icon-yirenzheng {if $vmember}gl-t-rz{/if}" title="{if $vmember}已通过{else}未通过{/if}认证"></i>认证：&nbsp;{/if}
+{if $MOD[vmobile]}<i class="dt-icon dt-icon-mobile {if $vmobile}gl-t-rz{/if}" title="{if $vmobile}已通过{else}未通过{/if}手机认证"></i><a href="validate.php?action=mobile">手机</a> &nbsp;{/if}
+{if $MOD[vtruename]}<i class="dt-icon dt-icon-shiming {if $vtruename}gl-t-rz{/if}" title="{if $vtruename}已通过{else}未通过{/if}真实姓名认证"></i><a href="validate.php?action=truename" class="gl-ml-3">实名</a> &nbsp;{/if}
+{if $MOD[vemail]}<i class="dt-icon dt-icon-youjian {if $vemail}gl-t-rz{/if}" title="{if $vemail}已通过{else}未通过{/if}邮件认证认证"></i><a href="validate.php?action=email" class="gl-ml-4">邮件认证</a> &nbsp;{/if}
+{if $MOD[vbank]}<i class="dt-icon dt-icon-yirenzheng {if $vbank}gl-t-rz{/if}" title="{if $vbank}已通过{else}未通过{/if}银行认证"></i><a href="validate.php?action=bank" class="gl-ml-3">银行</a> &nbsp;{/if}
+{if $MOD[vcompany] && $groupid > 5}<i class="dt-icon dt-icon-compute {if $vcompany}gl-t-rz{/if}" title="{if $vcompany}已通过{else}未通过{/if}公司认证"></i><a href="validate.php?action=company" class="gl-ml-3">公司</a> &nbsp;{/if}
+
+</td>
+</tr>
+<tr>
+<td>账户余额</td>
+<td class="sysNotice-info"><span class="my_money">{$AJ[money_sign]}{$my_money}</span> {$AJ[money_unit]}
+	&nbsp;&nbsp;
+	<a href="record.php" class="t">流水</a> <span class="f_gray">&nbsp;|&nbsp;</span> 
+	<a href="cash.php" class="t">提现</a> <span class="f_gray">&nbsp;|&nbsp;</span> 
+	<a href="charge.php?action=pay" target="_blank"><img src="{AJ_STATIC}{$MODULE[2][moduledir]}/image/btn_charge.gif" width="40" height="18" alt="" align="absmiddle"/></a></td>
+</tr>
+<tr>
+<td>{$AJ[credit_name]}</td>
+<td class="sysNotice-info">{$_credit}</td>
+</tr>
+
+<tr>
+<td>保证金</td>
+<td class="sysNotice-info">{$deposit}</td>
+</tr>
+         {if $AJ[sms] && $MG[sms]}           <tr>
+<td>短信余额</td>
+<td class="sysNotice-info">{$_sms}</td>
+</tr>
+
+{/if}
+
+<tr>
+<td>登录时间</td>
+<td class="sysNotice-info">{timetodate($logintime, 5)}{if $AJ[login_log]==2}&nbsp;&nbsp;<a href="record.php?action=login" class="l">登录记录</a>{/if}</td>
+</tr>
+<tr>
+<td>注册时间</td>
+<td class="sysNotice-info">{timetodate($regtime, 5)}</td>
+</tr>
+{if $vip}
+<tr>
+<td>{VIP}级别</td>
+<td class="sysNotice-info"><img src="{AJ_SKIN}image/vip.gif"/> <img src="{AJ_SKIN}image/vip_{$vip}.gif"/> 服务期:{timetodate($fromtime, 3)} 至 {timetodate($totime, 3)}
+剩余时间:<strong>{$havedays}</strong> 天&nbsp;&nbsp;<a href="renew.php" class="l">续费</a>
+</tr>
+{elseif $groupid>4}
+<tr>
+<td>会员升级</td>
+<td class="sysNotice-info"><a href="grade.php"><span class="f_red">立即升级</span></a></td>
+</tr>
+{/if}
+
+</tbody>
+</table>
+<blockquote class="layui-elem-quote title">系统消息<i class="iconfont icon-new1"></i></blockquote>
+<table class="layui-table" lay-skin="line">
+<colgroup>
+<col>
+<col width="110">
+</colgroup>
+<tbody class="hot_news">
+{if $sys}
+		{loop $sys $v}
+		<tr>
+                 <td align="left"><a href="message.php?action=show&itemid={$v[itemid]}" title="{$v[title]}" class="l">{$v[title]}</a></td><td>{timetodate($v[addtime], 3)}</td>
+                 </tr>
+                 {/loop}
+		{else}
+		<tr>&nbsp;暂无消息  </tr>
+		{/if}
+                 
+                 
+                </tbody>
+</table> 
+</div>
+        
+        <div class="sysNotice col">
+<blockquote class="layui-elem-quote layui-elem-title">数据统计</blockquote>
+            <div class="panel-body module-total">
+            <ul>
+                                  	{if $MYMODS || $show_menu}
+	{loop $MENUMODS $k $v}  <li><span>{$MODULE[$v][name]}：<em style="color:#C23531">{get_mnum(get_table($v),$username)}</em></span></li>
+                                   {/loop}{/if}
+             
+           </ul>
+            </div>
+       </div>
+             <script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+ {template 'qiandao', $module}
+        <div class="sysNotice col">
+<blockquote class="layui-elem-quote layui-elem-title">商务便笺</blockquote>
+            <div class="panel-body">
+            <form method="post" action="index.php" onsubmit="return check();">
+            <textarea name="note" id="note" placeholder="可记录一些文字备忘，限5000字" class="layui-textarea">{if $note}{$note}{else}欢迎进入{$AJ[sitename]}{/if}</textarea>
+             <p class="" style="padding:10px 0 0 0;"><input type="submit" name="submit" value="更新便签" class="layui-btn layui-btn-small layui-btn-danger dt-bqbtn"/><span class="layui-text-gray" style="color:#999; font-size:12px; margin-left:10px;">[可记录一些文字备忘，限5000字]</span></p></form>
+            </div>
+            </div>
+</div>
+       
+</div>
+        </div>
+        </div>
+      {template 'footer', $module}

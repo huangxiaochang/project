@@ -1,0 +1,466 @@
+
+body{color:#000;font-family:"Microsoft Yahei",SimSun,sans-serif;}
+.main{
+	position: relative;
+	width: 1000px;
+	margin: 0 auto;
+}
+.header{
+	height: 72px;
+}
+h1,.logo,.logo img{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 150px;
+	height: 45px;
+}
+h1{
+	top: 12px;
+}
+.menu{
+	float: right;
+	padding: 20px 0 0 0;
+}
+.menu a{
+	display: inline-block;
+	width: 100px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	font-size: 16px;
+	margin: 0 9px;
+}
+.menu a:hover{
+	background: #54b3f4;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 3px;
+}
+.show{
+	position: relative;
+	width: 100%;
+}
+.show .main{
+	height: 500px;
+	overflow: hidden;
+}
+.sh_bg{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 500px;
+	background: url(images/mobile/bg.jpg) no-repeat 50% 0;
+	overflow: hidden;
+}
+.sh_bg div{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 400%;
+	height: 500px;
+	background: #000
+}
+.sh_bg u{
+	display: block;
+	float: left;
+	width: 25%;
+	height: 100%;
+	background: url(images/mobile/bg.jpg) no-repeat 50% 0;
+}
+.sh_bg u.bg2{
+	background: url(images/mobile/bg2.jpg) no-repeat 50% 0;
+}
+.sh_bg u.bg3{
+	background: url(images/mobile/bg3.jpg) no-repeat 50% 0;
+}
+.show p{
+	position: absolute;
+	bottom: 9px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 9;
+}
+.show i{
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	overflow: hidden;
+	border-radius: 12px;
+	background: #fff;
+	margin: 0 9px;
+}
+.show i.on{
+	background: #54b3f4
+}
+.d{
+	position: absolute;
+	top: 118px;
+	left: 0;
+	width: 382px;
+	height: 315px;
+	background: url(images/mobile/d.png)!important;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/mobile/d.png');
+	_background-image:none;
+}
+
+#s_a{
+	position: absolute;
+	left: 0;
+	top: 312px;
+	width: 220px;
+	height: 72px;
+	z-index: 9;
+}
+#hand,.hand{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 847px;
+	height: 460px;
+	background: url(images/mobile/hand.png)!important;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/mobile/hand.png');
+	_background-image:none;
+	z-index: 8;
+}
+#hand{
+	bottom: -300px;
+}
+.hand1,.hand2,.hand3{
+	display: none;
+	position: absolute;
+	left: 514px;
+	top: 46px;
+	width: 297px;
+	height: 324px;
+	background: url(images/mobile/hand1.png)!important;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/mobile/hand1.png');
+	_background-image:none;
+}
+.hand2{
+	background: url(images/mobile/hand2.png)!important;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/mobile/hand2.png');
+	_background-image:none;
+}
+.hand3{
+	background: url(images/mobile/hand3.png)!important;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/mobile/hand3.png');
+	_background-image:none;
+}
+#li{
+	overflow: hidden;
+	margin-top: 24px;
+}
+#li a{
+	display: block;
+	position: absolute;
+	top:50%;
+	left: 0;
+	width: 25px;
+	height: 50px;
+	margin: -25px 0 0 0;
+	background:url(images/mobile/turn.png);
+}
+#li a.r{
+	left: auto;
+	right:0;
+	background-position: 25px 0;
+}
+#li a:hover{
+	background-position: 0 50px;
+}
+#li a.r:hover{
+	background-position: 25px 50px;
+}
+.ol{
+	position: relative;
+	width: 920px;
+	height: 200px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+#oli{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 3000px;
+}
+#oli p{
+	_display: inline;
+	position:relative;
+	float: left;
+	width: 200px;
+	margin: 0 40px 0 0;
+	padding: 90px 0 0 0;
+	_zoom:1;
+	color: #999;
+}
+#oli img{
+	position: absolute;
+	top:0;
+	left: 58px;
+	width: 79px;
+	height: 79px;
+}
+#oli b{
+	display: block;
+	text-align: center;
+	font-size: 18px;
+	font-weight: normal;
+	color: #444;
+}
+#al_bg{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 1100px;
+	background: #000;
+	opacity: .4;
+	filter: alpha(opacity=40);
+	z-index: 18;
+}
+#al_b{
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 700px;
+	height: 520px;
+	background: #f6f5f2;
+	margin: -260px 0 0 -350px;
+	z-index: 19;
+	color: #999;
+	font-size: 14px;
+	line-height: 32px;
+}
+.al_m{
+	height: 138px;
+	background: #fff;
+	text-align: center;
+	padding: 62px 0 0 0;
+}
+.al_m span{
+	display: inline-block;
+	width: 74px;
+	height: 138px;
+	margin: 0 88px;
+	background:url(images/mobile/alm.png) no-repeat 0 0;
+	cursor: pointer;
+}
+.al_m a:hover span,.al_m a.on span{
+	background-position: 100% 0
+}
+.al_m span.ios{
+	background-position: 0 100%
+}
+.al_m a:hover span.ios,.al_m a.on span.ios{
+	background-position: 100% 100%
+}
+#al_b .cf{
+	padding: 30px 0 0 0;
+}
+#al_b .fl{
+	width: 172px;
+	height: 200px;
+	text-align: center;
+	margin: 0 0 0 76px;
+	_display: inline;
+}
+#al_b .fl div{
+	width: 172px;
+	height: 200px;
+	background: #fff;
+	border: 1px #dededb solid;
+	border-radius: 3px;
+	box-shadow: 1px 1px 3px #eee;
+}
+#al_b .fr{
+	width: 320px;
+	margin:0 64px 0 0;
+	_display: inline;
+}
+#al_b .fr div{
+	height: 72px;
+	border-bottom: 1px #ddd dashed;
+	margin: 0 0 9px 0;
+}
+#download{
+	margin: 16px 0 0 0;
+}
+#download input{
+	width: 200px;
+	height: 34px;
+	line-height: 34px;
+	vertical-align: middle;
+}
+#download button{
+	width: 96px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	color: #fff;
+	background: #4aceb6;
+	vertical-align: middle;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.al_p{
+	position: relative;
+	display: none;
+}
+.al_p img{
+	position: absolute;
+	top: 68px;
+	left: 99px;
+	width: 128px;
+	height: 128px;
+}
+.al_p a{
+	display: block;
+	position: absolute;
+	top: 70px;
+	left: 316px;
+	width: 146px;
+	height: 46px;
+	background: url(images/mobile/and.png);
+}
+.al_p a.i{
+	background: url(images/mobile/ios.png);
+}
+#al_c{
+	display: block;
+	position: absolute;
+	top: -13px;
+	right: -13px;
+	width: 26px;
+	height: 26px;
+	background: url(images/mobile/c.gif);
+}
+#al_c:hover{
+	background: url(images/mobile/c_h.gif);
+}
+.web .show{
+	height: 500px;
+	background: url(images/mobile/wbg.jpg) no-repeat 50% 0;
+	border-bottom: 9px #0b75b1 solid;
+}
+.web .d{
+	width: 361px;
+	height: 314px;
+	background: url(images/mobile/web_h.png) no-repeat 0 0!important;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/mobile/web_h.png');
+	_background-image:none;
+}
+.web .d img{
+	position: absolute;
+	top: 200px;
+	left: 16px;
+	width: 100px;
+	height: 100px;
+}
+
+.web .e img{
+	position: absolute;
+	top: 320px;
+	left: 180px;
+	width: 100px;
+	height: 100px;
+	background: url(images/mobile/web_d.png) no-repeat 0 0!important;
+}
+.web .e p{
+	bottom: 50px;
+	left: 196px;
+	text-align: left;
+	font-size: 14px;
+	line-height: 36px;
+	color: #fff;
+}
+.web .f img{
+	position: absolute;
+	top: 320px;
+	left: 330px;
+	width: 100px;
+	height: 100px;
+}
+.web .f p{
+	bottom: 50px;
+	left: 345px;
+	text-align: left;
+	font-size: 14px;
+	line-height: 36px;
+	color: #fff;
+}
+.web .d p{
+	bottom: -30px;
+	left: 40px;
+	text-align: left;
+	font-size: 14px;
+	line-height: 36px;
+	color: #fff;
+}
+.web .d p a{
+	color: #fff;
+	font-size: 24px;
+}
+
+
+
+
+.web #hand{
+	bottom: -70px;
+	right: 60px;
+	width: 479px;
+	height: 611px;
+	background: url(images/mobile/web_hand.png) no-repeat 0 0!important;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/mobile/web_hand.png');
+	_background-image:none;
+}
+.web .hand1, .web .hand2, .web .hand3, .web .hand4{
+	position: absolute;
+	top: 151px;
+	left: 118px;
+	display: block;
+	width: 162px;
+	height: 276px;
+	background: url(images/mobile/web_h1.png) no-repeat 0 0!important;
+	filter:none;
+}
+.web .hand2{
+	background: url(images/mobile/web_h2.png) no-repeat 0 0!important;
+}
+.web .hand3{
+	background: url(images/mobile/web_h3.png) no-repeat 0 0!important;
+}
+.web .hand4{
+	background: url(images/mobile/web_h4.png) no-repeat 0 0!important;
+}
+.web #li{
+	margin: 0 auto;
+}
+.web #hand_i{
+	display: none
+}
+.web #oli p{
+	width: 130px;
+	height: 80px;
+	margin: 0 20px 0 0;
+	padding: 40px 15px 0 70px;
+	border-right: 1px #0b75b1 solid;
+	zoom:1;
+}
+.web #oli p b{
+	text-align: left;
+}
+.web #oli p i{
+	position: absolute;
+	left: 0;
+	top:24px;
+	font-size: 56px;
+	line-height: 88px;
+	color: #0b75b1;
+}

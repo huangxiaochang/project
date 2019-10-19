@@ -1,0 +1,43 @@
+<?php
+defined('IN_AIJIACMS') or exit('Access Denied');
+
+$CFG['database'] = 'mysqli';
+$CFG['pconnect'] = '0';
+$CFG['db_host'] = 'localhost';
+$CFG['db_name'] = 'fptok';
+$CFG['db_user'] = 'fptok_com';
+$CFG['db_pass'] = 'jHMHKPyKAFNhxY5E';
+$CFG['db_charset'] = 'utf8';
+$CFG['db_expires'] = '0';
+$CFG['tb_pre'] = 'aijiacms_';
+$CFG['charset'] = 'utf-8';
+$CFG['url'] = 'https://www.fptok.com/';
+$CFG['com_domain'] = '';
+$CFG['com_dir'] = '1';
+$CFG['com_rewrite'] = '0';
+$CFG['com_vip'] = 'VIP';
+$CFG['file_mod'] = 0777;
+$CFG['cache'] = 'file';
+$CFG['cache_pre'] = 'cve_';
+$CFG['cache_dir'] = '';
+$CFG['tag_expires'] = '0';
+$CFG['template_refresh'] = '1';
+$CFG['cookie_domain'] = '.fptok.com';
+$CFG['cookie_path'] = '/';
+$CFG['cookie_pre'] = 'Doo_';
+$CFG['session'] = 'file';
+$CFG['editor'] = 'ueditor';
+$CFG['timezone'] = 'Etc/GMT-8';
+$CFG['timediff'] = '0';
+$CFG['skin'] = 'default';
+$CFG['template'] = 'default';
+$CFG['language'] = 'zh-cn';
+$CFG['authadmin'] = 'session';
+$CFG['authkey'] = '4ppOoKJtWbEeYUUY';
+$CFG['static'] = '';
+$CFG['cloud_uid'] = '';
+$CFG['cloud_key'] = '';
+$CFG['edittpl'] = '1';
+$CFG['executesql'] = '1';
+$CFG['founderid'] = '1';
+?>

@@ -1,0 +1,227 @@
+{template 'header_member', 'mobile'}
+{template 'cssjs', 'mobile'}
+
+<header class="aui-bar aui-bar-nav aui-bar-info" id="aui-header">
+        <a class="aui-btn aui-bar-info aui-pull-left" href="{if $action == ''}{$MYURL}?action=info{else}javascript:history.go(-1);{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+    {if $action=='add'}
+{else}
+    <a href="{$MUSER}?mid={$mid}&action=add" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add fz14">添加</span>
+    </a>
+    {/if}
+</header>
+<div class="aui-bar-fix"></div>
+{if $action=='add' || $action == 'edit'}
+{else}
+<div class="aui-content">
+<div class="aui-tab" id="aui-tab">
+        <ul class="aui-tab-nav" id="sell_info">
+            <li id="tabbar3"><a href="{$MUSER}?mid={$mid}status=3">已发布<span class="aui-badge aui-badge-info">{$nums[3]}</span></a></li>
+            <li id="tabbar2"><a href="{$MUSER}?mid={$mid}&status=2">审核中<span class="aui-badge aui-badge-info">{$nums[2]}</span></a></li>
+            <li id="tabbar1"><a href="{$MUSER}?mid={$mid}&status=1">未通过<span class="aui-badge aui-badge-info">{$nums[1]}</span></a></li>
+        </ul>
+</div>
+</div>
+{/if}
+<span id="msg"></span>
+{if $action=='add' || $action == 'edit'}
+<div class="aui-content">
+<form id="sell-form" class="fromset">
+	<input type="hidden" name="action" value="{$action}"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<input type="hidden" name="ok" value="1"/>
+    <input type="hidden" name="post[typeid]" value="0"/>
+    <p class="aui-padded-10 aui-text-center"><span class="aui-text-red">红色为</span>必填信息</p>
+        <div class="aui-form">
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">分类</span>
+                {ajax_category_select('post[catid]', '选择分类', $catid, $moduleid, 'size="1"')}
+            </div>   
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">{$MOD[name]}名称</span>
+                <input type="text" name="post[title]" id="title" class="aui-input" value="{$title}" placeholder="{$MOD[name]}名称"/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">主要参数</span>
+                <div class="aui-pull-left"><input name="post[n1]" type="text" size="10" value="{$n1}" class="aui-inputb aui-bfb30 aui-ml-15" placeholder="参数名称" id="n1"/>&nbsp;<input name="post[v1]" type="number" size="10" value="{$v1}" id="v1" class="aui-inputb aui-bfb40" placeholder="参数值"/></div>
+                <div class="aui-pull-left"><input name="post[n2]" type="text" size="10" value="{$n2}" class="aui-inputb aui-bfb30 aui-ml-15" placeholder="参数名称" id="n2"/>&nbsp;<input name="post[v2]" type="number" size="10" value="{$v2}" id="v2" class="aui-inputb aui-bfb40" placeholder="参数值"/></div>
+                <div class="aui-pull-left"><input name="post[n3]" type="text" size="10" value="{$n3}" class="aui-inputb aui-bfb30 aui-ml-15" placeholder="参数名称" id="n3"/>&nbsp;<input name="post[v3]" type="number" size="10" value="{$v3}" id="v3" class="aui-inputb aui-bfb40" placeholder="参数值"/></div>
+                <div class="aui-pull-left fz12 aui-ml-15">例如：规格 10cm*20cm</div>
+            </div>
+{template 'm_fields', 'mobile'}
+            <script src="user/dist/lrz.bundle.js"></script>
+            <div class="aui-input-row">
+
+                <span class="aui-input-addon">图片</span>
+                <div class="pic-list baguetteBoxOne gallery" id="imgslist">
+                {if $thumb}<li><a href="{$thumb}"><img src="{$thumb}"></a></li>{/if}
+                {if $thumb1}<li><a href="{$thumb1}"><img src="{$thumb1}"></a></li>{/if}
+                {if $thumb2}<li><a href="{$thumb2}"><img src="{$thumb2}"></a></li>{/if}
+				<li id="addpic"><img src="image/add.jpg"></li>				
+			</div>
+                    <input accept="image/*" type="file" id="uploadimg" multiple/>
+<div class="aui-upprogress aui-text-center displaynone" id="uploading"><svg id="container"></svg></div></div>
+<script>
+var moduleid = {$mid};
+var thumb_width = {$MOD['thumb_width']};
+var thumb_height = {$MOD['thumb_height']};
+$(function(){
+	{if $action == 'edit'}
+	$('#imgslist li:not(#addpic)').each(function() {
+	addPress($(this));
+	});
+    baguetteBox.run('.baguetteBoxOne');
+	//$('#imgslist li:not(#addpic)').touchTouch();
+	{/if}
+});
+</script>
+<script type="text/javascript" id="uploadjs" src="script/upload.js" data="{$mid}"></script>
+
+{template 'wang', 'mobile'}
+<script type="text/javascript">
+$(function() {
+	"use strict";
+
+	$('#content-e').artEditor({
+		 artmid: '{$mid}',
+		imgTar: '#artUpload',
+		limitSize: 8,   // 兆
+		showServer: false,
+		uploadUrl: 'br',
+		data: {},
+		uploadField: 'image',
+		placeholader: '详细内容',
+		validHtml: '',
+		uploadSuccess: function(res) {
+			// return img url
+			return res.path;
+		},
+		uploadError: function(res) {
+			// something error
+			console.log(res);
+		}
+	});
+});
+</script>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">过期时间</span>
+                {template 'thedata', 'mobile'}
+            </div>
+            <div class="aui-btn-row" id="btn-main" onclick="Daddr();">
+                <div class="aui-btn aui-btn-info fz16" style="width:90%;" id="btn-submit">确认</div>
+            </div>
+
+        </div>
+</form>
+    </div>
+<script type="text/javascript">
+function showother() {
+        var $show = $('#otherinfo');
+        if ($show.hasClass('displaynone')) {
+            $show.removeClass('displaynone'); 
+        } else {
+            $show.addClass('displaynone');
+        }
+    }
+	
+function Daddr() {
+	var arrImgs = [];
+   $('#imgslist li:not(#addpic)').each(function() {
+   // 将图片追加到数组中
+   arrImgs.push($(this).find("img").attr("src"));
+   });
+	var len;
+	len = Dd('title').value.length;
+	if(len < 2 || len > 30) {
+		laymsg('信息标题应为2-30字，当前已输入'+len+'字');
+		return false;
+	}
+	len = Dd('catid_1').value;
+	if(len == 0) {
+		laymsg('请选择分类');
+		return false;
+	}
+	
+
+	var edittext=$.trim($("#content-e").text());
+    var len = edittext.length;
+	if(len < 5) {
+		//laymsg('请输入详细内容');
+		//return false;
+	}
+	if(len > 2000) {
+		laymsg('输入这么多字累了吧亲');
+		return false;
+	}
+
+	var exitcon = $('#content-e').getValue();
+	$("#content").attr('value',exitcon);
+
+	$("#btn-submit").text("正在处理...");
+	$("#btn-main").removeAttr("onclick");
+	setTimeout(function () {
+        $("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("提 交");
+    }, 5000);
+    $.post('{$MUSER}?mid={$mid}&thumbs='+arrImgs+'', $('#sell-form').serialize(), function(data) {
+		if(data.error == 'ok') {
+			{if $action=='add'}laymsg('添加成功');{else}laymsg('修改成功');{/if}
+			setTimeout(function() {
+				if(data.path){
+				Go(data.path);
+				}else{
+				Go('{$MUSER}?mid={$mid}');	
+					}
+			}, 1000);
+		} else {
+			laymsg(data.error);
+		}
+	},'json');
+}
+
+</script>
+{else}
+{if $lists}
+<form method="post">
+{template 'm_batch', 'mobile'}
+<ul class="aui-list-view aui-in" id="sell_list">
+{loop $lists $t}
+<li id="{$t[itemid]}">
+<div class="aui-list-view-cell aui-img drop-div">
+<input class="aui-pull-left aui-checkbox displaynone" type="checkbox" id="itemids" name="itemid" value="{$t[itemid]}">
+                <div class="aui-img-body aui-pull-left">
+                    <a href="{$t[linkurl]}">{dsubstr($t[title], 20)}</a>
+                    <p class="aui-ellipsis-1 fz12"><span class="aui-pull-left aui-max-w80 Dt-text-ellipsis">{$t[catname]}</span>&nbsp;<span class="aui-mr-5"><i class="aui-iconfont aui-icon-attentionfill aui-text-gray"></i>{$t[hits]}</span><span class="aui-mr-5"><i class="aui-iconfont aui-icon-time aui-text-gray"></i>{timetodate($t[edittime], 4)}</span></p>
+                </div>
+                </div>
+  <div class="hidden-menu">
+    <p class="two"><a href="{$MURL}{$MUSER}?mid={$mid}&action=edit&itemid={$t[itemid]}">修改</a></p>
+    <p class="one" onclick="delitemid({$mid},{$t[itemid]});">删除</p>
+    
+  </div>
+                
+</li>
+
+{/loop}
+</ul>
+</form>
+{if $pages}<div class="pages">{$pages}</div>{/if}
+{else}
+<ul class="aui-list-view">
+<li class="aui-list-view-cell aui-img">
+                <div class="aui-img-body aui-pull-left">
+                    <p class="aui-ellipsis-1">暂无信息</p>
+                </div>
+</li>
+</ul>
+
+{/if}
+</div>
+
+<script type="text/javascript" src="script/addpan.js" charset="utf-8"></script>
+{/if}
+<script type="text/javascript">tabbar('tabbar{$status}');</script>
+{template 'footer_member', 'mobile'}

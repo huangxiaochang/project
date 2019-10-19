@@ -1,0 +1,259 @@
+	<style type="text/css">
+	.side-mask {position:fixed;z-index:98;left:0;top:0;right:0;width:100%;height:100%;overflow:hidden;background:#000000;opacity:0.01;display:none;}
+		.slideout-menu {
+		  position: fixed;
+		  left: 0;
+		  top: 0;
+		  bottom: 0;
+		  right: 0;
+		  z-index: 0;
+		  width: 256px;
+		  overflow-y: auto;
+		  -webkit-overflow-scrolling: touch;
+		  display: none;
+		}
+
+		.slideout-panel {
+		  position:relative;
+		  z-index: 1;
+		}
+
+		.slideout-open,
+		.slideout-open body,
+		.slideout-open .slideout-panel {
+		  overflow: hidden;
+		}
+
+		.slideout-open .slideout-menu {
+		  display: block;
+		}
+.menu {
+  background-color: #fff;
+  -webkit-box-shadow:-5px 0 10px #E1E1E1 inset;
+  -moz-box-shadow:-5px 0 10px #E1E1E1 inset;
+  box-shadow:-5px 0 10px #E1E1E1 inset;
+  z-index: 999;
+}
+
+a {
+  color: #4B5;
+  text-decoration: none;
+}
+
+.menu a {
+  color: #fff;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu-header {
+  border-bottom: 1px solid #EEE;
+  padding: 10px 0 10px 10px;
+  margin-right:5px;
+  text-align:center;
+}
+.menu-header img {
+	display:block;
+	width: 50px;
+	height:50px;
+	border-radius: 50%;
+	border:#999 1px solid;
+	margin: 0px auto 10px auto;
+}
+
+.menu-header-title {
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color:#999;
+}
+
+.menu-section {
+  margin: 25px 0;
+}
+
+.menu-section-title {
+  text-transform: uppercase;
+  color: #85888d;
+  font-weight: 200;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 0 20px;
+  margin:0;
+}
+
+.menu-section-list {
+  padding:0;
+  margin: 10px 0;
+  list-style:none;
+}
+
+.menu-section-list a {
+  display: block;
+  padding: 10px 20px;
+  color:#333;
+}
+
+.menu-section-list a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.panel {
+  text-align: center;
+  padding-top: 5px;
+  min-height: 100%;
+}
+
+/**
+ * Header
+ */
+.panel-header {
+  margin: 85px auto 55px;
+}
+
+.title {
+  font-size: 3.2em;
+  line-height: 1em;
+  margin: 0 0 15px;
+  color: #4B5;
+  font-weight: 400;
+  padding-top: 82px;
+  background: url('../images/mango-logo.png') no-repeat center top;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 1.3em;
+  line-height: 1.2em;
+  margin:0 0 45px 0;
+  color: #767676;
+}
+
+/**
+ * Slideout module styles
+ */
+
+.menu,
+.slideout-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  width: 256px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+}
+
+.panel,
+.slideout-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.slideout-open,
+.slideout-open body {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
+
+/* Animation
+---------------------------------- */
+@-webkit-keyframes shake {
+  0%, 100% {
+    -webkit-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+
+  50% {
+    -webkit-transform:translate3d(-10px, 0, 0);
+    transform:translate3d(-10px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    -webkit-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
+  }
+
+  50% {
+    -webkit-transform:translate3d(-10px, 0, 0);
+    transform:translate3d(-10px, 0, 0);
+  }
+}
+
+.shake {
+  -webkit-animation-name:shake;
+  animation-name:shake;
+  -webkit-animation-duration:2s;
+  animation-duration:2s;
+  -webkit-animation-iteration-count: 4;
+  animation-iteration-count: 4;
+}
+	</style>
+	<nav id="menu" class="menu">
+        <header class="menu-header">
+        <img src="{useravatar($_username, 'large')}" width="50" height="50" class="menu_avatar" />
+          <span class="menu-header-title">{$_truename}</span>
+        </header>
+
+      <section class="menu-section">
+        <h3 class="menu-section-title">快捷菜单</h3>
+        <ul class="menu-section-list">
+          <li><a href="user.php?mid=5&action=add">二手房添加</a></li>
+          <li><a href="user.php?mid=7&action=add">租房添加</a></li>
+          <li><a href="user.php?mid=8&action=add">资讯添加</a></li>
+        
+        </ul>
+      </section>
+
+      <section class="menu-section">
+        <h3 class="menu-section-title">其他项目</h3>
+        <ul class="menu-section-list">
+          <li><a href="index.php">首页</a></li>
+          <li><a href="channel.php">频道</a></li>
+          <li><a href="logout.php">退出后台</a></li>
+        </ul>
+      </section>
+    </nav>
+	<script type="text/javascript" src="layer/slideout.min.js"></script>
+	<script type="text/javascript">
+		var slideout = new Slideout({
+	        'panel': document.getElementById('page'),
+	        'menu': document.getElementById('menu'),
+	        'padding': 256,
+	        'tolerance': 70,
+			'touch': false,
+	      });
+slideout.on('open', function() {
+	$('.side-mask').fadeIn('fast');
+
+});
+slideout.on('close', function() {
+	$('.side-mask').fadeOut('fast');
+
+});
+
+document.querySelector('.slidemenu').addEventListener('click', function() {
+	        slideout.toggle();
+	      });
+document.querySelector('#slidemenus').addEventListener('click', function() {
+	        slideout.toggle();
+	      });
+
+document.querySelector('.menu').addEventListener('click', function(eve) {
+	        if (eve.target.nodeName === 'A') { slideout.close();}
+	      });
+$('.side-mask').click(function (event) {
+	slideout.close();
+                });
+</script>

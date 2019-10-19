@@ -1,0 +1,77 @@
+{template 'header'}
+<div class="m">
+	<table cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+	<td valign="top" class="left_menu">
+		<ul>
+		<li class="left_menu_li"><a href="{$MODULE[1][linkurl]}">网站首页</a></li>
+		<li class="left_menu_li" id="type_0"><a href="./">公告中心</a></li>
+		{loop $TYPE $t}
+		<li class="left_menu_li" id="type_{$t[typeid]}"><a href="{rewrite('index.php?typeid='.$t['typeid'])}">{$t[typename]}</a></li>
+		{/loop}
+		</ul>
+	</td>
+	<td valign="top">
+		<div class="left_box">		
+			<div class="pos">
+			当前位置: <a href="{$MODULE[1][linkurl]}">首页</a> &raquo; <a href="./">公告中心</a>
+			</div>
+
+			<div class='pos' style="">
+			<span class="f_r1">
+			<form action="index.php">
+			<div class="hs_b" style="border: 0px; padding: 0px">
+			<div class="cf" style="width: 1028px;">
+
+<input type="text" name="kw"  style="width:200px" size="20" value="{if $kw}{$kw}{else}公告档案{/if}" onfocus="if(this.value=='公告档案')this.value='';" id="an_kw"/>&nbsp;
+			<input type="submit" value=" 搜索 " class="btn" style="background: red;" onclick="if(Dd('an_kw').value=='关键词' || Dd('an_kw').value.length<2){Dd('an_kw').focus();return false;}"/>
+			<input type="button" value=" 重搜 " class="btn" style="background: grey;" onclick="window.location='./';"/>
+			<span>搜索：</span>
+			<p id="hs_area" style="width: 1028px ;" ><span>区域：</span>
+			<a href="javascript:" class="hs_hide"><u class="hs_mo">更多</u><u class="hs_le">收起</u></a>
+			<a {if empty($areaid)}class="c"{/if} href="{$MODULE[1][linkurl]}announce/list{deal_str($lst,'r')}.html">全部</a>
+			{loop $mainarea $k $v}<a {if $areaid==$v[areaid]}class="c"{/if} href="{$MODULE[1][linkurl]}announce/list-r{$v[areaid]}{deal_str($lst,'r')}.html">{$v[areaname]}</a>{/loop}	
+			{if $areaid}
+			</p>   
+
+			<span class="i" style="display:none">
+			<a {if empty($bid)}class="c"{/if} href="{$MODULE[1][linkurl]}announce/list{deal_str($lst,'b')}.html">全部</a>
+			{php $mainareas = get_mainarea($areaid)}
+			{loop $mainareas $k $v}
+			<a {if $bid==$v[areaid]}class="c"{/if} href="{$MODULE[1][linkurl]}announce/list-b{$v[areaid]}{deal_str($lst,'b')}.html">{$v[areaname]}</a>{/loop}	</span>{/if}  </p>       
+			</div>	
+			
+			</form>
+			</span>
+			</div>	
+			</div>
+
+			{if $itemid}
+			<div style="margin:5px 15px 5px 15px;line-height:36px;" class="t_c px14"><strong>{$title}</strong></div>
+			<div class="info f_gray"><span class="f_r"><script type="text/javascript">addFav('[收藏]');</script>&nbsp;<span class="jt" onclick="Print();">[打印]</span></span>添加时间：{$adddate}&nbsp;&nbsp;&nbsp;有效期：{$fromdate} 至 {$todate}&nbsp;&nbsp;&nbsp;浏览次数：<span id="hits">{$hits}</span></div>
+			<div class="content" id="content">{$content}</div>
+			{else}
+			<div class="b10">&nbsp;</div>
+			<table cellpadding="3" cellspacing="3" width="98%" align="center">
+			{loop $lists $k $v}
+			<tr>
+			<td>&middot; {if !$typeid}<a href="{rewrite('index.php?typeid='.$v['typeid'])}">[{$v[typename]}]</a>&nbsp;{/if}<a href="{$v[linkurl]}"{if $v[islink]} target="_blank"{/if}>{$v[title]}</a></td>
+			<td class="f_gray" width="120">浏览:{$v[hits]}</td>
+			<td class="f_gray" width="120" align="center">{$v[adddate]}</td>
+			</tr>
+			{/loop}
+			</table>
+			<div class="pages">{$pages}</div>
+			{/if}
+		<br/>
+		</div>
+	</td>
+	</tr>
+	</table>
+</div>
+<script type="text/javascript">try{Dd('type_{$typeid}').className='left_menu_on';}catch(e){}</script>
+
+
+
+
+{template 'footer'}

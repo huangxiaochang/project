@@ -1,0 +1,21 @@
+{template 'header'}
+<div id="main">
+  <div class="abct_">
+    <div class="c1_">已有<b>115</b>人申请</div>
+    <div class="c2_">已有<b>22</b>人申请</div>
+    <div class="c3_">已有<b>65</b>人申请</div>
+    <div class="c4_"><a href="{$MODULE[2][linkurl]}my.php?mid=13&action=add" target="_blank">点击免费申请</a>至今已帮<b>500</b>家业主服务</div>
+  </div>
+  <div class="zxTitle">
+    <ul>
+      <li><a href="{$MODULE[13][linkurl]}">全部</a></li>
+      {php $maincat = get_maincat(0,13)}
+      {loop $maincat $k $v}
+      <li><a href='{$MODULE[13][linkurl]}list-{$v[catid]}.html' class="{if $v[catid]==$catid}cur{/if}">{$v[catname]}</a></li>  {/loop} 
+    </ul>
+  </div>
+  <div class="zxList">
+    {if $tags}{template 'list-'.$module, 'tag'}{/if}
+  </div>
+</div>
+{template 'footer'}

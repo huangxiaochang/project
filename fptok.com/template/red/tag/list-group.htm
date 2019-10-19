@@ -1,0 +1,67 @@
+{loop $tags $i $t}
+ <div class="item">
+                <div class="image">
+                    <a href="{$t[linkurl]}" target="_blank">
+                        <img src="{$t[thumb]}">
+                        <span class="time timer" >
+                         <span id="totimer{$i}" class="pri-txt">
+                         {timetodate($t[totime], 'Y年n月j日 H:i')}</span>
+			<script type="text/javascript">
+		var totime{$i} = new Date({timetodate($t['totime'], 'Y,').(timetodate($t['totime'], 'n')-1).timetodate($t['totime'], ',j,H,i,s')}).getTime();
+		function _totimer{$i}() {
+			var t = new Date();
+			var s = Math.floor((totime{$i} - t.getTime())/1000);
+			var h = '';
+			var i;
+			if(s > 0) {
+				i = Math.floor(s/86400);	
+				h += '剩余：<span>'+i+'</span>天';
+				s = Math.floor(s%86400);
+				i = Math.floor(s/3600);	
+				h += '<span>'+i+'</span>时';
+				s = Math.floor(s%3600);	
+				i = Math.floor(s/60);			
+				h += '<span>'+i+'</span>分';
+				s = Math.floor(s%60);
+				h += '<span>'+s+'</span>秒';
+			} else {
+				h = '<span class="f_red">活动已结束</span>';
+			}
+			Dd('totimer{$i}').innerHTML = h;
+		}
+		_totimer{$i}();
+		setInterval("_totimer{$i}()", 1000); 
+		</script>
+                        </span>
+                    </a>
+                </div>
+                <div class="info">
+                    <div class="title"><a href="{$t[linkurl]}" target="_blank">{$t[housename]}</a><span class="state on">{if $t[process] == 0 || $t[process] == 1 || $t[process] == 2}团购中{else}团购结束{/if}</span></div><br>
+                    <div class="address">
+                      {dsubstr($t[introduce], 40, $suffix = '..')}                                 </div>
+                       <br>
+                    <div class="tel">{$t[title]}</div>
+                    <div class="tag">
+                            <a href="{$t[linkurl]}">{$t[housename]}</a>                        </div>                </div>
+                <div class="other">
+                    <div class="tuan-info">{$t[price]}</div>
+                    <div class="num"><span>{$t[orders]}</span>人已报名 </div>
+                    <div class="btn">
+                        <a href="{$t[linkurl]}" class="tuan-app-link dialog-btn loupan-btn-buy"  title="团购报名">立即报名</a>
+                    </div>
+                </div>
+                <div class="clearit"></div>
+                </div>
+
+{/loop}
+{if $showpage && $pages}
+ <div class="page">
+    <table border="0" cellpadding="1" cellspacing="5">
+  <tbody><tr>
+    <td class="align_c">
+	{$pages}
+	</td>
+  </tr>
+</tbody></table> 
+ </div>
+{/if}

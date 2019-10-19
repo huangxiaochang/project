@@ -1,0 +1,139 @@
+{template 'header_member', 'mobile'}
+{template 'othercss', 'mobile'}
+<style>
+.paytype { margin: 10px 0;}
+.aui-list-view .aui-img-object {
+	max-width: 50px;
+	height: 50px;
+	line-height: 50px;
+}
+.aui-btn-row:after {
+	border-bottom: 0px !important;
+}
+</style>
+<header class="aui-bar aui-bar-nav aui-bar-danger" id="aui-header">
+        <a class="aui-btn aui-btn-danger aui-pull-left" href="{if $action}javascript:history.go(-1);{else}my.php{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+            <a href="my.php" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-my fz14">我的</span>
+    </a>
+
+</header>
+<div class="aui-bar-fix"></div>
+<div class="aui-content">
+			<div class="bbs-wrapper">
+				<div id="scroller">
+					<ul>
+            <li id="action_add"><a href="?action=add">增加资金</a></li>
+            <li id="action"><a href="?action=index">保证金记录</a></li>
+					</ul>
+				</div>
+			</div>
+</div>
+
+{if $action == 'add'}
+<style>
+.aui-input-row {
+    padding: 0;
+	font-size:16px !important;
+}
+.dt-list-input { padding: 6px 15px !important;}
+.aui-input-row .aui-input-addon { padding: 0;}
+.aui-input-row:first-child:after { border:0 !important;}
+.aui-input-row:after { border:0 !important;}
+</style>
+
+<form method="post" action="?" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="num" id="num" value="1"/>
+
+    <div class="aui-content">
+    <ul class="aui-list-view">
+        <li class="aui-list-view-cell">
+            <span class="aui-pull-left aui-mr-10">账户余额</span><span class="aui-pull-left"><span class="aui-text-red">{$_money}</span>&nbsp;&nbsp;{$AJ[money_unit]}</span>
+        </li>
+        <li class="aui-list-view-cell">
+            <span class="aui-pull-left aui-mr-10">增资金额</span><span class="aui-pull-left"><div class="aui-counter">
+                        <div class="aui-counter-minus aui-disabled" onclick="alter('-')"></div>
+                        <input class="aui-counter-input" type="text" value="{$amount}" id="amount">
+                        <div class="aui-counter-plus" onclick="alter('+')"></div>
+                    </div></span>
+        </li>
+        <li class="aui-list-view-cell dt-list-input" id="payword" style="display:none;">
+            <div class="aui-input-row">
+                <span class="aui-input-addon fz16">支付密码</span>
+                <input type="password" name="password" id="password" class="aui-input fz16" {if isset($password)} value="{$password}"{/if} placeholder="支付密码"/>
+            </div>
+        </li>
+        <li class="aui-list-view-cell aui-mb-15 aui-text-center"><span class="aui-text-center">
+		<input type="submit" name="submit" value=" 确 定 " class="aui-btn aui-btn-danger" style="width:30%;"/>
+</span>
+        </li>
+        </ul>
+        </div>
+<script type="text/javascript">
+function alter(t) {
+	var num = parseInt(Dd('num').value);
+	if(t == '+') {
+		num++;
+	} else {
+		if(num == 1) return;
+		num--;
+	}
+	Dd('amount').value =  parseFloat(num*{$MOD[deposit]});
+	Dd('num').value = num;
+}
+function check() {
+	if(Dd('amount').value > {$_money}) {
+		Go('charge.php?action=pay&reason=deposit|'+Dd('num').value+'&amount='+(Dd('amount').value - {$_money}));
+		return false;
+	}
+	var f,l;
+	f = 'password';
+	l = Dd(f).value.length;
+	if(l < 6) {
+		laymsg('请填写支付密码', f);
+		return false;
+	}
+	return true;
+}
+window.setInterval(
+	function() {
+		Dd('amount').value > {$_money} ? Dh('payword') : Ds('payword');
+	}, 
+500);
+</script>
+<script type="text/javascript">tabbar('action_add');</script>
+{else}
+<div class="aui-content">
+<ul class="aui-list-view">
+  <li class="aui-list-view-cell">
+  <div class="aui-money-title">已增资：<span class="aui-text-danger" id="cmoneys">{$amount}</span>&nbsp;&nbsp;{$AJ[money_unit]}</div>
+  <div class="aui-pull-right"></div>
+</li>
+</ul>
+
+  <ul class="aui-list-view">
+  <li class="aui-list-view-cell"><span class="aui-text-money">增资记录</span><div class="my_title_right fz14">操作人&nbsp;&nbsp;日期</div>
+    </li>
+  </ul>
+
+<ul class="aui-list-view">
+{loop $lists $k $v}
+					<li class="aui-list-view-cell aui-padded-style">
+                <div class="aui-img-body aui-pull-right">
+                    <p class="aui-ellipsis-2"><span>{$v[editor]}--{$v[reason]}</span>&nbsp;&nbsp;{$v[addtime]}</p>
+                </div>
+                <span class="aui-credits-left fz18 aui-text-red">{$v[amount]}</span>
+            </li>
+{/loop}
+</ul>
+<div class="pages">{$pages}</div>
+<div id="loading_page" class="aui-padded-10"></div>
+</div>
+
+<script type="text/javascript">s('charge');tabbar('action');</script>
+{/if}
+{template 'footer_member', 'mobile'}

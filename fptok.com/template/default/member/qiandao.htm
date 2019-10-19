@@ -1,0 +1,79 @@
+<style>
+/*今日签到*/
+.singer{ float:left; border:0px solid #DCDBDB;padding:10px 5px 10px 0;height:45px;line-height:45px;width:280px;margin:0px 0 20px 20px;}
+.singer_l_cont, .singer_r_r{float:left;}
+.singer_l_cont{width:130px;background:url(image/sing_per.gif) no-repeat left 12px;text-indent:23px;font-size:12px;}
+.singer_r_img{display:block;width:114px;height:52px;background:url(image/sing_week.gif) right 2px no-repeat;vertical-align:middle;float:left;*margin-bottom:-10px;}
+.singer_r_img:hover{background-position:right -53px;text-decoration:none;}
+.singer_r_img span{margin-left:14px;font-size:16px;font-family:'Hiragino Sans GB','Microsoft YaHei',sans-serif !important;font-weight:700;color:#165379;}
+.singer_r_img.current{background:url(image/sing_sing.gif) no-repeat 0 2px;}
+</style>
+<!--{php $qd=$db->get_one("SELECT itemid,addtime FROM ".$AJ_PRE."qiandao WHERE userid=$_userid order by itemid desc");}-->
+
+<div class="singer">
+		<div class="singer_l_cont">
+			<span>每天签到领取积分</span>
+		</div>
+		<div class="singer_r_r">
+			<a class="singer_r_img" onclick="qiandao();">		
+				<span id="sing_for_number"></span>
+			</a>
+		</div>
+</div><!--singer end-->
+<script type="text/javascript">
+/*签到模块日期捕捉：*/
+function week(){
+	var objDate= new Date();
+	var week = objDate.getDay();
+	switch(week)
+		{
+			case 0:
+			week="周日";
+			break;
+			case 1:
+			week="周一";
+			break;
+			case 2:
+			week="周二";
+			break;
+			case 3:
+			week="周三";
+			break;
+			case 4:
+			week="周四";
+			break;
+			case 5:
+			week="周五";
+			break;
+			case 6:
+			week="周六";
+			break;
+		}
+	$("#sing_for_number").html( week );
+}
+
+$(document).ready(function(){
+	week();
+	//$(".singer_r_img").click(function(){
+		//$(this).addClass("current");
+	//})
+})
+</script>
+<script type="text/javascript">
+	{if timetodate($qd['addtime'], 3)== timetodate($AJ_TIME, 3) && $qd['addtime']}
+	$(".singer_r_img").addClass("current");
+	$(".singer_r_img").removeAttr("onclick");
+	{else}
+	{/if}
+		function qiandao(){
+		 $.post("qiandao.php", { action: "add"},function(data){
+     	 if(data.error == 'ok') {
+		 alert('签到成功！连续签到'+data.signday+'天获得'+data.signget+'积分！');
+		$(".singer_r_img").addClass("current");
+		} else {
+		 alert(data.error);
+		}
+	},'json');
+	
+	};
+</script>

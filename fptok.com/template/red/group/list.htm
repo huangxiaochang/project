@@ -1,0 +1,64 @@
+{template 'header'}
+
+<div class="wrapper">
+    <div class="location house-location"><i></i><a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a><span>»</span><strong>{$MOD[name]}</strong></div>
+    <div class="tuan-process">
+        <div class="ptitle cBlue">享受优惠<br>仅需三步</div>
+        <div class="psteps">
+            <span class="ico n1"></span>
+            <h3>提交团购申请</h3>
+            <span>无需线上支付保证资金安全</span>
+        </div>
+        <div class="psteps">
+            <span class="ico n2"></span>
+            <h3>线下支付</h3>
+            <span>售楼处现场或网银均可</span>
+        </div>
+        <div class="psteps plast">
+            <span class="ico n3"></span>
+            <h3>享受优惠</h3>
+            <span>领取凭证  买房享优惠</span>
+        </div>
+    </div>
+    <div class="clearit"></div>
+    <div class="tuan-left">
+        <div class="tuan-area-tab">
+            <a href="{$MOD[linkurl]}" {if empty($catid)}class="current"{/if} >全部</a>
+             {php $maincat = get_maincatmenu(0,15)}
+		  {loop $maincat $k $v}
+            <a href="{$MOD[linkurl]}{$v[linkurl]}" {if $v[catid]==$catid}class="current"{/if} >{$v[catname]}({$v[item]})</a>{/loop}        </div>
+        <div class="tuan-list">
+        
+           
+ {if $tags}{template 'list-'.$module, 'tag'}{/if}                </div>
+    </div>
+    <div class="tuan-right">
+        <div class="tuan-right-info">
+                已有<b>{php echo $db->count($AJ_PRE.'group', 'status=3', 1800);}</b>个楼盘参与团购<br>
+                已有<b>{php echo $db->count($AJ_PRE.'group_order', '', 1800);}</b>人参与活动<br>
+        </div>
+        <div class="tuan-right-tel">
+                团购服务热线：<b>{$AJ[telephone]}</b>
+        </div>
+
+        <div class="search-right-hot">
+            <h2><span>团购排行榜</span></h2>
+            <ul>
+                 <!--{php $tags=tag("moduleid=15&condition=status=3&areaid=$cityid&length=32&pagesize=5&order=orders desc&target=_blank&template=null");}-->
+ {loop $tags $i $t} <li><i class="{if $i<3}red{/if}" >{$i+1}</i><span class="title"><a href="{$t[linkurl]}">{$t[title]}</a></span><span class="num">{$t[orders]}人报名</span></li>
+ {/loop}  
+          </ul>
+        </div>
+        <div class="news-right-paihang">
+            <h2><span>楼盘动态</span></h2>
+            <a href="{$MODULE[8][linkurl]}list-35.html" class="more">更多<i class="iconfont">&#xe601;</i></a>
+            <ul>
+              <!--{php $tags=tag("moduleid=8&condition=status=3&catid=35&areaid=$cityid&length=42&pagesize=3&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+<LI><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></LI>
+  {/loop}         </ul>
+        </div>
+    </div>
+    <div class="clearit"></div>
+</div>
+{template 'footer'}

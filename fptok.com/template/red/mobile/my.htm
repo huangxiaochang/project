@@ -1,0 +1,524 @@
+{template 'header_member', 'mobile'}
+<link rel="stylesheet" type="text/css" href="css/my.css"/>
+<script type="text/javascript" src="{AJ_PATH}file/script/config.js"></script>
+<script type="text/javascript" src="script/aui-dialog.js"></script>
+<script type="text/javascript" src="script/webapp.js" charset="utf-8"></script>
+<script type="text/javascript" src="script/aui-scroll.js"></script>
+<script type="text/javascript" src="script/background-blur.min.js"></script>
+<style>
+#page { background: #F6F6F6;}
+.aui-list-view i.aui-iconfont {
+    padding: 5px;
+    border-radius: 4px;
+    margin-right: 10px;
+    color: #ffffff;
+    font-size: 1.125em;
+}
+.my-header {
+    background-color: #e74c3c;
+	background:url(image/headerbg.png) top no-repeat;
+    position: relative;
+    margin-bottom: 0;overflow: hidden;
+}
+.my-info {
+    position: relative;
+    padding: 20px 0;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    vertical-align: center;
+}
+
+.my-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+	border:2px solid rgba(255,255,255,0.5);
+}
+.my-info p {
+    color: #ffffff;
+}
+.my-info .my_name  {
+}
+.avatar-blur {
+     z-index: 0;
+     position: absolute;
+     min-height: 100%;
+     height: auto;
+     display: block;
+     top: 0;
+     max-height: none;
+     left: -10%;
+     width: 120%;
+        }
+
+.amount-info {
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.amount-info p {
+    font-size: 0.75em;
+}
+.amount-info p strong {
+    font-size: 18px;
+}
+.aui-list-view-cell {
+    line-height: 26px;
+}
+.amount-info .aui-col-xs-4 {
+    padding: 15px 0;
+    position: relative;
+    height: 80px;
+}
+.amount-info .aui-col-xs-4:after {
+    border-left: 1px solid #ddd;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: scale(1);
+    pointer-events: none;
+}
+.amount-info .aui-col-xs-4:first-child:after {
+    border:none;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    .amount-info .aui-col-xs-4:after {
+        right: -100%;
+        bottom: -100%;
+        -webkit-transform: scale(0.5);
+    }
+}
+
+#aui-header .white {
+    -webkit-animation: fadeIn .8s ease both;
+    animation: fadeIn .8s ease both;
+	}
+#aui-header.nowhite {
+        -webkit-animation: fadeOut .8s ease both;
+         animation: fadeOut .8s ease both;
+	}
+	@-webkit-keyframes bodyFadeIn {
+        from { opacity: 0}
+        to { opacity: 1}
+    }
+	@-webkit-keyframes fadeIn {
+        from { background: rgba(62,100,145,0);}
+        to { background: #3bafda;}
+    }
+    @-webkit-keyframes fadeOut {
+    	from { background: #3bafda;}
+        to { background: rgba(62,100,145,0);}
+        
+    }
+    @-webkit-keyframes showIn {
+        0% { opacity: 0;top: -20px;}
+        30% { opacity: 0;top: -20px;}
+        100% { opacity: 1;top: 8px;}
+    }
+    @-webkit-keyframes hideIn {
+        0% { opacity: 1;top: 8px;}
+        70% { opacity: 0;top: -20px;}
+        100% { opacity: 0;top: -20px;}
+    }
+
+</style>
+<div id="page">
+<div class="side-mask"></div>
+{if $action}
+<header class="aui-bar aui-bar-nav aui-bar-primary" id="aui-header">
+ <a class="aui-btn aui-btn-primary aui-pull-left" href="my.php">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{if $action=='setting'}系统设置{elseif $action =='mycert'}我的认证{else}{$head_name}{/if}</div>
+</header>
+<div class="aui-bar-fix"></div>
+{else}
+<header class="aui-bar aui-bar-nav aui-bar-primary displaynone" id="aui-header">
+   {if $_userid}
+    <a class="aui-btn aui-btn-primary aui-pull-left slidemenu" href="#menu" id="slidemenu">
+            <span class="aui-iconfont aui-icon-sort fz26"></span>
+        </a>
+   {/if}
+    <div class="aui-title">{if $action=='setting'}系统设置{elseif $action =='mycert'}我的认证{else}{$head_name}{/if}</div>
+</header>
+<script type="text/javascript">
+    var scroll = new auiScroll({
+        listen:true,
+        distance:200 //判断到达底部的距离，isToBottom为true
+    },function(ret){
+        if(ret.scrollTop>=30){
+            $('#aui-header').addClass("white");
+			$('#aui-header').removeClass("nowhite");
+            $('#aui-header').css("opacity: 1;");
+			$('#aui-header').show();
+        }else{
+           $('#aui-header').hide();
+		   $('#aui-header').removeClass("white");
+		   $('#aui-header').css("opacity: 0;");
+            
+            
+        }
+
+    });
+
+</script>   
+{/if}
+{if $action == 'member'}
+<style>
+a { position:relative; margin:0; padding:0}
+</style>
+<div class="aui-content">
+        <ul class="aui-list-view aui-inn">
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="mrecord.php"><i class="aui-iconfont aui-icon-redpacket aui-text-primary fz22"></i>我的{$AJ[money_name]}
+                <span class="aui-badge">{$_money} {$AJ[money_unit]}</span>
+                </a>
+            </li>
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="mdeposit.php"><i class="aui-iconfont aui-icon-redpacket aui-text-info fz22"></i>保证金
+                <span class="aui-badge aui-badge-info">{$user[deposit]} {$AJ[money_unit]}</span>
+                </a>
+            </li>
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="mcredit.php"><i class="aui-iconfont aui-icon-present aui-text-primary fz22"></i>我的{$AJ[credit_name]}
+                <span class="aui-badge aui-badge-info">{$_credit} {$AJ[credit_unit]}</span>
+                </a>
+            </li>
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}sms.php"><i class="aui-iconfont aui-icon-mobile aui-text-info fz22"></i>短信余额
+                <span class="aui-badge aui-badge-info">{$_sms} 条</span>
+                </a>
+            </li>
+        </ul>
+</div>
+
+<div class="aui-content">
+        <ul class="aui-list-view aui-inn">
+            <li class="aui-list-view-cell" onclick="window.location.href='medit.php'">
+                <div class="aui-arrow-right"><i class="aui-iconfont aui-icon-profile aui-text-info fz22"></i>修改资料</div>
+            </li>
+            <li class="aui-list-view-cell">
+                <a class="aui-arrow-right" href="?action=mycert"><i class="aui-iconfont aui-icon-profile aui-text-info fz22"></i>我的认证</a>
+            </li>  
+            {if $MG[friend_limit1]>-1}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}friend.php">我的好友</a>
+            </li>
+
+{/if}
+{if $MG[favorite_limit1]>-1}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}favorite.php">房源收藏</a>
+            </li>
+
+{/if}
+{if $MG[alert_limit1]>-1}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}alert.php">房源提醒</a>
+            </li>
+{/if}
+{if $MG[sms1] && $AJ[sms]}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}sms.php">手机短信</a>
+            </li>
+
+{/if}
+{if $MG[mail1]}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}mail.php">邮件订阅</a>
+            </li>
+
+{/if}
+{if $MG[spread1]}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}spread.php">排名推广</a>
+            </li>
+
+{/if}
+{if $MG[ad1]}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}ad.php">广告预定</a>
+            </li>
+
+{/if}
+{if $MOD[oauth1]}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}oauth.php">一键登录</a>
+            </li>
+
+{/if}
+{if $EXT[weixin1]}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}weixin.php">微信关注</a>
+            </li>
+
+{/if}
+{if $MG[ask1]}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$MURL}ask.php">客服中心</a>
+            </li>
+
+{/if}
+
+        </ul>
+</div>
+
+{elseif $action == 'info'}
+<div class="aui-content">
+        <ul class="aui-list-view">
+        {loop $MYMODS $k $v}
+{if $v==-9}
+<li><div><a href="{$MURL}{$AJ[file_my]}?mid=9&resume=1" rel="external">简历管理</a></div></li>
+{else}
+{if in_array($v, array(5,7,8,16,12))}
+{php $url = 'user.php?mid='.$v.'';}
+{else}
+{php $url = ''.$MURL.$AJ[file_my].'?mid='.$v.'';}
+{/if}
+            <li class="aui-list-view-cell" data-win="list_arrow">
+                <a class="aui-arrow-right" href="{$url}">{$MODULE[$v][name]}管理
+                </a>
+            </li>
+
+{/if}
+{/loop}
+        </ul>
+</div>
+{elseif $action == 'fenxiao'}
+<div class="aui-content">
+<ul class="aui-list-view">
+<li class="aui-list-view-cell"><a href="tuijian.php" class="aui-arrow-right">我的推荐</a></li>
+<li class="aui-list-view-cell"><a href="client.php" class="aui-arrow-right">我的客户</a></li>
+<li class="aui-list-view-cell"><a href="amount.php" class="aui-arrow-right">我的佣金</a></li>
+
+
+</ul>
+</div>
+{elseif $action == 'home'}
+<div class="list-set">
+<ul>
+<li><a href="{$MURL}home.php" rel="external">商铺设置</a></li>
+<li><div><a href="{$MURL}style.php" rel="external">模板设置</a></div></li>
+{if ($MG[news_limit]>-1 && $MG[homepage])}
+<li><div><a href="{$MURL}news.php" rel="external">公司新闻</a></div></li>
+{/if}
+{if ($MG[page_limit]>-1 && $MG[homepage])}
+<li><div><a href="{$MURL}page.php" rel="external">公司单页</a></div></li>
+{/if}
+{if ($MG[honor_limit]>-1 && $MG[homepage])}
+<li><div><a href="{$MURL}honor.php" rel="external">荣誉资质</a></div></li>
+{/if}
+{if ($MG[link_limit]>-1 && $MG[homepage])}
+<li><div><a href="{$MURL}link.php" rel="external">友情链接</a></div></li>
+{/if}
+</ul>
+</div>
+{elseif $action == 'setting'}
+<div class="aui-content">
+        <ul class="aui-list-view aui-inn">
+            <li class="aui-list-view-cell aui-switch-body">
+                <div class="aui-switch-title"><i class="aui-iconfont aui-icon-voice dt-text-color1 fz22"></i>声音提醒</div>
+                <input type="checkbox" class="aui-switch aui-switch-info aui-pull-right" checked>
+            </li>
+            <li class="aui-list-view-cell aui-switch-body">
+                <div class="aui-switch-title"><i class="aui-iconfont aui-icon-location dt-text-color5 fz22"></i>允许定位</div>
+                <input type="checkbox" class="aui-switch aui-switch-success aui-pull-right" checked>
+            </li>
+            <li class="aui-list-view-cell">
+                <div class="aui-arrow-right"><i class="aui-iconfont aui-icon-delete aui-text-warning fz22"></i>清除缓存<span class="aui-badge aui-badge-warning aui-pull-right">0 M</span></div>
+            </li>
+            <li class="aui-list-view-cell aui-switch-body">
+                <div class="aui-switch-title"><i class="aui-iconfont aui-icon-write aui-text-danger fz22"></i><a class="aui-arrow-right aui-text-balck">意见反馈</a></div>
+            </li>
+
+</ul>
+</div>
+<div class="aui-content">
+<ul class="aui-list-view aui-inn">
+            {if $_userid}         
+            <li class="aui-list-view-cell" onclick="openDialog('goto','退出会员中心','确定要退出吗?','logout.php');
+"><a class="aui-arrow-right"><i class="aui-iconfont aui-icon-people aui-text-info fz22"></i>退出后台</a></li>
+            {/if}
+</ul>
+</div>
+{elseif $action == 'mycert'}
+<!--{php $v=$db->get_one("SELECT vemail,vmobile,vbank,vtruename,vcompany FROM ".$AJ_PRE."member WHERE userid=$_userid");}-->
+{php $vemail=$v['vemail'];$vmobile=$v['vmobile'];$vbank=$v['vbank'];$vtruename=$v['vtruename'];$vcompany=$v['vcompany']}
+<div class="aui-content">
+        <ul class="aui-list-view aui-inn">
+        {if $MOD[vemail]}
+            <li class="aui-list-view-cell" onclick="window.location.href='mvalidate.php?action=email'">
+                <div class="aui-arrow-right"><i class="aui-iconfont aui-icon-baby aui-text-info fz22"></i>手机<span class="aui-badge {if $vmobile}aui-badge-danger{else}{/if} aui-pull-right">{if $vemail}已通过{else}未通过{/if}</span></div>
+            </li>
+            {/if}
+            {if $MOD[vmobile]}
+            <li class="aui-list-view-cell" onclick="window.location.href='mvalidate.php?action=mobile'">
+<div class="aui-arrow-right"><i class="aui-iconfont aui-icon-mobile aui-text-danger fz22"></i>手机<span class="aui-badge {if $vmobile}aui-badge-danger{else}{/if} aui-pull-right">{if $vmobile}已通过{else}未通过{/if}</span></div>
+            </li>
+            {/if}
+            {if $MOD[vbank]}
+            <li class="aui-list-view-cell" onclick="window.location.href='mvalidate.php?action=bank'">
+                <div class="aui-arrow-right"><i class="aui-iconfont aui-icon-vipcard aui-text-info fz22"></i>银行<span class="aui-badge {if $vbank}aui-badge-danger{else}{/if} aui-pull-right">{if $vbank}已通过{else}未通过{/if}</span></div>
+            </li>
+            {/if}
+            {if $MOD[vtruename]}
+            <li class="aui-list-view-cell" onclick="window.location.href='mvalidate.php?action=truename'">
+                <div class="aui-arrow-right"><i class="aui-iconfont aui-icon-addressbook dt-text-color5 fz22"></i>实名<span class="aui-badge {if $vtruename}aui-badge-danger{else}{/if} aui-pull-right">{if $vtruename}已通过{else}未通过{/if}</span></div>
+            </li>
+            {/if}
+            {if $MOD[vcompany] && $groupid > 5}
+            <li class="aui-list-view-cell" onclick="window.location.href='mvalidate.php?action=company'">
+                <div class="aui-arrow-right"><i class="aui-iconfont aui-icon-shop dt-text-color5 fz22"></i>公司<span class="aui-badge {if $vcompany}aui-badge-danger{else}{/if} aui-pull-right">{if $vcompany}已通过{else}未通过{/if}</span></div>
+            </li>
+            {/if}
+</ul>
+</div>
+
+{else}
+
+{if $_userid}
+<script>
+$(function(){
+	        var $avatarEl = $('.my-info');
+	        var $avatarHolderEl = $('.my-header');
+	        var avatars = [];
+	        $avatarEl.each(function(){
+	            var $avatar = $(this);
+	            var avatarImage = $avatar.find('img').first().attr('src');
+	            avatars.push(avatarImage);
+	        });
+	        $avatarHolderEl.backgroundBlur({
+	            imageURL : avatars[0],
+	            blurAmount : 50, 
+	            imageClass : 'avatar-blur' 
+	        });
+});
+</script>
+<div class="aui-content my-header aui-bg-primary">
+<header class="aui-bar aui-bar-nav aui-bar-primary" id="my-header" style="background:none;">
+   {if $_userid}
+    <a class="aui-btn aui-btn-primary aui-pull-left slidemenu" style="background:none;" href="#menus" id="slidemenus">
+            <span class="aui-iconfont aui-icon-sort fz26"></span>
+        </a>
+   {/if}
+    <div class="aui-title">{if $action=='setting'}系统设置{else}{$head_name}{/if}</div>
+</header>
+
+        <div class="my-info">
+            <img src="{useravatar($_username, 'large')}" id="avatar" onclick="window.location.href='mavatar.php'" /><!--<a href="{AJ_PATH}api/qrcode.png.php?auth={$MOD['linkurl']}invite.php?user={$_username}&goto=register"><img src="{AJ_PATH}api/qrcode.png.php?auth={$MOD['linkurl']}invite.php?user={$_username}&goto=register" id="qrcode-img" width="140" height="140" style="border-radius: 2%;"/></a>-->
+         <p class="my_name fz18">{$_truename}&nbsp;<span class="fz13">({$_username})</span></p>
+         <p class="my_dengji fz14">会员等级：{$MG[groupname]}&nbsp;{$OE_phone}&nbsp;{$OE_version}&nbsp;{$OE_Browsers}</p>
+        </div>
+    </div>
+{else}
+<div class="aui-content my-header aui-bg-primary" style="height:230px; padding-top:20px;">
+        <div class="my-info" id="no-login">
+        <a href="login.php?forward=my.php"><img src="{useravatar($_username, 'large')}" id="avatar" /></a>
+        <div class="aui-text-center fz18" style=" padding-top:5px;">
+         <a href="login.php?forward=my.php" style="color: #fff;">按此登录或注册</a>
+        </div>
+</div>
+{/if}
+
+{if $_userid}
+<!--{php $qd=$db->get_one("SELECT itemid,addtime FROM ".$AJ_PRE."qiandao WHERE userid=$_userid order by itemid desc");}-->
+    <div class="aui-content aui-text-center amount-info">
+        <div class="aui-col-xs-4" onclick="window.location.href='mrecord.php'">
+            <p class="aui-text-danger"><strong id="amount">{$_money}</strong>{$AJ[money_unit]}</p>
+            <p>我的{$AJ[money_name]}</p>
+        </div>
+        <div class="aui-col-xs-4" onclick="window.location.href='mcredit.php'">
+            <p class="aui-text-warning"><strong>{$_credit}</strong>{$AJ[credit_unit]}</p>
+            <p>我的{$AJ[credit_name]}</p>
+        </div>
+        <div class="aui-col-xs-4" onclick="window.location.href='mqiandao.php'">
+            <strong class="aui-iconfont aui-icon-write aui-text-info"></strong>
+            <p>每日签到</p>
+        </div>
+    </div>
+    
+    <div class="aui-content">
+        <ul class="aui-list-view aui-inn">
+            <li class="aui-list-view-cell">
+                <a class="aui-arrow-right" href="message.php"><i class="aui-iconfont aui-icon-read aui-bg-danger"></i>站内信件{if $_message}<span class="aui-badge aui-badge-info">{$_message}</span>{/if}</a>
+            </li>
+            <li class="aui-list-view-cell">
+                <a class="aui-arrow-right" href="chat.php"><i class="aui-iconfont aui-icon-mark aui-bg-info"></i>站内交谈{if $_chat}<span class="aui-badge aui-badge-info">{$_chat}</span>{/if}</a>
+            </li>        
+          
+        </ul>
+    </div>
+    <div class="aui-content">
+        <ul class="aui-list-view aui-inn">
+            <li class="aui-list-view-cell">
+                <a class="aui-arrow-right" href="my.php?action=member"><i class="aui-iconfont aui-icon-edit aui-bg-info"></i>我的账号<span class="aui-badge aui-badge-info">资料</span></a>
+            </li>
+            <li class="aui-list-view-cell">
+                <a class="aui-arrow-right" href="my.php?action=info"><i class="aui-iconfont aui-icon-list aui-bg-primary"></i>信息管理</a>
+            </li>            
+            <li class="aui-list-view-cell">
+                <a class="aui-arrow-right" href="my.php?action=fenxiao"><i class="aui-iconfont aui-icon-cart aui-bg-warning"></i>分销管理</a>
+            </li>
+        </ul>
+    </div>
+    <div class="aui-content">
+        <ul class="aui-list-view aui-inn">
+            <li class="aui-list-view-cell">
+                <a class="aui-arrow-right" href="my.php?action=setting"><i class="aui-iconfont aui-icon-settings aui-bg-danger"></i>系统设置<span class="aui-badge aui-badge-info">设置-退出</span></a>
+            </li>
+        </ul>
+    </div>
+
+ {/if}
+{/if}
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	$("#jiaoyi").click(function(){
+		laymsg('请耐心等待一下，我们正在拼命开发中···');
+	});
+	$("#home").click(function(){
+		laymsg('请耐心等待一下，我们正在拼命开发中···');
+	});	
+});
+function towindow(action, cancel, msg){
+		var arr = action.split('|');
+		var htm = '<div class="am-window-con">';
+		if(msg) htm += '<em>'+msg+'</em>';
+		htm += '<ul class="am-window-sns">';
+		for(var i=0;i<arr.length;i++) {
+			if(i > 4) break;
+			htm += '<li>'+arr[i]+'</li>';
+		}
+		htm += '</ul></div>';
+		if(cancel) htm += '<p id="closeam">'+cancel+'</p>';
+		$('.am-window').html(htm);
+
+		$(".am-window").addClass("am-modal-active");	
+		if($(".windowbg").length>0){
+			$(".windowbg").addClass("windowbg-active");
+		}else{
+			$("body").append('<div class="windowbg"></div>');
+			$(".windowbg").addClass("windowbg-active");
+		}
+		$(".windowbg-active,#closeam").click(function(){
+			$(".am-window").removeClass("am-modal-active");	
+			setTimeout(function(){
+				$(".windowbg-active").removeClass("windowbg-active");	
+				$(".windowbg").remove();
+				$('.am-window').html('');	
+			},300);
+		})
+	}	
+
+</script>
+{template 'footer_member', 'mobile'}
+{if $_userid}
+{template 'slideout', 'mobile'}
+{/if}

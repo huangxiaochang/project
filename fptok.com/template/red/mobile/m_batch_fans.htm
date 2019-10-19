@@ -1,0 +1,36 @@
+<style>
+.check-menu input[type="submit"] {
+				display: -webkit-box;
+				-webkit-box-orient: horizontal;
+				-webkit-box-pack: center;
+				-webkit-box-align: center;
+				display: box;
+				box-orient: horizontal;
+				box-pack: center;
+				box-align: center;
+				padding: 5px 15px;
+				border-radius: 4px;
+				margin-right:10px;
+				color: #fff;
+				font-size: 18px;
+			}
+</style>
+<ul class="aui-list-view check-menu-in displaynone" id="check-menu">
+<li>
+<div class="aui-list-view-cell aui-img">
+<input class="aui-pull-left aui-checkbox" type="checkbox" onclick="checkall(this.form);">
+    <div class="aui-pull-left check-menu">
+    {if $status == 3}
+    <input type="submit" value="取消审核" class="check-reset fz12" onclick="this.form.action='?mid={$mid}&job={$job}&&action=cancel'"/>
+{elseif $status == 2}
+<input type="submit" value="通过审核" class="check-reset fz12" onclick="this.form.action='?mid={$mid}&job={$job}&&action=check'"/>
+<input type="submit" value="拒绝加入" class="check-ref fz12" onclick="this.form.action='?mid={$mid}&job={$job}&&action=reject'"/>
+{elseif $status == 1}
+<input type="submit" value="通过审核" class="check-reset fz12" onclick="this.form.action='?mid={$mid}&job={$job}&&action=check'"/>
+{/if}
+<input type="submit" value="删除" class="check-del fz12" onclick="if(confirm('确定要删除选中粉丝吗？')){this.form.action='?mid={$mid}&job={$job}&&action=delete'}else{return false;}"/>
+</div>
+</div>
+                
+</li>
+</ul>

@@ -1,0 +1,287 @@
+{template 'header_v2', 'mobile'}
+{template 'cssjs_v2', 'mobile'}
+  <link rel="stylesheet" type="text/css" href="static/css/frozenindex.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/public.css" />
+        <link rel="stylesheet" type="text/css" href="static/css/new3G.css" />
+        <style>
+            #day_show, #hour_show, #minute_show, #second_show{display:inline-block;}
+        </style>
+<link rel="stylesheet" type="text/css" href="css/index_v2.css"/>
+<link rel="stylesheet" type="text/css" href="script/swiper/swiper-3.3.1.min.css"/>
+<script type="text/javascript" src="script/swiper/swiper-3.3.1.jquery.min.js"></script>
+<header class="aui-bar aui-bar-nav" id="aui-header">
+        {if $AJ['city']}
+        <a class="aui-pull-left aui-btn" onclick="showcity();">
+           <span class="aui-font-size-16 dt-text-ellipsis" style="max-width:4rem;" id="bdcity">{$areaname}</span>{$city_name}<i class="aui-iconfont aui-icon-unfold" aui-popup-for="top-left"></i>
+        </a>
+        {else}
+        <a class="aui-pull-left aui-btn" href="channel.php">
+           <i class="dt-iconfont dt-icon-menu"></i>
+        </a>
+        {/if}
+        <div class="aui-title">{$head_name}</div>
+        <a class="aui-pull-right" href="my.php" style="font-size: 14px;">{if $_userid}{$_username}{else}登录/注册{/if}</a>
+</header>
+<div class="aui-bar-fix"></div>
+<div class="aui-popup aui-popup-menu-left" id="top-left">
+<section class="aui-grid">
+    <div class="aui-row" id="citylist">
+    {if $AJ['city'] && $AJ['local_bdmap']==0 && $cityid<>0}
+    {loop $glarea $i $a}
+    <div class="aui-col-xs-3" onclick="Setmycity({$a['areaid']})"><div class="aui-grid-label dt-text-ellipsis">{$a['areaname']}</div></div>
+    {/loop}
+    {/if}
+        <div class="aui-col-xs-3" onclick="window.location.href='city.php'">
+            <div class="aui-grid-label dt-text-red dt-text-ellipsis">更换城市</div>
+        </div>
+        </div>
+</section> 
+ </div>
+{if $AJ['city'] && $AJ['local_bdmap']}
+<script type="text/javascript" src="script/gllocal.js"></script>
+{/if}
+<div class="aui-content">
+<div class="aui-searchbar" id="search" style="position:relative; height:2.25rem;" onclick="window.location.href='search.php'">
+    <div class="aui-searchbar-input aui-border-radius">
+        <i class="aui-iconfont aui-icon-search"></i>
+        <form action="javascript:search();">
+            <input type="search" placeholder="请输入搜索内容" id="search-input">
+        </form>
+    </div>
+    <div class="aui-searchbar-cancel" tapmod>取消</div>
+</div>
+</div>
+{if $ads}
+<div class="aui-content banner-container">
+<div class="swiper-container">
+            <div class="swiper-wrapper">
+            {loop $ads $t}
+                <div class="swiper-slide" onclick="window.location.href='{$t[url]}'"><img src="{$t[image_src]}" width="100%"/><span>{$t[title]}</span></div>
+            {/loop}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+</div>
+{/if}
+
+            <!-- menu start-->
+            <section class="ui-panel">
+                <ul class="ui-row ui-whitespace hf-menu ui-border-b">
+                    <li class="ui-col ui-col-25"><a href="6-0-0-1.html"><span><img src="static/images/xf.png" /></span><h6>买新房</h6></a></li>
+                    <li class="ui-col ui-col-25"><a href="5-0-0-1.html"><span><img src="static/images/sale.png" /></span><h6>找二手房</h6></a></li>
+                    <li class="ui-col ui-col-25"><a href="7-0-0-1.html"><span><img src="static/images/zu.png" /></span><h6>找租房</h6></a></li>
+                    <li class="ui-col ui-col-25"><a href="my.php?action=info"><span><img src="static/images/zx.png" /></span><h6>免费发布</h6></a></li>
+                    <li class="ui-col ui-col-25"><a href="21-0-0-1.html"><span><img src="static/images/jfzy.png" /></span><h6>担保贷款</h6></a></li>
+                    <li class="ui-col ui-col-25"><a href="13-0-0-1.html"><span><img src="static/images/qg.png" /></span><h6>装修维修</h6></a></li>
+                    <li class="ui-col ui-col-25"><a href="19-0-0-1.html"><span><img src="static/images/jsq.png" /></span><h6>建材家具</h6></a></li>
+                    <li class="ui-col ui-col-25"><a href="tuijian.php"><span><img src="static/images/fx.png" /></span><h6>新房分销</h6></a></li>
+                </ul>
+            </section>
+            <!-- menu end-->
+            <!-- 楼盘 start-->
+            <section class="ui-panel">
+                <a href="index.php?moduleid=6"><h2 class="ui-arrowlink ui-border-t"><em class="hf-title">最新楼盘</em></h2></a>
+                <ul class="ui-list ui-list-active ui-border-b hf-house changes">
+                 <!--{php $tags=tag("table=newhouse_6&condition=status=3 and thumb<>'' and isnew=1&areaid=$cityid&pagesize=10&fields=itemid,title,thumb,price,hits,edittime,areaid,catid,typeid,buildtype,isfx&order=edittime desc&template=null");}-->
+{loop $tags $t}
+                    <li class="ui-border-t">
+                            <a href="{mobileurl(6, 0, $t['itemid'])}">
+                                <div class="hf-house-box">
+                                    <div class="ui-list-img">
+
+                                        <img class="lazyload" src="{imgurl($t[thumb])}" />
+                                    </div>
+                                    <div class="ui-list-info">
+                                        <h4 class="ui-nowrap hf-badge-wrap" >{$t[title]}<span class="hf-badge-pos">{if $t[isfx]}<i class="hf-badge-yellow"></i>{/if}</span></h4>
+                                        <div class="hf-f12 hf-badge-wrap">[{area_poss($t[areaid], '')}]<span class="hf-f15 hf-badge-pos hf-fred">{if $t[price]}{$t[price]}元/㎡{else}待定{/if}</span></div>
+                                        <div class="hf-f12 hf-fgray">类型：{search_cats($t[catid], '6')}</div>
+                                        <div class="ui-nowrap hf-fyellow hf-f13"><span>{getbox_diaoval('buildtype','checkbox',$t[buildtype],'newhouse_6')}</span><i class="hf-badge-blue tip">{if $t[typeid]==1}在售{elseif $t[typeid]==2}优惠{elseif $t[typeid]==3}直销{else}售罄{/if}</i></div>
+                                    </div>
+                                </div>
+                            </a>    
+                        </li>
+                       {/loop}
+
+                </ul>
+
+
+            </section>
+            <!-- 楼盘 end-->
+             <!-- 二手房 start-->
+            <section class="ui-panel">
+                <a href="index.php?moduleid=5"><h2 class="ui-arrowlink ui-border-t"><em class="hf-title">二手房</em></h2></a>
+                <ul class="ui-list ui-list-active ui-border-b hf-house changes">
+                 <!--{php $tags=tag("table=sale_5&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=6&fields=itemid,title,thumb,housename,areaid,hits,edittime,room,hall,houseearm,housename,price&order=addtime desc&template=null");}-->
+                    {loop $tags $t}
+                    <li class="ui-border-t">
+                            <a href="{mobileurl(5, 0, $t['itemid'])}">
+                                <div class="hf-house-box">
+                                    <div class="ui-list-img">
+                                        <img class="lazyload" src="{imgurl($t[thumb])}" />
+                                    </div>
+                                    <div class="ui-list-info">
+                                        <h4 class="ui-nowrap hf-badge-wrap" >{$t[title]}<span class="hf-badge-pos"></span></h4>
+                                        <div class="hf-f12 hf-badge-wrap">{area_poss($t[areaid], '')} {$t[housename]}<span class="hf-f15 hf-badge-pos hf-fred">{if $t[price]}{$t[price]}万{else}面议{/if}</span></div>
+                                        <div class="hf-f12 hf-fgray">{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if} {$t[houseearm]}㎡ </div>
+                                        
+                                    </div>
+                                </div>
+                            </a>    
+                        </li>{/loop}
+
+                </ul>
+              
+
+
+            </section>
+            <!-- 二手房 end-->
+           <!-- 租房 start-->
+          <section class="ui-panel">
+                <a href="index.php?moduleid=7"><h2 class="ui-arrowlink ui-border-t"><em class="hf-title">租房</em></h2></a>
+                <ul class="ui-list ui-list-active ui-border-b hf-house changes">
+                 <!--{php $tags=tag("table=rent_7&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=6&fields=itemid,title,thumb,housename,areaid,hits,edittime,room,hall,houseearm,housename,price&order=addtime desc&template=null");}-->
+                    {loop $tags $t}
+                    <li class="ui-border-t">
+                            <a href="{mobileurl(7, 0, $t['itemid'])}">
+                                <div class="hf-house-box">
+                                    <div class="ui-list-img">
+                                        <img class="lazyload" src="{imgurl($t[thumb])}" />
+                                    </div>
+                                    <div class="ui-list-info">
+                                        <h4 class="ui-nowrap hf-badge-wrap" >{$t[title]}<span class="hf-badge-pos"></span></h4>
+                                        <div class="hf-f12 hf-badge-wrap">{area_poss($t[areaid], '')} {$t[housename]}<span class="hf-f15 hf-badge-pos hf-fred">{if $t[price]}{$t[price]}元/月{else}面议{/if}</span></div>
+                                        <div class="hf-f12 hf-fgray">{if $t[room]}{$t[room]}室{/if}{if $t[hall]}{$t[hall]}厅{/if} {$t[houseearm]}㎡ </div>
+                                        
+                                    </div>
+                                </div>
+                            </a>    
+                        </li>{/loop}
+
+                </ul>
+            </section>
+            <!-- 租房 end-->
+            <!-- 装修招标 start-->
+          <section class="ui-panel">
+                <a href="index.php?moduleid=13"><h2 class="ui-arrowlink ui-border-t"><em class="hf-title">装修维修</em></h2></a>
+                <ul class="ui-list ui-list-active ui-border-b hf-house changes">
+                 <!--{php $tags=tag("table=info_13&areaid=$cityid&pagesize=6&fields=itemid,title,thumb,areaid,hits,edittime,yusuan,hxjg,jzmj&order=addtime desc&template=null");}-->
+                    {loop $tags $t}
+                    <li class="ui-border-t">
+                            <a href="{mobileurl(13, 0, $t['itemid'])}">
+                                <div class="hf-house-box">
+                                    <div class="ui-list-img">
+                                        <img class="lazyload" src="{imgurl($t[thumb])}" />
+                                    </div>
+                                    <div class="ui-list-info">
+                                        <h4 class="ui-nowrap hf-badge-wrap" >{$t[title]}</h4>
+                                        <div class="hf-f12 hf-badge-wrap">{area_pos($t[areaid], '')}<span class="hf-f15 hf-badge-pos hf-fred">{if $t[yusuan]}{$t[yusuan]}{else}电议{/if}</span></div>
+                                        <div class="hf-f12 hf-fgray">户型：{if $t[hxjg]}{$t[hxjg]}{/if} 面积：{if $t[jzmj]}{$t[jzmj]}{/if}</div>
+                                    </div>
+                                </div>
+                            </a>    
+                        </li>{/loop}
+
+                </ul>
+            </section>
+            <!-- 装修维修 end-->
+            <!-- 建材家具 start-->
+          <section class="ui-panel">
+                <a href="index.php?moduleid=19"><h2 class="ui-arrowlink ui-border-t"><em class="hf-title">建材家具</em></h2></a>
+                <ul class="ui-list ui-list-active ui-border-b hf-house changes">
+                 <!--{php $tags=tag("table=info_19&areaid=$cityid&pagesize=6&fields=itemid,title,thumb,areaid,hits,edittime,jiage,xinghao,guige&order=addtime desc&template=null");}-->
+                    {loop $tags $t}
+                    <li class="ui-border-t">
+                            <a href="{mobileurl(13, 0, $t['itemid'])}">
+                                <div class="hf-house-box">
+                                    <div class="ui-list-img">
+                                        <img class="lazyload" src="{imgurl($t[thumb])}" />
+                                    </div>
+                                    <div class="ui-list-info">
+                                        <h4 class="ui-nowrap hf-badge-wrap" >{$t[title]}</h4>
+                                        <div class="hf-f12 hf-badge-wrap">{area_pos($t[areaid], '')}<span class="hf-f15 hf-badge-pos hf-fred">{if $t[jiage]}{$t[jiage]}{else}电议{/if}</span></div>
+                                        <div class="hf-f12 hf-fgray">型号：{if $t[xinghao]}{$t[xinghao]}{/if} 规格：{if $t[guige]}{$t[guige]}{/if}</div>
+                                    </div>
+                                </div>
+                            </a>    
+                        </li>{/loop}
+
+                </ul>
+            </section>
+            </section>
+            <!-- 建材家具 end-->
+            <!-- 新闻 start-->
+            <section class="ui-panel">
+                <a href="index.php?moduleid=8"><h2 class="ui-arrowlink ui-border-t"><em class="hf-title">楼市动态</em></h2></a>
+                <ul class="ui-list ui-list-active ui-border-b"  id="listBox">
+                  <!--{php $tags=tag("table=article_8&condition=status=3 and thumb<>''&areaid=$cityid&pagesize=5&fields=itemid,title,thumb,username,hits,edittime&order=edittime desc&template=null");}-->
+                    {loop $tags $t}
+                    <li class="ui-border-t">
+                            <div class="ui-list-img-s">
+                            <a href="{mobileurl(8, 0, $t['itemid'])}">
+                                    <img class="lazyload" src="{imgurl($t[thumb])}">
+                                </a>
+                            </div>
+                            <div class="ui-list-info">
+                                <a href="{mobileurl(8, 0, $t['itemid'])}">
+                                    <h4 class="ui-nowrap-multi">{$t[title]}</h4>
+                                    <div class="hf-f12 ui-nowrap">{timetodate($t[edittime], 3)}</div>
+                                </a>
+                            </div>
+                        </li> {/loop}          </ul>
+                
+            </section>
+            <!-- 新闻 end-->
+
+        </section>
+        <!-- 主体内容 start-->
+
+      <!-- 尾部 start-->
+        <footer class="hf-footer">
+    <ul class="ui-tiled ui-border-t" style="display: none;">
+                <li class="ui-border-l"><a href="my.php">登录</a></li>
+                <li class="ui-border-l"><a href="mobile.php?action=pc" rel="external">电脑版</a></li>
+                <li class="ui-border-l"><a href="guestbook.php" class="no-borderR">意见反馈</a></li>
+        </ul>    <div class="copy ui-border-t">Copyright &copy; 2018 {$AJ[sitename]}版权所有</div>
+</footer>
+<script type="text/javascript">
+var swiper = new Swiper('.swiper-container', {
+    autoplay:3000,
+    autoplayDisableOnInteraction:false,
+    pagination: '.swiper-pagination'
+    });
+var swiper = new Swiper('.mall-container', {
+    autoplayDisableOnInteraction:false,
+    pagination: '.mall-pagination',
+    paginationType:'fraction'
+    });
+    
+function showcity(){
+        popup.show(document.getElementById("top-left"))
+    }
+    
+function Setmycity(cityid){
+    laymsg('正在定位...');
+   $.post("{$AJ_PATH}ajax.php", { "action": "gllocal","job": "setcity","mcityid": cityid},
+            function(data){
+                if(data.error=='ok'){
+                    laymsg('定位成功,跳转中...');
+                    window.location.href='index.php'
+                }
+            }, "json");
+
+}
+</script>
+    <!-- 尾部 end-->
+        <!-- frozenUI 框架 js start-->
+        <script src="static/js/zepto.min.js"></script>
+        <script src="static/js/frozen-all.js"></script>
+        <!-- frozenUI 框架 js end-->
+        <script src="static/js/zepto.picLazyLoad.js"></script>
+        <!-- 页面js start-->
+        <script src="static/js/public.js"></script>
+        <script src="static/js/index.js"></script>
+        <!-- 页面js  end-->
+
+    </body>
+</html>{template 'footer_v2', 'mobile'}
+{template 'footer', 'mobile'}

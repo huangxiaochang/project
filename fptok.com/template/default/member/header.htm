@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={AJ_CHARSET}"/>
+<meta name="robots" content="nofollow"/>
+<meta name="generator" content="AIJIACMS"/>
+<meta http-equiv="x-ua-compatible" content="IE=8"/>
+<title>{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}会员中心{$AJ[seo_delimiter]}{if $city_sitename}{$city_sitename}{else}{$AJ[sitename]}{/if}{$AJ[seo_delimiter]}</title>
+<link rel="shortcut icon" href="{AJ_STATIC}favicon.ico"/>
+<link rel="bookmark" href="{AJ_STATIC}favicon.ico"/>
+<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="./build/css/dt-icon.css" media="all" />
+<link rel="stylesheet" href="./build/css/app.css" media="all" />
+<link rel="stylesheet" href="./build/css/themes/red.css" media="all" />
+<script type="text/javascript">window.onerror= function(){return true;}</script><script type="text/javascript" src="{AJ_STATIC}lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="./build/js/common.js"></script>
+<script type="text/javascript" src="./build/js/admin.js"></script>
+<script type="text/javascript" src="./build/js/member.js"></script>
+<script src="{AJ_SKIN}js/sea.js?v=3" type="text/javascript"></script>	
+<script src="{AJ_STATIC}file/script/glscript.js" charset="utf-8" type="text/javascript"></script>
+	<script>var AGENT_URL="{$MODULE[1][linkurl]}api/";var JS_URL="";var IMG_URL="";</script>
+    <link href="{AJ_SKIN}user_jjr.css?v=3" rel="stylesheet" type="text/css" />
+    
+</head>
+<style>
+.ls { margin-bottom:10px; }
+.btns { padding-bottom:20px;}
+em { font-style:normal;}
+#posttotime { position:relative;}
+</style>
+<body class="glui-theme">
+<div id="msgbox" style="display:none;"></div>
+    <div class="layui-layout layui-layout-admin glui-layout-admin">
+        <div class="layui-header" style="position:fixed; width:100%">
+            <div class="layui-logo">会员中心</div>
+            <div class="layui-logo glui-logo-mobile">M</div>
+            <ul class="layui-nav layui-layout-left glui-nav">
+                <li class="layui-nav-item"><a href="{$MODULE[1][linkurl]}">网站首页</a></li>
+                 <li class="layui-nav-item"><a href="{AJ_STATIC}member/">控制台</a></li>
+                <li class="layui-nav-item"><a href="kygl.php">客源管理</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">快捷入口</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="my.php?mid=5&action=add">二手房管理</a></dd>
+                        <dd><a href="my.php?mid=7&action=add">租房管理</a></dd>
+                        
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="{AJ_STATIC}index.php?homepage={$_username}&update=1" target="_blank">我的店铺</a></li>
+            </ul>
+            <ul class="layui-nav layui-layout-right glui-nav">
+               
+                {if $_userid}
+                <li class="layui-nav-item">
+                    <a href="edit.php">
+                        <img src="{useravatar($_username, 'small')}" class="layui-nav-img">                     </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="profile.php"><i class="dt-icon dt-icon-my gl-mr-3"></i><span>账户详情</span></a></dd>
+                        {if $admin_user}<dd><a href="index.php?action=logout"><i class="dt-icon dt-icon-setting gl-mr-3"></i>注销授权</a></dd>{/if}
+                        
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="logout.php?forward="><i class="dt-icon dt-icon-logout" aria-hidden="true"></i> 注销</a></li>
+                {/if}	
+            </ul>
+        </div>
+        <div class="layui-side layui-bg-black glui-side">
+            <div class="layui-side-scroll">
+                <div class="glui-side-fold"><i class="dt-icon dt-icon-moremenu" aria-hidden="true"></i></div>
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="gluiNavbar" glui-navbar="">
+                {if $_userid || $show_menu}
+                    <li class="layui-nav-item layui-nav-itemed" id="menu_0" onClick="nav_c(0);">
+                        <a class="layui-nav-item-title" href="javascript:;"><i class="dt-icon dt-icon-hyfw" aria-hidden="true"></i><span> 会员服务</span></a>
+                        <dl class="layui-nav-child">
+
+                          {if $MG[inbox_limit]>-1 || $show_menu}
+                          <dd id="message" glui-target><a href="message.php?action=send" class="layui-nav-right-a">发信</a>  <a href="message.php" class="f"><i class="dt-icon dt-icon-xinjian"></i><span> 站内信件</span>{if $_message}<em class="layui-badge">{$_message}</em>{/if}</a> </dd>
+                           {/if}
+                          {if $MG[chat] || $show_menu}{if $AJ[im_web]}
+                          <dd id="chats" glui-target><a href="chat.php?action=add" class="layui-nav-right-a">查看</a> <a href="chat.php" class="f"> <i class="dt-icon dt-icon-message"></i><span> 站内                        交谈</span>{if $_chat}<em class="layui-badge">{$_chat}</em>{/if}</a> </dd>  {/if} 
+                           {/if}
+                             {if $MG[friend_limit]>-1 || $show_menu} 
+                              <dd id="friend" glui-target><a href="friend.php?action=add" class="layui-nav-right-a">添加</a><a href="friend.php" class="f"> <i class="dt-icon dt-icon-friend"></i>                            <span> 我的好友</span></a> </dd>
+                              {/if}
+                            {if $MG[favorite_limit]>-1 || $show_menu}
+                                <dd id="favorite" glui-target><a href="favorite.php?action=add" class="layui-nav-right-a">添加</a>
+                                <a href="favorite.php" class="f">
+                                    <i class="dt-icon dt-icon-star"></i><span> 房源收藏</span></a>
+                            </dd>
+                            {/if}
+                                  {if $MG[alert_limit]>-1 || $show_menu}  
+                                    <dd id="alert" glui-target><a href="alert.php?action=add" class="layui-nav-right-a">添加</a>
+                                <a href="alert.php" class="f">
+                                    <i class="dt-icon dt-icon-notice"></i><span> 房源提醒</span></a>
+                            </dd>
+                            {/if}
+                            {if $MG[sms] || $show_menu}{if $AJ[sms]}
+                                   <dd id="sms" glui-target><a href="sms.php?action=add" class="layui-nav-right-a">发送</a>
+                                <a href="sms.php" class="n">
+                                    <i class="dt-icon dt-icon-mobile"></i><span> 手机短信</span></a>
+                            </dd>{/if}{/if}
+                            
+                                	{if $MG[mail] || $show_menu} 
+                                    <dd id="mail" glui-target><a href="sendmail.php" class="layui-nav-right-a">电邮</a>
+                                <a href="mail.php" class="n">
+                                    <i class="dt-icon dt-icon-xinjian"></i><span> 邮件订阅</span></a>
+                            </dd>{/if}
+                                   {if $MG[spread] || $show_menu} 
+                                    <dd id="spread" glui-target><a href="spread.php?action=add" class="layui-nav-right-a">购买</a>
+                                <a href="spread.php" class="n">
+                                    <i class="dt-icon dt-icon-spread"></i><span> 排名推广</span></a>
+                            </dd>{/if}
+                                   	{if $MG[ad] || $show_menu}
+                                     <dd id="ad" glui-target><a href="ad.php?action=add" class="layui-nav-right-a">购买</a>
+                                <a href="ad.php" class="n">
+                                    <i class="dt-icon dt-icon-ad"></i><span> 广告预定</span></a>
+                            </dd>{/if}
+                                     {if $show_oauth}
+                                     <dd id="oauth" glui-target><a href="oauth.php?action=add" class="layui-nav-right-a">绑定</a>
+                                <a href="oauth.php" class="n">
+                                    <i class="dt-icon dt-icon-login"></i><span> 一键登录</span></a>
+                            </dd>{/if}
+                                      {if $EXT[weixin]} 
+                                       <dd id="weixin" glui-target><a href="weixin.php" class="layui-nav-right-a">绑定</a>
+                                <a href="weixin.php" class="n">
+                                    <i class="dt-icon dt-icon-weixin"></i><span> 微信关注</span></a>
+                            </dd>{/if}
+                                                        <dd id="edit" glui-target><a href="avatar.php" class="layui-nav-right-a">头像</a>
+                                <a href="edit.php" class="n">
+                                    <i class="dt-icon dt-icon-setting"></i><span> 修改资料</span></a>
+                            </dd id="ask">
+                            {if $MG[ask] || $show_menu}
+                                                        <dd id="ask" glui-target><a href="ask.php?action=add" class="layui-nav-right-a">提问</a>
+                                <a href="ask.php" class="n">
+                                    <i class="dt-icon dt-icon-service"></i><span> 客服中心</span></a>
+                            </dd>
+                                <dd id="wenfang" glui-target><a href="wenfang.php" class="layui-nav-right-a">问房受理</a>
+                                <a href="wenfang.php" class="n">
+                                    <i class="dt-icon dt-icon-service"></i><span> 问房受理</span></a>
+                            </dd>{/if}
+                            
+                            <dd id="kygl" glui-target>
+                                <a href="kygl.php?action=add" class="layui-nav-right-a">添加</a>
+                                <a href="kygl.php" class="f"><i class="dt-icon dt-icon-hyfw" aria-hidden="true"></i><span> 客源管理</span>
+                                </a>
+                            </dd>
+                                          
+                        </dl>
+                    </li>
+                     {/if}
+                    {if $MYMODS || $show_menu}
+                    <li class="layui-nav-item" id="menu_1" onClick="nav_c(1);">
+                        <a class="layui-nav-item-title" href="javascript:;"><i class="dt-icon dt-icon-lists" aria-hidden="true"></i><span> 信息管理</span></a>
+                        <dl class="layui-nav-child">
+                        {loop $MENUMODS $k $v}
+                            <dd id="mid_{$v}" glui-target>
+            <a href="{$AJ[file_my]}?mid={$v}&action=add" class="layui-nav-right-a">发布</a><a href="{$AJ[file_my]}?mid={$v}" class="{if in_array($v, $MYMODS)}n{else}f{/if}"><i class="dt-icon dt-icon-{$MODULE[$v][module]}"></i><span> {$MODULE[$v][name]}管理</span></a>
+            </dd>{/loop}
+
+                        </dl>
+                    </li>
+                    {/if}
+                    {if $_userid || $show_menu}
+                    <li class="layui-nav-item menu_2" id="menu_2" onClick="nav_c(2);">
+                        <a class="layui-nav-item-title" href="javascript:;"><i class="dt-icon dt-icon-dashangfill" aria-hidden="true"></i><span> 交易管理</span></a>
+                        <dl class="layui-nav-child">
+                            <dd id="trade" glui-target>
+                            <a href="trade.php?action=order" class="layui-nav-right-a">买家</a>
+                                <a href="trade.php?action=order" class="n">
+                                    <i class="dt-icon dt-icon-myedit"></i><span> 我的订单</span></a>
+                            </dd>
+                                                        <dd id="group" glui-target>
+                            <a href="group.php?action=order" class="layui-nav-right-a">买家</a>
+                                <a href="group.php?action=order" class="n">
+                                    <i class="dt-icon dt-icon-group"></i><span> 团购订单</span></a>
+                            </dd>
+                                                        <dd id="record" glui-target>
+                            <a href="record.php?action=pay" class="layui-nav-right-a">站内</a>
+                                <a href="record.php" class="n">
+                                    <i class="dt-icon dt-icon-liushui"></i><span> {$AJ[money_name]}流水</span></a>
+                            </dd>
+                            <dd id="charge" glui-target>
+                            <a href="charge.php?action=pay" class="layui-nav-right-a">充值</a>
+                                <a href="charge.php?action=record" class="n">
+                                    <i class="dt-icon dt-icon-myedit"></i><span> 充值记录</span></a>
+                            </dd>
+                            <dd id="deposit" glui-target>
+                            <a href="deposit.php?action=add" class="layui-nav-right-a">增资</a>
+                                <a href="deposit.php" class="n">
+                                    <i class="dt-icon dt-icon-zijin"></i><span> 保 证 金</span></a>
+                            </dd>
+                            <dd id="cash" glui-target>
+                            <a href="cash.php" class="layui-nav-right-a">提现</a>
+                                <a href="cash.php?action=record" class="n">
+                                    <i class="dt-icon dt-icon-zijin"></i><span> {$AJ[money_name]}提现</span></a>
+                            </dd>
+                            <dd id="credit" glui-target>
+                            <a href="credit.php?action=buy" class="layui-nav-right-a">购买</a>
+                                <a href="credit.php" class="n">
+                                    <i class="dt-icon dt-icon-gift"></i><span> {$AJ[credit_name]}管理</span></a>
+                            </dd>
+                                        {if $MG[address_limit]>-1 || $show_menu}                <dd id="addr" glui-target>
+                            <a href="address.php?action=add" class="layui-nav-right-a">添加</a>
+                                <a href="address.php" class="f">
+                                    <i class="dt-icon dt-icon-address"></i><span> 收货地址</span></a>
+                            </dd>{/if}
+                                                      </dl>
+                    </li>
+                     {/if}
+                     {if $MG[homepage] || $show_menu}
+                    <li class="layui-nav-item menu_3" id="menu_3" onClick="nav_c(3);">
+                        <a class="layui-nav-item-title" href="javascript:;"><i class="dt-icon dt-icon-homefill" aria-hidden="true"></i><span> 商铺管理</span></a>
+                        <dl class="layui-nav-child">
+                                                   {if $MG[homepage] || $show_menu}     <dd id="homepage" glui-target>
+                            <a href="{AJ_STATIC}index.php?homepage={$_username}&update=1" class="layui-nav-right-a">预览</a>
+                                <a href="home.php" class="f">
+                                    <i class="dt-icon dt-icon-mall"></i><span> 商铺设置</span></a>
+                            </dd> {/if}
+                                
+                          
+                            {if ($MG[addmember_limit]>0 && $MG[homepage]) || $show_menu}
+                                                                                    <dd id="addmember" glui-target>
+                            <a href="{$MODULE[2][linkurl]}addmember.php?action=add" class="layui-nav-right-a">添加</a>
+                                <a href="{$MODULE[2][linkurl]}addmember.php" class="f">
+                                    <i class="dt-icon dt-icon-news"></i><span> 经纪人管理</span></a>
+                            </dd>{/if}
+                          
+                            {if ($MG[honor_limit]>-1 && $MG[homepage]) || $show_menu}
+                                                                                    <dd id="honor" glui-target>
+                            <a href="honor.php?action=add" class="layui-nav-right-a">添加</a>
+                                <a href="honor.php" class="f">
+                                    <i class="dt-icon dt-icon-medal"></i><span> 荣誉资质</span></a>
+                            </dd>{/if}
+                            {if ($MG[link_limit]>-1 && $MG[homepage]) || $show_menu}
+                                                                                    <dd id="link" glui-target>
+                            <a href="link.php?action=add" class="layui-nav-right-a">添加</a>
+                                <a href="link.php" class="f">
+                                    <i class="dt-icon dt-icon-link"></i><span> 友情链接</span></a>
+                            </dd>{/if}
+                                                     </dl>
+                    </li>{/if}
+                </ul>
+            </div>
+        </div>
+          <div class="layui-body" id="container">
+        <div class="layui-body-content">

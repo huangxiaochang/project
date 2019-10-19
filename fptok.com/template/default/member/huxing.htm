@@ -1,0 +1,73 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset={AJ_CHARSET}"/>
+<title>{if $head_title}{$head_title}{$AJ[seo_delimiter]}{/if}{$AJ[sitename]}</title>
+<link rel="stylesheet" type="text/css" href="{AJ_STATIC}{$MODULE[2][moduledir]}/image/style.css" />
+<script type="text/javascript" src="{AJ_STATIC}lang/{AJ_LANG}/lang.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/config.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/jquery.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/common.js"></script>
+<script type="text/javascript" src="{AJ_STATIC}file/script/admin.js"></script>
+</head>
+
+<form method="post">
+
+<table cellpadding="2" cellspacing="1" class="tb">
+<tr>
+<th width="25"><input type="checkbox" onclick="checkall(this.form);"/></th>
+
+<th>物业类型</th>
+<th>楼盘</th>
+<th>图片</th>
+<th>标 题</th>
+<th >户型</th>
+<th>面积(平米)</th>
+<th>单价(元)</th>
+<th>是否主力户型</th>
+
+<th width="120">时间</th>
+<th width="50">操作</th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td><input type="checkbox" name="itemid[]" value="{$v[itemid]}"/></td>
+
+<td><a href="{$v['caturl']}" target="_blank">{$v['catname']}</a></td>
+<td><a href="{$MODULE[6][linkurl]}{$v['houseid']}/" target="_blank">{housename($v['houseid'])}</a></td>
+<td><a href="javascript:_preview('{$v['thumb']}');"><img src="{$v['thumb']}" width="60" style="padding:5px;"/></a></td>
+
+<td align="left">&nbsp;<a href="{$v['linkurl']}" target="_blank">{$v['title']}</a>
+
+
+<td align="px11"><?php echo $v['shi'];?>室<?php echo $v['ting'];?>厅<?php echo $v['wei'];?>卫</td>
+<td align="left"><?php echo $v['mj'];?></td>
+<td align="left"><?php echo $v['dj'];?></td>
+<td align="left"><?php echo $v['zlhx'] ? '是' : '否';?></td>
+
+
+
+
+</td>
+
+
+
+<td class="px11" title="增加时间{timetodate($v[addtime], 3)}>">{timetodate($v[addtime], 3)}</td>
+
+<td>
+<a href="?&action=edit&itemid={$v[itemid]}">修改</a>&nbsp;
+<a href="?&action=delete&itemid={$v[itemid]}" onclick="return _delete();">删除</a>
+</td>
+</tr>
+{/loop}
+</table>
+
+<div class="btns">
+<input type="submit" value=" 删除 " class="button_1" onClick="if(confirm('确定要删除选中{$MOD[name]}吗？')){this.form.action='?mid={$mid}&status={$status}&action=delete'}else{return false;}"/>
+
+</div>
+</form>
+<div class="pages">{$pages}</div>
+<br/>
+

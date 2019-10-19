@@ -1,0 +1,129 @@
+.glui-theme .layui-layout-admin .layui-logo {
+	color: #fff;
+	background-color: #00c0ef
+}
+.glui-theme .glui-layout-admin .layui-header {
+	background-color: #fff;
+	border-bottom: 2px solid #00c0ef
+}
+.glui-theme .glui-side, .glui-theme .glui-side .layui-side-scroll .layui-nav-tree, .glui-theme .layui-layout-left .layui-nav-item:hover {
+	background-color: #fff!important
+}
+.glui-theme .layui-layout-admin .layui-header .layui-nav {
+	color: #EEE
+}
+.glui-theme .glui-layout-admin .layui-body {
+	top: 52px
+}
+.glui-theme .glui-side {
+	box-shadow: 0 0 10px 0 #ccc;
+	top: 52px
+}
+.glui-theme .glui-side .layui-nav-tree .layui-nav-item {
+	background-color: #fff;
+	border-bottom: 1px solid #EEE
+}
+.glui-theme .glui-side .layui-nav-tree .layui-nav-item a.layui-nav-item-title:hover {
+	background-color: #fff;
+	color: #EEE
+}
+.glui-theme .glui-side .layui-nav .layui-nav-item a {
+	color: #393D49!important
+}
+.glui-theme .glui-side .layui-nav-tree .layui-nav-child dd.layui-this, .glui-theme .glui-side .layui-nav-tree .layui-nav-child dd.layui-this a, .glui-theme .glui-side .layui-nav-tree .layui-nav-child dd.layui-this a:hover, .glui-theme .glui-side .layui-nav-tree .layui-this, .glui-theme .glui-side .layui-nav-tree .layui-this>a, .glui-theme .glui-side .layui-nav-tree .layui-this>a:hover {
+	color: #00c0ef!important;
+	background-color: #fff!important
+}
+.glui-theme .glui-side .layui-nav .layui-nav-itemed .layui-nav-child {
+	background-color: #f8f8f8!important
+}
+.glui-theme .glui-side .layui-nav-tree .layui-nav-child dd:first-child {
+	border-top: 1px solid #EEE
+}
+.glui-theme .glui-nav li.layui-this {
+	background-color: #fff!important
+}
+.glui-theme .glui-nav li.layui-this a {
+	color: #00c0ef!important
+}
+.glui-theme .glui-nav .layui-nav-item a {
+	color: #393D49!important
+}
+.glui-theme .glui-nav .layui-nav-item a:hover {
+	color: #00c0ef!important
+}
+.glui-theme .glui-tab .layui-tab-title li.layui-this, .glui-theme .glui-table .glui-table-header .glui-search-inputs .glui-search-more, .glui-theme .layui-table-tool .layui-laypage a:hover {
+	color: #00c0ef
+}
+.glui-theme .glui-side .layui-side-scroll .glui-side-fold {
+	color: #00c0ef;
+	background-color: #fff;
+	border-bottom: 1px solid #eee
+}
+.glui-theme .glui-side .layui-nav-tree .layui-nav-child dd.layui-this {
+	padding-left: 3px;
+	background-color: #00c0ef!important
+}
+.glui-theme .glui-side .layui-nav-tree li.layui-this {
+	padding-left: 5px;
+	background-color: #00c0ef!important
+}
+.glui-theme .glui-side .layui-nav-tree .layui-nav-bar {
+	background-color: #00c0ef!important
+}
+.glui-table .glui-table-header .glui-search-inputs .glui-search-keyword button, .glui-theme .layui-laypage .layui-laypage-curr .layui-laypage-em {
+	background-color: #00c0ef
+}
+.glui-theme .layui-nav .layui-nav-more {
+	border-top-color: #00c0ef
+}
+.glui-theme .glui-nav .layui-nav-itemed .layui-nav-more, .glui-theme .glui-nav .layui-nav-mored, .glui-theme .glui-side .layui-nav-itemed .layui-nav-more, .glui-theme .glui-side .layui-nav-mored {
+	border-color: transparent transparent #00c0ef
+}
+.tab a:hover {
+	border-bottom: 2px solid #00c0ef !important;
+	margin-bottom: -2px;
+}
+.glui-theme .glui-side .layui-nav-tree .layui-nav-child .side_b {
+	color: #fff!important;
+	background-color: #00c0ef!important
+}
+.glui-side .layui-nav-tree .layui-nav-child dd:hover {
+	background-color: #fff!important
+}
+.glui-side .layui-nav-tree .layui-nav-child a {
+	background-color: none!important
+}
+.glui-side .layui-nav-tree .layui-nav-child a:hover {
+	background-color: none!important
+}
+.glui-theme .glui-side .layui-nav-tree .layui-nav-child .side_b a {
+	color: #fff!important;
+	background-color: #00c0ef!important
+}
+.nav_2 {
+	border-bottom: #00c0ef 2px solid;
+}
+.sysNotice-info , .sysNotice-info a { color:#00c0ef!important}
+#msgbox, .btn_g, .dt-bqbtn, em.layui-badge { background: #00c0ef!important}
+.sysNotice .layui-elem-quote { border-left: 5px solid #00c0ef !important;}
+.dhead { background: #00c0ef!important; height:30px !important; line-height:30px !important;}
+.dbody { border: #00c0ef 1px solid!important}
+.tab_on a:link, .tab_on a:visited, .tab_on a:active, .tab_on a:hover {
+	font-size: 14px;
+	text-decoration: none;
+	display: block;
+	height: 36px;
+	line-height: 36px;
+	padding: 0 20px;
+	color: #00c0ef !important;
+	border-bottom: 2px solid #00c0ef !important;
+	margin-bottom: -2px;
+}
+.tb input[type="text"]:focus, input[type="number"]:focus, input[type="number"]:focus, .td input[type="email"]:focus, .tb input[type="password"]:focus, .td textarea:focus, .tb select:focus {
+	border: 1px solid #00c0ef !important;
+}
+.limit { border: 1px solid #00c0ef !important; background: #E3FAFF}
+.pages a:hover {background:#00c0ef;border:#00c0ef 1px solid;}
+.pages strong {background:#00c0ef;padding:5px 6px;border:#00c0ef 1px solid;}
+.pages_btn { background:#00c0ef;}

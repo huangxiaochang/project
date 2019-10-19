@@ -1,0 +1,82 @@
+{if !$AJ_TOUCH}
+	<div id="footer">
+	<p> <a target="_blank" href="{$MODULE[1][linkurl]}">网站首页</a>
+		<!--{tag("table=webpage&condition=item=1&areaid=$cityid&order=listorder desc,itemid desc&template=list-webpage")}-->
+		<span>|</span> <a href="{$MODULE[1][linkurl]}sitemap/">网站地图</a>
+		{if $EXT[guestbook_enable]} <span>|</span> <a href="{$EXT[guestbook_url]}">网站留言</a>{/if}
+		{if $EXT[ad_enable]} <span>|</span> <a href="{$EXT[ad_url]}">广告服务</a>{/if}
+	</p>
+	
+	<p>{if $AJ[icpno]}ICP备案号：{$AJ[icpno]}{/if} 客服热线  {$AJ[telephone]}（工作时间：周一至周五8:00至18:00）</p>
+	<p>  {$AJ[copyright]}  <!-- 技术支持：<a href='http://www.wangyingshi.com' target="_blank">网营师</a> --></p>
+	<div class="authentication">
+			<a rel="nofollow" target="_blank" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202007080200026">
+				<img width="103" height="32" alt="经营性网站备案中心" src="//img12.360buyimg.com/da/jfs/t535/349/1185317137/2350/7fc5b9e4/54b8871eNa9a7067e.png" class="err-product">
+			</a>
+			
+			<a rel="nofollow" target="_blank" id="urlknet" tabindex="-1" href="https://ss.knet.cn/verifyseal.dll?sn=2008070300100000031&amp;ct=df&amp;pa=294005">
+				<img border="true" width="103" height="32" onclick="CNNIC_change('urlknet')" oncontextmenu="return false;" name="CNNIC_seal" alt="可信网站" src="//img11.360buyimg.com/da/jfs/t643/61/1174624553/2576/4037eb5f/54b8872dNe37a9860.png" class="err-product">
+			</a>
+			<a rel="nofollow" target="_blank" href="http://www.bj.cyberpolice.cn/index.do">
+				<img width="103" height="32" alt="网络警察" src="//img12.360buyimg.com/cms/jfs/t2050/256/1470027660/4336/2a2c74bd/56a89b8fNfbaade9a.jpg" class="err-product">
+			</a>
+			<a rel="nofollow" target="_blank" href="https://search.szfw.org/cert/l/CX20120111001803001836">
+				<img width="103" height="32" src="//img11.360buyimg.com/da/jfs/t451/173/1189513923/1992/ec69b14a/54b8875fNad1e0c4c.png" class="err-product">
+			</a>
+			<a target="_blank" href="http://www.12377.cn"><img width="103" height="32" src="//img30.360buyimg.com/da/jfs/t1915/215/1329999964/2996/d7ff13f0/5698dc03N23f2e3b8.jpg"></a>
+			<a target="_blank" href="http://www.12377.cn/node_548446.htm"><img width="103" height="32" src="//img14.360buyimg.com/da/jfs/t2026/221/2097811452/2816/8eb35b4b/5698dc16Nb2ab99df.jpg"></a>
+		</div>
+</div>
+{/if}
+<script type="text/javascript">
+{if $aijiacms_task}
+show_task('{$aijiacms_task}');
+{else}
+{php include AJ_ROOT.'/api/task.inc.php';}
+{/if}
+
+</script>
+<script>
+	seajs.use("jquery",function($){
+		//菜单切换
+		var $p = $("#tab_5"),
+				$m2 = $p.find(".ht"),
+				$l = $p.find(".sub_menu"),
+				i = 0;
+		$m2.on({
+			mouseenter:function() {
+				var $t = $(this);
+				i = $m2.removeClass("on").index($t.addClass("on"));
+				$l.hide().eq(i).show();
+			},
+			mouseleave:function() {
+				$l.hide();
+				$(this).removeClass("on")
+			}
+		});
+
+		$('.q_code').on("mouseenter",function(){
+			$(this).find('div.q_code_layer').show();
+		});
+		$('.q_code').on("mouseleave",function(){
+			$(this).find('div.q_code_layer').hide();
+		});
+		$("#tab_4 .ht dl").each(function(){
+			var height = $(this).innerHeight()-26+"px";
+			$(this).css({height:"76px"});
+			$(this).mouseenter(function(){
+				$(this).css({height:height});
+			}).mouseleave(function(){
+				$(this).css({height:"76px"});
+			});
+		});
+		$(".header_l_item").css({overflow:"inherit"});
+            if($("#zjmenubt_index").size() > 0){
+		    $("#zjmenubt_index").addClass("active");
+		}
+	});
+</script>
+
+
+</body>
+</html>

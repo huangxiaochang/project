@@ -1,0 +1,512 @@
+{template 'header'}
+<style>body{background-color:#f7f5f4 !important;}</style>
+<link href="{AJ_SKIN}user_jjr.css?v=3" rel="stylesheet" type="text/css" />
+
+<script>var AGENT_URL="{$MODULE[6][linkurl]}";var JS_URL="";var IMG_URL="";</script>
+<div id="register">
+    <h2>新用户注册</h2>
+    <div class="register-box">
+        <div class="register-left">
+           <iframe src="" name="send" id="send" style="display:none;"></iframe>
+			<form action="{$AJ[file_register]}" method="post" target="send" onsubmit="return check();">
+			<input name="action" type="hidden" id="action" value="{crypt_action('register')}"/>
+			<input name="forward" type="hidden" value="{$forward}"/>
+                <table cellpadding="0" cellspacing="0">
+                <tr>
+			 <td class="label" width="100"><span>*</span>会员类型:</td>
+			<td>
+			<span{if !$GROUP[5][reg]} class="dsn"{/if}>
+			<input type="radio" name="post[regid]" value="5" id="g_5" onclick="reg(1);" checked/><label for="g_5"> {$GROUP[5][groupname]}</label>
+			</span>
+			{loop $GROUP $k $v}
+			{if $k>5 && $v[vip]==0 && $v[reg]==1}<input type="radio" name="post[regid]" value="{$k}" id="g_{$k}" onclick="reg(0);"/><label for="g_{$k}"> {$GROUP[$k][groupname]}</label>&nbsp;&nbsp;&nbsp;&nbsp;{/if}{/loop}
+			
+			</td>
+			</tr>
+                    <tr>		
+                        <td class="label" width="100"><span>*</span>用户名:</td>
+                        <td width="300"><input type="text" name="post[username]" id="username" onblur="validator('username');" autocomplete="off" {if $username} value="{$username}" readonly{/if} class="input" value=""  style="width:200px;"/></td>
+                        <td>
+                           <div class="tips" id="tusername" style="display:none;">
+				<div>{$MOD[minusername]}-{$MOD[maxusername]}个字符，只能使用小写字母、数字、下划线、中划线，且以字母或数字开头和结尾</div>
+			</div>
+			<span id="dusername" class="f_red"></span>&nbsp;</div>
+                        </td>		
+                    </tr>
+                    <tr>		
+                        <td class="label"><span>*</span>密码:</td>
+                        <td><input type="password"  class="input" name="post[password]" id="password" onblur="validator('password');" autocomplete="off"{if $password} value="{$password}" readonly{/if} style="width:200px;"/></td>
+                        <td>
+                            <div class="tips" id="tpassword" style="display:none;">
+				<div>{$MOD[minpassword]}-{$MOD[maxpassword]}个字符，区分大小写，推荐使用数字、字母和特殊符号组合</div>
+			</div>
+			<span id="dpassword" class="f_red"></span>&nbsp;
+                        </td>		
+                    </tr>
+                    <tr>		
+                        <td class="label"><span>*</span>确认密码:</td>
+                        <td><input type="password" class="input" name="post[cpassword]" id="cpassword" onblur="validate('cpassword');" autocomplete="off"{if $password} value="{$password}" readonly{/if} style="width:200px;"/></td>
+                        <td>
+                           <div class="tips" id="tcpassword" style="display:none;">
+				<div>请再输入一遍上面填写的密码</div>
+			</div>
+			<span id="dcpassword" class="f_red"></span>&nbsp;
+                        </td>		
+                    </tr>
+                    <tr>
+			<td class="label"><span>*</span>所在地区:</td>
+			<td>{if $areaid}{ajax_area_select('post[areaid]', '请选择', $areaid, '', 2)}{else}{ajax_area_select('post[areaid]', '请选择', $cityid, '', 2)}{/if}</td>
+			<td><span id="dareaid" class="f_red"></span>&nbsp;</td>
+			</tr>
+                    {if $MOD[email_register]}
+                    <tr>		
+                        <td class="label"><span>*</span>邮件地址</td>
+                        <td><input type="text" name="post[email]" id="email" onblur="validator('email');"{if $email} value="{$email}" readonly{/if} class="input"/></td>
+                        <td>
+                          <div class="tips" id="temail" style="display:none;">
+				<div>
+				{if $MOD[checkuser] == 2}
+				<span class="f_red">系统设置了邮件验证注册，请确保当前的邮件地址真实有效<br/></span>
+				{/if}
+				请使用常用常用邮箱(Email)地址，地址不会被公开且可用于登录网站			
+				</div>
+			</div>
+			<span id="demail" class="f_red"></span>&nbsp;
+                        </td>		
+                    </tr>{/if}
+                    {if $could_emailcode}
+			<tr onmouseover="Ds('temailcode');" onmouseout="Dh('temailcode');">
+			<td class="label"><span>*</span>邮件验证码:</td>
+			<td><input type="text" class="reg_inp" style="width:80px;" name="post[emailcode]" id="emailcode" onblur="validator('emailcode');" />
+			<input type="button" value="立即发送" id="send_code" onclick="SendCode();"/>
+			</td>
+			<td>
+			<div class="tips" id="temailcode" style="display:none;">
+				<div>
+			
+				</div>
+			</div>
+			<span id="demailcode" class="f_red"></span>&nbsp;	
+			</td>
+			</tr>
+			<tr id="sendok" style="display:none;">
+			<td class="tl">&nbsp;</td>
+			<td id="dsendok">&nbsp;</td>
+			<td>&nbsp;</td>
+			</tr>
+			{/if}
+                    <tr>		
+                        <td class="label"><span>*</span>手机号:</td>
+                        <td><input type="text"  id="mobile"  class="input"  name="post[mobile]" id="mobile"{if $could_mobilecode} onblur="validator('mobile');"{/if} style="width:200px;"/></td>
+                        <td>
+                           <div class="tips" id="tmobile" style="display:none;">
+				<div>{if !$could_mobilecode}推荐填写，以便直接与您取得联系<br/>{/if}号码可用于登录网站和接收本站短信</div>
+			</div>
+			<span id="dmobile" class="f_red"></span>&nbsp;	
+                        </td>		
+                    </tr>
+                       {if $could_mobilecode}
+			<tr onmouseover="Ds('tmobilecode');" onmouseout="Dh('tmobilecode');">
+			<td class="label"><span>*</span>手机验证码:</td>
+			<td><input type="text" class="reg_inp" style="width:80px;" name="post[mobilecode]" id="mobilecode" onblur="validator('mobilecode');"/>
+			<input type="button" value="立即发送" id="send_scode" onclick="SendSCode();"/>
+			</td>
+			<td>
+			<div class="tips" id="tmobilecode" style="display:none;">
+				<div>
+						</div>
+			</div>
+			<span id="dmobilecode" class="f_red"></span>&nbsp;	
+			</td>
+			</tr>
+			<tr id="sendsok" style="display:none;">
+			<td class="tl">&nbsp;</td>
+			<td id="dsendsok">&nbsp;</td>
+			<td>&nbsp;</td>
+			</tr>
+			{/if}
+                 
+				<tbody  id="company_detail" style="display:none;">
+				<tr >
+				 <td class="label"><span>*</span>公司名称 :</td>
+				<td ><input type="text" class="input" id="villagename" name="post[company]" value="{$housename}"   style="width:200px;">
+					<input type="hidden" name="post[companyid]" id="cid" value="">
+						<div id="autoVn"></div></td>
+				<td>
+				<div class="tips" id="tcompany" style="display:none;">
+					<div>请填写公司全称，与营业执照保持一致</div>
+				</div>
+				<span id="dcompany" class="f_red"></span>&nbsp;
+				</td>
+				</tr>
+				
+				<tr >
+				 <td class="label"><span>*</span>公司电话:</td>
+				<td><input type="text" class="input" style="width:200px;" name="post[telephone]" id="telephone" onblur="validate('telephone');"/></td>
+				<td>
+				<div class="tips" id="ttelephone" style="display:none;">
+					<div>格式范例：86-010-88889999</div>
+				</div>
+				<span id="dtelephone" class="f_red"></span>&nbsp;
+				</td>
+				</tr>
+				</tbody>
+			
+                    
+                 
+            
+            
+            {if $MOD[question_register]}
+			<tr onmouseover="Ds('tanswer');" onmouseout="Dh('tanswer');">
+			<td class="label"><span>*</span>验证问题</td>
+			<td>{template 'question', 'chip'}</td>
+			<td>
+			
+			<span id="danswer" class="f_red"></span>&nbsp;
+			</td>
+			</tr>
+			{/if}
+			{if $MOD[captcha_register]}
+			<tr onmouseover="Ds('tcaptcha');" onmouseout="Dh('tcaptcha');">
+			<td class="label"><span>*</span>验证码</td>
+			<td>{template 'captcha', 'chip'}</td>
+			<td>
+			
+			<span id="dcaptcha" class="f_red"></span>&nbsp;
+			</td>
+			</tr>
+			{/if}  
+            
+            {if $AJ[geetest_on]}
+              <tr>
+			<td class="label"><span>*</span>验证</td>
+			<td>
+            <style>
+.captcha-box{
+width:200px;
+ display: inline-block;
+}
+
+</style>
+            <div class="captcha-box" id="div_geetest_lib" >
+				<div id="glcaptcha"  ></div>
+                </div>
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<script type="text/javascript">
+				    var validates = 0;
+				    var handler = function (captchaObj) {
+				         // 将验证码加到id为captcha的元素里
+				         captchaObj.appendTo("#glcaptcha");
+						 captchaObj.onSuccess(function () {
+                              // 成功回调
+			                 var chaObj = captchaObj.getValidate();
+							 vchallenge = chaObj.geetest_challenge;						 
+							 validate = chaObj.geetest_validate;
+							 vseccode = chaObj.geetest_seccode;
+							 validates = 1;							 
+                               });
+						captchaObj.onFail(function () {
+                              // 成功回调
+			                 //layer.msg(getValidate());
+                               });
+				     };
+
+				    $.ajax({
+				        // 获取id，challenge，success（是否启用failback）
+				        url: "/api/ajax/geetest/StartCaptchaServlet.php?rand="+Math.round(Math.random()*100),
+				        type: "get",
+				        dataType: "json", // 使用jsonp格式
+				        success: function (data) {
+				            // 使用initGeetest接口
+				            // 参数1：配置参数，与创建Geetest实例时接受的参数一致
+				            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+				            initGeetest({
+				                gt: data.gt,
+				                challenge: data.challenge,
+								width: "200px",
+				                product: "float", // 产品形式
+				                offline: !data.success
+				            }, handler);
+				        }
+				    });</script>
+					</td>
+			<td>
+			<div class="tips" id="tglcaptcha" style="display:none;">
+				<div>请将滑块滑动到正确位置</div>
+			</div>
+			<span id="dglcaptcha" class="f_red"></span>&nbsp;
+			</td>
+			</tr>
+            {/if}
+                                           <tr>		
+                        <td>&nbsp;</td>
+                        <td colspan="2"><input type="checkbox" id="agree" checked="checked" />我同意<a href="?read=1">《我已阅读并同意服务条款》</a></td>
+                    </tr>
+                    <tr>		
+                        <td>&nbsp;</td>
+                        <td colspan="2"><input type="submit" name="submit" value="立即注册" style="display:block; float:left;background: #ee4433;color:#fff; width:150px; height:46px; font-size:18px; border:0; cursor:pointer;"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="register-right">
+            <p>已有账号，请直接登录：</p>
+            <a class="login-link" href="{$MODULE[2][linkurl]}{$AJ[file_login]}">使用帐号登录</a>
+            {if $oa}
+            <p>您还可以用其他方式直接登录：</p>
+            {loop $OAUTH $k $v}
+		{if $v[enable]}<a href="{AJ_PATH}api/oauth/{$k}/connect.php" title="{$v[name]}" class="{$k}-link"><img src="{AJ_PATH}api/oauth/{$k}/ico.png" alt="{$v[name]}"/>{$v[name]}</a> {/if}
+		{/loop}
+           
+            {/if}
+        </div>
+        <div class="clearit"></div>
+    </div>
+</div>
+<script type="text/javascript" src="{AJ_STATIC}file/script/guest.js"></script>
+<script type="text/javascript">
+if(Dd('username').value == '') Dd('username').focus();
+{if $MOD[question_register]}Dd('answer').className = 'reg_inp';{/if}
+{if $MOD[captcha_register]}Dd('captcha').className = 'reg_inp';{/if}
+var vid = '';
+function dtrim(id) {
+	var str = Dd(id).value.trim();
+	if(Dd(id).value != str) Dd(id).value = str;
+}
+function validator(id) {
+	vid = id;
+	dtrim(id);
+	makeRequest('moduleid={$moduleid}&action=member&job='+id+'&value='+Dd(id).value, AJPath, '_validator');
+}
+function _validator() {
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		Dd('d'+vid).innerHTML = xmlHttp.responseText ? '<img src="{AJ_SKIN}image/check_error.gif" align="absmiddle"/> '+xmlHttp.responseText : '<img src="{AJ_SKIN}image/check_right.gif" align="absmiddle"/> ';
+	}
+}
+function err_msg(str, id) {
+	Dd('d'+id).innerHTML = '<img src="{AJ_SKIN}image/check_'+(str ? 'error' : 'right')+'.gif" align="absmiddle"/> '+str;
+}
+function validate(type) {
+	if(type == 'cpassword') {
+		if(Dd('cpassword').value != Dd('password').value) {
+			err_msg('两次输入的密码不一致', type);
+		} else {
+			err_msg('', type);
+		}
+	} 
+}
+function reg(type) {
+	if(type) {
+		Dh('company_detail');
+	} else {
+		Ds('company_detail');
+	}
+}
+function Df(ID) {
+	Dd(ID).focus();
+}
+function check() {
+	var f,p;
+	f = 'username';
+	if(Dd(f).value == '') {
+		err_msg('请填写会员登录名', f);
+		Df(f);
+		return false;
+	}
+	if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
+		Df(f);
+		return false;
+	}
+	f = 'password';
+	if(Dd(f).value.length < 6) {
+		err_msg('请填写会员登录密码', f);
+		Df(f);
+		return false;
+	}
+	if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
+		Df(f);
+		return false;
+	}
+	f = 'cpassword';
+	if(Dd(f).value == '') {
+		err_msg('请重复输入密码', f);
+		Df(f);
+		return false;
+	}
+	if(Dd('password').value != Dd(f).value) {
+		err_msg('两次输入的密码不一致', f);
+		Df(f);
+		return false;
+	}
+	f = 'email';
+	if(Dd(f).value.length < 6) {
+		err_msg('请填写电子邮箱', f);
+		Df(f);
+		return false;
+	}
+	if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
+		Df(f);
+		return false;
+	}
+	{if $could_emailcode}
+		f = 'emailcode';
+		if(!Dd(f).value.match(/^[0-9]{6}$/)) {
+			Dmsg('请填写邮件验证码', f);
+			return false;
+		}
+	{/if}
+if(Dd('g_5').checked == ture) {
+		f = 'company';
+		if(Dd(f).value == '') {
+			err_msg('请填写公司名称', f);
+			Df(f);
+			return false;
+		}
+		if(Dd('d'+f).innerHTML.indexOf('error') != -1) {
+			Df(f);
+			return false;
+		}
+		
+		f = 'telephone';
+		if(Dd(f).value.length < 7) {
+			err_msg('请填写公司电话', f);
+			Df(f);
+			return false;
+		}
+	}
+	{if $MOD[question_register]}
+	f = 'answer';
+	if(Dd(f).value == '') {
+		Dmsg('请回答验证问题', f);
+		return false;
+	}
+	{/if}
+	{if $MOD[captcha_register]}
+	f = 'captcha';
+	if(!is_captcha(Dd(f).value)) {
+		Dmsg('请填写验证码', f);
+		return false;
+	}
+	{/if}
+	{if $AJ[geetest_on]}
+	f = 'glcaptcha';
+	if(validates==0){
+	Dmsg('滑块验证不正确', f);
+    return false;
+	}
+   {/if}
+	return true;
+}
+function SendCode() {
+	if(Dd('demail').innerHTML.indexOf('right') == -1) {
+		Dd('email').focus();
+		return;
+	}
+	makeRequest('action={$action_sendcode}&value='+Dd('email').value, '{$AJ[file_register]}', '_SendCode');
+	Dh('sendok');
+	Dd('send_code').value = '正在发送';
+	Dd('send_code').disabled = true;
+}
+function _SendCode() {
+	var f = 'email';
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {			
+		Dd('send_code').value = xmlHttp.responseText == 1 ? '发送成功' : '立即发送';
+		Dd('send_code').disabled = xmlHttp.responseText == 1 ? true : false;
+		if(xmlHttp.responseText == 1) {
+			Ds('sendok');
+			Dd('dsendok').innerHTML = '<img src="{AJ_STATIC}{$MODULE[2][moduledir]}/image/ico_mailok.gif" align="absmiddle"/> <span class="f_green">邮件发送成功，</span> <a href="goto.php?action=emailcode&email='+Dd(f).value+'" target="_blank">立即查收</a>';
+			StopCode();
+		} else if(xmlHttp.responseText == 2) {
+			err_msg('邮件格式错误，请检查', f);
+			Df(f);
+		} else if(xmlHttp.responseText == 3) {
+			err_msg('邮件地址已存在，请更换', f);
+			Df(f);
+		} else if(xmlHttp.responseText == 4) {
+			err_msg('此邮件域名已经被禁止注册，请更换', f);
+			Df(f);
+		} else if(xmlHttp.responseText == 5) {
+			alert('邮件发送过快，请稍后再试');
+		} else if(xmlHttp.responseText == 6) {
+			alert('尝试发送次数太多，请稍后再试');
+		} else {
+			alert('未知错误，请重试');
+		}
+	}
+}
+function StopCode() {
+	Dd('send_code').disabled = true;
+	var i = 60;
+	var interval=window.setInterval(
+		function() {
+			if(i == 0) {
+				Dd('send_code').value = '立即发送';
+				Dd('send_code').disabled = false;
+				clearInterval(interval);
+			} else {
+				Dd('send_code').value = '重新发送('+i+')';
+				i--;
+			}
+		},
+	1000);
+}
+
+function SendSCode() {
+	if(Dd('dmobile').innerHTML.indexOf('right') == -1) {
+		Dd('mobile').focus();
+		return;
+	}
+	makeRequest('action={$action_sendscode}&value='+Dd('mobile').value, '{$AJ[file_register]}', '_SendSCode');
+	Dh('sendsok');
+	Dd('send_scode').value = '正在发送';
+	Dd('send_scode').disabled = true;
+}
+function _SendSCode() {
+	var f = 'mobile';
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {			
+		Dd('send_scode').value = xmlHttp.responseText == 1 ? '发送成功' : '立即发送';
+		Dd('send_scode').disabled = xmlHttp.responseText == 1 ? true : false;
+		if(xmlHttp.responseText == 1) {
+			Ds('sendsok');
+			Dd('dsendsok').innerHTML = '<img src="{AJ_STATIC}{$MODULE[2][moduledir]}/image/ico_mailok.gif" align="absmiddle"/> <span class="f_green">短信发送成功</span>';
+			StopSCode();
+		} else if(xmlHttp.responseText == 2) {
+			err_msg('手机号码格式错误，请检查', f);
+			Df(f);
+		} else if(xmlHttp.responseText == 3) {
+			err_msg('手机号码已存在，请更换', f);
+			Df(f);
+		} else if(xmlHttp.responseText == 5) {
+			alert('短信发送过快，请稍后再试');
+		} else if(xmlHttp.responseText == 6) {
+			alert('尝试发送次数太多，请稍后再试');
+		} else {
+			alert('未知错误，请重试');
+		}
+	}
+}
+function StopSCode() {
+	Dd('send_scode').disabled = true;
+	var i = 180;
+	var interval=window.setInterval(
+		function() {
+			if(i == 0) {
+				Dd('send_scode').value = '立即发送';
+				Dd('send_scode').disabled = false;
+				clearInterval(interval);
+			} else {
+				Dd('send_scode').value = '重新发送('+i+')';
+				i--;
+			}
+		},
+	1000);
+}
+</script>
+<script type="text/javascript">
+seajs.use(["jjrfbconc", "emailpop"], function(fb) {
+	$("#email").emailpop();
+		fb.init("esf",{ autoc:AGENT_URL + "house.php?action=company"
+		});
+});
+</script>
+{template 'footer'}

@@ -1,0 +1,416 @@
+{template 'header', 'member'}
+<!-- <script type="text/javascript">c(3);</script> -->
+<div class="menu">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td class="tab" id="add"><a href="?action=add"><span>添加客源</span></a></td>
+<td class="tab" id="s3"><a href="?action=index"><span>客源管理<span class="px10">({$nums[3]})</span></span></a></td>
+</tr>
+</table>
+</div>
+{if $action=='add' || $action=='edit'}
+<form method="post" action="?" id="dform" onsubmit="return check();">
+<input type="hidden" name="action" value="{$action}"/>
+<input type="hidden" name="userid" value="{$userid}"/>
+<input type="hidden" name="forward" value="{$forward}"/>
+<table cellpadding="6" cellspacing="1" class="tb">
+<tr>
+<td align="center" colspan="6" style="background:  #f5f5f5; line-height: 28px; font-weight:  bold;">客源信息</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 姓名</td>
+<td class="tr"><input type="text" name="post[name]" value="{$name}" id="name" size="20"/></td>
+<td class="tl"><span class="f_red">*</span> 手机</td>
+<td class="tr"><input type="text" name="post[mobile]" value="{$mobile}" id="mobile" size="11"/></td>
+<td class="tl"><span class="f_red"></span> 固话</td>
+<td class="tr"><input type="text" name="post[phone]" value="{$phone}" id="phone" size="20"/></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 公/私</td>
+<td class="tr">
+	<select name="post[ke]">
+		<option value ="0" {if $ke=='0'} selected="selected" {/if}>私客</option>
+		<option value ="1" {if $ke=='1'} selected="selected" {/if}>公客</option>
+	</select>
+</td>
+<td class="tl"><span class="f_red">*</span> 地址</td>
+<td class="tr"><input type="text" name="post[address]" value="{$address}" id="address" size="40" /></td>
+<td class="tl"><span class="f_red">*</span> 邮箱</td>
+<td class="tr"><input type="text" name="post[email]" value="{$email}" id="email"/></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 客源状态</td>
+<td class="tr">
+	<select name="post[kyzt]">
+		<option value ="有效" {if $kyzt=='有效'} selected="selected" {/if}>有效</option>
+		<option value ="推荐" {if $kyzt=='推荐'} selected="selected" {/if}>推荐</option>
+		<option value ="待审" {if $kyzt=='待审'} selected="selected" {/if}>待审</option>
+		<option value ="预定" {if $kyzt=='预定'} selected="selected" {/if}>预定</option>
+		<option value ="暂停" {if $kyzt=='暂停'} selected="selected" {/if}>暂停</option>
+		<option value ="成交" {if $kyzt=='成交'} selected="selected" {/if}>成交</option>
+		<option value ="无效" {if $kyzt=='无效'} selected="selected" {/if}>无效</option>
+	</select>
+</td>
+<td class="tl"><span class="f_red">*</span> 客源类型</td>
+<td class="tr">
+	<select name="post[kylx]">
+		<option value ="1" {if $kylx=='1'} selected="selected" {/if}>公务员</option>
+		<option value ="2" {if $kylx=='2'} selected="selected" {/if}>教师</option>
+		<option value ="3" {if $kylx=='3'} selected="selected" {/if}>学生</option>
+		<option value ="4" {if $kylx=='4'} selected="selected" {/if}>做生意</option>
+		<option value ="5" {if $kylx=='5'} selected="selected" {/if}>国企上班</option>
+		<option value ="6" {if $kylx=='6'} selected="selected" {/if}>私企上班</option>
+		<option value ="7" {if $kylx=='7'} selected="selected" {/if}>自由职业</option>
+		<option value ="8" {if $kylx=='8'} selected="selected" {/if}>其他</option>
+	</select>
+</td>
+<td class="tl"><span class="f_red">*</span> 客源等级</td>
+<td class="tr">
+	<select name="post[kydj]">
+		<option value ="1" {if $kydj=='1'} selected="selected" {/if}>一般</option>
+		<option value ="2" {if $kydj=='2'} selected="selected" {/if}>特殊</option>
+		<option value ="3" {if $kydj=='3'} selected="selected" {/if}>急租</option>
+		<option value ="4" {if $kydj=='4'} selected="selected" {/if}>急买</option>
+	</select>
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red"></span> 委托日期</td>
+<td class="tr">{dcalendar('post[wttime]', $wttime)} <span id="dpostwttime" class="f_red"></span></td>
+<td class="tl"><span class="f_red"></span> 标签</td>
+<td class="tr"><input type="text" name="post[biaoqian]" value="{$biaoqian}" id="biaoqian" size="40" /></td>
+<td class="tl"><span class="f_red"></span> 所属经纪人</td>
+<td class="tr"><input type="text" name="post[sujjr]" value="{$sujjr}" id="sujjr" size="20" /></td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red"></span> 备注</td>
+<td class="tr" colspan="5"><textarea style="width:  96%" name="post[beizhu]">{$beizhu}</textarea></td>
+</tr>
+<tr>
+<td align="center" colspan="6" style="background:  #f5f5f5; line-height: 28px; font-weight:  bold;">客源要求</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 房型</td>
+<td class="tr" colspan="2">
+	<select name="post[shi]">
+		<option value ="0" {if $shi=='0'} selected="selected" {/if}>0</option>
+		<option value ="1" {if $shi=='1'} selected="selected" {/if}>1</option>
+		<option value ="2" {if $shi=='2'} selected="selected" {/if}>2</option>
+		<option value ="3" {if $shi=='3'} selected="selected" {/if}>3</option>
+		<option value ="4" {if $shi=='4'} selected="selected" {/if}>4</option>
+		<option value ="5" {if $shi=='5'} selected="selected" {/if}>5</option>
+	</select>室
+	<select name="post[ting]">
+		<option value ="0" {if $ting=='0'} selected="selected" {/if}>0</option>
+		<option value ="1" {if $ting=='1'} selected="selected" {/if}>1</option>
+		<option value ="2" {if $ting=='2'} selected="selected" {/if}>2</option>
+		<option value ="3" {if $ting=='3'} selected="selected" {/if}>3</option>
+		<option value ="4" {if $ting=='4'} selected="selected" {/if}>4</option>
+		<option value ="5" {if $ting=='5'} selected="selected" {/if}>5</option>
+	</select>厅
+	<select name="post[wei]">
+		<option value ="0" {if $wei=='0'} selected="selected" {/if}>0</option>
+		<option value ="1" {if $wei=='1'} selected="selected" {/if}>1</option>
+		<option value ="2" {if $wei=='2'} selected="selected" {/if}>2</option>
+		<option value ="3" {if $wei=='3'} selected="selected" {/if}>3</option>
+		<option value ="4" {if $wei=='4'} selected="selected" {/if}>4</option>
+		<option value ="5" {if $wei=='5'} selected="selected" {/if}>5</option>
+	</select>卫
+	<select name="post[chu]">
+		<option value ="0" {if $chu=='0'} selected="selected" {/if}>0</option>
+		<option value ="1" {if $chu=='1'} selected="selected" {/if}>1</option>
+		<option value ="2" {if $chu=='2'} selected="selected" {/if}>2</option>
+		<option value ="3" {if $chu=='3'} selected="selected" {/if}>3</option>
+		<option value ="4" {if $chu=='4'} selected="selected" {/if}>4</option>
+		<option value ="5" {if $chu=='5'} selected="selected" {/if}>5</option>
+	</select>厨
+	<select name="post[yangtai]">
+		<option value ="0" {if $yangtai=='0'} selected="selected" {/if}>0</option>
+		<option value ="1" {if $yangtai=='1'} selected="selected" {/if}>1</option>
+		<option value ="2" {if $yangtai=='2'} selected="selected" {/if}>2</option>
+		<option value ="3" {if $yangtai=='3'} selected="selected" {/if}>3</option>
+		<option value ="4" {if $yangtai=='4'} selected="selected" {/if}>4</option>
+		<option value ="5" {if $yangtai=='5'} selected="selected" {/if}>5</option>
+	</select>阳台
+</td>
+<td class="tr"><span class="f_red">*</span> 朝向 
+	<select name="post[chaoxiang]">
+		<option value ="1" {if $chaoxiang=='1'} selected="selected" {/if}>东</option>
+		<option value ="2" {if $chaoxiang=='2'} selected="selected" {/if}>西</option>
+		<option value ="3" {if $chaoxiang=='3'} selected="selected" {/if}>南</option>
+		<option value ="4" {if $chaoxiang=='4'} selected="selected" {/if}>北</option>
+		<option value ="5" {if $chaoxiang=='5'} selected="selected" {/if}>东西</option>
+		<option value ="6" {if $chaoxiang=='6'} selected="selected" {/if}>南北</option>
+		<option value ="7" {if $chaoxiang=='7'} selected="selected" {/if}>西北</option>
+		<option value ="8" {if $chaoxiang=='8'} selected="selected" {/if}>西南</option>
+		<option value ="9" {if $chaoxiang=='9'} selected="selected" {/if}>东南</option>
+		<option value ="10" {if $chaoxiang=='10'} selected="selected" {/if}>东北</option>
+		<option value ="0" {if $chaoxiang=='0'} selected="selected" {/if}>不限</option>
+	</select>
+</td>
+<td class="tl"><span class="f_red">*</span> 房龄</td>
+<td class="tr"><input type="text" name="post[fangling][]" value="{reset($fangling)}" id="fangling1" size="5" /> - <input type="text" name="post[fangling][]" value="{end($fangling)}" id="fangling2" size="5" /> 年</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 面积</td>
+<td class="tr"><input type="text" name="post[mianji][]" value="{reset($mianji)}" id="mianji1" size="5" /> - <input type="text" name="post[mianji][]" value="{end($mianji)}" id="mianji2" size="5" /> 平方米</td>
+<td class="tl"><span class="f_red">*</span> 价格</td>
+<td class="tr"><input type="text" name="post[jiage][]" value="{reset($jiage)}" id="jiage1" size="5" /> - <input type="text" name="post[jiage][]" value="{end($jiage)}" id="jiage2" size="5" /> 万</td>
+<td class="tl"><span class="f_red">*</span> 楼层</td>
+<td class="tr"><input type="text" name="post[louceng][]" value="{reset($louceng)}" id="louceng1" size="5" /> - <input type="text" name="post[louceng][]" value="{end($louceng)}" id="louceng2" size="5" /> 层</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 装饰要求</td>
+<td class="tr">
+	<select name="post[zsyq]">
+		<option value ="1" {if $zsyq=='1'} selected="selected" {/if}>毛坯</option>
+		<option value ="2" {if $zsyq=='2'} selected="selected" {/if}>简装</option>
+		<option value ="3" {if $zsyq=='3'} selected="selected" {/if}>新装</option>
+		<option value ="4" {if $zsyq=='4'} selected="selected" {/if}>中装</option>
+		<option value ="5" {if $zsyq=='5'} selected="selected" {/if}>精装</option>
+		<option value ="6" {if $zsyq=='6'} selected="selected" {/if}>豪装</option>
+		<option value ="7" {if $zsyq=='7'} selected="selected" {/if}>婚装</option>
+	</select>
+</td>
+<td class="tl"><span class="f_red">*</span> 用途</td>
+<td class="tr">
+	<select name="post[yongtu]">
+		<option value ="1" {if $yongtu=='1'} selected="selected" {/if}>住宅</option>
+		<option value ="2" {if $yongtu=='2'} selected="selected" {/if}>写字楼</option>
+		<option value ="3" {if $yongtu=='3'} selected="selected" {/if}>商住两用</option>
+		<option value ="4" {if $yongtu=='4'} selected="selected" {/if}>商铺</option>
+		<option value ="5" {if $yongtu=='5'} selected="selected" {/if}>厂房</option>
+		<option value ="6" {if $yongtu=='6'} selected="selected" {/if}>土地</option>
+		<option value ="7" {if $yongtu=='7'} selected="selected" {/if}>车库</option>
+		<option value ="8" {if $yongtu=='8'} selected="selected" {/if}>合作建房</option>
+		<option value ="9" {if $yongtu=='9'} selected="selected" {/if}>集资房</option>
+		<option value ="10" {if $yongtu=='10'} selected="selected" {/if}>屋连地</option>
+		<option value ="11" {if $yongtu=='11'} selected="selected" {/if}>内部</option>
+		<option value ="0" {if $yongtu=='0'} selected="selected" {/if}>其他</option>
+	</select>
+</td>
+<td class="tl"><span class="f_red">*</span> 物业类型</td>
+<td class="tr">
+	<select name="post[wylx]">
+		<option value ="1" {if $wylx=='1'} selected="selected" {/if}>高层</option>
+		<option value ="2" {if $wylx=='2'} selected="selected" {/if}>小高层</option>
+		<option value ="3" {if $wylx=='3'} selected="selected" {/if}>复式</option>
+		<option value ="4" {if $wylx=='4'} selected="selected" {/if}>私房</option>
+		<option value ="5" {if $wylx=='5'} selected="selected" {/if}>别墅</option>
+		<option value ="6" {if $wylx=='6'} selected="selected" {/if}>多层</option>
+		<option value ="7" {if $wylx=='7'} selected="selected" {/if}>公寓</option>
+		<option value ="8" {if $wylx=='8'} selected="selected" {/if}>顶+阁</option>
+		<option value ="9" {if $wylx=='9'} selected="selected" {/if}>底+院</option>
+		<option value ="0" {if $wylx=='0'} selected="selected" {/if}>其他</option>
+	</select>
+</td>
+</tr>
+<tr>
+<td class="tl"><span class="f_red">*</span> 区县</td>
+<td class="tr"><input type="text" name="post[quxian]" value="{$quxian}" id="quxian" size="10" /></td>
+<td class="tl"><span class="f_red">*</span> 地段要求</td>
+<td class="tr"><input type="text" name="post[ddyq]" value="{$ddyq}" id="ddyq" size="40" /></td>
+</tr>
+<tr>
+<td class="tl">房屋设施</td>
+<td class="tr" colspan="5">
+	<input type="checkbox" name="post[fwsb][]" value="1" {php if(in_array(1,$fwsb)) echo 'checked'}/> 水 
+	<input type="checkbox" name="post[fwsb][]" value="2" {php if(in_array(2,$fwsb)) echo 'checked'}/> 电 
+	<input type="checkbox" name="post[fwsb][]" value="3" {php if(in_array(3,$fwsb)) echo 'checked'}/> 天然气 
+	<input type="checkbox" name="post[fwsb][]" value="4" {php if(in_array(4,$fwsb)) echo 'checked'}/> 暖气 
+	<input type="checkbox" name="post[fwsb][]" value="5" {php if(in_array(5,$fwsb)) echo 'checked'}/> 电话 
+	<input type="checkbox" name="post[fwsb][]" value="6" {php if(in_array(6,$fwsb)) echo 'checked'}/> 电视 
+	<input type="checkbox" name="post[fwsb][]" value="7" {php if(in_array(7,$fwsb)) echo 'checked'}/> 空调 
+	<input type="checkbox" name="post[fwsb][]" value="8" {php if(in_array(8,$fwsb)) echo 'checked'}/> 床 
+	<input type="checkbox" name="post[fwsb][]" value="9" {php if(in_array(9,$fwsb)) echo 'checked'}/> 电风扇 
+	<input type="checkbox" name="post[fwsb][]" value="10" {php if(in_array(10,$fwsb)) echo 'checked'}/> 太阳能 
+	<input type="checkbox" name="post[fwsb][]" value="11" {php if(in_array(11,$fwsb)) echo 'checked'}/> 洗衣机 
+	<input type="checkbox" name="post[fwsb][]" value="12" {php if(in_array(12,$fwsb)) echo 'checked'}/> 热水器 
+	<input type="checkbox" name="post[fwsb][]" value="13" {php if(in_array(13,$fwsb)) echo 'checked'}/> 煤气灶 
+	<input type="checkbox" name="post[fwsb][]" value="14" {php if(in_array(14,$fwsb)) echo 'checked'}/> 抽油烟机 
+	<input type="checkbox" name="post[fwsb][]" value="15" {php if(in_array(15,$fwsb)) echo 'checked'}/> 电冰箱 
+	<input type="checkbox" name="post[fwsb][]" value="16" {php if(in_array(16,$fwsb)) echo 'checked'}/> 微波炉 
+	<input type="checkbox" name="post[fwsb][]" value="17" {php if(in_array(17,$fwsb)) echo 'checked'}/> 衣柜 
+	<input type="checkbox" name="post[fwsb][]" value="18" {php if(in_array(18,$fwsb)) echo 'checked'}/> 书柜 
+	<input type="checkbox" name="post[fwsb][]" value="19" {php if(in_array(19,$fwsb)) echo 'checked'}/> 橱柜 
+	<input type="checkbox" name="post[fwsb][]" value="20" {php if(in_array(20,$fwsb)) echo 'checked'}/> 沙发 
+	<input type="checkbox" name="post[fwsb][]" value="21" {php if(in_array(21,$fwsb)) echo 'checked'}/> 茶几 
+	<input type="checkbox" name="post[fwsb][]" value="22" {php if(in_array(22,$fwsb)) echo 'checked'}/> 宽带 
+	<input type="checkbox" name="post[fwsb][]" value="23" {php if(in_array(23,$fwsb)) echo 'checked'}/> 电梯 
+	<input type="checkbox" name="post[fwsb][]" value="24" {php if(in_array(24,$fwsb)) echo 'checked'}/> 停车位 
+	<input type="checkbox" name="post[fwsb][]" value="25" {php if(in_array(25,$fwsb)) echo 'checked'}/> 储藏室 
+	<input type="checkbox" name="post[fwsb][]" value="26" {php if(in_array(26,$fwsb)) echo 'checked'}/> 地下室 
+	<input type="checkbox" name="post[fwsb][]" value="27" {php if(in_array(27,$fwsb)) echo 'checked'}/> 车库
+</td>
+</tr>
+<tr>
+<td class="tl">周边环境</td>
+<td class="tr" colspan="5">
+	<input type="checkbox" name="post[zbhj][]" value="1" {inarray('1', $zbhj)}/> 法院 
+	<input type="checkbox" name="post[zbhj][]" value="2" {inarray('2', $zbhj)}/> 火车站 
+	<input type="checkbox" name="post[zbhj][]" value="3" {inarray('3', $zbhj)}/> 医院 
+	<input type="checkbox" name="post[zbhj][]" value="4" {inarray('4', $zbhj)}/> 银行 
+	<input type="checkbox" name="post[zbhj][]" value="5" {inarray('5', $zbhj)}/> 小学校 
+	<input type="checkbox" name="post[zbhj][]" value="6" {inarray('6', $zbhj)}/> 中学 
+	<input type="checkbox" name="post[zbhj][]" value="7" {inarray('7', $zbhj)}/> 邮电局 
+	<input type="checkbox" name="post[zbhj][]" value="8" {inarray('8', $zbhj)}/> 图书馆 
+	<input type="checkbox" name="post[zbhj][]" value="9" {inarray('9', $zbhj)}/> 超市 
+	<input type="checkbox" name="post[zbhj][]" value="10" {inarray('10', $zbhj)}/> 公园 
+	<input type="checkbox" name="post[zbhj][]" value="11" {inarray('11', $zbhj)}/> 停车场 
+	<input type="checkbox" name="post[zbhj][]" value="12" {inarray('12', $zbhj)}/> 健身房 
+	<input type="checkbox" name="post[zbhj][]" value="13" {inarray('13', $zbhj)}/> 菜市场 
+	<input type="checkbox" name="post[zbhj][]" value="14" {inarray('14', $zbhj)}/> 商场 
+	<input type="checkbox" name="post[zbhj][]" value="15" {inarray('15', $zbhj)}/> 体育场 
+	<input type="checkbox" name="post[zbhj][]" value="16" {inarray('16', $zbhj)}/> 幼儿园 
+	<input type="checkbox" name="post[zbhj][]" value="17" {inarray('17', $zbhj)}/> 地铁 
+	<input type="checkbox" name="post[zbhj][]" value="18" {inarray('18', $zbhj)}/> 汽车站 
+	<input type="checkbox" name="post[zbhj][]" value="19" {inarray('19', $zbhj)}/> 游泳池
+</td>
+</tr>
+<tr>
+<td class="tl">&nbsp;</td>
+<td colspan="5" class="tr" height="50"><input type="submit" name="submit" value=" 提 交 " class="btn_g"/>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value=" 取 消 " class="btn" onclick="history.back(-1);"/></td>
+</tr>
+</table>
+</form>
+{load('clear.js')}
+<script type="text/javascript">s('kygl');m({if $action=='add'}'add'{else}'s{$status}'{/if});</script>
+{else}
+<form action="?">
+<input type="hidden" name="status" value="{$status}"/>
+<div class="tt">
+&nbsp;<input type="text" size="60" name="kw" value="{$kw}" title="关键词"/> &nbsp;
+<input type="submit" value=" 搜 索 " class="btn"/>&nbsp;
+<input type="button" value=" 重 置 " class="btn" onclick="Go('?status={$status}');"/>
+</div>
+</form>
+<form method="post">
+<div class="ls">
+<table cellspacing="0" cellpadding="0" class="tb">
+<tr>
+<th width="20"><input type="checkbox" onclick="checkall(this.form);"/></th>
+<th width="120">姓名</th>
+<th>手机</th>
+<th>客源状态</th>
+<th>房型</th>
+<th>面积(平方米)</th>
+<th>价格(万)</th>
+<th>地区</th>
+<th>委托日期</th>
+<th width="40">修改</th>
+<th width="40">删除</th>
+</tr>
+{loop $lists $k $v}
+<tr onmouseover="this.className='on';" onmouseout="this.className='';" align="center">
+<td><input type="checkbox" name="userid[]" value="{$v[userid]}"/></td>
+
+<!-- <td title="点击查看大图 添加时间: {$v[adddate]} 更新时间: {$v[editdate]}" style="padding:10px 0 10px 0;"><a href="{$v[image]}" target="_blank"><img src="{$v[thumb]}" width="100" height="100"/></a></td>
+<td>{$v[title]}{if $v[status]==1 && $v[note]} <a href="javascript:" onclick="alert('{$v[note]}');"><img src="{AJ_STATIC}{$MODULE[2][moduledir]}/image/why.gif" title="未通过原因"/></a>{/if}</td>
+<td>{$v[authority]}</td> -->
+<td class="f_gray">{$v[name]}</td>
+<td class="f_gray">{$v[mobile]}</td>
+<td class="f_gray">{$v[kyzt]}</td>
+<td class="f_gray">{$v[shi]} 室 {$v[ting]} 厅 {$v[wei]} 卫 {$v[chu]} 厨 {$v[yangtai]} 阳台</td>
+<td class="f_gray">{reset($v[mianji])}-{end($v[mianji])}</td>
+<td class="f_gray">{reset($v[jiage])}-{end($v[jiage])}</td>
+<td class="f_gray">{$v[quxian]}</td>
+<td class="f_gray">{$v[wttime]}</td>
+
+<td><a href="?action=edit&userid={$v[userid]}"><img width="16" height="16" src="{AJ_STATIC}{$MODULE[2][moduledir]}/image/edit.png" title="修改" alt=""/></a></td>
+<td><a href="?action=delete&userid={$v[userid]}" onclick="if(!confirm('确定要删除吗？此操作将不可撤销')) return false;"><img width="16" height="16" src="{AJ_STATIC}{$MODULE[2][moduledir]}/image/delete.png" title="删除" alt=""/></a></td>
+</tr>
+{/loop}
+</table>
+</div>
+<div class="btns">
+<input type="submit" value=" 删除选中 " class="btn" onclick="if(confirm('确定要删除吗？')){this.form.action='?action=delete'}else{return false;}"/>
+</div>
+</form>
+<!-- {if $MG[honor_limit]}
+<div class="limit">总共可发 <span class="f_b f_red">{$MG[honor_limit]}</span> 条&nbsp;&nbsp;&nbsp;当前已发 <span class="f_b">{$limit_used}</span> 条&nbsp;&nbsp;&nbsp;还可以发 <span class="f_b f_blue">{$limit_free}</span> 条</div>
+{/if} -->
+<div class="pages">{$pages}</div>
+<script type="text/javascript">s('kygl');m('s{$status}');</script>
+{/if}
+{if $action=='add' || $action=='edit'}
+<script type="text/javascript">
+function check() {
+	if(Dd('name').value == '') {
+		Dmsg('请填写姓名', 'name');
+		return false;
+	}
+	if(Dd('mobile').value == '') {
+		Dmsg('请填写手机号码', 'mobile');
+		return false;
+	}
+	if(Dd('address').value == '') {
+		Dmsg('请填写地址', 'address');
+		return false;
+	}
+	if(Dd('email').value == '') {
+		Dmsg('请填写邮箱', 'email');
+		return false;
+	}
+	if(Dd('fangling1').value == '') {
+		Dmsg('请填写房龄', 'fangling1');
+		return false;
+	}
+	if(Dd('fangling2').value == '') {
+		Dmsg('请填写房龄', 'fangling2');
+		return false;
+	}
+	if(Dd('mianji1').value == '') {
+		Dmsg('请填写面积', 'mianji1');
+		return false;
+	}
+	if(Dd('mianji2').value == '') {
+		Dmsg('请填写面积', 'mianji2');
+		return false;
+	}
+	if(Dd('jiage1').value == '') {
+		Dmsg('请填写价格', 'jiage1');
+		return false;
+	}
+	if(Dd('jiage2').value == '') {
+		Dmsg('请填写价格', 'jiage2');
+		return false;
+	}
+	if(Dd('louceng1').value == '') {
+		Dmsg('请填写楼层', 'louceng1');
+		return false;
+	}
+	if(Dd('louceng2').value == '') {
+		Dmsg('请填写楼层', 'louceng2');
+		return false;
+	}
+	if(Dd('quxian').value == '') {
+		Dmsg('请填写区县', 'quxian');
+		return false;
+	}
+	if(Dd('ddyq').value == '') {
+		Dmsg('请填写地段要求', 'ddyq');
+		return false;
+	}
+
+	// if(Dd('authority').value == '') {
+	// 	Dmsg('请填写发证机构', 'authority');
+	// 	return false;
+	// }
+	// if(Dd('postfromtime').value == '') {
+	// 	Dmsg('请选择发证日期', 'postfromtime');
+	// 	return false;
+	// }
+
+	// if(Dd('postfromtime').value.replace(/-/g, '') > {$today}) {
+	// 	Dmsg('发证日期尚未开始', 'postfromtime');
+	// 	return false;
+	// }
+	// if(Dd('thumb').value == '') {
+	// 	Dmsg('请上传证书图片', 'thumb', 1);
+	// 	return false;
+	// }
+	return true;
+}
+</script>
+{/if}
+{template 'footer', 'member'}

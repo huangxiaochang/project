@@ -1,0 +1,13 @@
+{loop $tags $k $t}
+ <ul>
+    <li class="pic"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img alt="{$t[alt]}" src="{imgurl($t[thumb])}"></a></li>
+     <li class="mid"><div class="mid1">{area_pos($t[areaid], ' ')} -- <a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></div>
+        <div class="mid2"><span>户型：{$t[hxjg]}</span><span>面积：{$t[jzmj]}</span><span>预算：{$t[yusuan]}</span></div>
+        <div class="mid3">备注：{$t[content]}</div>
+      </li>
+    <li class="tel"><span class="xm">{$t[ndch]}</span><span class="dh">{$t[sjhm]}</span></li>
+      <li class="sj">{timetodate($t[addtime], 3)}</li>
+</ul>
+{/loop}		
+
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

@@ -1,0 +1,11 @@
+{if $CP}
+<script type="text/javascript">
+var property_catid = {$catid};
+var property_itemid = {$itemid};
+var property_admin = 0;
+</script>
+<script type="text/javascript" src="script/property.js"></script>
+<div id="load_property" style="display:none;">
+</div>
+{/if}
+{if $FD}{mfields_html('<span class="aui-input-addon">', '', $item)}{/if}

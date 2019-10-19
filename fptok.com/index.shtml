@@ -1,0 +1,1183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="keywords" content="房产网,东莞装修网，房屋维修网，建材网-房平台"/>
+<meta name="description" content="首选互联网房产信息服务商-东莞房产网，为广大用户提供最佳找房体验,立足东莞房产网络行业，同时也为开发商、中介公司、经纪人和业主提供高效的网络推广平台，为装修、建材等公司提供了更多商机。"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=https://www.fptok.com/mobile/">
+<link rel="archives" title="房平台" href="https://www.fptok.com/archiver/"/>
+<link rel="shortcut icon" type="image/x-icon" href="https://www.fptok.com/favicon.ico"/>
+<link href="https://www.fptok.com/skin/default/reset.css?v=2" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://www.fptok.com/lang/zh-cn/lang.js"></script>
+<script type="text/javascript" src="https://www.fptok.com/file/script/config.js"></script>
+<script type="text/javascript" src="https://www.fptok.com/file/script/jquery.js"></script>
+<script type="text/javascript" src="https://www.fptok.com/file/script/common.js"></script>
+<script type="text/javascript" src="https://www.fptok.com/file/script/page.js"></script>
+<script type="text/javascript" src="https://www.fptok.com/file/script/jquery.lazyload.js"></script><script src="https://www.fptok.com/skin/default/js/sea.js" type="text/javascript"></script>
+<title>房产网,装修网，房屋维修网，建材网-房平台</title>
+<script type="text/javascript">
+GoMobile('https://www.fptok.com/mobile/');
+ var apptype = "house";
+</script>
+</head>
+<body>
+    <div id="top_bar">
+<div class="cf wrap">
+<div class="fl" id="aijiacms_member"></div>
+<div class="fr">
+<ul>
+            <li class="home"><a class="a" href="https://www.fptok.com/" title="首页">首页</a></li>
+<li class="favorite" id="favorite"><a class="a" href="https://www.fptok.com/extend/shortcut.php" title="保存桌面">保存桌面</a></li>
+<li class="phone"><a class="a" href="mobile/" target="_blank">手机房产</a></li>
+                <li class="top_nav" ><a class="a" href="javascript:Dqrcode();">小程序</a></li>
+</ul>
+</div>
+</div>
+</div>
+ 
+<h1 class="hide_title"></h1><div class="header18">
+  <h1><a href="https://www.fptok.com/"><img src="https://www.fptok.com/file/upload/201812/13/13/53/135307231.jpg" alt="房平台"/></a></h1>
+  <div class="logo18">
+    </div>
+  <div class="Hadv"><!-- 广告位：页头广告 --></div>
+  <div class="Hewm">
+   <ul>
+     <li><img src="/skin/default/images/qrcode.png" width="90" height="90"></li>
+     <li><img src="/skin/default/images/qrcode.jpg" width="90" height="90"></li>
+   </ul>
+  </div>
+</div>
+<div id="nav18">
+<div class="nav18 xcontent_row1 cf">
+<div class="menu" id="tab_5">
+<ul class="cf">
+    <li >
+            <a id="zjmenubt_index" title="首页" href="https://www.fptok.com/">首页</a>
+</li>
+    <li class="ht">
+            <a id="zjmenubt_xf" target="_blank" title="新房" href="https://www.fptok.com/house/" >新房</a>
+<ul class="sub_menu">
+<li><a target="_blank" title="新开楼盘" href="https://www.fptok.com/house/list.html">新开楼盘</a></li>
+<li><a target="_blank" title="优惠楼盘" href="https://www.fptok.com/house/list-h2.html">优惠楼盘</a></li>
+<li><a target="_blank" title="房平台直销" href="https://www.fptok.com/house/list-h3.html">房平台直销</a></li>
+<li><a target="_blank" title="看房团" href="https://www.fptok.com/group/">看房团</a></li>
+<li><a target="_blank" title="帮我找房" href="https://www.fptok.com/member/my.php?mid=16&action=add">帮我找房</a></li>
+</ul>
+</li>
+    <li class="ht">
+            <a id="zjmenubt_esf" target="_blank" title="二手房" href="https://www.fptok.com/sale/" >二手房</a>
+<ul class="sub_menu">
+<li><a target="_blank" title="在售房源" href="https://www.fptok.com/sale/list.html">在售房源</a></li>
+<li><a target="_blank" title="在售别墅" href="https://www.fptok.com/sale/list-t10.html">在售别墅</a></li>
+<li><a target="_blank" title="求购房源" href="https://www.fptok.com/buy/list-u1.html">求购房源</a></li>
+<li><a target="_blank" title="小区找房" href="https://www.fptok.com/community/list.html">找小区</a></li>
+<li><a target="_blank" title="找经纪人" href="https://www.fptok.com/company/list-u1.html">找经纪人</a></li>
+<li><a target="_blank" title="帮我卖房" href="https://www.fptok.com/member/my.php?mid=5&action=add">帮我卖房</a></li>
+</ul>
+</li>
+    <li class="ht">
+            <a id="zjmenubt_zf" target="_blank" title="租房" href="https://www.fptok.com/rent/" >租房</a>
+<ul class="sub_menu">
+<li><a target="_blank" title="在租房源" href="https://www.fptok.com/rent/list.html">在租房源</a></li>
+<li><a target="_blank" title="个人房源" href="https://www.fptok.com/rent/list-n0-u1.html">个人房源</a></li>
+<li><a target="_blank" title="别墅房源" href="https://www.fptok.com/rent/list-t15.html">别墅房源</a></li>
+<li><a target="_blank" title="合租房源" href="https://www.fptok.com/rent/list-z2.html">合租房源</a></li>
+<li><a target="_blank" title="求租" href="https://www.fptok.com/buy/list-u2.html">求租</a></li>
+<li><a target="_blank" title="免费发布出租" href="https://www.fptok.com/member/my.php?mid=7&action=add">免费发布出租</a></li>
+</ul>
+</li>
+    <li class="ht">
+            <a id="zjmenubt_sp" target="_blank" title="商铺写字楼" href="https://www.fptok.com/house/list-t5.html" >商铺写字楼</a>
+<ul class="sub_menu">
+<li><a target="_blank" title="商铺新盘" href="https://www.fptok.com/house/list-t5.html">商铺新盘</a></li>
+<li><a target="_blank" title="商铺出售" href="https://www.fptok.com/sale/list-t11.html">商铺出售</a></li>
+<li><a target="_blank" title="商铺出租" href="https://www.fptok.com/rent/list-t16.html">商铺出租</a></li>
+<li><a target="_blank" title="写字楼新盘" href="https://www.fptok.com/house/list-t6.html">写字楼新盘</a></li>
+<li><a target="_blank" title="写字楼出售" href="https://www.fptok.com/sale/list-t12.html">写字楼出售</a></li>
+<li><a target="_blank" title="写字楼出租" href="https://www.fptok.com/rent/list-t17.html">写字楼出租</a></li>
+<li><a target="_blank" title="帮我找写字楼" href="https://www.fptok.com/member/my.php?mid=5&action=add">帮我找写字楼</a></li>
+</ul>
+    </li>
+    <li class="ht">
+            <a id="zjmenubt_sp" target="_blank" title="厂房地皮" href="https://www.fptok.com/sale/list-t10.html" >厂房地皮</a>
+<ul class="sub_menu">
+<li><a target="_blank" title="厂房出售" href="https://www.fptok.com/sale/list-t67.html">厂房出售</a></li>
+<li><a target="_blank" title="厂房出租" href="https://www.fptok.com/rent/list-t73.html">厂房出租</a></li>
+<li><a target="_blank" title="地皮出售" href="https://www.fptok.com/sale/list-t68.html">地皮出售</a></li>
+<li><a target="_blank" title="地皮出租" href="https://www.fptok.com/rent/list-t74.html">地皮出租</a></li>
+<li><a target="_blank" title="帮我找地皮" href="https://www.fptok.com/member/my.php?mid=5&action=add">帮我找地皮</a></li>
+</ul>
+    </li>
+    <li><a id="" target="_blank" title="银行广告" href="https://www.fptok.com/daikuan/" >银行广告</a></li>
+    <li class="ht">
+            <a id="zjmenubt_sp" target="_blank" title="装修维修" href="https://www.fptok.com/home/" >装修维修</a>
+<ul class="sub_menu">
+<li><a target="_blank" title="免费装修报价" href="https://www.fptok.com/member/my.php?mid=13&action=add">免费装修报价</a></li>
+<li><a target="_blank" title="找设计师" href="https://www.fptok.com/company/list-u4.html">找设计师</a></li>
+<li><a target="_blank" title="找装修公司" href="https://www.fptok.com/company/list-u6.html">找装修公司</a></li>
+<li><a target="_blank" title="找装修监理" href="https://www.fptok.com/company/list-u5.html">找装修监理</a></li>
+<li><a target="_blank" title="装修效果图" href="https://www.fptok.com/photo/">装修效果图</a></li>
+<li><a target="_blank" title="帮我维修" href="https://www.fptok.com/member/my.php?mid=13&action=add">帮我维修</a></li>
+<li><a target="_blank" title="装修招标" href="https://www.fptok.com/home/">装修招标</a></li>
+</ul>
+    </li>
+   <!--  <li><a id="" target="_blank" title="建材家具" href="https://www.fptok.com/jiancai/" >建材家具</a></li> -->
+     <li><a id="" target="_blank" title="建材家具" href="http://www.bangxiaoke.com/" >帮销客商城</a></li>
+<li class="ht">
+            <a id="" target="_blank" title="房产资讯" href="https://www.fptok.com/news/" >房产资讯</a>
+<ul class="sub_menu">
+<li><a target="_blank" title="房产知识" href="https://www.fptok.com/news/list-30.html">房产知识</a></li>
+<li><a target="_blank" title="房产问答" href="https://www.fptok.com/news/list-31.html">房产问答</a></li>
+</ul>
+</li>
+<li><a id="" target="_blank" title="公告" href="https://www.fptok.com/announce/" >公告</a></li>
+</ul>
+</div>
+<div class="Hnav">
+   <ul>
+     <li><a href="https://www.fptok.com/ad/">我要推广</a></li>    <li><a id="zjmenubt_index" target="_blank" title="新房分销" href="https://www.fptok.com/fenxiao">新房分销</a></li>
+   </ul>
+  </div>
+</div>
+</div>
+<link rel="stylesheet" type="text/css" href="https://www.fptok.com/skin/default/index/css.css">
+<link rel="stylesheet" type="text/css" href="https://www.fptok.com/skin/default/index/swiper.css">
+<div class="tong_yi">
+<div class="swiper-container swiper-container1">
+    <div class="swiper-wrapper">
+<div class="swiper-slide" style="background-image:url(https://www.fptok.com/skin/default/index/images/banner.jpg);"></div>
+<div class="swiper-slide" style="background-image:url(https://www.fptok.com/skin/default/index/images/banner0.jpg);"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<div class="sousk_yi">
+<div class="searchbox">
+<form id="i_search1" method="post" target="_blank" autocomplete="off" >
+    <div class="mod_select">
+        <div class="select_box">
+            <ul class="option  search_item_list">
+                <li class="selected" data-type="sale">新房</li>
+                <li data-type="sale">二手房</li>
+                <li data-type="rent">出租房</li>
+                <li data-type="news">资讯</li>
+                <li data-type="video">视频</li>
+                <li data-type="buy">求租求购</li>
+                <li data-type="home">装修维修</li>
+            </ul>
+            <div class="search_item" style="display: none" data-type="house"><span>新房</span>  </div>
+            <div class="gu_ding">
+            <a class="gu_ding_dt" href="https://www.fptok.com/map">地图找房</a>
+            <a class="gu_ding_fb" href="https://www.fptok.com/member/my.php">免费发布房源</a>
+            </div>
+        </div>
+    </div>
+         <input type="text" name="keyword" class="keyword  import"  x-webkit-speech value="请输入楼盘名称(中文/拼音/简拼)、地址">
+        <input type="submit" value="搜   索" class="btn-search">
+    </form>
+  </div>
+ </div>
+</div>
+<!--幻灯片E-->
+<script type="text/javascript" src="https://www.fptok.com/skin/default/index/swiper.min.js"></script>
+<script>
+var swiper = new Swiper('.swiper-container1', {spaceBetween: 30,centeredSlides: true,autoplay: {delay: 5000,disableOnInteraction: false,},pagination: {el: '.swiper-pagination',clickable: true,},navigation: {nextEl: '.swiper-button-next',prevEl: '.swiper-button-prev',},});
+seajs.use("hsearch",function(hs){
+hs("#i_search1",{
+house:{
+url:"https://www.fptok.com/house/list-k",
+initUrl:"https://www.fptok.com/house/list.html",
+hz:".html",
+msg:"请输入楼盘名称(中文/拼音/简拼)、地址",
+autoUrl:"https://www.fptok.com/house/house.php?action=house"
+},
+sale:{
+url:"https://www.fptok.com/sale/list-k",
+initUrl:"https://www.fptok.com/sale/list.html",
+hz:".html",
+msg:"请输入小区名称/地址/标题",
+autoUrl:"https://www.fptok.com/house/house.php?action=xiaoqu"
+},
+rent:{
+url:"https://www.fptok.com/rent/list-k",
+initUrl:"https://www.fptok.com/rent/list.html",
+hz:".html",
+msg:"请输入小区名称/地址/标题",
+autoUrl:"https://www.fptok.com/house/house.php?action=xiaoqu"
+},
+buy:{
+url:"https://www.fptok.com/buy/list-k",
+initUrl:"https://www.fptok.com/buy/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+group:{
+url:"https://www.fptok.com/group/list-k",
+initUrl:"https://www.fptok.com/group/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+community:{
+url:"https://www.fptok.com/community/list-k",
+initUrl:"https://www.fptok.com/group/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:"https://www.fptok.com/house/house.php?action=xiaoqu"
+},
+video:{
+url:"https://www.fptok.com/video/search-k",
+initUrl:"https://www.fptok.com/video/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+home:{
+url:"https://www.fptok.com/home/search-k",
+hz:".html",
+initUrl:"https://www.fptok.com/home/list.html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+company:{
+url:"https://www.fptok.com/company/search-k",
+hz:".html",
+initUrl:"https://www.fptok.com/company/list.html",
+msg:"请输入搜索内容",
+autoUrl:""
+},
+news:{
+url:"https://www.fptok.com/news/search-k",
+initUrl:"https://www.fptok.com/news/list.html",
+hz:".html",
+msg:"请输入搜索内容",
+autoUrl:""
+}
+
+});
+});
+</script><link href="https://www.fptok.com/skin/default/index.css" rel="stylesheet" type="text/css" />
+<div class="adb"><!-- 广告位:首页搜索下面长条广告 --></div>
+<div class="adb"><!-- 广告位:首页搜索下面长条广告2 --></div>
+<div class="main">
+<!-- 热销楼盘、明星楼盘、特惠楼盘-->
+<div class="jdgz" id="tab_7">
+<ul class="i_autab title cf">
+            <li class="ht no on"><span>热销楼盘</span></li>
+            <li class="ht"><span>明星楼盘</span></li>
+            <li class="ht"><span>特惠楼盘</span></li>
+        </ul>
+        <div class="autab">
+        <ul class="cf">
+                        <li class="no">
+        <div class="pica"><a href="https://www.fptok.com/house/1323/" title="合泰御景翠峰" target="_blank"><img alt="合泰御景翠峰" src="https://www.fptok.com/file/upload/201808/28/10/55/1055027318.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1323/" title="合泰御景翠峰" target="_blank">合泰御景翠峰</a><u>盐田区</u></h2>
+            </div>
+<div class="txt">
+    <h3><u>￥</u><i>60000</i>元/㎡<em>海景地产/山景地产</em></h3>
+    <p> <a href="/house/list-l3.html">刚需房</a> <a href="/house/list-l8.html">公寓</a></p>
+    </div>
+</li>
+        <li >
+        <div class="pica"><a href="https://www.fptok.com/house/1311/" title="广发证券大厦" target="_blank"><img alt="广发证券大厦" src="https://www.fptok.com/file/upload/201808/27/17/29/1729435412.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1311/" title="广发证券大厦" target="_blank">广发证券大厦</a><u>广州市</u></h2>
+            </div>
+<div class="txt">
+    <h3>价格待定<em>总部园区</em></h3>
+    <p> <a href="/house/list-l4.html">品牌地产</a></p>
+    </div>
+</li>
+        <li >
+        <div class="pica"><a href="https://www.fptok.com/house/1302/" title="天河金街" target="_blank"><img alt="天河金街" src="https://www.fptok.com/file/upload/201808/27/16/58/1658241712.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1302/" title="天河金街" target="_blank">天河金街</a><u>广州市</u></h2>
+            </div>
+<div class="txt">
+    <h3><u>￥</u><i>130000</i>元/㎡<em>小户型地铁沿线</em></h3>
+    <p> <a href="/house/list-l4.html">品牌地产</a></p>
+    </div>
+</li>
+        <li >
+        <div class="pica"><a href="https://www.fptok.com/house/1304/" title="中粮·云景国际" target="_blank"><img alt="中粮·云景国际" src="https://www.fptok.com/file/upload/201808/27/17/07/1707491518.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1304/" title="中粮·云景国际" target="_blank">中粮·云景国际</a><u>光明新区</u></h2>
+            </div>
+<div class="txt">
+    <h3><u>￥</u><i>26000</i>元/㎡<em>山景地产</em></h3>
+    <p> <a href="/house/list-l2.html">近地铁口房</a></p>
+    </div>
+</li>
+    </ul>
+</div>
+<div class="autab">
+        <ul class="cf">
+                        <li class="no">
+        <div class="pica"><a href="https://www.fptok.com/house/1415/" title="海伦堡海伦时光" target="_blank"><img alt="海伦堡海伦时光" src="https://www.fptok.com/file/upload/201809/01/17/31/1731255612.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1415/" title="海伦堡海伦时光" target="_blank">海伦堡海伦时光</a><u>广州市</u></h2>
+            </div>
+<div class="txt">
+    <h3>价格待定<em>品牌地产</em></h3>
+    <p> <a href="/house/list-l4.html">品牌地产</a></p>
+    </div>
+</li>
+        <li >
+        <div class="pica"><a href="https://www.fptok.com/house/1413/" title="万科元培里" target="_blank"><img alt="万科元培里" src="https://www.fptok.com/file/upload/201809/01/17/30/1730178712.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1413/" title="万科元培里" target="_blank">万科元培里</a><u>广州市</u></h2>
+            </div>
+<div class="txt">
+    <h3>价格待定<em>品牌地产</em></h3>
+    <p> <a href="/house/list-l4.html">品牌地产</a></p>
+    </div>
+</li>
+        <li >
+        <div class="pica"><a href="https://www.fptok.com/house/1408/" title="碧桂园·克拉广场" target="_blank"><img alt="碧桂园·克拉广场" src="https://www.fptok.com/file/upload/201809/01/17/20/1720323912.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1408/" title="碧桂园·克拉广场" target="_blank">碧桂园·克拉广场</a><u>广州市</u></h2>
+            </div>
+<div class="txt">
+    <h3><u>￥</u><i>15000</i>元/㎡<em>品牌地产</em></h3>
+    <p> <a href="/house/list-l4.html">品牌地产</a></p>
+    </div>
+</li>
+        <li >
+        <div class="pica"><a href="https://www.fptok.com/house/1407/" title="萝岗奥园广场" target="_blank"><img alt="萝岗奥园广场" src="https://www.fptok.com/file/upload/201809/01/17/19/1719329112.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1407/" title="萝岗奥园广场" target="_blank">萝岗奥园广场</a><u>广州市</u></h2>
+            </div>
+<div class="txt">
+    <h3><u>￥</u><i>25000</i>元/㎡<em>品牌地产</em></h3>
+    <p> <a href="/house/list-l4.html">品牌地产</a></p>
+    </div>
+</li>
+    </ul>
+</div>
+        <div class="autab">
+        <ul class="cf">
+                        <li class="no">
+        <div class="pica"><a href="https://www.fptok.com/house/1339/" title="绿景天玺湾项目" target="_blank"><img alt="绿景天玺湾项目" src="https://www.fptok.com/file/upload/201808/28/17/10/1710302718.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1339/" title="绿景天玺湾项目" target="_blank">绿景天玺湾项目</a><u>大鹏新区</u></h2>
+            </div>
+<div class="txt">
+    <h3>价格待定<em>景观居所/海景地产</em></h3>
+    <p> <a href="/house/list-l3.html">刚需房</a> <a href="/house/list-l7.html">洋房</a></p>
+    </div>
+</li>
+        <li >
+        <div class="pica"><a href="https://www.fptok.com/house/1337/" title="三科麓湾" target="_blank"><img alt="三科麓湾" src="https://www.fptok.com/file/upload/201808/28/16/58/1658028018.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1337/" title="三科麓湾" target="_blank">三科麓湾</a><u>深圳市</u></h2>
+            </div>
+<div class="txt">
+    <h3><u>￥</u><i>90000</i>元/㎡<em>特色别墅</em></h3>
+    <p> <a href="/house/list-l7.html">洋房</a></p>
+    </div>
+</li>
+        <li >
+        <div class="pica"><a href="https://www.fptok.com/house/1334/" title="花样年家天下" target="_blank"><img alt="花样年家天下" src="https://www.fptok.com/file/upload/201808/28/16/14/1614585518.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1334/" title="花样年家天下" target="_blank">花样年家天下</a><u>大鹏新区</u></h2>
+            </div>
+<div class="txt">
+    <h3><u>￥</u><i>39000</i>元/㎡<em>品牌地产/低密居所/配套商品房</em></h3>
+    <p> <a href="/house/list-l2.html">近地铁口房</a> <a href="/house/list-l4.html">品牌地产</a></p>
+    </div>
+</li>
+        <li >
+        <div class="pica"><a href="https://www.fptok.com/house/1330/" title="盛迪嘉海湾壹号" target="_blank"><img alt="盛迪嘉海湾壹号" src="https://www.fptok.com/file/upload/201808/28/14/46/1446139718.png.thumb.png"></a></div>
+            <div class="title2">
+            <span></span>
+            <h2><a href="https://www.fptok.com/house/1330/" title="盛迪嘉海湾壹号" target="_blank">盛迪嘉海湾壹号</a><u>盐田区</u></h2>
+            </div>
+<div class="txt">
+    <h3>价格待定<em>标准写字楼</em></h3>
+    <p> <a href="/house/list-l3.html">刚需房</a> <a href="/house/list-l7.html">洋房</a></p>
+    </div>
+</li>
+ </ul>
+</div>
+</div>
+<!-- 新房-->
+    <div class="con xinfang">
+<div class="con_t cf">
+<h2 class="con_t_l title"><a href="https://www.fptok.com/house/" target="_blank">新房</a> <a href="https://www.fptok.com/map/newhouse.php" target="_blank" class="i_smap">地图找房</a></h2>
+<ul class="con_t_r">
+<li><a target="_blank" title="更多新房" href="https://www.fptok.com/house/" >更多新房</a></li>
+</ul>
+</div>
+<div class="con_b cf">
+<div class="con_b_l">
+<div id="tab_1">
+<h4 class="i_autab cf"><a href="https://www.fptok.com/house/" class="ht on">新开楼盘</a></h4>
+<div class="lptj">
+<dl>
+<dd><span class="cur">首期已2015年7月底开盘</span></dd>
+<dt><span>58000元/㎡</span><a href="https://www.fptok.com/house/1306/"  target="_blank">跑马地大厦</a></dt>
+</dl>
+                        <dl>
+<dd><span >首期已2015年11月7日开盘</span></dd>
+<dt><span>90000元/㎡</span><a href="https://www.fptok.com/house/1180/"  target="_blank">东山一品</a></dt>
+</dl>
+                        <dl>
+<dd><span >首期已2015年10月23日开盘</span></dd>
+<dt><span>78000元/㎡</span><a href="https://www.fptok.com/house/1185/"  target="_blank">大洋江畔雅</a></dt>
+</dl>
+                        <dl>
+<dd><span >首期商用单位开盘时间待定</span></dd>
+<dt><span>价格待定</span><a href="https://www.fptok.com/house/1253/"  target="_blank">碧桂园·朝</a></dt>
+</dl>
+                        <dl>
+<dd><span >首期住宅单位开盘时间待定</span></dd>
+<dt><span>价格待定</span><a href="https://www.fptok.com/house/1298/"  target="_blank">东建菠萝山</a></dt>
+</dl>
+                        <dl>
+<dd><span >首期2013年10月7日开盘</span></dd>
+<dt><span>42500元/㎡</span><a href="https://www.fptok.com/house/1278/"  target="_blank">合生骏景广</a></dt>
+</dl>
+                        <dl>
+<dd><span >首批推出时间待定</span></dd>
+<dt><span>价格待定</span><a href="https://www.fptok.com/house/309/"  target="_blank">荣盛华府</a></dt>
+</dl>
+                        </div>
+
+</div>
+</div>
+<div class="con_b_c">
+<div id="tab_2">
+<ul class="i_autab">
+<li> <a href="https://www.fptok.com/house/" class="ht on">人气楼盘<span class="sj_icon"></span></a></li>
+    <li> <a href="https://www.fptok.com/house/" class="ht">最新楼盘<span class="sj_icon"></span></a></li>
+    <li> <a href="https://www.fptok.com/house/" class="ht">精品推荐<span class="sj_icon"></span></a></li>
+    <li> <a href="https://www.fptok.com/house/" class="ht">房平台直销<span class="sj_icon"></span></a></li>
+</ul>
+                    <ul class="autab">
+                    <li class="flashbox"></li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/1412/" target="_blank" class="pic_a"><img alt="龙湖首开·云峰原著" src="https://www.fptok.com/file/upload/201809/01/17/25/1725521312.png.thumb.png"><div><span></span><i>[广州市]</i><u>龙湖首开·云峰原著</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">别墅&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu">品牌地产  中式地产</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/523/" target="_blank" class="pic_a"><img alt="安华香蜜松湖" src="https://www.fptok.com/file/upload/201808/08/14/53/145343769.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>安华香蜜松湖</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;别墅&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu">人车分流 新开盘 刚需房 改善房 景观小区</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/1406/" target="_blank" class="pic_a"><img alt="黄埔万科中心" src="https://www.fptok.com/file/upload/201809/01/17/18/1718501712.png.thumb.png"><div><span></span><i>[广州市]</i><u>黄埔万科中心</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">写字楼&nbsp;</span><span class="jg">21500</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu"></p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/1404/" target="_blank" class="pic_a"><img alt="康大龍祥滙" src="https://www.fptok.com/file/upload/201809/01/17/16/1716489612.png.thumb.png"><div><span></span><i>[广州市]</i><u>康大龍祥滙</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">别墅&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu">地铁沿线 低密居所  居生态地产</p>
+                        </div>
+                    </li>
+                                        <div class="i_focusbox">
+                    <div id="i_focus" class="i_focus">
+                    <ul></ul>
+                    <a href="javascript:" class="gol"></a>
+                    <a href="javascript:" class="gor"></a>
+                    <span>
+                    <i class="on"></i>
+                    <i ></i>
+                    <i ></i>
+                    <i ></i>
+                    <i ></i>
+                    </span>
+                    </div>
+                    </div>
+                    </ul>
+                    <ul class="autab">
+                                        <li>
+                        <a href="https://www.fptok.com/house/2721/" target="_blank" class="pic_a"><img alt="天益城2期" src="https://www.fptok.com/file/upload/201810/05/10/04/1004546912.jpg.thumb.jpg"><div><span></span><i>[惠州市]</i><u>天益城2期</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu">地铁沿线</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/2719/" target="_blank" class="pic_a"><img alt="新力珑湾" src="https://www.fptok.com/file/upload/201810/05/09/50/0950449312.jpg.thumb.jpg"><div><span></span><i>[惠州市]</i><u>新力珑湾</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">9200</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu">品牌地产</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/2717/" target="_blank" class="pic_a"><img alt="龙光·玖龙山" src="https://www.fptok.com/file/upload/201810/05/09/39/0939597812.jpg.thumb.jpg"><div><span></span><i>[惠州市]</i><u>龙光·玖龙山</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">9100</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu"></p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/2715/" target="_blank" class="pic_a"><img alt="星河盛世" src="https://www.fptok.com/file/upload/201810/05/09/29/0929292112.jpg.thumb.jpg"><div><span></span><i>[惠州市]</i><u>星河盛世</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">13800</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu">不限购</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/2713/" target="_blank" class="pic_a"><img alt="时代英之皇·廊桥" src="https://www.fptok.com/file/upload/201810/05/09/20/0920021612.jpg.thumb.jpg"><div><span></span><i>[惠州市]</i><u>时代英之皇·廊桥</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu"></p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/2712/" target="_blank" class="pic_a"><img alt="海伦堡·海伦源筑" src="https://www.fptok.com/file/upload/201810/05/09/03/0903158612.jpg.thumb.jpg"><div><span></span><i>[惠州市]</i><u>海伦堡·海伦源筑</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">10300</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu"></p>
+                        </div>
+                    </li>
+                                        </ul>
+                    <ul class="autab">
+                                        <li>
+                        <a href="https://www.fptok.com/house/42/" target="_blank" class="pic_a"><img alt="莲湖山庄" src="https://www.fptok.com/file/upload/201812/07/10/37/103748921.png"><div><span></span><i>[东莞]</i><u>莲湖山庄</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">别墅&nbsp;</span><span class="jg">30000</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu">品牌地产  国际化社区  低密居所</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/40/" target="_blank" class="pic_a"><img alt="星际湾" src="http://fptok.com/file/upload/201806/26/21/14/211429221.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>星际湾</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">17000</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu"></p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/1416/" target="_blank" class="pic_a"><img alt="大壮名城" src="https://www.fptok.com/file/upload/201809/01/17/31/1731492712.png.thumb.png"><div><span></span><i>[广州市]</i><u>大壮名城</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu">品牌地产</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/1414/" target="_blank" class="pic_a"><img alt="中冶·逸璟台" src="https://www.fptok.com/file/upload/201809/01/17/30/1730512612.png.thumb.png"><div><span></span><i>[广州市]</i><u>中冶·逸璟台</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu">国际化社区  豪华居住区  特色别墅</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/1410/" target="_blank" class="pic_a"><img alt="时代地产知识城红卫村项目" src="https://www.fptok.com/file/upload/201809/01/17/22/1722356612.png.thumb.png"><div><span></span><i>[广州市]</i><u>时代地产知识城红卫村</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu">景观居所</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/1409/" target="_blank" class="pic_a"><img alt="保利鱼珠港" src="https://www.fptok.com/file/upload/201809/01/17/21/1721235912.png.thumb.png"><div><span></span><i>[广州市]</i><u>保利鱼珠港</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">写字楼&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu">地铁沿线</p>
+                        </div>
+                    </li>
+                                        </ul>
+                    <ul class="autab">
+                                        <li>
+                        <a href="https://www.fptok.com/house/42/" target="_blank" class="pic_a"><img alt="莲湖山庄" src="https://www.fptok.com/file/upload/201812/07/10/37/103748921.png"><div><span></span><i>[东莞]</i><u>莲湖山庄</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">别墅&nbsp;</span><span class="jg">30000</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu">品牌地产  国际化社区  低密居所</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/523/" target="_blank" class="pic_a"><img alt="安华香蜜松湖" src="https://www.fptok.com/file/upload/201808/08/14/53/145343769.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>安华香蜜松湖</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;别墅&nbsp;</span><span class="jg">价格待定</span></p>
+                            <p class="miaoshu">人车分流 新开盘 刚需房 改善房 景观小区</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/15/" target="_blank" class="pic_a"><img alt="金田花园花域" src="http://fptok.com/file/upload/201805/30/170351671.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>金田花园花域</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;别墅&nbsp;</span><span class="jg">13000</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu">低单价 复合地产 入户花园 双阳台</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/27/" target="_blank" class="pic_a"><img alt="清溪国际公馆" src="http://fptok.com/file/upload/201806/07/114257531.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>清溪国际公馆</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;商住楼&nbsp;</span><span class="jg">12500</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu">刚需房 改善房 景观小区 洋房 品牌开发商</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/28/" target="_blank" class="pic_a"><img alt="冠科泊樾湾" src="http://fptok.com/file/upload/201806/07/114632601.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>冠科泊樾湾</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">23000</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu">大阳台 双卫 小三室 大户型 小户型</p>
+                        </div>
+                    </li>
+                                        <li>
+                        <a href="https://www.fptok.com/house/5/" target="_blank" class="pic_a"><img alt="东莞恒大滨江左岸" src="http://fptok.com/file/upload/201804/28/160655471.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>东莞恒大滨江左岸</u></div></a>
+                        <div class="detail">
+                            <p class="jiage"><span class="lx">住宅&nbsp;商住楼&nbsp;写字楼&nbsp;</span><span class="jg">16000</span><span class="pm">元/㎡</span></p>
+                            <p class="miaoshu">即将开盘 双阳台 大阳台 双卫 小三室</p>
+                        </div>
+                    </li>
+                                        </ul>
+</div>
+</div>
+<div class="con_b_r" id="tab_8">
+<h2 class="title i_autab"><a href="https://www.fptok.com/news/list-28.html" class="fr" target="_blank">更多</a><a href="https://www.fptok.com/news/list-28.html" class="ht on" target="_blank">优惠导购</a><a href="https://www.fptok.com/news/list-29.html" class="ht" target="_blank">楼市新闻</a></h2>
+<div class="autab">
+<ul>
+                         <li><a href="https://www.fptok.com/news/show-472.html" target="_blank" title="土地市场调控成果须继续巩固">土地市场调控成果须继续巩固</a></li>
+                        <li><a href="https://www.fptok.com/news/show-471.html" target="_blank" title="19000余间出租房屋登上“云端数据库”">19000余间出租房屋登上“云端数据库”</a></li>
+                        <li><a href="https://www.fptok.com/news/show-470.html" target="_blank" title="评论：黄金周楼市“凉意”来之不易">评论：黄金周楼市“凉意”来之不易</a></li>
+                        <li><a href="https://www.fptok.com/news/show-469.html" target="_blank" title="房价倍增的三四线城市尚未迎来购房需求“降级”">房价倍增的三四线城市尚未迎来购房需求“降级</a></li>
+                        <li><a href="https://www.fptok.com/news/show-468.html" target="_blank" title="住有所居 居有所安">住有所居 居有所安</a></li>
+                        <li><a href="https://www.fptok.com/news/show-467.html" target="_blank" title="广东共有产权房试点有新政 购买10年后可转为商品房">广东共有产权房试点有新政 购买10年后可转为</a></li>
+                        <li><a href="https://www.fptok.com/news/show-466.html" target="_blank" title="家里阳台不要装推拉门了，占地方又不实用，有钱人都用这种代替">家里阳台不要装推拉门了，占地方又不实用，有</a></li>
+                        <li><a href="https://www.fptok.com/news/show-465.html" target="_blank" title="银行能“存”房了 东莞已经有170多名业主“存”房">银行能“存”房了 东莞已经有170多名业主“存</a></li>
+                        <li><a href="https://www.fptok.com/news/show-464.html" target="_blank" title="需要购房的你注意了！广东或取消商品房预售制度">需要购房的你注意了！广东或取消商品房预售制</a></li>
+                        <li><a href="https://www.fptok.com/news/show-463.html" target="_blank" title="东莞部分银行房贷利率小幅下调 业内人士表示不代表信贷放">东莞部分银行房贷利率小幅下调 业内人士表示</a></li>
+                        <li><a href="https://www.fptok.com/news/show-462.html" target="_blank" title="热点城市楼市调控出“新招” 遏制楼市过热">热点城市楼市调控出“新招” 遏制楼市过热</a></li>
+                        <li><a href="https://www.fptok.com/news/show-461.html" target="_blank" title="积分入户：从破冰到被取消 盘点东莞10年入户政策变迁">积分入户：从破冰到被取消 盘点东莞10年入户</a></li>
+                        <li><a href="https://www.fptok.com/news/show-460.html" target="_blank" title="购房保修期内业主报修房屋 开发商一般要在7天内修复">购房保修期内业主报修房屋 开发商一般要在7天</a></li>
+</ul>
+</div>
+<div class="autab">
+<ul>
+                         <li><a href="https://www.fptok.com/news/show-473.html" target="_blank" title="房价分化明显：京沪深全跌 但这些地区房价还在涨">房价分化明显：京沪深全跌 但这些地区房价还</a></li>
+                        <li><a href="https://www.fptok.com/news/show-449.html" target="_blank" title="多地密集启动“大棚房”整治行动">多地密集启动“大棚房”整治行动</a></li>
+                        <li><a href="https://www.fptok.com/news/show-448.html" target="_blank" title="房价太高？经济学家李铁：住房郊区化是趋势，集体土地应开放入市">房价太高？经济学家李铁：住房郊区化是趋势，</a></li>
+                        <li><a href="https://www.fptok.com/news/show-447.html" target="_blank" title="深圳既有住宅加装电梯新规发布 业主申报加装电梯更方便了">深圳既有住宅加装电梯新规发布 业主申报加装</a></li>
+                        <li><a href="https://www.fptok.com/news/show-446.html" target="_blank" title="深圳装配式建筑逾1100万平方米">深圳装配式建筑逾1100万平方米</a></li>
+                        <li><a href="https://www.fptok.com/news/show-444.html" target="_blank" title="深圳市光明区揭牌成立 将建世界一流科学城">深圳市光明区揭牌成立 将建世界一流科学城</a></li>
+                        <li><a href="https://www.fptok.com/news/show-431.html" target="_blank" title="广东楼市上半年总体量降价稳">广东楼市上半年总体量降价稳</a></li>
+                        <li><a href="https://www.fptok.com/news/show-430.html" target="_blank" title="公租房违规转租处罚结果出炉 取消违规家庭保障 房资格">公租房违规转租处罚结果出炉 取消违规家庭保</a></li>
+                        <li><a href="https://www.fptok.com/news/show-429.html" target="_blank" title="八成公积金 业务线上办理">八成公积金 业务线上办理</a></li>
+                        <li><a href="https://www.fptok.com/news/show-428.html" target="_blank" title="房企“中考”喜忧参半：业绩亮了 股价跌了">房企“中考”喜忧参半：业绩亮了 股价跌了</a></li>
+                        <li><a href="https://www.fptok.com/news/show-427.html" target="_blank" title="三色周报：市场成交短暂回落，后市供应蓄势待发">三色周报：市场成交短暂回落，后市供应蓄势待</a></li>
+                        <li><a href="https://www.fptok.com/news/show-426.html" target="_blank" title="白云男子花95万元买房，收房后郁闷">白云男子花95万元买房，收房后郁闷</a></li>
+                        <li><a href="https://www.fptok.com/news/show-425.html" target="_blank" title="深圳楼市扫黑除恶，收茶水费、克扣押金等十类行为将严惩">深圳楼市扫黑除恶，收茶水费、克扣押金等十类</a></li>
+</ul>
+</div>
+<div class="lpwd" style=" display: none;">
+<h2><a href="https://www.fptok.com/house/list.html" class="fr" target="_blank">更多</a><span>楼盘问答</span><span style=" margin-left:  10px;"><a  href="https://www.fptok.com/news/list-154.html">装修资讯</a><span></h2>
+                    <div id="i_focus6" class="i_focus">
+                    <ul>                                         </ul>
+                    <span>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    </span>
+                    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="adb"><!-- 广告位:首页新房下面长条广告 --></div>
+<div class="adb"><!-- 广告位:首页新房下面长条广告2 --></div>
+    <!-- 看房团-->
+    <div class="con thtg">
+<div class="con_t cf">
+<h2 class="con_t_l title"><a href="https://www.fptok.com/group/" target="_blank">看房团</a></h2>
+<ul class="con_t_r">
+    <li><a target="_blank" title="看房团" href="https://www.fptok.com/group/" >更多房团</a></li>
+</ul>
+</div>
+<div class="con_b cf">
+<div class="con_b_l">
+<div class="con_b_l_t">
+<h2>看房团招募</h2>
+<p class="fttxt">满50人即可免费成团，先到先得！</p>
+<form id="kanfangtuan" method="get" autocomplete="off" action="https://www.fptok.com/house/house.php?action=kanfang">
+                    <input type="hidden" class="hid" name="hids" value="0">
+<ul>
+<li><input type="text" name="truename" value="您的姓名"></li>
+<li><input type="text" name="mobile" value="您的手机号"></li>
+<li><input type="text" name="lp" value="输入关键字 选择意向楼盘"></li>
+<li><input type="submit" class="submit" value="求组团"></li>
+</ul>
+</form>
+<script>
+seajs.use("kanfangtuan",function(kft){
+kft("#kanfangtuan","https://www.fptok.com/house/house.php?action=house");
+});
+</script>
+</div>
+<div class="con_b_l_b">
+<ul>
+ 
+    <li class="thumb">
+    <div class="img"><a target="_blank" href="https://www.fptok.com/news/show-469.html" title="房价倍增的三四线城市尚未迎来购房需求“降级”"> <img alt="房价倍增的三四线城市尚未迎来购房需求“降级”" src="https://www.fptok.com/file/upload/201810/09/21/38/213821151.jpg"  width="80" height="57"/></a></div>
+    <div class="text"><a target="_blank"  title="房价倍增的三四线城市尚未迎来购房需求“降级”" href="https://www.fptok.com/news/show-469.html">房价倍增的三四线城市尚未迎来购房需求“降级”</a></div>
+    </li>
+ 
+    <li class="thumb">
+    <div class="img"><a target="_blank" href="https://www.fptok.com/news/show-461.html" title="积分入户：从破冰到被取消 盘点东莞10年入户政策变迁"> <img alt="积分入户：从破冰到被取消 盘点东莞10年入户政策变迁" src="https://www.fptok.com/file/upload/201810/09/21/36/213658171.jpg"  width="80" height="57"/></a></div>
+    <div class="text"><a target="_blank"  title="积分入户：从破冰到被取消 盘点东莞10年入户政策变迁" href="https://www.fptok.com/news/show-461.html">积分入户：从破冰到被取消 盘点东莞10年入户政策变迁</a></div>
+    </li>
+ 
+    <li class="thumb">
+    <div class="img"><a target="_blank" href="https://www.fptok.com/news/show-458.html" title="万科喊“活下去”，你以为地主家真的没余粮了吗？"> <img alt="万科喊“活下去”，你以为地主家真的没余粮了吗？" src="https://www.fptok.com/file/upload/201810/09/21/37/213716571.jpg"  width="80" height="57"/></a></div>
+    <div class="text"><a target="_blank"  title="万科喊“活下去”，你以为地主家真的没余粮了吗？" href="https://www.fptok.com/news/show-458.html">万科喊“活下去”，你以为地主家真的没余粮了吗？</a></div>
+    </li>
+                    </ul>
+</div>
+</div>
+<div class="con_b_c tg">
+<ul class="cf">
+                    <li>
+                    <a href="https://www.fptok.com/house/5/" target="_blank" class="pic_a"><img alt="东莞恒大滨江左岸" src="http://fptok.com/file/upload/201804/28/160655471.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>东莞恒大滨</u></div></a>
+                    <div class="detail">
+                        <p class="jiage"><span class="lx">住宅&nbsp;商住楼&nbsp;写字楼&nbsp;</span><span class="jg">16000</span><span class="pm">元/㎡</span></p>
+                        <p class="miaoshu">即将开盘 双阳台 大阳台 双卫 小三室</p>
+                    </div>
+                    </li>
+                                        <li>
+                    <a href="https://www.fptok.com/house/8/" target="_blank" class="pic_a"><img alt="中惠松湖城悦湖" src="http://fptok.com/file/upload/201804/28/191852311.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>中惠松湖城</u></div></a>
+                    <div class="detail">
+                        <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">26000</span><span class="pm">元/㎡</span></p>
+                        <p class="miaoshu">老盘加推 现房 品牌地产 公园地产</p>
+                    </div>
+                    </li>
+                                        <li>
+                    <a href="https://www.fptok.com/house/523/" target="_blank" class="pic_a"><img alt="安华香蜜松湖" src="https://www.fptok.com/file/upload/201808/08/14/53/145343769.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>安华香蜜松</u></div></a>
+                    <div class="detail">
+                        <p class="jiage"><span class="lx">住宅&nbsp;别墅&nbsp;</span><span class="jg">价格待定</span></p>
+                        <p class="miaoshu">人车分流 新开盘 刚需房 改善房 景观小区</p>
+                    </div>
+                    </li>
+                                        <li>
+                    <a href="https://www.fptok.com/house/14/" target="_blank" class="pic_a"><img alt="山水江南·玖峯" src="http://fptok.com/file/upload/201807/05/11/23/112331201.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>山水江南·</u></div></a>
+                    <div class="detail">
+                        <p class="jiage"><span class="lx">住宅&nbsp;别墅&nbsp;</span><span class="jg">12500</span><span class="pm">元/㎡</span></p>
+                        <p class="miaoshu">新盘首开 现房 景观居所 特色别墅 花园洋房</p>
+                    </div>
+                    </li>
+                                        <li>
+                    <a href="https://www.fptok.com/house/15/" target="_blank" class="pic_a"><img alt="金田花园花域" src="http://fptok.com/file/upload/201805/30/170351671.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>金田花园花</u></div></a>
+                    <div class="detail">
+                        <p class="jiage"><span class="lx">住宅&nbsp;别墅&nbsp;</span><span class="jg">13000</span><span class="pm">元/㎡</span></p>
+                        <p class="miaoshu">低单价 复合地产 入户花园 双阳台</p>
+                    </div>
+                    </li>
+                                        <li>
+                    <a href="https://www.fptok.com/house/28/" target="_blank" class="pic_a"><img alt="冠科泊樾湾" src="http://fptok.com/file/upload/201806/07/114632601.jpg.thumb.jpg"><div><span></span><i>[东莞]</i><u>冠科泊樾湾</u></div></a>
+                    <div class="detail">
+                        <p class="jiage"><span class="lx">住宅&nbsp;</span><span class="jg">23000</span><span class="pm">元/㎡</span></p>
+                        <p class="miaoshu">大阳台 双卫 小三室 大户型 小户型</p>
+                    </div>
+                    </li>
+                    </ul>
+</div>
+<div class="con_b_r2">
+    <div class="adv195"></div>
+    <div class="adv195"></div>
+</div>
+</div>
+</div>
+    <!--二手房 -->
+<div class="con con2 esf">
+<div class="con_t cf">
+<h2 class="con_t_l title"><a href="https://www.fptok.com/sale/" target="_blank">二手房</a> <a href="https://www.fptok.com/map" target="_blank" class="i_smap">地图找房</a></h2>
+<ul class="con_t_r">
+<li><a target="_blank" title="30万以下" href="https://www.fptok.com/sale/list-p1.html" >个人房源</a></li>
+<li class="fg"></li>
+<li><a target="_blank" title="70-90平米" href="https://www.fptok.com/sale/list-t10.html" >在售别墅</a></li>
+<li class="fg"></li>
+<li><a target="_blank" title="热门" href="https://www.fptok.com/sale/list-h1.html" >找小区</a></li>
+<li class="fg"></li>
+<li><a target="_blank" title="经纪人" href="https://www.fptok.com/company/list-u1.html" >找经纪人</a></li>
+</ul>
+</div>
+<div class="con_b cf">
+<div class="con_b_l">
+<!--区域找房-->
+    <div class="u-esf-tag">
+    <dl>
+    <dt><h4>区域找房</h4></dt>
+    <dd>    <a  href="https://www.fptok.com/sale/list-r1.html">北京</a><a  href="https://www.fptok.com/sale/list-r2.html">上海</a><a  href="https://www.fptok.com/sale/list-r3.html">天津</a><a  href="https://www.fptok.com/sale/list-r4.html">重庆</a><a  href="https://www.fptok.com/sale/list-r5.html">河北</a><a  href="https://www.fptok.com/sale/list-r6.html">山西</a><a  href="https://www.fptok.com/sale/list-r7.html">内蒙古</a><a  href="https://www.fptok.com/sale/list-r8.html">辽宁</a><a  href="https://www.fptok.com/sale/list-r9.html">吉林</a><a  href="https://www.fptok.com/sale/list-r10.html">黑龙江</a><a  href="https://www.fptok.com/sale/list-r11.html">江苏</a><a  href="https://www.fptok.com/sale/list-r12.html">浙江</a><a  href="https://www.fptok.com/sale/list-r13.html">安徽</a><a  href="https://www.fptok.com/sale/list-r14.html">福建</a><a  href="https://www.fptok.com/sale/list-r15.html">江西</a><a  href="https://www.fptok.com/sale/list-r16.html">山东</a><a  href="https://www.fptok.com/sale/list-r17.html">河南</a><a  href="https://www.fptok.com/sale/list-r18.html">湖北</a><a  href="https://www.fptok.com/sale/list-r19.html">湖南</a><a  href="https://www.fptok.com/sale/list-r20.html">广东</a><a  href="https://www.fptok.com/sale/list-r21.html">广西</a><a  href="https://www.fptok.com/sale/list-r22.html">海南</a><a  href="https://www.fptok.com/sale/list-r23.html">四川</a><a  href="https://www.fptok.com/sale/list-r24.html">贵州</a><a  href="https://www.fptok.com/sale/list-r25.html">云南</a><a  href="https://www.fptok.com/sale/list-r26.html">西藏</a><a  href="https://www.fptok.com/sale/list-r27.html">陕西</a><a  href="https://www.fptok.com/sale/list-r28.html">甘肃</a><a  href="https://www.fptok.com/sale/list-r29.html">青海</a><a  href="https://www.fptok.com/sale/list-r30.html">宁夏</a><a  href="https://www.fptok.com/sale/list-r31.html">新疆</a><a  href="https://www.fptok.com/sale/list-r32.html">台湾</a><a  href="https://www.fptok.com/sale/list-r33.html">香港</a><a  href="https://www.fptok.com/sale/list-r34.html">澳门</a></dd>
+    </dl>
+    <dl>
+     <dt><h4>出售价格</h4></dt>
+    <dd>    <a target="_blank"  href="https://www.fptok.com/sale/list-p1.html">30万以下</a><a target="_blank"  href="https://www.fptok.com/sale/list-p2.html">30-40万</a><a target="_blank"  href="https://www.fptok.com/sale/list-p3.html">40-50万</a><a target="_blank"  href="https://www.fptok.com/sale/list-p4.html">50-60万</a><a target="_blank"  href="https://www.fptok.com/sale/list-p5.html">60-80万</a><a target="_blank"  href="https://www.fptok.com/sale/list-p6.html">80-100万</a><a target="_blank"  href="https://www.fptok.com/sale/list-p7.html">100-150万</a><a target="_blank"  href="https://www.fptok.com/sale/list-p8.html">150-200万</a><a target="_blank"  href="https://www.fptok.com/sale/list-p9.html">200万以上</a></dd>
+    </dl>
+    </div>
+<!--区域找房 end-->
+</div>
+<div class="con_b_c">
+<div id="tab_3">
+<ul class="i_autab">
+<li><a href="https://www.fptok.com/sale/list.html" target="_blank" class="ht on">二手房出售<span class="sj_icon"></span></a></li>
+<li><a href="https://www.fptok.com/rent/list.html" target="_blank" class="ht">二手房出租<span class="sj_icon"></span></a></li>
+</ul>
+                    <ul class="autab">
+      <li>
+  <div class=""></div>
+  <a href="https://www.fptok.com/sale/show-2160.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201812/26/20/48/204806460.jpg.thumb.jpg" alt="大三房双阳台 赠送12平大天台花园 过五唯一钥匙在手"><div><span></span><i>123㎡</i><u>123</u></div></a>
+  <div class="detail">
+  <p class="jiage"><span class="jg">63万</span>5121元/㎡<span class="fs">3室2厅</span></p>
+  </div>
+  </li>
+    <li>
+  <div class=""></div>
+  <a href="https://www.fptok.com/sale/show-2158.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/17/22/1722489312.jpg" alt="西江新城勤天汇 毛坯3房 望江单位 旁边有MALL 中环金街"><div><span></span><i>128㎡</i><u>勤天汇(商住楼)</u></div></a>
+  <div class="detail">
+  <p class="jiage"><span class="jg">125万</span>9765元/㎡<span class="fs">3室2厅</span></p>
+  </div>
+  </li>
+    <li>
+  <div class=""></div>
+  <a href="https://www.fptok.com/sale/show-2157.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/16/59/1659449112.jpg" alt="广州白云双地铁零 首付70年产权公寓 总价20万买广州地段"><div><span></span><i>83㎡</i><u>兴业商住楼 - 沧江路</u></div></a>
+  <div class="detail">
+  <p class="jiage"><span class="jg">28.7万</span>3457元/㎡<span class="fs">3室2厅</span></p>
+  </div>
+  </li>
+    <li>
+  <div class=""></div>
+  <a href="https://www.fptok.com/sale/show-2156.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/16/54/1654361312.jpg" alt="丽江苑结合所有优点，躲避所有缺点，机会难得，快快抢购吧！"><div><span></span><i>99㎡</i><u>丽江苑 - 荷城</u></div></a>
+  <div class="detail">
+  <p class="jiage"><span class="jg">50万</span>5050元/㎡<span class="fs">3室2厅</span></p>
+  </div>
+  </li>
+    <li>
+  <div class=""></div>
+  <a href="https://www.fptok.com/sale/show-2155.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/16/30/1630186912.jpg" alt="高明中心城区 全新毛坯 58万机场地铁高铁全覆盖 仅售58万"><div><span></span><i>92㎡</i><u>高明雅居蓝湾 - 杨和</u></div></a>
+  <div class="detail">
+  <p class="jiage"><span class="jg">62万</span>6739元/㎡<span class="fs">3室2厅</span></p>
+  </div>
+  </li>
+    <li>
+  <div class=""></div>
+  <a href="https://www.fptok.com/sale/show-2154.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/16/26/1626385312.jpg" alt="西江新城带平台单价9字头大三房 满两年 南北对流"><div><span></span><i>124㎡</i><u>丽日名都 - 荷城</u></div></a>
+  <div class="detail">
+  <p class="jiage"><span class="jg">123万</span>9919元/㎡<span class="fs">3室2厅</span></p>
+  </div>
+  </li>
+  </ul>
+                    <ul class="autab">
+                                                            <li>
+                    <div class=""></div>
+                    <a href="https://www.fptok.com/rent/show-2626.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/17/52/1752153115.png" alt="地铁口孵化器园区 整层870方物业直租"><div><span></span><i>870㎡</i><u>南沙 - 黄阁</u></div></a>
+                    <div class="detail">
+                    <p class="jiage"><span class="jg">43500元/月</span><span>整租</span><span class="fs">1室</span></p>
+                    </div>
+                    </li>
+                                        <li>
+                    <div class=""></div>
+                    <a href="https://www.fptok.com/rent/show-2625.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/17/46/1746427215.png" alt="地铁口物业直租 众创房间 可注册一般纳税人费用全包"><div><span></span><i>18㎡</i><u>南沙 - 黄阁</u></div></a>
+                    <div class="detail">
+                    <p class="jiage"><span class="jg">1500元/月</span><span>整租</span><span class="fs">1室</span></p>
+                    </div>
+                    </li>
+                                        <li>
+                    <div class=""></div>
+                    <a href="https://www.fptok.com/rent/show-2624.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/17/38/1738055115.png" alt="大同裕丰北路A一F3栋"><div><span></span><i>420㎡</i><u>南沙 - 东涌</u></div></a>
+                    <div class="detail">
+                    <p class="jiage"><span class="jg">189000元/月</span><span>整租</span><span class="fs">1室</span></p>
+                    </div>
+                    </li>
+                                        <li>
+                    <div class=""></div>
+                    <a href="https://www.fptok.com/rent/show-2623.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/17/32/1732105215.png" alt="马上成交房源 科汇金谷625方精装写字楼 即租即用"><div><span></span><i>625㎡</i><u>萝岗 - 萝岗镇</u></div></a>
+                    <div class="detail">
+                    <p class="jiage"><span class="jg">37500元/月</span><span>整租</span><span class="fs">1室</span></p>
+                    </div>
+                    </li>
+                                        <li>
+                    <div class=""></div>
+                    <a href="https://www.fptok.com/rent/show-2622.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/17/26/1726133115.png" alt="150平方精装写字楼仅租7500元/月"><div><span></span><i>150㎡</i><u>萝岗 - 萝岗镇</u></div></a>
+                    <div class="detail">
+                    <p class="jiage"><span class="jg">7500元/月</span><span>整租</span><span class="fs">1室</span></p>
+                    </div>
+                    </li>
+                                        <li>
+                    <div class=""></div>
+                    <a href="https://www.fptok.com/rent/show-2621.html" target="_blank" title="{$t[alt]" class="pic_a"><img src="https://www.fptok.com/file/upload/201811/16/17/16/1716279815.png" alt="科学城科汇金谷稀有70方纯精装办公室带办公家具出租"><div><span></span><i>70㎡</i><u>萝岗 - 萝岗镇</u></div></a>
+                    <div class="detail">
+                    <p class="jiage"><span class="jg">3500元/月</span><span>整租</span><span class="fs">1室</span></p>
+                    </div>
+                    </li>
+                                        </ul>
+</div>
+</div>
+<div class="con_b_r2" style="padding-top: 10px;">
+<div class="adv95"></div>
+<div class="esf_user">
+<a class="esf_user1" target="_blank" title="用户登录" href="https://www.fptok.com/member/login.php">用户登录</a>
+<a class="esf_user2" target="_blank" title="注册用户" href="https://www.fptok.com/member/register.php">注册用户</a>
+<a class="esf_user3" target="_blank" title="发布出售" href="https://www.fptok.com/member/my.php?mid=5&action=add">发布出售</a>
+<a class="esf_user4" target="_blank" title="发布出租" href="https://www.fptok.com/member/my.php?mid=7&action=add">发布出租</a>
+<a class="esf_user5" target="_blank" title="购房评估" href="https://www.fptok.com/tool/">购房评估</a>
+<a class="esf_user6" target="_blank" title="贷款计算" href="https://www.fptok.com/tool/benjin.php">贷款计算</a>
+<a class="esf_user7" target="_blank" title="提前还贷" href="https://www.fptok.com/tool/tqhd.php">提前还贷</a>
+<a class="esf_user8" target="_blank" title="税费计算" href="https://www.fptok.com/tool/sf.php">税费计算</a>
+</div>
+<div class="adv95"></div>
+</div>
+</div>
+</div>
+ <div class="adb"><!-- 广告位： --></div>
+ <div class="adb"><!-- 广告位： --></div>
+ <!--装修-->
+    <div class="con zjyl">
+<div class="con_t cf">
+<h2 class="con_t_l title"><a href="https://www.fptok.com/home/" target="_blank">装修家居</a></h2>
+<ul class="con_t_r">
+<li><a target="_blank"  href="https://www.fptok.com/company/list-u4.html">找设计师</a></li>
+<li class="fg"></li>
+<li><a href="https://www.fptok.com/company/list-u6.html" target="_blank">找装修公司</a></li>
+<li class="fg"></li>
+<li><a href="https://www.fptok.com/company/list-u5.html" target="_blank">找装修监理</a></li>
+<li class="fg"></li>
+<li><a href="https://www.fptok.com/photo/" target="_blank">装修效果图</a></li>
+<li class="fg"></li>
+<li><a href="https://www.fptok.com/home/" target="_blank">装修招标</a></li>
+</ul>
+</div>
+<div class="con_b cf">
+<div class="zx-con">
+<div class="zx-search">
+<div class="u-jia-bd">
+<h2>免费获取4份设计方案</h2>
+<h3>四家正规装修公司，专业设计师为您服务</h3>
+<form id="jia" method="get" autocomplete="off" action="https://www.fptok.com/house/house.php?action=jia">
+<div><input type="text" name="truename" value="您的姓名" class="bd-txt"></div>
+<div><input type="text" name="mobile" value="您的手机号" class="bd-txt"></div>
+<div><input type="submit" class="u-jia-but" value="立即申请"></div>
+</form>
+<script>
+     seajs.use("jia",function(jia){
+     jia("#jia","");
+     });
+    </script>
+    <ul>
+    <li><i class="ui-icon bd1"></i>参观工地</li>
+    <li><i class="ui-icon bd2"></i>独享优惠</li>
+    <li><i class="ui-icon bd3"></i>免费量房</li>
+    <li><i class="ui-icon bd4"></i>免费设计</li>
+    <li><i class="ui-icon bd5"></i>免费报价</li>
+    <li><i class="ui-icon bd6"></i>免费方案</li>
+    </ul>
+</div>
+</div>
+<div class="zx-pic">
+<ul>  <li><a href="https://www.fptok.com/photo/p134-h0.html" target="_blank" title="欧式风格餐厅装修效果图"><img src="https://www.fptok.com/file/upload/201808/04/10/18/1018379612.jpg" title="欧式风格餐厅装修效果图" alt="欧式风格餐厅装修效果图"   height="164" width="218"><p>欧式风格餐厅装修效果图</p></a></li>
+                                        <li><a href="https://www.fptok.com/photo/p131-h0.html" target="_blank" title="美式风格厨房装修效果图"><img src="https://www.fptok.com/file/upload/201808/04/09/58/0958229612.jpg" title="美式风格厨房装修效果图" alt="美式风格厨房装修效果图"   height="164" width="218"><p>美式风格厨房装修效果图</p></a></li>
+                                        <li><a href="https://www.fptok.com/photo/p130-h0.html" target="_blank" title="地中海风格厨房装修效果图"><img src="https://www.fptok.com/file/upload/201808/04/09/53/0953066812.jpg" title="地中海风格厨房装修效果图" alt="地中海风格厨房装修效果图"   height="164" width="218"><p>地中海风格厨房装修效果图</p></a></li>
+                                        <li><a href="https://www.fptok.com/photo/p129-h0.html" target="_blank" title="日韩厨房装修效果图"><img src="https://www.fptok.com/file/upload/201808/04/09/47/0947158812.jpg" title="日韩厨房装修效果图" alt="日韩厨房装修效果图"   height="164" width="218"><p>日韩厨房装修效果图</p></a></li>
+                                        <li><a href="https://www.fptok.com/photo/p128-h0.html" target="_blank" title="简约卫生间装修效果图"><img src="https://www.fptok.com/file/upload/201808/04/09/42/0942149312.jpg" title="简约卫生间装修效果图" alt="简约卫生间装修效果图"   height="164" width="218"><p><span style="color:#800080">简约卫生间装修效果图</span></p></a></li>
+                                        <li><a href="https://www.fptok.com/photo/p127-h0.html" target="_blank" title="田园风玄关装修效果图"><img src="https://www.fptok.com/file/upload/201808/04/09/37/0937122812.jpg" title="田园风玄关装修效果图" alt="田园风玄关装修效果图"   height="164" width="218"><p>田园风玄关装修效果图</p></a></li>
+                                        <li><a href="https://www.fptok.com/photo/p126-h0.html" target="_blank" title="简欧餐厅装修效果图"><img src="https://www.fptok.com/file/upload/201808/04/09/31/0931413412.jpg" title="简欧餐厅装修效果图" alt="简欧餐厅装修效果图"   height="164" width="218"><p>简欧餐厅装修效果图</p></a></li>
+                                        <li><a href="https://www.fptok.com/photo/p125-h0.html" target="_blank" title="中式餐厅装修效果图"><img src="https://www.fptok.com/file/upload/201808/04/09/21/0921169812.jpg" title="中式餐厅装修效果图" alt="中式餐厅装修效果图"   height="164" width="218"><p>中式餐厅装修效果图</p></a></li>
+                                                                           </ul>
+            </div>
+        </div>
+    </div>
+</div>
+   <!--装修 html end-->
+ <!--建材家具-->
+    <div class="con zjyl">
+<div class="con_t cf">
+<h2 class="con_t_l title"><a href="https://www.fptok.com/jiancai/" target="_blank">建材家具</a></h2>
+<ul class="con_t_r">
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=84">水泥</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=85">河沙</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=86">轻质砖</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=87">陶粒</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=88">水电材料</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=89">瓷砖</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=90">门窗</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=91">五金</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=92">楼梯</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=93">木工材料</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=94">集成吊顶</a></li>
+<li class="fg"></li>
+<li><a target="_blank"  href="https://www.fptok.com/jiancai/list.php?catid=95">橱柜</a></li>
+<li class="fg"></li>
+<li><a href="https://www.fptok.com/jiancai/" target="_blank">更多>></a></li>
+</ul>
+</div>
+<div class="con_b cf">
+<div class="zx-con">
+<div class="zx-jcjj" style="display:none">
+<div class="zxadv"><!-- 广告位： --><img src="http://fptok.com/file/upload/201806/09/113939621.jpg" width="268" height="164" alt=""/></div>
+<div class="zxadv"><!-- 广告位： --><img src="http://fptok.com/file/upload/201806/09/114047291.jpg" width="268" height="164" alt=""/></div>
+</div>
+<div class="zx-pic" style="display:none">
+<ul>  <li><a href="https://www.fptok.com/jiancai/show-187.html" target="_blank" title="富家美门业 AL类：天然木皮套装门 AL-26"><img src="https://www.fptok.com/file/upload/201809/26/09/05/0905279212.jpg.thumb.jpg" title="富家美门业 AL类：天然木皮套装门 AL-26" alt="富家美门业 AL类：天然木皮套装门 AL-26"   height="164" width="218"><p>富家美门业 AL类：天然木皮套装门 </p></a></li>
+                                        <li><a href="https://www.fptok.com/jiancai/show-186.html" target="_blank" title="富家美门业 AL类：天然木皮套装门 AL-25"><img src="https://www.fptok.com/file/upload/201809/26/09/03/0903595012.jpg.thumb.jpg" title="富家美门业 AL类：天然木皮套装门 AL-25" alt="富家美门业 AL类：天然木皮套装门 AL-25"   height="164" width="218"><p>富家美门业 AL类：天然木皮套装门 </p></a></li>
+                                        <li><a href="https://www.fptok.com/jiancai/show-185.html" target="_blank" title="富家美门业 AL类：天然木皮套装门 AL-24"><img src="https://www.fptok.com/file/upload/201809/26/08/48/0848558412.jpg.thumb.jpg" title="富家美门业 AL类：天然木皮套装门 AL-24" alt="富家美门业 AL类：天然木皮套装门 AL-24"   height="164" width="218"><p>富家美门业 AL类：天然木皮套装门 </p></a></li>
+                                        <li><a href="https://www.fptok.com/jiancai/show-184.html" target="_blank" title="富家美门业 AL类：天然木皮套装门 AL-23"><img src="https://www.fptok.com/file/upload/201809/26/08/44/0844145012.jpg.thumb.jpg" title="富家美门业 AL类：天然木皮套装门 AL-23" alt="富家美门业 AL类：天然木皮套装门 AL-23"   height="164" width="218"><p>富家美门业 AL类：天然木皮套装门 </p></a></li>
+                                        <li><a href="https://www.fptok.com/jiancai/show-183.html" target="_blank" title="富家美门业 AL类：天然木皮套装门 AL-20"><img src="https://www.fptok.com/file/upload/201809/26/08/43/0843162312.jpg.thumb.jpg" title="富家美门业 AL类：天然木皮套装门 AL-20" alt="富家美门业 AL类：天然木皮套装门 AL-20"   height="164" width="218"><p>富家美门业 AL类：天然木皮套装门 </p></a></li>
+                                        <li><a href="https://www.fptok.com/jiancai/show-182.html" target="_blank" title="富家美门业 AL类：天然木皮套装门 AL-22"><img src="https://www.fptok.com/file/upload/201809/26/08/41/0841483812.jpg.thumb.jpg" title="富家美门业 AL类：天然木皮套装门 AL-22" alt="富家美门业 AL类：天然木皮套装门 AL-22"   height="164" width="218"><p>富家美门业 AL类：天然木皮套装门 </p></a></li>
+                                        <li><a href="https://www.fptok.com/jiancai/show-181.html" target="_blank" title="富家美门业 AL类：天然木皮套装门 AL-22"><img src="https://www.fptok.com/file/upload/201809/26/08/39/0839045612.jpg.thumb.jpg" title="富家美门业 AL类：天然木皮套装门 AL-22" alt="富家美门业 AL类：天然木皮套装门 AL-22"   height="164" width="218"><p>富家美门业 AL类：天然木皮套装门 </p></a></li>
+                                        <li><a href="https://www.fptok.com/jiancai/show-180.html" target="_blank" title="富家美门业 AL类：天然木皮套装门 AL-20"><img src="https://www.fptok.com/file/upload/201809/26/08/37/0837551512.jpg.thumb.jpg" title="富家美门业 AL类：天然木皮套装门 AL-20" alt="富家美门业 AL类：天然木皮套装门 AL-20"   height="164" width="218"><p>富家美门业 AL类：天然木皮套装门 </p></a></li>
+                                                                           </ul>
+
+            </div>
+<a href="https://www.bangxiaoke.com/" target="_blank"><img src="https://www.fptok.com/file/upload/201811/03/17/13/171307331.jpg" width="1200" height="360" alt=""/></a>        </div>
+    </div>
+</div>
+<div class="adb"><!-- 广告位:首页搜索下面长条广告 --><a href="http://www.bangxiaoke.com/" target="_blank"><img src="https://www.fptok.com/file/upload/201809/25/20/38/203811681.jpg" width="1200" height="300" alt=""/></a></div>
+   <!--建材家具 html end-->
+<div class="main">
+<div class="friendslink con">
+<div class="con_t cf">
+<h2 class="con_t_l title">友情链接</h2>
+<ul class="con_t_r">
+<li>申请友情链接  | </li>
+<li><a href="https://www.fptok.com/" target="_blank" title="房平台" class="blue">房平台</a></li>
+</ul>
+</div>
+<div class="con_b">
+<ul class="cf">
+   
+         <li><a href="http://dg.ganji.com/fang5/" target="_blank" title="东莞二手房网">东莞二手房网</a></li>
+  
+         <li><a href="http://dg.leju.com/" target="_blank" title="东莞房产">东莞房产</a></li>
+  
+         <li><a href="http://dongguan.qfang.com/" target="_blank" title="东莞房产网">东莞房产网</a></li>
+  
+         <li><a href="http://dg.zhongyiju360.com/" target="_blank" title="东莞装修网">东莞装修网</a></li>
+  
+         <li><a href="http://dongguan.jiwu.com/" target="_blank" title="东莞买房">东莞买房</a></li>
+     </ul>
+</div>
+</div>
+<script>
+seajs.use(["autabindex","autolr"],function(){
+$("#pp_s1").autolr("p",286,2)
+$("#i_focus").autab("i","li",4,0,1,function(){},true);
+$("#i_focus,#i_focus3").autab("i","li",4,0,1,function(){},true);
+$("#i_focus2").autab("i","li",4,0,2,function(){},true);
+$("#i_focus4").autab("i","li",4,0,1,function(){},true);
+$("#i_focus5").autab(".index i","li",400,0,1,function(){},true);
+$("#i_focus6").autab("i","li",4,0,2,function(){},true);
+$("#tab_search").autab("ul.fl li","ul.fr");
+$("#tab_2").autab(".ht",".autab",0,.4,0,function(){},true);
+$("#tab_3").autab(".ht",".autab",0,.4,0,function(){
+i = this.parent().index();
+$(".esf_search_item").hide().eq(i).show();
+},true);
+$("#tab_4").autab(".ht",".sub_menu",0,0,0,function(){},false);
+$("#tab_6").autab(".ht",".autab",0,0,0,function(){},true);
+$("#tab_7").autab(".ht",".autab",0,0,0,function(){},true);
+$("#tab_8").autab(".ht",".autab",0,0,0,function(){},true);
+//日期
+var week = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+var data = new Date();
+var date = data.getDate() < 10 ? "0"+data.getDate() : data.getDate();
+$(".jrtj .day span").text(date);
+$(".jrtj .week").text(week[data.getDay()]);
+//最新开盘位置定位
+var kpPosition = $(".zxkp dt.on").position();
+//$(".zxkp").scrollTop(kpPosition.top);
+});
+</script>
+<div id="footer">
+<p> <a target="_blank" href="https://www.fptok.com/">网站首页</a>
+| <a href="https://www.fptok.com/about/jion.html" class="bottom_text2">加入我们</a> 
+| <a href="https://www.fptok.com/about/index.html" class="bottom_text2">关于我们</a> 
+| <a href="https://www.fptok.com/about/contact.html" class="bottom_text2">联系方式</a> 
+| <a href="https://www.fptok.com/about/agreement.html" class="bottom_text2">使用协议</a> 
+| <a href="https://www.fptok.com/about/copyright.html" class="bottom_text2">版权隐私</a> 
+<span>|</span> <a href="https://www.fptok.com/sitemap/">网站地图</a>
+ <span>|</span> <a href="https://www.fptok.com/guestbook/">网站留言</a> <span>|</span> <a href="https://www.fptok.com/ad/">广告服务</a></p>
+
+<p>ICP备案号：<a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备案16065359号</a> 客服热线  4009207478（工作时间：周一至周五8:00至18:00）</p>
+<p>  Copyright © 2016-2018 房平台 All Rights Reserved   <!-- 技术支持：<a href='http://www.wangyingshi.com' target="_blank">网营师</a> --></p>
+<div class="authentication">
+<a rel="nofollow" target="_blank" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202007080200026">
+<img width="103" height="32" alt="经营性网站备案中心" src="//img12.360buyimg.com/da/jfs/t535/349/1185317137/2350/7fc5b9e4/54b8871eNa9a7067e.png" class="err-product">
+</a>
+
+<a rel="nofollow" target="_blank" id="urlknet" tabindex="-1" href="https://ss.knet.cn/verifyseal.dll?sn=2008070300100000031&amp;ct=df&amp;pa=294005">
+<img border="true" width="103" height="32" onclick="CNNIC_change('urlknet')" oncontextmenu="return false;" name="CNNIC_seal" alt="可信网站" src="//img11.360buyimg.com/da/jfs/t643/61/1174624553/2576/4037eb5f/54b8872dNe37a9860.png" class="err-product">
+</a>
+<a rel="nofollow" target="_blank" href="http://www.bj.cyberpolice.cn/index.do">
+<img width="103" height="32" alt="网络警察" src="//img12.360buyimg.com/cms/jfs/t2050/256/1470027660/4336/2a2c74bd/56a89b8fNfbaade9a.jpg" class="err-product">
+</a>
+<a rel="nofollow" target="_blank" href="https://search.szfw.org/cert/l/CX20120111001803001836">
+<img width="103" height="32" src="//img11.360buyimg.com/da/jfs/t451/173/1189513923/1992/ec69b14a/54b8875fNad1e0c4c.png" class="err-product">
+</a>
+<a target="_blank" href="http://www.12377.cn"><img width="103" height="32" src="//img30.360buyimg.com/da/jfs/t1915/215/1329999964/2996/d7ff13f0/5698dc03N23f2e3b8.jpg"></a>
+<a target="_blank" href="http://www.12377.cn/node_548446.htm"><img width="103" height="32" src="//img14.360buyimg.com/da/jfs/t2026/221/2097811452/2816/8eb35b4b/5698dc16Nb2ab99df.jpg"></a>
+</div>
+</div>
+<script type="text/javascript">
+show_task('moduleid=1&html=index');
+</script>
+<script>
+seajs.use("jquery",function($){
+//菜单切换
+var $p = $("#tab_5"),
+$m2 = $p.find(".ht"),
+$l = $p.find(".sub_menu"),
+i = 0;
+$m2.on({
+mouseenter:function() {
+var $t = $(this);
+i = $m2.removeClass("on").index($t.addClass("on"));
+$l.hide().eq(i).show();
+},
+mouseleave:function() {
+$l.hide();
+$(this).removeClass("on")
+}
+});
+$('.q_code').on("mouseenter",function(){
+$(this).find('div.q_code_layer').show();
+});
+$('.q_code').on("mouseleave",function(){
+$(this).find('div.q_code_layer').hide();
+});
+$("#tab_4 .ht dl").each(function(){
+var height = $(this).innerHeight()-26+"px";
+$(this).css({height:"76px"});
+$(this).mouseenter(function(){
+$(this).css({height:height});
+}).mouseleave(function(){
+$(this).css({height:"76px"});
+});
+});
+$(".header_l_item").css({overflow:"inherit"});
+            if($("#zjmenubt_index").size() > 0){
+    $("#zjmenubt_index").addClass("active");
+}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+{template 'header_member', 'mobile'}
+{template 'cssjs', 'mobile'}
+<style>
+.paytype { margin: 10px 0;}
+.aui-list-view .aui-img-object {
+	max-width: 50px;
+	height: 50px;
+	line-height: 50px;
+}
+.aui-btn-row:after {
+	border-bottom: 0px !important;
+}
+</style>
+<script type="text/javascript" src="script/iScroll5/iscroll.js"></script>
+<header class="aui-bar aui-bar-nav aui-bar-danger" id="aui-header">
+        <a class="aui-btn aui-btn-danger aui-pull-left" href="{if $action<>''}my.php?action=member{else}my.php{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+</header>
+<div class="aui-bar-fix"></div>
+<div class="aui-content">
+			<div class="bbs-wrapper">
+				<div id="scroller">
+					<ul>
+            <li id="record"><a href="mrecord.php">资金流水</a></li>
+            <li id="action_charge"><a href="mcharge.php?action=record">充值记录</a></li>
+            <li id="action_cash"><a href="">提现记录</a></li>
+            <li id="action_credit"><a href="mcredit.php?action=record">积分记录</a></li>
+            <li id="action_pay"><a href="mrecord.php?action=pay">信息记录</a></li>
+					</ul>
+				</div>
+			</div>
+<script type="text/javascript">
+myScroll = new IScroll('.bbs-wrapper', {snap:true,
+
+eventPassthrough : false,
+scrollX : true,
+scrollY : false,
+preventDefault : true,
+click:true
+});
+</script>
+</div>
+
+
+{if $action == 'login'}
+{else}
+{if $action == 'pay'}
+<div class="aui-content">
+<ul class="aui-list-view">
+  <li class="aui-list-view-cell">
+  <div class="aui-money-title">已支付：<span class="aui-text-danger" id="cmoneys"></span>{$fee}</div>
+  <div class="aui-pull-right"></div>
+</li>
+</ul>
+
+  <ul class="aui-list-view">
+  <li class="aui-list-view-cell"><span class="aui-text-money">流水号</span><div class="my_title_right fz16">总收入：<span class="aui-text-danger fz16" id="moneys"></span>&nbsp;&nbsp;支出：<span class="aui-text-danger" id="amounts">{$fee}</span></div>
+    </li>
+  </ul>
+
+<ul class="aui-list-view">
+{loop $lists $k $v}
+					<li class="aui-list-view-cell aui-padded-style">
+                <div class="aui-img-body">
+                    <p class="aui-ellipsis-2">{$v[paytime]}——{$MODULE[$v[moduleid]][name]}</p>
+                </div>
+                <span class="aui-credits-right fz18 aui-text-red">{$v[fee]}</span>
+            </li>
+{/loop}            
+</ul>
+<div class="pages">{$pages}</div>
+</div>
+<script type="text/javascript">
+tabbar('action_pay');
+myScroll.scrollToElement(Dd('action_pay'), 800);
+</script>
+{else}
+<div class="aui-content">
+<ul class="aui-list-view">
+  <li class="aui-list-view-cell">
+  <div class="aui-money-title">已充值：<span class="aui-text-danger" id="cmoneys"></span>&nbsp;&nbsp;元</div>
+  <div class="aui-pull-right"><span class="aui-btn aui-btn-danger" onclick="window.location.href='mcharge.php?action=pay'">在线充值</span></div>
+</li>
+</ul>
+
+  <ul class="aui-list-view">
+  <li class="aui-list-view-cell"><span class="aui-text-money">资金流水</span><div class="my_title_right fz16">总收入：<span class="aui-text-danger fz16" id="moneys">{$income}</span>&nbsp;&nbsp;支出：<span class="aui-text-danger" id="amounts">{$expense}</span></div>
+    </li>
+  </ul>
+
+<ul class="aui-list-view">
+{loop $lists $k $v}
+					<li class="aui-list-view-cell aui-padded-style">
+                <div class="aui-img-body">
+                    <p class="aui-ellipsis-2">{$v[addtime]}——{$v[reason]}</p>
+                </div>
+                <span class="aui-credits-right fz18 aui-text-red">{$v[amount]}</span>
+            </li>
+{/loop}            
+</ul>
+<div class="pages">{$pages}</div>
+</div>
+<script type="text/javascript">tabbar('record');</script>
+{/if}
+{/if}
+{template 'footer_member', 'mobile'}

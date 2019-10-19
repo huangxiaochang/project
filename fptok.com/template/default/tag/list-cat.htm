@@ -1,0 +1,12 @@
+
+{loop $tags $i $t}
+<ul class="newslist">
+      <li class="pic"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img alt="{$t[alt]}" src="{imgurl($t[thumb])}"></a></li>
+      <li class="xxlist">
+        <div class="mid1"><span>[{timetodate($t[addtime], 3)}]</span><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></div>
+        <div class="mid2">{$t[introduce]}</div>
+      </li>
+    </ul>
+{/loop}
+
+{if $showpage && $pages}<div class="page_num">{$pages}</div>{/if}

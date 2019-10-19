@@ -1,0 +1,19 @@
+<ul class="aui-list-view check-menu-in displaynone" id="check-menu">
+<li>
+<div class="aui-list-view-cell aui-img" style="width:100%">
+<input class="aui-pull-left aui-checkbox" type="checkbox" onclick="checkall(this.form);">
+    <div class="aui-pull-left check-menu">
+    {if $resume}
+    <p class="check-del" onclick="delitemall({$mid},1);">删除</p>
+    {else}
+    <p class="check-del" onclick="delitemall({$mid});">删除</p>
+    {/if}
+    {if in_array($mid, array(5,6,16))}
+    <p class="check-ref" onclick="refreshall({$mid});">刷新</p>
+    {/if}
+    <p class="check-reset" onclick="checkreset();">取消</p>
+</div>
+</div>
+                
+</li>
+</ul>

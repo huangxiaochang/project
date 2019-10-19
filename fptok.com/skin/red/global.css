@@ -1,0 +1,53 @@
+input::-webkit-input-placeholder {
+    color: #999;
+    -webkit-transition: color.5s;
+}
+input:focus::-webkit-input-placeholder, input:hover::-webkit-input-placeholder {
+    color: #c2c2c2;
+    -webkit-transition: color.5s;
+}
+
+.none, .hidden{display: none !important;}
+a:active,a:focus{outline: none;}
+
+/*nice validator 验证失败时 高亮显示*/
+.n-invalid, .error-highlight {
+    background-color: #fbe2e2;
+    border-color: #c66161;
+    color: #c00;
+}
+
+.small{font-size: 80%}
+.primary{color: #008aff !important;}
+.error{color: #CC2323 !important;}
+.success{color: #13981A !important;}
+.warning{color: #D28720 !important;}
+.gray{color: #aaa !important;}
+
+span.state{ display:inline-block; padding:3px 5px; line-height:15px; background-color:#aaa; font-size:12px; color:#fff; margin-left:5px; position:relative;top:-3px; font-family:Arial, Helvetica, sans-serif; font-weight:normal; color:#fff !important;}
+span.on{ background-color:#ca0606; color:#fff !important;}
+span.will{ background-color:#9bbd5a; color:#fff !important;}
+
+.map-infowin{}
+.map-infowin h4{line-height: 25px;
+    height: 25px;
+    font-weight: 500;
+    font-size: 14px;}
+.map-infowin h4 a.view{font-size: 11px;
+    color: #0369D0;
+    margin-left: 10px;}
+.map-infowin p{}
+.map-infowin p img{float: left;
+    margin-right: 10px;max-height: 100px;}
+
+.maploadtext {position: absolute;
+    right: 20px;
+    top: 10px;
+    background-color: #E42626;
+    color: #FBF4F4;
+    line-height: 25px;
+    font-size: 12px;
+    padding: 0 10px;
+    display: none;}
+a.primary{ display:inline-block; line-height:36px; padding:0px 20px; background-color:#008aff; color:#fff !important;}
+a.primary:hover{filter:alpha(opacity=90); -moz-opacity:0.9;opacity:0.9}

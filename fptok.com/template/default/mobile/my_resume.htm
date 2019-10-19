@@ -1,0 +1,562 @@
+{template 'header_member', 'mobile'}
+{template 'cssjs', 'mobile'}
+
+<script type="text/javascript" src="script/iScroll5/iscroll.js"></script>
+<header class="aui-bar aui-bar-nav aui-bar-info" id="aui-header">
+        <a class="aui-btn aui-bar-info aui-pull-left" href="{if $action == ''}{$MYURL}?action=info{else}javascript:history.go(-1);{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+    {if $action=='add'}
+{else}
+    <a href="?mid={$mid}&resume=1&action=add" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add fz14">添加</span>
+    </a>
+    {/if}
+</header>
+<div class="aui-bar-fix"></div>
+{if $_userid}
+<div class="aui-content">
+			<div class="bbs-wrapper">
+				<div id="scroller">
+					<ul>
+            <li id="tabbar3"><a href="?mid={$mid}&resume=1">已发布<span class="aui-badge aui-badge-info">{$nums[3]}</span></a></li>
+            <li id="tabbar2"><a href="?mid={$mid}&resume=1&status=2">审核中<span class="aui-badge aui-badge-info">{$nums[2]}</span></a></li>
+            <li id="tabbar1"><a href="?mid={$mid}&resume=1&status=1">未通过<span class="aui-badge aui-badge-info">{$nums[1]}</span></a></li>
+            <li id="apply"><a href="?mid={$mid}&resume=1&action=apply">应聘职位<span class="aui-badge aui-badge-info">{$nums[apply]}</span></a></li>
+                      </ul>
+				</div>
+			</div>
+<script type="text/javascript">
+myScroll = new IScroll('.bbs-wrapper', {
+eventPassthrough : false,
+scrollX : true,
+scrollY : false,
+preventDefault : true,
+click:true
+});
+//myScroll.scrollToElement(that[0], 800);
+</script>
+</div>
+{/if}
+<span id="msg"></span>
+{if $action=='add' || $action == 'edit'}
+<div class="aui-content">
+<form id="sell-form" class="fromset">
+	<input type="hidden" name="action" value="{$action}"/>
+    <input type="hidden" name="mid" value="{$mid}"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<input type="hidden" name="ok" value="1"/>
+    <p class="aui-text-center" style="padding-bottom:10px;"><span class="aui-text-red">红色为</span>必填信息</p>
+        <div class="aui-form">
+            <div class="aui-input-row">
+                <label class="aui-input-addon aui-text-red">简历名称</label>
+                <input type="text" name="post[title]" id="title" class="aui-input" value="{$title}" placeholder="信息标题"/>
+            </div>
+
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">行业/职位</span>
+                {ajax_category_select('post[catid]', '选择分类', $catid, $moduleid, 'size="1"')}
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">真实姓名</span>
+                <input type="text" name="post[truename]" id="truename" class="aui-input" value="{$truename}" placeholder="真实姓名"/>
+            </div>
+            <script src="user/dist/lrz.bundle.js"></script>
+            <div class="aui-input-row">
+
+                <span class="aui-input-addon">免冠照片</span>
+                <div class="pic-list baguetteBoxOne gallery" id="imgslist">
+                {if $thumb}<li><a href="{$thumb}"><img src="{$thumb}"></a></li>{/if}
+                {if $thumb1}<li><a href="{$thumb1}"><img src="{$thumb1}"></a></li>{/if}
+                {if $thumb2}<li><a href="{$thumb2}"><img src="{$thumb2}"></a></li>{/if}
+				<li id="addpic"><img src="image/add.jpg"></li>				
+			</div>
+                    <input accept="image/*" type="file" id="uptitleimg"/>
+<div class="aui-upprogress aui-text-center displaynone" id="uptitleing"><svg id="container"></svg></div></div>
+<script>
+var moduleid = {$mid};
+var thumb_width = {$MOD['thumb_width']};
+var thumb_height = {$MOD['thumb_height']};
+$(function(){
+	{if $action == 'edit' || $thumb}
+	$('#imgslist li:not(#addpic)').each(function() {
+	addPress($(this));
+	});
+    baguetteBox.run('.baguetteBoxOne');
+	//$('#imgslist li:not(#addpic)').touchTouch();
+	{/if}
+});
+</script>
+<script type="text/javascript" id="uptitlejs" src="script/uptitle.js" data="{$mid}"></script>
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">性别</span>
+                <div class="aui-pull-left aui-padded-left10">
+                {loop $GENDER $k $v}
+                      <input type="radio" name="post[gender]" id="gender_{$k}" value="{$k}"{if $k == $gender} checked{/if} class="aui-checkbox aui-checkbox-info aui-mr-10" /><div class="aui-radio-name aui-mr-0 fz12" for="gender_{$k}">{$v}</div>
+                      {/loop}
+                      </div>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">婚姻状况</span>
+                <div class="aui-pull-left aui-padded-left10">
+                {loop $MARRIAGE $k $v}
+                      <input type="radio" name="post[marriage]" id="marriage_{$k}" value="{$k}"{if $k == $marriage} checked{/if} class="aui-checkbox aui-checkbox-info aui-mr-10" /><div class="aui-radio-name aui-mr-0 fz12" for="marriage_{$k}">{$v}</div>
+                      {/loop}
+                      </div>
+            </div>
+<div class="aui-input-row"><span class="aui-input-addon aui-text-red">现居住地</span>
+{ajax_area_select('post[areaid]', '请选择', $areaid, '', 2)}</div>
+           <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">生日</span>
+                <input name="post[byear]" type="number" id="byear" size="4" value="{$byear}" class="aui-inputb aui-bfb20 aui-ml-15"/><div style="margin-top:5px;">年
+              <select name="post[bmonth]">
+{php for($i = 1; $i < 13; $i++) { }
+<option value="{$i}"{if $i == $bmonth} selected{/if}>{$i}</option>
+{php } }
+</select>
+月
+<select name="post[bday]">
+{php for($i = 1; $i < 32; $i++) { }
+<option value="{$i}"{if $i == $bday} selected{/if}>{$i}</option>
+{php } }
+</select>
+日</div>
+              </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">身高</span>
+                <input type="number" name="post[height]" id="height" class="aui-input" value="{$height}" placeholder="身高"/><span class="aui-input-addon">cm</span>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">体重</span>
+                <input type="number" name="post[weight]" id="height" class="aui-input" value="{$weight}" placeholder="体重"/><span class="aui-input-addon">kg</span>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">学历</span>
+                <div class="aui-pull-left aui-padded-left10">
+                {loop $EDUCATION $k $v}
+                      <input type="radio" name="post[education]" id="education_{$k}" value="{$k}"{if $k == $education} checked{/if} class="aui-checkbox aui-checkbox-info aui-mr-10" /><div class="aui-radio-name aui-mr-0 fz12" for="education_{$k}">{$v}</div>
+                      {/loop}
+                      </div>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">毕业学校</span>
+                <input type="text" name="post[school]" id="school" class="aui-input" value="{$school}" placeholder="毕业学校"/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">所学专业</span>
+                <input type="text" name="post[major]" id="major" class="aui-input" value="{$major}" placeholder="所学专业"/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">专业技能</span>
+                <input type="text" name="post[skill]" id="skill" class="aui-input" value="{$skill}" placeholder="专业技能"/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">语言水平</span>
+                <input type="text" name="post[language]" id="language" class="aui-input" value="{$language}" placeholder="所学专业"/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">工作性质</span>
+                <div class="aui-pull-right" style="padding-left:15px;">
+                {loop $TYPE $k $v}
+                      <input type="radio" name="post[type]" id="type_{$k}" value="{$k}"{if $k == $type} checked{/if} class="aui-checkbox aui-checkbox-info aui-mr-10" /><div class="aui-radio-name aui-mr-0 fz12" for="type_{$k}">{$v}</div>
+                      {/loop}
+                      </div>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">期望薪资</span>
+                <input type="number" name="post[minsalary]" id="minsalary" class="aui-inputb aui-bfb40 aui-ml-15" value="{$minsalary}" placeholder="填0为面议"/><span style="height: 26px;line-height: 26px;margin: 10px 5px 10px -3px; position:absolute;">至</span><input name="post[maxsalary]" class="aui-inputb aui-bfb40 aui-ml-15" type="number" size="2" value="{$maxsalary}" id="maxsalary" placeholder="填0为面议"/><span class="aui-input-addon">{$AJ[money_unit]}/月</span>
+            </div>
+           <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">工作经验</span>
+              <select name="post[experience]" id="experience" class="aui-ml-15">
+              <option value="0">不限</option>
+{php for($i = 1; $i < 21; $i++) { }
+              <option value="{$i}"{if $i == $experience} selected{/if}>{$i}</option>
+              {php } }
+</select><span class="aui-input-addon">年以上</span>
+              </div>
+
+{template 'm_fields', 'mobile'}
+{template 'wang', 'mobile'}
+<script type="text/javascript">
+$(function() {
+	"use strict";
+
+	$('#content-e').artEditor({
+		 artmid: '{$mid}',
+		imgTar: '#artUpload',
+		limitSize: 8,   // 兆
+		showServer: false,
+		uploadUrl: 'br',
+		data: {},
+		uploadField: 'image',
+		placeholader: '自我鉴定',
+		validHtml: '',
+		uploadSuccess: function(res) {
+			// return img url
+			return res.path;
+		},
+		uploadError: function(res) {
+			// something error
+			console.log(res);
+		}
+	});
+});
+</script>
+<div class="aui-input-row" {if $_userid} style="display:none;"{/if}>
+<span class="aui-input-addon aui-text-red">公司名称</span><input type="text" name="post[company]" id="company" value="{$company}" placeholder="个人请填 姓名(个人) 例如：张三(个人)" class="aui-input"/><span class="aui-input-addon" style="font-size:12px !important; color:#8f8f94;">个人请填 姓名(个人)</span>
+</div>
+
+<div class="aui-input-row">
+<span class="aui-input-addon aui-text-red">联系手机</span><input type="number" name="post[mobile]" id="mobile" value="{$mobile}" placeholder="联系手机" class="aui-input"/>
+</div>
+<div class="aui-input-row">
+<span class="aui-input-addon aui-text-red">电子邮件</span><input type="text" name="post[email]" id="email" value="{$email}" placeholder="电子邮件" class="aui-input"/>
+</div>
+<div class="aui-input-row">
+<span class="aui-input-addon">联系电话</span><input type="text" name="post[telephone]" id="telephone" value="{$telephone}" placeholder="联系电话" class="aui-input"/>
+</div>
+<div class="aui-input-row">
+<span class="aui-input-addon">联系地址</span><input type="text" name="post[address]" id="address" value="{$address}" placeholder="联系地址" class="aui-input"/>
+</div>
+<div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">求职状态</span>
+              <select name="post[situation]" class="aui-ml-15">
+{loop $SITUATION $k $v}
+<option value="{$k}"{if $k==$situation} selected{/if}>{$v}</option> 
+{/loop}
+</select>
+              </div>
+
+{if $AJ[im_qq]}
+<div class="aui-input-row">
+<span class="aui-input-addon">QQ</span><input type="text" name="post[qq]" id="qq" value="{$qq}" placeholder="QQ" class="aui-input"/>
+</div>
+{/if}
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">公开程度</span>
+                <div class="aui-pull-left aui-padded-left10">
+                      <input type="radio"name="post[open]" value="3"{if $open==3} checked{/if} class="aui-checkbox aui-checkbox-info aui-mr-10" /><div class="aui-radio-name aui-mr-0 fz12">开放</div>
+                      <input type="radio"name="post[open]" value="2"{if $open==2} checked{/if} class="aui-checkbox aui-checkbox-info aui-mr-10" /><div class="aui-radio-name aui-mr-0 fz12">仅网站可见</div>
+                      <input type="radio"name="post[open]" value="1"{if $open==1} checked{/if} class="aui-checkbox aui-checkbox-info aui-mr-10" /><div class="aui-radio-name aui-mr-0 fz12">关闭</div>
+                      </div>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon aui-text-red">简历模板</span>
+                <div class="aui-pull-left aui-padded-left10">{tpl_select('resume', $module, 'post[template]', '默认模板', $template, 'id="template"')}
+                      </div>
+            </div>
+
+{if $fee_add}
+<div class="aui-input-row">
+<span class="aui-input-addon">发布此信息需消费</span><input type="text" value="{$fee_add}{$fee_unit}" readonly="readonly" class="aui-input"/>
+</div>
+{if $fee_currency == 'money'}
+<div class="aui-input-row">
+<span class="aui-input-addon">{$AJ[money_name]}余额</span><input type="text" value="{$_money}{$fee_unit}" class="aui-input" readonly="readonly"/><span class="aui-input-addon"><a href="charge.php?action=pay" target="_blank" class="t">[充值]</a></span>
+</div>
+{else}
+<div class="aui-input-row">
+<span class="aui-input-addon">{$AJ[credit_name]}余额</span><input type="text" value="{$_credit}{$fee_unit}" class="aui-input" readonly="readonly"/><span class="aui-input-addon"><a href="credit.php?action=buy" target="_blank" class="t">[购买]</a></span>
+{/if}
+{/if}
+{if $need_password}
+            <div class="aui-input-row">
+                <span class="aui-input-addon fz16">支付密码</span>
+                <input type="password" name="password" id="password" class="aui-input fz16" {if isset($password)} value="{$password}"{/if} placeholder="支付密码"/>
+            </div>
+{/if}
+{if $need_question1}
+<div class="aui-input-row">
+                <span class="aui-input-addon fz16">验证问题</span>
+                <div class="" id="captcha-bar">{template 'question', 'chip'}</div>
+            </div>
+{/if}
+{if $need_captcha1}
+<div class="aui-input-row">
+                <span class="aui-input-addon fz16">验证码</span>
+                <div class="" id="captcha-bar">{template 'captcha', 'chip'}</div>
+</div>
+{/if}
+
+            <div class="aui-btn-row" id="btn-main" onclick="Daddr();">
+                <div class="aui-btn aui-btn-danger fz16" style="width:90%;" id="btn-submit">确认</div>
+            </div>
+
+        </div>
+        
+</form>
+</div>
+<script type="text/javascript">
+function showother() {
+        var $show = $('#otherinfo');
+        if ($show.hasClass('displaynone')) {
+            $show.removeClass('displaynone'); 
+        } else {
+            $show.addClass('displaynone');
+        }
+    }
+	
+function Daddr() {
+	var arrImgs = [];
+   $('#imgslist li:not(#addpic)').each(function() {
+   // 将图片追加到数组中
+   arrImgs.push($(this).find("img").attr("src"));
+   });
+	var len;
+	len = Dd('title').value.length;
+	if(len < 2 || len > 30) {
+		laymsg('请填写职位名称');
+		return false;
+	}
+	len = Dd('catid_1').value;
+	if(len == 0) {
+		laymsg('请选择分类');
+		return false;
+	}
+	f = 'truename';
+	l = Dd(f).value.length;
+	if(l < 2) {
+		laymsg('请填写真实姓名', f);
+		return false;
+	}
+	f = 'areaid_1';
+	if(Dd(f).value == 0) {
+		laymsg('请选择居住地区', 'areaid', 1);
+		return false;
+	}
+	f = 'byear';
+	if(Dd(f).value.length != 4) {
+		laymsg('请填写生日', f);
+		return false;
+	}
+	f = 'school';
+	if(Dd(f).value.length < 2) {
+		laymsg('请填写毕业院校', f);
+		return false;
+	}
+	f = 'experience';
+	if(Dd(f).value.length < 1) {
+		laymsg('请填写工作经验', f);
+		return false;
+	}
+	f = 'mobile';
+	if(Dd(f).value.length < 7) {
+		laymsg('请填写联系手机', f);
+		return false;
+	}
+	f = 'email';
+	if(Dd(f).value.length < 6) {
+		laymsg('请填写电子邮件', f);
+		return false;
+	}
+
+	var edittext=$.trim($("#content-e").text());
+    var len = edittext.length;
+	if(len < 5) {
+		laymsg('自我鉴定最少5字');
+		return false;
+	}
+	{if $AJ['max_len']}
+	if(len > {$AJ['max_len']}) {
+		laymsg('输入这么多字累了吧亲');
+		return false;
+	}
+    {/if}
+{if $need_password}
+	f = 'password';
+	l = Dd(f).value.length;
+	if(l < 6) {
+		laymsg('请填写支付密码', f);
+		return false;
+	}
+{/if}
+	var exitcon = $('#content-e').getValue();
+	$("#content").attr('value',exitcon);
+
+	$("#btn-submit").text("正在处理...");
+	$("#btn-main").removeAttr("onclick");
+	
+    $.post('{$MUSER}?mid={$mid}&resume=1&action=add&thumbs='+arrImgs+'', $('#sell-form').serialize(), function(data) {
+		if(data.error == 'ok') {
+			{if $action=='add'}data.msg = data.msg ? data.msg:"添加成功";laymsg(data.msg);{else}laymsg('修改成功');{/if}
+		$("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("成 功");
+			setTimeout(function() {
+				if(data.path){
+				Go(data.path);
+				}else{
+				Go('{$MUSER}?mid={$mid}&resume=1');	
+					}
+			}, 1000);
+		} else {
+			laymsg(data.error);
+		$("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("重 新 提 交");
+		}
+	},'json');
+}
+
+var aijiacms_oauth = '{$EXT[oauth]}';
+</script>
+{elseif $action == 'apply'}
+	<style type="text/css">
+		.order {
+			background: #ffffff;
+		}
+		.order-info  {
+			font-size: 0.875em;
+			width: 100%;
+		}
+		.order-info span {
+			color: #333;
+			margin-right: 5px;
+		}
+		.order-info time {
+			color: #999999;
+			font-size: 0.75em;
+		}
+		.order-info i.aui-iconfont {
+			color: #999;
+			font-size: 0.875em;
+		}
+		.order-icon img {
+			width: 80%;
+			border-radius: 5px;
+		}
+		.order-title {
+			font-size: 1em;
+			color: #333;
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+		}
+		.order-title > i.aui-iconfont {
+			font-size: 0.87em;
+			color: #999999;
+		}
+		p.goods-list {
+			font-size: 0.75em;
+			color: #999;
+			margin-bottom: 8px;
+		}
+		p.count-info {
+			font-size: 0.75em;
+			color: #999;
+			padding-bottom: 5px;
+		}
+		p.count-info span {
+			margin: 0 3px;
+		}
+		p.count-info strong {
+			color: #666;
+			font-size: 1em;
+			font-weight: 700;
+		}
+		.btn {
+			/*margin: 5px;*/
+		}
+		.btn .aui-btn {
+			font-size: 0.75em;
+		}
+		.btn .aui-btn:first-child {
+			margin-right: 10px;
+		}
+		.aui-border-b:after {
+			border-color: #ddd;
+		}
+	</style>
+{if $lists}
+<form method="post">
+{loop $lists $v}
+	<section class="aui-content order">
+		<div class="aui-flex-col order-info aui-padded-10">
+			<div class="aui-flex-item-12">
+				<span>应聘时间</span>
+				<span class="aui-text-info">{timetodate($v[applytime], 5)}</span>
+				<i class="aui-iconfont aui-icon-delete aui-pull-right aui-text-red fz16" onclick="openDialog('goto','确定删除','确定要删除吗？此操作将不可撤销?','?mid={$mid}&resume=1&action=apply_delete&itemid={$v[applyid]}');"></i>
+			</div>
+		</div>
+		<div class="aui-flex-col">
+			<div class="aui-flex-item-2 order-icon aui-text-right">
+			</div>
+			<div class="aui-flex-item-10 aui-padded-0-15">
+				<p class="order-title aui-border-b aui-ellipsis-1">招聘信息：<a href="{$MODULE[$mid][linkurl]}{$v[linkurl]}" target="_blank" class="t">{$v[title]}</a><i class="aui-iconfont aui-icon-right"></i></p>
+				<p class="goods-list fz14">
+					我的简历:<span class="aui-text-info"><a href="{$MODULE[$mid][linkurl]}{rewrite('resume.php?itemid='.$v['resumeid'])}" target="_blank" class="t">{$v[resumetitle]}</a></span>&nbsp;状态：{if $v[status] == 3}
+<span class="aui-text-info">邀请面试</span>
+{elseif $v[status] == 2}
+已查看
+{elseif $v[status] == 1}
+<span class="aui-text-info">未查看</span>
+{elseif $v[status] == 0}
+<span class="aui-text-red">已拒绝</span>
+{/if}
+				</p>
+			</div>
+		</div>
+		<div class="aui-flex-col aui-padded-5 btn">
+			<div class="aui-flex-item-12 aui-text-right">
+			</div>
+		</div>
+	</section>
+
+
+{/loop}
+</form>
+{if $pages}<div class="pages">{$pages}</div>{/if}
+{else}
+<ul class="aui-list-view">
+<li class="aui-list-view-cell aui-img">
+                <div class="aui-img-body aui-pull-left">
+                    <p class="aui-ellipsis-1">暂无信息</p>
+                </div>
+</li>
+</ul>
+
+{/if}
+<script type="text/javascript">
+tabbar('apply');
+</script>
+{else}
+{if $lists}
+<form method="post">
+{template 'm_batch', 'mobile'}
+<ul class="aui-list-view aui-in" id="sell_list">
+{loop $lists $t}
+<li id="{$t[itemid]}">
+<div class="aui-list-view-cell aui-img drop-div">
+<input class="aui-pull-left aui-checkbox displaynone" type="checkbox" id="itemids" name="itemid" value="{$t[itemid]}">
+                <div class="aui-img-body aui-pull-left">
+                    <a href="{mobileurl($moduleid, 0, $t['itemid'])}">{dsubstr($t[title], 20)}</a>
+                    <p class="aui-ellipsis-1 fz12"><span class="aui-pull-left aui-max-w80 Dt-text-ellipsis">{gl_cat_name($t[catid])}</span>&nbsp;<span class="aui-mr-5"><i class="aui-iconfont aui-icon-attentionfill aui-text-gray"></i>{$t[hits]}</span><span class="aui-mr-5"><i class="aui-iconfont aui-icon-time aui-text-gray"></i>{timetodate($t[edittime], 4)}</span></p>
+                </div>
+                </div>
+  <div class="hidden-menu">
+    <p class="two"><a href="?mid={$mid}&resume=1&action=edit&itemid={$t[itemid]}">修改</a></p>
+    <p class="one" onclick="delitemid({$mid},{$t[itemid]},1);">删除</p>
+    
+  </div>
+                
+</li>
+
+{/loop}
+</ul>
+</form>
+{if $pages}<div class="pages aui-text-center">{$pages}</div>{/if}
+{else}
+<ul class="aui-list-view">
+<li class="aui-list-view-cell aui-img">
+                <div class="aui-img-body aui-pull-left">
+                    <p class="aui-ellipsis-1">暂无信息</p>
+                </div>
+</li>
+</ul>
+
+{/if}
+
+
+<script type="text/javascript" src="script/addpan.js" charset="utf-8"></script>
+{/if}
+<script type="text/javascript">tabbar('tabbar{$status}');</script>
+{template 'footer_member', 'mobile'}

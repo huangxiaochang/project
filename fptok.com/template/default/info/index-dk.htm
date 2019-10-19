@@ -1,0 +1,27 @@
+{template 'header'}
+<div id="main">
+  <div class="zxTitle">
+    <ul>
+      <li><a href="{$MODULE[21][linkurl]}" class="cur">担保贷款</a></li>
+    </ul>
+  </div>
+  <div class="zxList">
+    <!--{php $tags=tag("moduleid=21&condition=status=3&areaid=$cityid&length=60&pagesize=20&order=addtime desc&target=_blank&template=null");}-->
+    {loop $tags $i $t}
+    <ul>
+      <li class="pic"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img alt="{$t[alt]}" src="{imgurl($t[thumb])}"></a></li>
+      <li class="daikuan">
+        <div class="mid1"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></div>
+        <div class="mid2"><span>{area_pos($t[areaid], ' ')}</span><span>更新时间：{timetodate($t[addtime], 3)}</span></div>
+        <div class="mid3">备注：{$t[content]}</div>
+      </li>
+      <li class="lxfs">
+        <p>公司名称：{$t[gsmc]}</p>
+        <p>公司地址：{$t[lxdz]}</p>
+        <p>联 系 人：{$t[lxr]}</p>
+        <p>联系电话：<span>{$t[lxdh]}</span></p></li>
+    </ul>
+    {/loop}
+  </div>
+</div>
+{template 'footer'}

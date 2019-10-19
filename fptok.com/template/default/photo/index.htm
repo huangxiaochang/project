@@ -1,0 +1,28 @@
+{template 'header'}
+<link rel="stylesheet" type="text/css" href="{AJ_SKIN}style.css"/>
+<div class="m">
+	<div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a> &gt; <a href="{$MOD[linkurl]}">{$MOD[name]}</a></div>
+	<div class="boxfl">
+		<dl>
+			<dt>分类</dt>
+			<dd>{loop $maincat $k $v}
+				<span><a href="{$MOD[linkurl]}{$v[linkurl]}&fengge={$fengge}" class="{if $v[catid]==$catid}cur{/if}">{set_style($v[catname],$v[style])}{if !$cityid}({$v[item]}){/if}</a></span>{/loop}
+			</dd>
+		</dl>
+		<dl>
+			<dt>风格</dt>
+			<dd>{php $fengge_arr = getbox_name('fengge','photo_12')}
+					{loop $fengge_arr $key $v}
+					<span><a {if $fengge==$key}class="on"{/if} href="#">{$v}</a></span>{/loop}</dd>
+		</dl>
+	</div>
+	{if $MOD[page_icat]}
+	{loop $maincat $i $c}
+	<div class="boxxgt">
+		<div class="boxtitle"><a href="{$MOD[linkurl]}{$c[linkurl]}" class="f_r">更多&raquo;</a><strong>{$c[catname]}</strong></div>
+		<div class="boxlist"><!--{tag("moduleid=$moduleid&condition=status=3 and open=3 and items>0&catid=".$c[catid]."&areaid=$cityid&order=".$MOD[order]."&length=20&width=394&height=296&pagesize=3".$MOD[page_icat]."&lazy=$lazy&template=list-photo")}--></div>
+	</div>
+	{/loop}
+	{/if}
+</div>
+{template 'footer'}

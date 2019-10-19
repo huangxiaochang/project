@@ -1,0 +1,37 @@
+{template 'header'}
+{template 'menu', 'newhouse'}	<div class="house-photo">
+                
+      
+        {php $maincat = get_maincat(0,12)}
+			  {loop $maincat $k $v}
+              {if get_xccategory($itemid,$v[catid])}
+        <div class="item" id="item-xiaoguo">
+            <h2>{$v[catname]}({get_xccategory($itemid,$v[catid])})</h2>
+            <div class="list">
+                <ul class="lightgallery">
+                <!--{php $tags=tag("table=newhouse_xiangce&condition=status=3 and houseid=$itemid and catid=".$v[catid]."&pagesize=20&order=addtime desc&template=null");}-->
+ {loop $tags $i $t} 
+                <li data-src="{$t[thumb]}" data-sub-html="<h4>{$t[title]}</h4>">
+                   <a href="javascript:;"><img src="{$t[thumb]}" alt="{$t[title]}"><span>{$t[title]}</span></a>
+                  
+                </li>{/loop}  
+                
+                          </ul>
+            </div>
+            <div class="clearit"></div>
+        </div> {/if} {/loop}      </div>
+        
+        <script type="text/javascript">
+$(document).ready(function(){
+    $('.lightgallery').lightGallery();
+});
+</script>
+        <link rel="stylesheet" type="text/css" href="{AJ_SKIN}js/lightgallery/css/lightgallery.css"/>
+         <script src="{AJ_SKIN}js/lightgallery/js/picturefill.min.js"></script>
+         <script src="{AJ_SKIN}js/lightgallery/js/lightgallery-all.min.js"></script>
+        <script src="{AJ_SKIN}js/lightgallery/js/jquery.mousewheel.min.js"></script>
+        
+     
+</div>
+	
+{template 'footer'}

@@ -1,0 +1,94 @@
+{template 'header', 'mobile'}
+<style type="text/css">
+.home-search {text-align:center;padding:10px;}
+.home-search div {height:28px;line-height:28px;background:#FFFFFF;border-radius:4px;}
+.home-search img {width:16px;height:16px;vertical-align:top;padding-top:6px;padding-right:8px;}
+.home-search span {color:#8E8E93;font-size:14px;font-weight:normal;}
+.list-set{ overflow:  hidden; }
+.list-set dl{ padding-left:  10%; border-bottom: 1px #ddd solid; overflow:  hidden;;}
+.list-set dt{ font-weight: bold; padding-bottom:  12px;}
+.list-set dd{ float:  left; width: 35%; }
+</style>
+<div id="head-bar">
+<div class="head-bar">
+<div class="head-bar-title">全部导航</div>
+</div>
+<div class="head-bar-fix"></div>
+</div>
+<div class="home-search">
+	<div><a href="search.php"><img src="static/img/ico-search.png"/><span>输入关键词搜索</span></a></div>
+</div>
+<div class="list-set">
+	<dl>
+		<dt>新房</dt>
+		<dd><a href="6-0-0-1.html">新开楼盘</a></dd>
+		<dd><a href="tuijian.php">新房分销</a></dd>
+		<dd><a href="user.php?mid=16">帮我找房</a></dd>
+	</dl>
+	<dl>
+		<dt>二手房</dt>
+		<dd><a href="5-0-0-1.html">在售房源</a></dd>
+		<dd><a href="m5-t10.html">在售别墅</a></dd>
+		<dd><a href="16-0-0-1.html">求购房源</a></dd>
+		<dd><a href="4-20-0-1.html">找经纪人</a></dd>
+		<dd><a href="user.php?mid=5">帮我卖房</a></dd>
+	</dl>
+	<dl>
+		<dt>租房</dt>
+		<dd><a href="7-0-0-1.html">在租房源</a></dd>
+		<dd><a href="m7-u2.html">个人房源</a></dd>
+		<dd><a href="m7-t15.html">别墅房源</a></dd>
+		<dd><a href="m7-z2.html">合租房源</a></dd>
+		<dd><a href="16-0-0-1.html">求租</a></dd>
+		<dd><a href="user.php?mid=7">免费发布出租</a></dd>
+	</dl>
+	<dl>
+		<dt>商铺写字楼</dt>
+		<dd><a href="m6-t5.html">商铺新盘</a></dd>
+		<dd><a href="m5-t11.html">商铺出售</a></dd>
+		<dd><a href="m7-t16.html">商铺出租</a></dd>
+		<dd><a href="m6-t6.html">写字楼新盘</a></dd>
+		<dd><a href="m5-t12.html">写字楼出售</a></dd>
+		<dd><a href="m7-t17.html">写字楼出租</a></dd>
+		<dd><a href="user.php?mid=5">帮我找写字楼</a></dd>
+	</dl>
+	<dl>
+		<dt>厂房地皮</dt>
+		<dd><a href="m5-t67.html">厂房出售</a></dd>
+		<dd><a href="m7-t73.html">厂房出租</a></dd>
+		<dd><a href="m5-t68.html">地皮出售</a></dd>
+		<dd><a href="m7-t74.html">地皮出租</a></dd>
+		<dd><a href="user.php?mid=5">帮我找地皮</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="21-83-0-1.html">担保贷款</a></dt>
+	</dl>
+	<dl>
+		<dt>装修维修</dt>
+		<dd><a href="user.php?mid=13">免费装修报价</a></dd>
+		<dd><a href="12-0-0-1.html">装修效果图</a></dd>
+		<dd><a href="user.php?mid=13">帮我维修</a></dd>
+		<dd><a href="13-56-0-1.html">装修招标</a></dd>
+	</dl>
+	<dl>
+		<dt><a href="19-0-0-1.html">建材家具</a></dt>
+	</dl>
+	<dl>
+		<dt>房产资讯</dt>
+		<dd><a href="8-28-0-1.html">优惠导购</a></dd>
+		<dd><a href="8-29-0-1.html">楼市新闻</a></dd>
+		<dd><a href="8-30-0-1.html">房产知识</a></dd>
+		<dd><a href="8-31-0-1.html">房产问答</a></dd>
+		<dd><a href="8-154-0-1.html">装修知识</a></dd>
+		<dd><a href="8-160-0-1.html">建材知识</a></dd>
+		<dd><a href="8-161-0-1.html">装修资讯</a></dd>
+	</dl>
+</div>
+<div class="list-set" style="display:  none;">
+<ul>
+{loop $MOB_MODULE $i $m}
+<li><div{if $i==0} style="border:none;"{/if}><a href="{mobileurl($m[moduleid])}">{$m[name]}</a></div></li>
+{/loop}
+</ul>
+</div>
+{template 'footer', 'mobile'}

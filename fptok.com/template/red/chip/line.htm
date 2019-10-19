@@ -1,0 +1,21 @@
+var aijiacms_userid = {$_userid};
+var aijiacms_username = '{$_username}';
+var aijiacms_message = {$_message};
+var aijiacms_chat = {$_chat};
+var aijiacms_member = '';
+{if $_userid}
+aijiacms_member += '<i class="iconfont"></i><a href="{$MODULE[2][linkurl]}" class="a1">用户中心</a><em>|</em><a href="{$MODULE[2][linkurl]}logout.php">退出</a>';
+{else}
+	{if $EXT[oauth]}
+	var oauth_site = '{get_cookie('oauth_site')}';
+	var oauth_user = '{get_cookie('oauth_user')}';
+	aijiacms_member += (oauth_user && oauth_site) ? '<img src="{AJ_PATH}api/oauth/'+oauth_site+'/ico.png" align="absmiddle"/> 欢迎，<strong>'+oauth_user+'</strong> | <a href="{AJ_PATH}api/oauth/'+oauth_site+'/index.php?time={$AJ_TIME}">绑定帐号</a> | <a href="javascript:" onclick="oauth_logout();">注销登录</a>' : '<a href="{$MODULE[2][linkurl]}{$AJ[file_login]}" class="a1">登录</a><em>|</em><a href="{$MODULE[2][linkurl]}{$AJ[file_register]}">注册</a>';
+	{else}
+	aijiacms_member += '<i class="iconfont"></i><a href="{$MODULE[2][linkurl]}{$AJ[file_login]}" class="a1">登录</a><em>|</em><a href="{$MODULE[2][linkurl]}{$AJ[file_register]}">注册</a>';
+	{/if}
+{/if}
+$('#aijiacms_member').html(aijiacms_member);
+{if $AJ[city]}
+$('#aijiacms_city').html('{$city_name}');
+{/if}
+{if $_userid && $AJ[pushtime]}window.setInterval('PushNew()',{$AJ[pushtime]}*1000);{/if}

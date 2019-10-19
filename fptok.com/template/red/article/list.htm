@@ -1,0 +1,79 @@
+{template 'header'}	
+<div id="news-top">
+    <div class="wrapper">
+        <div class="location"><i></i><a href="{$MODULE[1][linkurl]}">首页</a><span>»</span><a href="{$MOD[linkurl]}">{$MOD[name]}</a></div>
+        <div class="photo-search">
+            <form method="get" action="{$MODULE[8][linkurl]}search.php">
+                <input type="text" class="input" name="kw" placeholder="新闻搜索" value="" />
+                <input type="hidden" name="type" value="content" />
+                <button type="submit"><i class="iconfont">&#xe604;</i></button>
+            </form>
+        </div>
+        <div class="sub-nav">
+        {php $maincat = get_maincat(0,8)}
+        {loop $maincat $k $v}
+                        <a href="{$MOD[linkurl]}{$v[linkurl]}" {if $catid==$v[catid]}class="current"{/if} >{$v[catname]}</a>{/loop}</div>		
+        <div class="clearit"></div>
+    </div>
+</div>
+<div class="wrapper">
+    <div style="padding:10px 0">	
+       
+            </div>
+    <div class="news-left">
+        <h2>{cat_pos($CAT, ' &raquo; ')}</h2>
+     
+ {if $tags}{template 'list-cat', 'tag'}{/if}    
+       
+    </div>	
+    <div class="news-right">
+        <div class="news-right-photo">
+    <h2><span>图说楼市</span></h2>
+    <div class="slider">
+        <div class="bd">
+            <ul>
+            <!--{php $tags=tag("moduleid=8&condition=status=3 and thumb!=''&areaid=$cityid&order=addtime desc&pagesize=1&target=_blank&template=null");}-->
+	{loop $tags $k $t}
+                <li>
+                    <a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}"> <img alt="{$t[alt]}" src="{imgurl($t[thumb])}" /></a>
+                    <p><a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a></p>
+                </li>{/loop}       </ul>
+        </div>
+        <!-- <div class="hd">
+            <ul>
+                <li>
+                    1                </li><li>
+                    2                </li><li>
+                    3                </li>            </ul>
+        </div>-->
+    </div>
+</div>
+<div class="news-right-paihang" id="news-right-paihang">
+    <h2><span>新闻排行</span></h2>
+  
+    <ul id="rank-month" class="rank" >
+           <!--{php $tags=tag("moduleid=8&condition=status=3 and edittime>$today_endtime-86400*30&areaid=$cityid&length=48&pagesize=10&order=addtime desc&target=_blank&template=null");}-->
+{loop $tags $i $t}
+        <li>
+            <i {if $i<3}class="red"{/if} >{$i+1}</i>
+            <a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}" >{$t[title]}</a>
+        </li> {/loop}   </ul>
+</div>
+<div class="news-right-project">
+    <h2><span>热点楼盘</span></h2>
+    
+     <ul>
+      <!--{php $tags=tag("moduleid=6&condition=status=3 and isnew=1 &areaid=$cityid&length=12&pagesize=6&order=hits desc&template=null");}-->
+								{loop $tags $k $t}
+        <li>
+            <strong><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></strong>
+            <span>{area_pos($t[areaid], ' ')}</span>            <em>
+              {if $t[price]}{$t[price]}元/㎡{else}待定{/if}
+                            </em>
+        </li> {/loop}   </ul>
+    <a href="{$MODULE[6][linkurl]}list.html" target="_blank" class="more">更多<i class="iconfont">&#xe601;</i></a>
+</div>
+    </div>
+    <div class="clearit"></div>
+</div>
+{template 'footer'}	

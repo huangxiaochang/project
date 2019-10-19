@@ -1,0 +1,270 @@
+{template 'header'}
+<link href="{AJ_SKIN}tuan2018.css" rel="stylesheet" type="text/css" />
+<script src="{AJ_SKIN}js/jquery.SuperSlide.2.1.1.js"></script>
+<style>label{cursor: pointer;}
+a.lightbtn{
+    display:inline-block;
+    position:relative;
+    padding:0 18px;
+    height:28px;
+    line-height:28px;
+    background:#01a461;
+    text-decoration:none;
+    -webkit-transition:all .1s ease-out;
+    -moz-transition:all .1s ease-out;
+    -o-transition:all .1s ease-out;
+    transition:all .1s ease-out;
+    border:1px #19885a solid;
+    color:#fff;
+}
+a.lightbtn:hover{
+    text-decoration:none;
+    background:#25b177;
+    border:1px #1d9f69 solid;
+    color:#eee;
+}
+a.lightbtn:active{
+    background:#fff;
+    color:#01a461;
+}
+a.lightbtn button{
+    position:absolute;
+    clip:rect(1px 1px 1px 1px);
+    clip:rect(1px,1px,1px,1px);
+}
+.panlT{
+    display:block;
+    position:relative;
+    padding:0 9px;
+    height:42px;
+    line-height:42px;
+    border-bottom:1px #e4e8ea solid;
+    _zoom:1;
+    background:#fff url({AJ_SKIN}images/mod/alert_h.png) repeat-x;
+    font-size:14px;
+    font-family:"Microsoft Yahei",SimHei,SimSun,sans-serif;
+    text-align:left;
+}
+.panlT .fr{
+    display:block;
+    float:none;
+    position:absolute;
+    top:-15px;
+    right:-15px;
+    width:30px;
+    height:30px;
+    background:url({AJ_SKIN}images/mod/x.png) !important;
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/mod/x.png');
+    _background-image:none;
+    _cursor:pointer;
+    text-indent:-9em;
+    overflow:hidden;
+    -webkit-transition:-webkit-transform .6s ease-out;
+    -moz-transition:-moz-transform .6s ease-out;
+    -o-transition:-o-transform .6s ease-out;
+    transition:transform .6s ease-out;
+}
+.panlT .fr:hover{
+    text-decoration:none;
+    color:#f80;
+    -webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
+    transform:rotate(360deg);
+}
+
+
+.lgt{
+    height:32px;
+    line-height:32px;
+    background-position:0 -160px;
+    color:#333;
+}
+.lgt i{
+    background-position:right -160px;
+}
+a.lgt:hover{
+    background-position:0 -193px;
+    color:#333;
+}
+a.lgt:hover i{
+    background-position:right -193px;
+}
+.gry,a.gry:hover{
+    height:32px;
+    line-height:32px;
+    background-position:0 -226px;
+    color:#ccc;
+    cursor:default;
+}</style>
+                
+               
+<div class="wrapper">
+    <div class="location"><i></i><a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a><span>»</span>{$MOD[name]}<span>»</span>{$title}</div>
+    <div class="clearit"></div>
+    <div class="tuan-left">
+        <div class="kft-main">
+            <div class="kft-main-info">
+                <h1 class="title">
+                   {$title}               </h1>
+                                <div class="image">
+                    <div class="bd">
+                        <ul>
+                            <li ><a href="{$linkurl}" title="{$title}"><img src="{imgurl($thumb)}" alt="{$alt}" /></a><span>{$title}</span></li>                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="info" >
+                    <p>
+                            <label>可享优惠：</label>
+                            <span>{$iprice}</span>
+                        </p>                    <p>
+                        <label>市场价：</label>
+                        {$marketprice}
+                    </p>
+                    <p><label>区域：</label>{area_pos($areaid, ' ')}</p>
+                                            <p><a class="btn {if $process == 0 || $process == 1 || $process == 2}{else}kft-btn-off{/if}" btn-title="看房团报名" data-housetype="1" data-touser="{$username}" data-info="{$title}" data-val="{$itemid}"   data-url="{$linkurl}" class="dt_gb_sa" href="javascript:void(0)" id="alm1">{if $process == 0 || $process == 1 || $process == 2}看房团报名{else}已结束{/if}</a></p>                    <p>已报名<b>{$orders}</b>人</p>
+                    <p class="beizhu">{if $process == 2}<div id="totimer" class="timer"></div>{else}{if $totime}<span>距离报名结束时间还有： </span><div id="totimer">{timetodate($endtime, 'Y年n月j日 H:i')}</div>
+
+<script type="text/javascript">
+        var totime = new Date({$jsdate}).getTime();
+        function _totimer() {
+            var t = new Date();
+            var s = Math.floor((totime - t.getTime())/1000);
+            var h = '';
+            var i;
+            if(s > 0) {
+                i = Math.floor(s/86400);    
+                h += '<span>'+i+'</span>天';
+                s = Math.floor(s%86400);
+                i = Math.floor(s/3600); 
+                h += '<span>'+i+'</span>小时';
+                s = Math.floor(s%3600); 
+                i = Math.floor(s/60);           
+                h += '<span>'+i+'</span>分';
+                s = Math.floor(s%60);
+                h += '<span>'+s+'</span>秒';
+            } else {
+                h = '<span class="f_red">团购已结束</span>';
+            }
+            Dd('totimer').innerHTML = h;
+        }
+        _totimer();
+        setInterval("_totimer()", 1000); 
+        </script>{/if}{/if}</p>
+                </div>
+                <div class="clearit"></div>
+            </div>
+            <div class="kft-main-intro">
+                <h2><span>楼盘介绍</span></h2>
+                 <!--{php $tags=tag("moduleid=6&condition=status=3 and itemid=$houseid&pagesize=8&order=hits desc&template=null");}-->
+{loop $tags $i $t} 
+                <div class="item">
+                    <div class="image"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}"><img src="{imgurl($t[thumb])}" alt="{$t[alt]}" height="133"></a></div>
+                    <div class="info">
+                        <div class="title"><a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a><span class="property">{search_cats($t[catid], '6')}</span></div>
+                        <div class="address">[{area_pos($t[areaid], '')}] {dsubstr($t[address], 42, '...')} <a href="{$t[linkurl]}#bdmap-mark"><i class="map-icon"></i>查看地图</a>
+                        </div>
+                        <div class="num">
+                                                    </div>
+                                                <div class="tag">
+                                <a href="{$t[linkurl]}">{$t[tedian]}</a>                            </div>                    </div>
+                    <div class="other">
+                        <div class="price">
+                            <span>￥<strong>{if $t[price]}{$t[price]}</strong></span>元/㎡{else}待定</strong>{/if}
+                                                    </div>
+                        <div class="tel">{$t[telphone]}</div>
+                    </div>
+ {/loop}
+                    <div class="clearit"></div>
+                </div>            </div>
+                
+            <div class="kft-main-map">
+                <h2><span>看房路线</span></h2>
+                <div class="map-con">
+                    <div class="allmap" id="allmap">  {php $map_height = 530; }
+    {php @include AJ_ROOT.'/api/map/'.$AJ[map].'/show.inc.php';}</div>  
+                </div>
+            </div>
+        </div>
+ 
+   </div>
+    <div class="tuan-right">
+        <div class="tuan-right-info">
+    已有<b>{php echo $db->count($AJ_PRE.'group', 'status=3', 1800);}</b>个楼盘参与团购<br>
+                已有<b>{php echo $db->count($AJ_PRE.'group_order', '', 1800);}</b>人参与活动<br>
+</div>
+<div class="tuan-right-tel">
+    看房咨询热线：<b>{$AJ[telephone]}</b>
+</div>
+<div class="kft-right-hot">
+    <h2><span>看房团报名火热进行中</span></h2>
+    <div class="bd">
+        <ul>
+         <!--{php $tags=tag("table=group_order&length=12&pagesize=15&order=addtime desc&target=_blank&template=null");}-->
+ {loop $tags $i $t}
+            <li>{hidtel($t[buyer_mobile])} 成功报名 {$t[title]}</li>{/loop}       </ul>
+    </div>
+</div>
+        <div class="kft-right-process">
+            <h2><span>活动流程</span></h2>
+            <div class="text-con">
+                <p>1.报名成功后，会收到确认短信。</p>
+                <p>2.在活动前2-4天，工作人员会电话通知集合时间及地点，确认参加后会发送通知短信。</p>
+                <p>3.报名截止时间为活动前一天17:30。</p>
+                <p>4.看房流程：在规定时间内到达指定地点签到上车→按照安排线路参观项目→返回集合地点。</p>
+                <p>5.如有疑问，请致电{$AJ[telephone]}进行咨询。</p>
+                <p>6.本次活动最终解释权归{$AJ[sitename]}所有。</p>
+            </div>
+        </div>
+        <div class="kft-right-process">
+            <h2><span>免责声明</span></h2>
+            <div class="text-con">
+                <p>为规范{$AJ[sitename]}免费看房活动，明确每位购房网友权责，敬请购房网友仔细阅读本声明内容，自愿选择参加本次看房活动。凡参与者均示为认同并自愿遵守本声明内容。</p>
+                <p>一、本次免费看房活动以参与者自愿参加、自愿退出为原则。</p>
+                <p>二、活动参与者确认，免费看房活动期间的风险及责任均自行承担。但鉴于，免费看房活动存有不可预见的危险，诸如道路行驶、自身身体健康、自然灾害等等，均有可能造成对自己生命财产的伤害和损失。参加者应当先行积极主动购买保险，降低损失。一旦发生意外事故和人身伤害，均由保险公司和自己负责赔偿，搜房网及任何非事故当事人将不承担事故任何责任；</p>
+                <p>三、免费看房活动都应该遵守国家相关法律、法规，一切与活动直接或间接相关的法律责任均由活动参与者自行承担，而与搜房网无涉；</p>
+                <p>四、所有免费看房活动的参与者应发扬团结互助、助人为乐的精神，在力所能及的范围内尽量给予他人便利和帮助。但任何便利和帮助的给予并不构成法律上的义务，更不构成对其他参与者损失或责任在法律上分担的根据；</p>
+                <p>五、活动参与者事先对本声明条款的含义及相关法律后果已全部通晓并充分理解，凡参加本次活动者均视为接受本声明。</p>
+                <p>5.如有疑问，请致电{$AJ[telephone]}进行咨询。</p>
+            </div>
+        </div>
+    </div>
+    <div class="clearit"></div>
+</div>
+
+<script>
+    $(function () {
+        $(".kft-main-info .image").slide({titCell: ".hd li", mainCell: ".bd ul", prevCell: ".arrow-left", nextCell: ".arrow-right", effect: "leftLoop", trigger: "click", autoPlay: false, delayTime: 300, interTime: 3000});
+        $(".kft-main-info td em").hover(function () {
+            $(this).find(".info").show();
+            $(this).addClass("hover");
+        }, function () {
+            $(this).find(".info").hide();
+            $(this).removeClass("hover");
+        })
+        jQuery(".kft-right-hot").slide({mainCell: ".bd ul", autoPlay: true, effect: "topMarquee", vis: 5, interTime: 80, trigger: "click"});
+    });
+</script>
+
+ <script>
+seajs.use(["lptg"],function(uyy){
+
+            /*我要咨询*/
+        uyy({
+            elm:"#alm1",
+            type:"esf",
+            sendurl:"",
+            url:"{$MODULE[1][linkurl]}api/house.php?action=tuangou",
+            fromuser:"{$_username}",
+            truename:"{$_truename}",
+            mobile:"{$_mobile}"
+        })
+            
+            
+                
+        
+    });
+</script>
+<div class="clearit"></div>
+{template 'footer'}

@@ -1,0 +1,176 @@
+{template 'header_member', 'mobile'}
+{template 'cssjs', 'mobile'}
+<header class="aui-bar aui-bar-nav aui-bar-info" id="aui-header">
+        <a class="aui-btn aui-btn-info aui-pull-left" href="{if $back_link}{$back_link}{else}my.php{/if}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+    <div class="aui-title">{$head_name}</div>
+    <a href="?action=add&page={$page}" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add fz14">创建</span>
+    </a>
+    {if $action=='add' || $action=='edit'}
+<a href="{$back_link}" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add fz14">取消</span>
+    </a>
+{else}
+{if $lists}
+{else}
+<a href="{$cancel_url}" class="aui-pull-right">
+        <span class="aui-iconfont aui-icon-add fz14">取消</span>
+    </a>
+{/if}
+{/if}
+</header>
+
+<div class="aui-bar-fix"></div>
+{if $action=='add' || $action == 'edit'}
+<style type="text/css">
+.addr-box {width:100%;height:44px;}
+.addr-inp {width:98%;height:24px;line-height:24px;border:none;padding:0;margin:10px 0 0 0;font-size:16px;}
+.addr-are {padding-top:5px;}
+.addr-are select {-webkit-appearance:none;height:34px;border:#FFFFFF 1px solid;padding:0;margin:0;color:#999999;font-size:16px;background:#FFFFFF;}
+</style>
+<div class="aui-content">
+    <div class="aui-form">
+	<form id="address-form">
+	<input type="hidden" name="action" value="{$action}"/>
+	<input type="hidden" name="itemid" value="{$itemid}"/>
+	<input type="hidden" name="post[listorder]" value="{$listorder}"/>
+	<input type="hidden" name="ok" value="1"/>
+       <div class="aui-input-row">
+          <span class="aui-input-addon aui-text-red">地区</span>
+          {ajax_area_select('post[areaid]', '请选择省市', $areaid)}
+        </div>
+       <div class="aui-input-row">
+          <span class="aui-input-addon aui-text-red">详细地址</span>
+          <input type="text" name="post[address]" id="address" class="aui-input" value="{$address}" placeholder="详细地址" />
+       </div>
+       <div class="aui-input-row">
+          <span class="aui-input-addon aui-text-red">邮政编码</span>
+          <input type="text" name="post[postcode]" id="postcode" class="aui-input" value="{$postcode}" placeholder="邮政编码" />
+       </div>
+       <div class="aui-input-row">
+          <span class="aui-input-addon aui-text-red">真实姓名</span>
+          <input type="text" name="post[truename]" id="truename" class="aui-input" value="{$truename}" placeholder="真实姓名" />
+       </div>
+       <div class="aui-input-row">
+          <span class="aui-input-addon aui-text-red">手机号码</span>
+          <input type="text" name="post[mobile]" id="mobile" class="aui-input" value="{$mobile}" placeholder="手机号码" />
+       </div>
+
+	</form>
+    </div>
+	</div>
+                <div class="aui-btn-row aui-borderb-no" id="btn-main" onclick="Daddr();">
+                <div class="aui-btn aui-btn-info fz16" style="width:90%;" id="btn-submit">确认</div>
+            </div>
+
+
+<script type="text/javascript">
+function Daddr() {
+	var len;
+	if(Dd('areaid_1').value == 0) {
+		laymsg('请选择省市');
+		return false;
+	}
+	len = Dd('address').value.length;
+	if(len < 5) {
+		laymsg('请填写详细地址');
+		return false;
+	}
+	len = Dd('postcode').value.length;
+	if(len < 6) {
+		laymsg('请填写邮政编码');
+		return false;
+	}
+	len = Dd('truename').value.length;
+	if(len < 2) {
+		laymsg('请填写真实姓名');
+		return false;
+	}
+	len = Dd('mobile').value.length;
+	if(len < 6) {
+		laymsg('请填写手机号码');
+		return false;
+	}
+	
+	$("#btn-submit").text("正在处理...");
+	$("#btn-main").removeAttr("onclick");
+	$.post('address.php', $('#address-form').serialize(), function(data) {
+		if(data == 'ok') {
+			{if $action=='add'}laymsg('创建成功');{else}laymsg('修改成功');{/if}
+		$("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("成 功");
+			setTimeout(function() {
+				Go('address.php?page={$page}');
+			}, 1000);
+		} else if(data == 'max') {
+			laymsg('创建地址数量超出限制');
+		$("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("重 新 提 交");
+		} else if(data == 'ko') {
+			laymsg('操作失败，请重试');
+		$("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("重 新 提 交");
+		} else {
+			laymsg(data);
+		$("#btn-main").attr("onclick","Daddr();");
+		$("#btn-submit").text("重 新 提 交");
+		}
+	});
+}
+</script>
+{else}
+	{if $lists}
+	<script type="text/javascript">
+	function address_action(id) {
+		towindow('<a href="javascript:address_choose('+id+');"><span>选择地址</span></a>|<a href="?action=edit&page={$page}&itemid='+id+'"><span>修改地址</span></a>|<a href="javascript:delete_action('+id+');"><span>删除地址</span></a>', '取消');
+	}
+	function address_choose(id) {
+		$.get('?action=choose&itemid='+id, function(data) {
+			if(data == 'ok') {
+				Go('{$back_link}');
+			} else {
+				laymsg('操作失败，请重试');
+			}
+		});
+	}
+	function address_delete(id) {
+		$.get('?action=delete&itemid='+id, function(data) {
+			if(data == 'ok') {
+				laymsg('删除成功');
+				setTimeout(function() {
+					window.location.reload();
+				}, 1000);
+			} else {
+				laymsg('删除失败，请重试');
+			}
+		});
+	}
+	function delete_action(id) {
+		Dsheet('<a href="javascript:address_delete('+id+');"><span style="color:red;">删除地址</span></a>', '取消', '确定要删除地址'+$('#address_'+id).html()+'吗？');
+	} 
+	</script>
+        <div class="aui-content">
+<ul class="aui-list-view">
+	{loop $lists $v}
+    <li class="aui-list-view-cell">
+	<div class="list-img list-address" onclick="address_action({$v[itemid]})">
+	<p><span class="f_r">{$v[mobile]}</span><b>{$v[truename]}</b></p>
+	<div id="address_{$v[itemid]}">{$v[address]}</div>
+	</div>
+    </li>
+	{/loop}
+     </ul>
+</div>
+	{else}
+    <div class="aui-content">
+<ul class="aui-list-view">
+    
+    <li class="aui-list-view-cell aui-text-center"><p>暂无收货地址，<a href="address.php?action=add" class="b">马上创建</a></p></li>
+    </ul>
+</div>
+	{/if}
+{/if}
+{if $pages}<div class="pages">{$pages}</div>{/if}
+{template 'footer_member', 'mobile'}

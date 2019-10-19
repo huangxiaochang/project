@@ -1,0 +1,137 @@
+{template 'header'}	
+<script type="text/javascript">var module_id= {$moduleid},item_id={$itemid},content_id='content',img_max_width={$MOD[max_width]};</script>
+<div id="news-top">
+    <div class="wrapper">
+        <div class="location"><i></i><a href="{$MODULE[1][linkurl]}">首页</a><span>»</span><a href="{$MOD[linkurl]}">{$MOD[name]}</a></div>
+        <div class="photo-search">
+            <form method="get" action="{$MODULE[8][linkurl]}search.php">
+                <input type="text" class="input" name="kw" placeholder="新闻搜索" value="" />
+                <input type="hidden" name="type" value="content" />
+                <button type="submit"><i class="iconfont">&#xe604;</i></button>
+            </form>
+        </div>
+        <div class="sub-nav">
+        {php $maincat = get_maincat(0,8)}
+        {loop $maincat $k $v}
+                       {if $k<8} <a href="{$MOD[linkurl]}{$v[linkurl]}" {if $catid==$v[catid]}class="current"{/if} >{$v[catname]}</a>{/if}{/loop}</div>		
+        <div class="clearit"></div>
+    </div>
+</div>
+<div class="wrapper">
+    <div style="padding:10px 0">	
+       
+            </div>
+    <div class="news-left">
+        <div class="news-view">
+            <h1 class="news-title">{$title}</h1>
+            <div class="news-info">
+                <span>{$adddate}&nbsp;&nbsp;&nbsp;&nbsp;{if $copyfrom}&nbsp;&nbsp;来源：{if $fromurl}<a href="{$fromurl}" target="_blank">{/if}{$copyfrom}{if $fromurl}</a>{/if}{/if} &nbsp;&nbsp;	浏览次数:<d id="hits">{$hits}</d></span>			
+              
+                <div class="phone-code">
+                    <em></em>
+                   
+                    <p><b>扫描到手机，新闻随时看</b><br>扫一扫，用手机看文章<br>更加方便分享给朋友</p>
+                </div>
+            </div>
+            
+                <div class="news-content" id="content">{$content}</div>
+                {if $voteid}<div class="pd20">{loop $voteid $v}
+		{load('vote_'.$v.'.htm')}{/loop}</div>{/if} 
+                 {if $pages}<div class="pages">{$pages}</div>{/if}
+
+                    <div class="shengming">
+                 凡注明"来源：{$AJ[sitename]}"的稿件为本网独家原创稿件，引用或转载请注明出处。
+                <span>{if $author}【编辑：{$author}】{/if}</span>            </div>
+            <div class="keywords">关键词：
+              {loop $keytags $t}
+		<a href="{$MOD[linkurl]}search.php?kw={urlencode($t)}" target="_blank" rel="nofollow">{$t}</a>
+		{/loop}          </div>            <div class="sharebar">
+                <ul>
+                   
+                    <li class="share bdsharebuttonbox">
+                        <span>分享：</span>
+                        <a href="javascript:void(0);" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                        <a href="javascript:void(0);" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="javascript:void(0);" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="javascript:void(0);" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                        <a href="javascript:void(0);" class="bds_more" data-cmd="more"></a>
+                    </li>
+                </ul>
+            </div>
+             {if $MOD[page_srelate]}
+            <div class="news-relevant">
+                <h3><span>相关文章</span></h3>
+           <ul>
+                                                <!---->{if $keytags}
+													<!--{php $tags=tag("moduleid=$moduleid&length=44&condition=status=3 and itemid<>$itemid and keyword like '%".$keytags[0]."%'&areaid=$cityid&pagesize=".$MOD[page_srelate]."&order=".$MOD[order]."&cols=2&template=null");}-->
+												{loop $tags $i $t}<li><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>{/loop}
+		{else}	<!--{php $tags=tag("moduleid=$moduleid&length=44&catid=$catid&condition=status=3 and itemid!=$itemid&areaid=$cityid&pagesize=".$MOD[page_srelate]."&order=".$MOD[order]."&cols=2&template=null");}-->
+												{loop $tags $i $t}<li><a href="{$t[linkurl]}" target="_blank">{$t[title]}</a></li>{/loop}
+            {/if}                            </ul>
+            </div>{/if}
+                
+                
+               
+                  
+               {template 'comment', 'chip'}       </div>
+  	</div>
+    <div class="news-right">
+        <div class="news-right-photo">
+    <h2><span>图说楼市</span></h2>
+    <div class="slider">
+        <div class="bd">
+            <ul>
+            <!--{php $tags=tag("moduleid=8&condition=status=3 and thumb!=''&areaid=$cityid&order=addtime desc&pagesize=1&target=_blank&template=null");}-->
+	{loop $tags $k $t}
+                <li>
+                    <a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}"> <img alt="{$t[alt]}" src="{imgurl($t[thumb])}" /></a>
+                    <p><a target="_blank" href="{$t[linkurl]}" title="{$t[alt]}">{$t[title]}</a></p>
+                </li>{/loop}       </ul>
+        </div>
+       
+    </div>
+</div>
+<div class="news-right-paihang" id="news-right-paihang">
+    <h2><span>新闻排行</span></h2>
+  
+    <ul id="rank-month" class="rank" >
+           <!--{php $tags=tag("moduleid=8&condition=status=3 and edittime>$today_endtime-86400*30&areaid=$cityid&length=48&pagesize=10&order=addtime desc&target=_blank&template=null");}-->
+{loop $tags $i $t}
+        <li>
+            <i {if $i<3}class="red"{/if} >{$i+1}</i>
+            <a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}" >{$t[title]}</a>
+        </li> {/loop}   </ul>
+</div>
+<div class="news-right-project">
+    <h2><span>热点楼盘</span></h2>
+    
+     <ul>
+      <!--{php $tags=tag("moduleid=6&condition=status=3 and isnew=1 &areaid=$cityid&length=12&pagesize=6&order=hits desc&template=null");}-->
+								{loop $tags $k $t}
+        <li>
+            <strong><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank">{$t[title]}</a></strong>
+            <span>{area_pos($t[areaid], ' ')}</span>            <em>
+              {if $t[price]}{$t[price]}元/㎡{else}待定{/if}
+                            </em>
+        </li> {/loop}   </ul>
+    <a href="{$MODULE[6][linkurl]}list.html" target="_blank" class="more">更多<i class="iconfont">&#xe601;</i></a>
+</div>
+    </div>
+    <div class="clearit"></div>
+</div>
+<script>
+    window._bd_share_config = {
+        common: {
+            bdText: '{$title}',
+            bdPic: '{$thumb}'
+        },
+        share: [{
+                "bdSize": 16
+        }]
+    }
+    //以下为js加载部分
+    with (document)
+        0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+</script>
+{if $content}<script type="text/javascript" src="{AJ_STATIC}file/script/content.js"></script>{/if}	
+{template 'footer'}	

@@ -1,0 +1,215 @@
+
+{template 'header'}
+<link type="text/css" href="{AJ_SKIN}info.css" rel="stylesheet">
+
+<div id="main">
+  <div class="abct_">
+    <div class="c1_">已有<b>115</b>人申请</div>
+    <div class="c2_">已有<b>22</b>人申请</div>
+    <div class="c3_">已有<b>65</b>人申请</div>
+    <div class="c4_"><a href="{$MODULE[2][linkurl]}my.php?mid=13&action=add" target="_blank">点击免费申请</a>至今已帮<b>500</b>家业主服务</div>
+  </div>
+</div>
+
+<link type="text/css" href="{AJ_SKIN}{$module}/css/base.css" rel="stylesheet">
+<link type="text/css" href="{AJ_SKIN}{$module}/css/main.css" rel="stylesheet">
+
+<div class="main">
+	<!-- container start -->
+	<div class="container">
+		<div class="home-title title"><img src="{AJ_SKIN}{$module}/images/line01.png"><h1>装修流程&nbsp;透明规范</h1><img src="{AJ_SKIN}{$module}/images/line01.png"></div>
+		<div class="home-finish">
+			<a class="J-Icon-Tab" href="{$MODULE[1][linkurl]}news/list-165.html" target="_blank"><i class="zxzj-icon-shoufang"></i><br>收房量房</a>
+			<a class="J-Icon-Tab" href="{$MODULE[1][linkurl]}news/list-166.html" target="_blank"><i class="zxzj-icon-zhunbei"></i><br>前期准备</a>
+			<a class="J-Icon-Tab" href="{$MODULE[1][linkurl]}news/list-167.html" target="_blank"><i class="zxzj-icon-xuangongsi"></i><br>选装修公司</a>
+			<a class="J-Icon-Tab" href="{$MODULE[1][linkurl]}news/list-168.html" target="_blank"><i class="zxzj-icon-design"></i><br>设计阶段</a>
+			<a class="J-Icon-Tab" href="{$MODULE[1][linkurl]}news/list-169.html" target="_blank"><i class="zxzj-icon-cailiao"></i><br>材料选购</a>
+			<a class="J-Icon-Tab" href="{$MODULE[1][linkurl]}news/list-170.html" target="_blank"><i class="zxzj-icon-shigong"></i><br>施工阶段</a>
+			<a class="J-Icon-Tab" href="{$MODULE[1][linkurl]}news/list-171.html" target="_blank"><i class="zxzj-icon-jungong-list"></i><br>竣工验收</a>
+			<a class="J-Icon-Tab" href="{$MODULE[1][linkurl]}news/list-172.html" target="_blank"><i class="zxzj-icon-ruanzhuang"></i><br>软装配饰</a>
+			<a class="J-Icon-Tab" href="{$MODULE[1][linkurl]}news/list-173.html" target="_blank"><i class="zxzj-icon-baozhang"></i><br>装修保障</a>
+		</div>
+		<div class="home-title title">
+			<img src="{AJ_SKIN}{$module}/images/line01.png"><h1><a href="/photo/">装修效果图</a></h1><img src="{AJ_SKIN}{$module}/images/line01.png">
+		</div>
+		<div class="home-txt">提供100万张海量高清效果图，50万张精美搭配图片供你挑选与参与</div>
+		<div class="sec-case">
+    		<div class="case-list">
+  				<div class="pic01">
+					<div class="hotel-l">
+						<div class="s-lun-car">
+							<div class="lun-wrap-car nclearfix">
+								<a href="/photo/" target="_blank" class="sma-lun-car">
+									<img src="{AJ_SKIN}{$module}/images/index_01.jpg" alt="装修美图">
+								</a>
+							</div>
+						</div>
+						<div class="yel-bei">
+							<p class="ins-name">装修美图</p>
+							<p class="english">BEAUTY&nbsp;DECORATION</p>
+							<p class="say">不一样的风格<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多装修灵感</p>
+							<ul class="pin-lei">
+								<li><a href="/photo/" target="_blank">进入美图频道</a></li>
+							</ul>
+						</div>
+       				</div>
+    			</div>
+				<div class="case-list-right">
+					<div class="case-list-fir">
+						<ul>
+					   <!--{php $tags1=tag("moduleid=12&condition=level=3 and thumb!='' and style ='' &pagesize=2&order=itemid desc&template=null")}-->
+						{loop $tags1 $i $t}
+						<li class="xtu{$i+1}">
+								<a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">
+									<img class="lazy img-hover" src="{$t[thumb]}" alt="{$t[title]}">
+									<div class="open">
+										<div class="black-screen"></div>
+										<span>{$t[title]}</span>
+									</div>
+								</a>
+ 						{/loop}
+						</ul>
+					</div>
+					<div class="case-list-sec">
+						<ul>
+						<!--{php $tags1=tag("moduleid=12&condition=level=2 and thumb!='' and style ='' &pagesize=2&order=itemid desc&template=null")}-->
+						{loop $tags1 $i $t}
+						<li class="pic{$i+3}">
+								<a href="{$t[linkurl]}" target="_blank" title="{$t[title]}">
+									<img class="lazy img-hover" src="{$t[thumb]}" alt="{$t[title]}">
+									<div class="open">
+										<div class="black-screen"></div>
+										<span>{$t[title]}</span>
+									</div>
+								</a>
+ 						{/loop}
+						</li>
+						</ul>
+					</div>
+        		</div>
+  			</div>
+		</div>
+		<div class="home-list cf">
+			<ul>
+				<li><a href="/photo/list.php?catid=23&fengge=1" target="_blank"><img src="{AJ_SKIN}{$module}/images/index_xgt_gzxgt_img6.jpg">客厅</a></li>
+				<li><a href="/photo/list.php?catid=25&fengge=1" target="_blank"><img src="{AJ_SKIN}{$module}/images/index_xgt_gzxgt_img8.jpg">卧室</a></li>
+				<li><a href="/photo/list.php?catid=70&fengge=1" target="_blank"><img src="{AJ_SKIN}{$module}/images/index_xgt_gzxgt_img3.jpg">餐厅</a></li>
+				<li><a href="/photo/list.php?catid=24&fengge=1" target="_blank"><img src="{AJ_SKIN}{$module}/images/index_xgt_gzxgt_img4.jpg">厨房</a></li>
+				<li><a href="/photo/list.php?catid=26&fengge=1" target="_blank"><img src="{AJ_SKIN}{$module}/images/index_xgt_gzxgt_img7.jpg">卫生间</a></li>
+				<li><a href="/photo/list.php?catid=71&fengge=1" target="_blank"><img src="{AJ_SKIN}{$module}/images/index_xgt_gzxgt_img1.jpg">阳台</a></li>
+				<li><a href="/photo/list.php?catid=163&fengge=1" target="_blank"><img src="{AJ_SKIN}{$module}/images/index_xgt_gzxgt_img2.jpg">背景墙</a></li>
+				<li><a href="/photo/list.php?catid=164&fengge=1" target="_blank"><img src="{AJ_SKIN}{$module}/images/index_xgt_gzxgt_img5.jpg">吊顶</a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+
+</div>
+</div>
+
+<div id="main">
+	<div class="bread">您当前的位置：<a href="{$MODULE[1][linkurl]}" title="{$AJ[sitename]}">{$AJ[sitename]}</a> &gt;<span>装修维修</span></div>
+		<div class="hslist" id="hslist">
+			<div class="hs_b">
+				<div class="cf">
+					<span>区域：</span>
+					<p id="hs_area" class="hs_hidep on">
+                     <a {if empty($areaid)}class="c"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'r')}.html">全部</a>
+						                                 {php $mainarea = get_mainarea($cityid)}
+										        		  	{loop $mainarea $k $v}<a {if $areaid==$v[areaid]}class="c"{/if} id="c{$k}" href="{$MOD[linkurl]}list-r{$v[areaid]}{deal_str($lst,'r')}.html#c{$k}">{$v[areaname]}</a>{/loop}
+                            					</p>
+                    				</div>
+
+			</div>
+		</div>
+		<div class="cf">
+			<div class="hlist_fl">
+				<h2>
+
+					<span class="modTab">
+					  {php $lx = array('经纪人', '经纪公司', '开发商', '设计师', '装修监理', '装修公司', '建材家具公司', '安装师傅');}
+					  <a {if empty($source)} class="on"{/if} href="{$MOD[linkurl]}list{deal_str($lst,'u')}.html" >全部</a>
+{loop $lx $k $v}  <a  {if $source==($k+1)}class="on"{/if} id="a{$k}"  href="{$MOD[linkurl]}list{deal_str($lst,'u')}-u{$k+1}.html#a{$k}">{$v}</a>{/loop}
+
+					</span>
+				</h2>
+				<div class="hlist_sort">
+					<div class="cf">
+                      <span class="hl_page">
+						共为您找到 <b class="red">{$items}</b> 个
+						{if $page==1}<span class="pre"></span>{else}<a class="pre" href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==1}1{else}{$page-1}{/if}.html"></a>{/if}{$page}					<a class="next" href="{$MOD[linkurl]}list{deal_str($lst,'g')}-g{if $page==$total}{$total}{else}{$page+1}{/if}.html">下一页</a>					</span>
+						<div class="fr_1">
+							<div class="hs_mlist" id="h_s1">默认排序								<ul>
+                                    <li>
+                                        <a href="{$MOD[linkurl]}list.html">默认排序</a>
+                                    </li>
+
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+                    	          {if $tags}{template 'list-'.$module, 'tag'}{/if}
+
+
+                			</div>
+			<div class="hlist_fr i_x_mt20">
+				<div class="lista">
+					<h4><a href="{$MOD[linkurl]}list-u1.html" target="_blank" class="more">更多&gt;&gt;</a>经纪人排行</h4>
+
+                        <ul class="jjrl">	<!--{php $tags=tag("table=member&condition=groupid=6&areaid=$cityid&order=userid desc&pagesize=6&template=null");}-->
+ {loop $tags $i $t}
+                                                            <li>
+                                 <a  class="jAvatar" href="{userurl($t[username], '')}" target="_blank"><img  src="{useravatar($t[username], 'large')}" width="90" height="90"></a>
+                                    <p>
+                                       <a href="{userurl($t[username], '')}" target="_blank">{userinfos($t[username])}</a>
+                                       {if $t[vip]}<img src="{AJ_SKIN}image/vip.gif"/> <img src="{AJ_SKIN}image/vip_{$t[vip]}.gif"/></span>{/if}           <br>
+                                        区域：{area_pos($t[areaid], '')}                                        <br>电话：{$t[mobile]}</p>
+                                </li>
+                                           {/loop}
+                                                    </ul>
+                    				</div>
+
+			</div>
+		</div>
+	</div>
+<div id="main">
+   <div class="zxTitle">
+    <ul>
+      <li><a href="{$MODULE[13][linkurl]}">全部</a></li>
+      {php $maincat = get_maincat(0,13)}
+      {loop $maincat $k $v}
+      <li><a href='{$MODULE[13][linkurl]}list-{$v[catid]}.html' class="{if $v[catid]==$catid}cur{/if}">{$v[catname]}</a></li>  {/loop}
+    </ul>
+  </div>
+  <div class="zxList">
+    <!--{php $tags=tag("moduleid=13&condition=status=3&areaid=$cityid&length=36&pagesize=12&order=addtime desc&target=_blank&template=null");}-->
+    {loop $tags $i $t}
+    <ul>
+      <li class="pic"><a href="{$t[linkurl]}" title="{$t[alt]}" target="_blank"><img alt="{$t[alt]}" src="{imgurl($t[thumb])}"></a></li>
+      <li class="mid"><div class="mid1">{area_pos($t[areaid], ' ')} -- <a href="{$t[linkurl]}" target="_blank" title="{$t[alt]}">{$t[title]}</a></div>
+        <div class="mid2"><span>户型：{$t[hxjg]}</span><span>面积：{$t[jzmj]}</span><span>预算：{$t[yusuan]}</span></div>
+        <div class="mid3">备注：{$t[content]}</div>
+      </li>
+      <li class="tel"><span class="xm">{$t[ndch]}</span><span class="dh">{$t[sjhm]}</span></li>
+      <li class="sj">{timetodate($t[addtime], 3)}</li>
+    </ul>
+    {/loop}
+  </div>
+</div>
+<script>
+seajs.use(["cookie"],function(alertM){
+
+
+	$("#hs_more div").add("#h_s1,#h_s2").on({
+		mouseenter:function(){
+			$(this).find("ul").show()
+		},
+		mouseleave:function(){
+			$(this).find("ul").hide()
+		}
+	})
+});
+</script>
+{template 'footer'}

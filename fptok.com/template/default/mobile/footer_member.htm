@@ -1,0 +1,32 @@
+<script>
+var moduleid = {$mid};
+{if $resume}var midresume = {$resume};{/if}
+</script>
+{if $foot}
+<div class="aui-footer-fix"></div>
+<footer class="aui-nav" id="aui-footer">
+        <ul class="aui-bar-tab">
+            <li id="tabbar1" onclick="window.location.href='index.php'">
+                <span class="aui-iconfont aui-icon-homefill"></span>
+                <p>首页</p>
+            </li>
+            <li id="tabbar2" onclick="window.location.href='channel.php'">
+                <span class="aui-iconfont aui-icon-likefill"></span>
+                <p>频道</p>
+            </li>
+            <li class="dt-active-info" id="tabbar3" onclick="window.location.href='my.php'">
+                <span class="aui-iconfont aui-icon-peoplefill"></span>
+                <p>我的</p>
+            </li>
+            <li id="tabbar4" onclick="window.location.href='more.php'">
+            <span class="aui-iconfont aui-icon-more"></span>
+                <p>更多</p>
+            </li>
+        </ul>
+    </footer>
+{/if}
+<div style="display:none">
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>{$head_title}</title>
+     <link rel="stylesheet" href="static/css/frozen.css" />
+    <link rel="stylesheet" href="static/css/public.css" />
+    <link rel="stylesheet" href="static/css/house.css" />
+  
+</head>
+<body ontouchstart="">
+	<!-- 头部 start-->
+        <header class="ui-header hf-header">
+            <i class="hf-icon-return" onclick="history.back()"></i>
+            <h1>最新动态</h1>
+        </header>
+        <!-- 头部 end-->
+        <!-- 主体内容 start-->
+        <section class="ui-container">
+            <!-- 菜单 start-->
+            <ul class="ui-row-flex hf-subnav ui-border-b">
+			<li class="ui-col dongtai-list on"><a href="">{$title}</a></li>            </ul>
+            <!-- 菜单 start-->
+
+            <!-- 户型 start-->
+            <section class="hf-house-news">
+                <ul class="" id="listBox">
+                 <!--{php $tags=tag("table=article_8&condition=status=3 and houseid=$itemid&pagesize=20&page=$page&fields=itemid,title,thumb,introduce,hits,addtime&order=addtime desc&template=null");}-->
+                    {loop $tags $t}
+                    <li>
+                        <p><a href="{mobileurl(8, 0, $t['itemid'])}">{$t[introduce]}</a></p>
+                        <span class="time">{timetodate($t[addtime], 2)}</span>
+                    </li>{/loop} </ul>
+                <div class="ui-loading-wrap">
+                  
+                </div>
+
+            </section>
+            <!-- 户型 end-->
+        </section>
+        <!-- 主体内容 start-->
+<!-- 尾部 start-->
+<footer class="hf-footer">
+        <div class="copy ui-border-t">Copyright &copy; 2016 {$AJ[sitename]}版权所有</div>
+</footer>
+
+<!-- 尾部 end-->
+  <!-- gotop start-->
+        <div class="hf-gotop">
+            <a href="javascript:scroll(0,0)"><i class="hf-icon-gotop"></i></a>
+        </div>
+        <!-- gotop end-->
+    
+
+<script src="static/js/zepto.min.js"></script>
+<script src="static/js/frozen.js"></script>
+<script src="static/js/public.js"></script>
+
+
+
+</body>
+</html>

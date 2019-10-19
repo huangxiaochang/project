@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>{$title}概况</title>
+     <link rel="stylesheet" href="static/css/frozen.css" />
+    <link rel="stylesheet" href="static/css/public.css" />
+    <link rel="stylesheet" href="static/css/fan.css" />
+    <link rel="stylesheet" href="static/css/map.css" />
+</head>
+<body ontouchstart="">
+
+<header class="ui-header hf-header">
+    <i class="hf-icon-return" onclick="history.back()"></i>
+    <h1>{$title}概况</h1>
+</header><section class="ui-container ">
+
+
+<section class="ui-panel">
+<div class="title-2 plr15 border-bottom hf-fgray ">
+    <h5>楼盘信息 </h5>
+</div>
+
+<div class="ui-tab">
+<ul class="ui-tab-nav ui-border-b ui-tab-nav-house">
+    <li class="current">基本信息</li>
+    <li>物业信息</li>
+    <li>销售信息</li>
+</ul>
+<ul class="ui-tab-content" style="width:300%">
+<li class="current">
+    <ul class="ui-list ui-list-pure  hf-f15">
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">区域/商圈</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{area_pos($areaid, ' ')} </span>
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">参考均价</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{if $price}{$price}元/平方米{else}待定{/if}</span>
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">楼盘特点</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$tedian}</span>
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">开盘时间</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{if $selltime}{$selltime}{else}待定{/if}</span>
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">交房时间</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{if $completion}{$completion}{else}待定{/if}</span>
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">楼盘地址</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$sell_address}</span>
+            </div>
+        </li>
+    </ul>
+</li>
+<li  style="height: 0px;">
+    <ul class="ui-list ui-list-pure  hf-f15">
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">物业类型</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span><i>{search_cats($catid, '6')}</i></span>            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">装修标准</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{getbox_diaoval('fitment','checkbox',$fitment,'newhouse_6')}</span>            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">建筑类别</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{getbox_diaoval('buildtype','checkbox',$buildtype,'newhouse_6')} </span>            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">物业公司</span>
+            </div>
+            <div class="ui-col ui-col-80">
+           <span>{$lp_company}</span>
+                            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">物业费</span>
+            </div>
+            <div class="ui-col ui-col-80">
+             <span>{$lp_costs}元/平米/月</span>
+                            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">产权年限</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$lp_year}年</span>            </div>
+        </li>
+      
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">规划面积</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{if $lp_totalarea} {$lp_totalarea}㎡{/if}</span>            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">建筑面积</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$lp_area}㎡</span>            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">容积率</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$lp_volume}</span>            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">绿化率</span>
+            </div>
+            <div class="ui-col ui-col-80">
+             <span>{$lp_green}</span>  
+                            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">规划户数</span>
+            </div>
+            <div class="ui-col ui-col-80">
+             <span>{$lp_number}户</span>  
+                            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">车位</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$lp_car}</span>            </div>
+        </li>
+    </ul>
+
+
+</li>
+<li  style="height: 0px;">
+    <ul class="ui-list ui-list-pure  hf-f15">
+       
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">销售状态</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$TYPE[$typeid]}</span>
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">开发商</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$kfs}</span>
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">售楼地址</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$address}</span>
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">售楼电话</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{if $telephone}{$telephone}{else}热线尚未开通{/if}</span>
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">交通情况</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span> {$lp_bus}</span>
+              
+            </div>
+        </li>
+         <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">配套信息</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>学校：</b>{$lp_edu}<br>	<b>医疗：</b>{$lp_hospital}<br><b style="font-weight:bold">金融：</b>{$lp_bank}</span>
+              
+            </div>
+        </li>
+        <li class="ui-row border-bottom mgnone plr15">
+            <div class="ui-col ui-col-20">
+                <span class="hf-fgray">楼盘简介</span>
+            </div>
+            <div class="ui-col ui-col-80">
+                <span>{$content}</span>
+                
+            </div>
+        </li>
+    </ul>
+</li>
+</ul>
+</div>
+</section>
+<section class="ui-panel">
+    <div class="title-2 plr15 border-bottom hf-fgray ">
+        <h5>楼盘资讯 </h5>
+    </div>
+    <ul class="ui-list" >
+     <!--{php $tags=tag("table=article_8&condition=status=3 and houseid=$itemid&pagesize=5&fields=itemid,title,thumb,username,hits,edittime&order=edittime desc&template=null");}-->
+                    {loop $tags $t}
+        <li class="border-bottom mgnone pl15">
+            <div class="ui-list-img-s">
+                <a href="{mobileurl(8, 0, $t['itemid'])}">
+                    <img class="lazyload " src="{imgurl($t[thumb])}" alt="{$t[alt]}">
+                                        </a>
+            </div>
+            <div class="ui-list-info">
+                <div class="ui-nowrap-multi hf-f15">
+                    <a href="{mobileurl(8, 0, $t['itemid'])}">{$t[title]}</a>
+                </div>
+                <div class="hf-f12 ui-nowrap hf-fgray">{timetodate($t[edittime], 3)}</div>
+            </div>
+        </li>{/loop}
+    </ul>
+</section>
+</section>
+
+
+
+
+
+<script src="static/js/zepto.min.js"></script>
+<script src="static/js/frozen.js"></script>
+<script>
+    window.addEventListener('load', function(){
+        var tab = new fz.Scroll('.ui-tab', {
+            role: 'tab',
+            autoplay: false,
+            interval: 3000
+        });
+        /* 滑动开始前 */
+        tab.on('beforeScrollStart', function(from, to) {
+            // from 为当前页，to 为下一页
+        })
+        /* 滑动结束 */
+        tab.on('scrollEnd', function(curPage) {
+            // curPage 当前页
+        });
+    })
+</script>
+
+</body>
+</html>

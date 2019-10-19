@@ -1,0 +1,190 @@
+/*公共样式*/
+.right5{right: 5px;}
+.left6{left: 6px;}
+.overflowVisible{overflow: visible;}
+.positionFixed{position: fixed;top: 0;left: 0;right: 0;height: 100%;width: 100%;}
+
+/*样式改写*/
+.hf-gotop{	bottom: 60px;}
+/*.hf-header-search{  margin: 7px 39px 0 30px;}*/
+.hf-house li{margin-left: 0;padding-left: 15px;}
+.hf-category{
+	background: rgba(0,0,0,0.75);
+	height: 50px;
+	line-height: 50px;
+	border: none;
+}
+.hf-category .hf-category-item>a{
+	color: #fff;
+}
+.hf-category .hf-category-item{
+    background-image: -webkit-gradient(linear,right top,left top,color-stop(0.5,transparent),color-stop(0.5,#999));
+}
+.hf-category li.hf-category-item:first-child{background: none;}
+.hf-category .hf-category-item i{transform: rotate(180deg);}
+.hf-category{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9;
+}
+.hf-filter{
+	position: fixed;
+	height: auto;
+	bottom: 0;
+	top: 33%;
+	font-size: 15px;
+	background: none;
+}
+.hf-filter-main{background-color: #fff;height: 100%;width: auto;}
+.hf-filter-gray{background-color: #eee;overflow-y: scroll;}
+.hf-filter-white{height: auto;}
+.hf-filter-gray li{border-bottom: none;}
+.hf-filter-list .on{background: none;}
+.area-type.on{background: #eee;}
+.hf-filter-list li{border-bottom: none;}
+.hf-filter-list li:active{color: #ff3100;}
+.hf-filter-list li.area-type.on p{border-bottom: none;}
+.hf-filter-list li p{border-bottom: 1px solid #dfdfdf;text-indent: 1em;}
+.hf-filter-list li.type-list{padding-right: 8%;}
+.hf-filter-list li.price-list{padding-right: 8%;}
+.hf-category .hf-category-item .item-name>span:active{color: #28b4f0;}
+/*样式添加*/
+/*列表楼盘户型切换*/
+.hf-house-nav{
+	background-color: #fff;
+	font-size: 16px;
+	color: #333;
+	text-align: center;
+}
+.hf-house-nav li a{display: block;line-height: 29px;}
+.hf-house-nav li.on a{color: #ff3100;}
+.hf-house-nav li{
+	padding-top: 17.5px;
+	padding-bottom: 17.5px;
+}
+.hf-house-nav li:first-child a{border-right: 1px solid #dfdfdf;}
+
+/*遮罩层*/
+.hf-filter-area{
+        position: fixed;
+        display: none;
+        top: 0;        
+        left: 0;
+        width: 100%;height: 100%;       
+        background: rgba(0,0,0,0.5);
+        z-index: 3;
+    }
+/*图标样式*/
+.area-type-icon{
+	float: right;
+	width: 4px;
+	height: 7px;
+	background: url(../images/icon_right.png);
+	background-size: contain;
+	margin-top: 17px;
+	margin-right: 6px;
+}
+.icon-loupan{width: 18px;height: 18px;display: inline-block;background: url(../images/loupan@2x.png);background-size: contain;position: relative;top: 3px;right: 10px;}
+.icon-loupan.on{background: url(../images/loupan_pressed@2x.png);background-size: contain;}
+.icon-huxing{width: 18px;height: 18px;display: inline-block;background: url(../images/huxing@2x.png);background-size: contain;position: relative;top: 3px;right: 10px;}
+.icon-huxing.on{background: url(../images/huxing_pressed@2x.png);background-size: contain;}
+.icon-house-map{width: 13px;height: 13px;background: url(../images/iconVideoMap.png) 0px 3px no-repeat;background-size: 150%;display: inline-block;}
+.icon-house-video {
+    width: 20px;
+    height: 20px;
+    background: url(../images/iconVideoMap.png) 0px -29px no-repeat;
+    display: inline-block;
+    /* z-index: 99; */
+    position: absolute;
+    background-size: cover;
+    left: 4px;
+    bottom: 4px;
+}
+
+/*标签样式 */
+.hf-badge-label-1{
+	line-height: 13px;font-size: 12px;border: 1px solid #28b4f0;color: #28b4f0;display: inline-block;padding: 0 3px;
+}
+.hf-badge-label-2{
+	line-height: 15px;font-size: 12px;background-color: #28b4f0;color: #fff;display: inline-block;padding: 0 3px;
+}
+.hf-badge-label-3{
+	line-height: 13px;font-size: 12px;border: 1px solid #7dd232;color: #7dd232;display: inline-block;padding: 0 3px;
+}
+/*筛选条件样式*/
+.filter-more-top{
+	background: rgba(0,0,0,0.75);
+}
+#filter-more-top-close{display: inline-block; font-size: 15px;color: #999;}
+#filter-more-top-reset{display: inline-block; font-size: 14px;color: #999;border: 1px solid #999;border-radius: 3px;line-height: 24px;padding-left: 8px;padding-right: 8px;}
+#filter-more-top-sure{display: inline-block; font-size: 14px;color: #999;}
+#filter-more-top-sure a{color: #999;}
+#filter-more-top-close:active,#filter-more-top-reset:active,#filter-more-top-sure:active{color: #28b4f0;border-color:#28b4f0; }
+.filter-more-main{text-align: left;padding: 0 7% 15px;font-size: 14px;color: #666;box-sizing: border-box;}
+@media screen and (max-width: 370px){
+	.filter-more-main{
+		font-size: 12px;
+	}
+}
+.filter-more-main p:first-child{margin-top: 10px;}
+.filter-more-main p{color: #333;line-height: 20px;}
+.filter-more-main ul>li{float: left;width: 29.9%;line-height: 25px;border: 1px solid #dfdfdf;border-radius: 3px;margin-right: 4%;margin-top: 15px;text-align: center;}
+.filter-more-main ul>li:nth-child(3n+3){margin-right: 0;float: right;}
+.filter-more-main ul>li.on{border: 1px solid #ff3100;color: #ff3100;}
+.filter-more-main-state{float: right !important;margin-right: 0 !important;}
+.area-scroller{height: 100%;overflow-y:scroll;}
+.filter-more-main-icon{
+	display: inline-block;
+	width: 13px;
+	height: 7.5px;
+	background: url(../images/icon_down.png);
+	background-size: contain;
+	transition: all .5s linear;
+	-moz-transition: all .5s linear; /* Firefox 4 */
+	-webkit-transition: all .5s linear; /* Safari 和 Chrome */
+	-o-transition: all .5s linear; /* Opera */
+}
+.filter-more-main-icon.up{
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); 	/* IE 9 */
+	-moz-transform:rotate(180deg); 	/* Firefox */
+	-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+	-o-transform:rotate(180deg); 	/* Opera */
+}
+
+/*新房标签链接*/
+.newHouseListLabel{
+	background-color: #f6f6f6;
+	padding: 0 20px 10px !important;
+	border-top: 1px solid #e9e9e9;
+}
+.newHouseListLabel span{
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 3.6%;
+	width: 20.5%;
+	border: 1px solid #acacac;
+	border-radius: 3px;
+	text-align: center;
+	padding: 1px 4px;
+    box-sizing: border-box;
+}
+.newHouseListLabel span:active{
+	border: 1px solid #ff3100;
+}
+.newHouseListLabel span:active>a{
+	color: #ff3100;
+}
+.newHouseListLabel span>a{font-size: 14px;color: #999;}
+.newHouseListLabel span:nth-child(4n+4){margin-right: 0;float: right;}
+@media screen and (max-width: 370px){
+	.newHouseListLabel span{
+		padding: 0;
+	}
+	.newHouseListLabel span>a{
+		font-size: 12px;
+	}
+}	
+

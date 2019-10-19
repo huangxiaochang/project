@@ -1,0 +1,25 @@
+{template 'header'}
+<div id="main">
+<div class="bread">您所在的位置：<a href="{$MODULE[1][linkurl]}">首页</a>&nbsp;&gt;&nbsp;<a href="{$MOD[linkurl]}">{$MOD[name]}</a>&nbsp;&gt;&nbsp;{cat_pos($CAT, ' &raquo; ')}</div>
+<div class="zsxq">
+  <h1>{$title}</h1>
+  <h4><span>所在区域：{area_pos($areaid, ' ')}</span><span>发布时间：{$editdate}</span></h4>
+  <div class="zslb">
+    <ul>
+      <li>户型：{$hxjg}</li>
+      <li>面积：{$jzmj}</li>
+      <li>预算：{$yusuan}</li>
+      <li class="lxfs">联系方式：<span>{$sjhm}</span>{$ndch}</li>
+    </ul>
+  </div>
+  <div class="zsnr">{$content}</div>
+  <div class="zspic">
+    <ul>
+    {if $thumb}<li  class="on" data-bigurl="{$thumb}"><img src="{$thumb}" /></li>{else} {/if}
+    {if $thumb1}<li  data-bigurl="{$thumb1}"><img src="{$thumb1}" /></li>{else} {/if}
+    {if $thumb2}<li   data-bigurl="{$thumb2}"><img src="{$thumb2}"/></li>{else} {/if}
+    </ul>
+  </div>
+</div>
+
+{template 'footer'}

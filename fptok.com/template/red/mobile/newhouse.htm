@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+       <title>{$head_name}</title>
+        <META NAME="keywords" CONTENT="{$head_keywords}" />
+        <META name="description" CONTENT="{$head_description}" />
+        <link rel="stylesheet" href="static/css/frozen.css">
+        <link rel="stylesheet" href="static/css/public.css">
+        
+    <style>
+    .hf-filter-area{
+        position: fixed;
+        display: none;
+        top: 0;        
+        left: 0;
+        width: 100%;height: 100%;       
+        background: rgba(0,0,0,0.5);
+        z-index: 3;
+    }
+    .ui-container{
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 222;
+    }
+    .hf-subnav{
+        background-color: #f6f6f6;
+    }
+    .hf-filter{
+        top: 41px;
+    }
+    .hf-housenum{
+        background-color: #f6f6f6;
+    }
+    .ui-container-cnt{
+        position: absolute;
+        top: 128px;
+        left: 0;
+        right: 0;
+        z-index: 2;
+    }
+    .ui-header, .ui-footer{
+        z-index: 333;
+    }
+    .hf-footer{
+        display: none;
+    }
+    </style>
+    </head>
+    <body ontouchstart="">
+	<!-- 头部 start-->
+        <header class="ui-header hf-header">
+            <i class="hf-icon-return" onclick="history.back()"></i>
+            <a class="hf-header-search" href="search.php">
+                <i class="hf-icon-search"></i>&nbsp;&nbsp;楼盘名
+            </a>
+            <div class="hf-header-r"><i class="hf-icon-daohang"></i></div>
+        </header>
+        <!-- 头部 end-->
+
+        <!-- 导航 start-->
+       <div class="pop-layer" >
+            <div class="pop-main">
+                <h6 class="ui-whitespace">全部导航</h6>
+                <div class="allNav">
+				<a href="index.php">首页</a>{loop $MOB_MODULE $i $m}<a href="{mobileurl($m[moduleid])}">{$m[name]}</a>{/loop}</div>
+            </div>
+        </div>
+        <!-- 导航 end-->    <!-- 遮罩层 -->
+    <div class="hf-filter-area">
+
+    </div>
+    <!-- 遮罩层end -->
+
+        <!-- 主体内容 start-->
+        <section class="ui-container">
+		   
+			<ul class="ui-row hf-category">                <!-- 区域浮层 start-->
+                <li class="ui-col ui-col-25 hf-category-item">
+                    <a href="#" class="item-name" id="filter-area"><span class="map-fliter">区域</span><i></i></a>
+                    <div class="hf-filter" id="filter-area-content" style="display:none;">
+                        <div class="ui-row hf-filter-main">
+                            <div class="ui-col ui-col-33">
+                                <ul class="hf-filter-list">
+                                    <li class="area-type on">区域</li>
+                                </ul>
+                            </div>
+                            <div class="ui-col ui-col-67 area-scroller">
+                                <ul class="hf-filter-list hf-filter-white filter-area-type">
+                                    <li><a href="m6{deal_str($lst,'r')}.html" class="area-list {if empty($areaid)}on{/if} ">不限</a></li> 
+                                     <li><a href="m6{deal_str($lst,'r')}.html" class="area-list {if $areaid==$cityid}on{/if} ">{$city_name}</a></li>
+                                    {php $mainareas = get_mainarea($cityid)}
+									{loop $mainareas $k $v}
+									<li><a href="m6{deal_str($lst,'r')}-r{$v[areaid]}.html" class="area-list {if $areaid==$v[areaid]}on{/if} ">{$v[areaname]}</a></li> {/loop}</li>                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- 区域浮层 start-->
+                {if $areaid}
+                <!-- 区域浮层 start-->
+                	<ul class="ui-row hf-category">                <!-- 区域浮层 start-->
+                <li class="ui-col ui-col-25 hf-category-item">
+                    <a href="#" class="item-name" id="filter-bid"><span class="map-fliter">商圈</span><i></i></a>
+                    <div class="hf-filter" id="filter-bid-content" style="display:none;">
+                        <div class="ui-row hf-filter-main">
+                            <div class="ui-col ui-col-33">
+                                <ul class="hf-filter-list">
+                                    <li class="bid-type on">商圈</li>
+                                </ul>
+                            </div>
+                            <div class="ui-col ui-col-67 bid-scroller">
+                                <ul class="hf-filter-list hf-filter-white filter-area-type">
+                                    <li><a href="m6{deal_str($lst,'b')}.html" class="bid-list {if empty($bid)}on{/if} ">不限</a></li>
+                                 
+                                   {php $mainareas = get_mainarea($areaid)}
+						{loop $mainareas $k $v}
+									<li><a href="m6{deal_str($lst,'b')}-b{$v[areaid]}.html" class="bid-list {if $bid==$v[areaid]}on{/if} ">{$v[areaname]}</a></li> {/loop}</li>                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- 区域浮层 start-->
+                {/if}
+
+                <!-- 类型浮层 start-->
+                <li class="ui-col ui-col-25 hf-category-item">
+                    <a href="#" class="item-name" id="filter-type"><span class="map-fliter">类型</span><i></i></a>
+                    <div class="hf-filter" id="filter-type-content" style="display:none;">
+                        <div class="ui-row hf-filter-main">
+                            <ul class="hf-filter-list hf-filter-white">
+								<li><a href="m6{deal_str($lst,'t')}.html" class="type-list  {if empty($catid)}on{/if}">不限</a></li>
+                                 {php $maincat = get_maincat(0,6)}
+						 {loop $maincat $k $v}
+									<li class="type-list"><a href="m6{deal_str($lst,'t')}-t{$v[catid]}.html" class="type-list {if $catid==$v[catid]}on{/if} ">{$v[catname]}</a>{/loop}</ul>
+                        </div>
+                    </div>
+                </li>
+                <!-- 类型浮层 end-->
+
+                <!-- 价格浮层 start-->
+                <li class="ui-col ui-col-25 hf-category-item">
+                   <a href="#" class="item-name" id="filter-price"><span class="map-fliter">价格</span><i></i></a>
+                   <div class="hf-filter" id="filter-price-content" style="display:none;">
+                        <div class="ui-row hf-filter-main">
+                            <ul class="hf-filter-list hf-filter-white">
+								<li><a href="m6{deal_str($lst,'p')}.html" class="price-list {if empty($range)}on{/if}">不限</a></li>
+                                {php $range_arr = getbox_name('range','newhouse_6')}
+					    {loop $range_arr $key $v}
+								<li><a href="m6{deal_str($lst,'p')}-p{$key}.html" class="price-list {if $range==$key}on{/if}">{$v}</a></li>{/loop}</ul>
+                        </div>
+                    </div>
+                </li>
+                <!-- 价格浮层 end-->
+
+                <!-- 更多浮层 start-->
+                <li class="ui-col ui-col-25 hf-category-item">
+                    <a href="#" class="item-name" id="filter-more"><span>更多</span><i></i></a>
+                    <div class="hf-filter" id="filter-more-content" style="display:none;">
+                        <div class="ui-row hf-filter-main" style="height: 330px;">
+                            <div class="ui-col ui-col-33">
+                                <ul class="hf-filter-list">
+                                    <li class="more-type on">排序</li>
+                                    <li class="more-type">特色</li>
+                                </ul>
+                            </div>
+                            <div class="ui-col ui-col-67">
+                                <!-- 排序 -->
+                                <ul class="hf-filter-list hf-filter-white filter-more-type" >
+									<li><a href="m6{deal_str($lst,'n')}.html" class="sequence-list {if empty($ord)}on{/if}">默认排序</a></li>
+									<li><a href="m6{deal_str($lst,'n')}-n1.html" class="sequence-list {if $ord==1}on{/if} ">价格由高到低</a></li>
+                                    <li><a href="m6{deal_str($lst,'n')}-n2.html" class="sequence-list {if $ord==2}on{/if} ">价格由低到高</a></li>
+                                    <li><a href="m6{deal_str($lst,'n')}-n3.html" class="sequence-list {if $ord==3}on{/if}">人气由高到低</a></li>
+                                    <li><a href="m6{deal_str($lst,'n')}-n4.html" class="sequence-list {if $ord==4}on{/if}">人气由低到高</a></li>                                </ul>
+                                <!-- 特色 -->
+                                <ul class="hf-filter-list hf-filter-white filter-more-type" style="display:none;">
+									<li><a href="m6{deal_str($lst,'l')}.html" class="house-list {if empty($lpts)}on{/if}">不限</a></li>
+									{php $lpts_arr = getbox_name('lpts','newhouse_6')}
+					    {loop $lpts_arr $key $v}<li><a href="m6{deal_str($lst,'l')}-l{$key}.html" class="house-list {if $lpts==$key}on{/if} ">{$v}</a></li>{/loop}</ul>  
+                            </div>
+                            <div class="ui-btn-group" style="padding-top:10px;">
+                                <button class="ui-btn" onclick='window.location.href="6-0-0-1.html"' id="more-reset">重置</button>
+                                <!-- <button class="ui-btn" id="more-ok">确定</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- 更多浮层 start-->
+            </ul>
+            <!-- 菜单 start-->
+
+			 <div class="hf-housenum">共<span class="hf-fblue">{$items}</span>个楼盘</div>
+        </section>
+        <!-- 主体内容 start-->
+
+           <!-- 楼盘 start-->
+           <section class="ui-container-cnt">
+                <ul class="ui-list ui-list-active hf-house" id="newhouselist">
+            
+                {loop $lists $t}
+                    <li class="ui-border-t">
+                        <a href="{$t[linkurl]}">
+                            <div class="hf-house-box">
+                                <div class="ui-list-img">
+                                    <img class="lazyload" src="static/images/loading.png" data-original="{if $t[thumb]}{$t[thumb]}{else}static/img/nopic-60.png{/if}" >
+                                    <i class="icon-house-video"></i>                                </div>
+                                   <div class="ui-list-info">
+                                    <h4 class="ui-nowrap hf-badge-wrap" >{$t[title]}<span class="hf-badge-pos">{if $t[isfx]}<i class="hf-badge-yellow"></i>{/if}</span></h4>
+                                    <div class="hf-f12 hf-badge-wrap">{area_pos($t[areaid], '')}<span class="hf-f15 hf-badge-pos hf-fred">{if $t[price]}{$t[price]}元/㎡{else}待定{/if}</span></div>
+                                    <div class="hf-f12 hf-fgray">类型：{search_cats($t[catid], '6')} </div>
+ <div class="ui-nowrap hf-fyellow hf-f13">{getbox_diaoval('buildtype','checkbox',$t[buildtype],'newhouse_6')}<i class="hf-badge-blue tip" style=" float: right;">{if $t[typeid]==1}待售{elseif $t[typeid]==2}在售{elseif $t[typeid]==3}尾盘{else}售罄{/if}</i></div>
+                                </div>
+                            </div>
+                                                    </a>
+                    </li>{/loop}
+                </ul>
+                <div class="ui-loading-wrap"  >
+                {if $pages}<div class="pages">{$pages}</div>{/if}
+               
+                <!-- <i class="ui-loading"></i> -->
+                </div>
+
+            </section>
+            <!-- 楼盘 end-->
+
+
+
+
+        <!-- 尾部 start-->
+        <footer class="hf-footer">
+        <div class="copy ui-border-t">Copyright &copy; 2016 {$AJ[sitename]}版权所有</div>
+</footer>
+
+        <!-- 尾部 end-->
+
+        <!-- gotop start-->
+        <div class="hf-gotop" id="backTop" style="display:none;">
+            <a href="#"><i class="hf-icon-gotop"></i></a>
+        </div>
+        <!-- gotop end-->
+    
+
+        <!-- frozenUI 框架 js start-->
+        <script src="static/js/zepto.min.js"></script>
+        <script src="static/js/frozen.js"></script>
+        <!-- frozenUI 框架 js end-->
+       <script src="static/js/zepto.picLazyLoad.js"></script>
+        <script src="static/js/public.js"></script>
+        <script src="static/js/house.js"></script>
+       
+
+    </body>
+</html>

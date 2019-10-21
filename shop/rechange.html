@@ -4,175 +4,163 @@
     <meta charset="utf-8" />
     <title>充值</title>
     <!-- {include file="index/header" /} -->
-    <link rel="stylesheet" href="../../../../../public/static/lib/layui/css/layui.css ">
-    <link href="../../../../../public/static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" /> 
-    <link href="../../../../../public/static/css/iconfont.css" rel="stylesheet" type="text/css" />
-    <script src="../../../../../public/static/js/jquery.min.js"></script>
-    <script src="../../../../../public/static/js/qrcode.min.js"></script>
-    <script src="../../../../../public/static/js/mobile-util.js"></script>
-    <script src="../../../../../public/static/js/swipeSlide.min.js"></script>
-    <script src="../../../../../public/static/lib/layui/layui.js"></script>
-    <script src="../../../../../public/static/lib/layer_mobile/layer.js "></script>
-    <script src="../../../../../public/static/js/style.js"></script>
-    <script src="../../../../../public/static/js/global.js"></script>
+   <link rel="stylesheet" href="../../../../static/lib/layui/css/layui.css ">
+    <link href="../../../../static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
+    <link href="../../../../static/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <script src="../../../../static/js/jquery.min.js"></script>
+    <script src="../../../../static/js/qrcode.min.js"></script>
+    <script src="../../../../static/js/mobile-util.js"></script>
+    <script src="../../../../static/js/swipeSlide.min.js"></script>
+    <script src="../../../../static/lib/layui/layui.js"></script>
+    <script src="../../../../static/lib/layer_mobile/layer.js "></script>
+    <script src="../../../../static/js/style.js"></script>
+    <script src="../../../../static/js/global.js "></script>
 </head>
 <style>
-  html, body {
-    background: #fff;
-  }
-  .rechange-wrap{
-    background: #fff;
-    font-size: 16px;
-    color: #333;
-    padding: 20px;
-  }
-  .rechange-header {
-    padding: 10px 0 14px 0;
-    border-bottom: 2px solid #d2d2d2;
-  }
-  .remainder {
-    float: right;
-  }
+    html, body {
+        background: #fff;
+    }
+    .rechange-wrap{
+        background: #fff;
+        font-size: 16px;
+        color: #333;
+        padding: 20px;
+    }
+    .rechange-header {
+        padding: 10px 0 14px 0;
+        border-bottom: 2px solid #d2d2d2;
+    }
+    .remainder {
+        float: right;
+    }
 
-  .rechange-amount-wrap {
-    margin: 20px 0;
-  }
-  .btn-group {
-    margin-top: 12px;
-    text-align: center;
-  }
-  .btn-item {
-    display: inline-block;
-    background: #dddddd;
-    padding: 20px 0;
-    width: 100%;
-  }
-  input[name="rechangeBtn"]:checked + .btn-item {
-    background: #E6A23C;
-    color: #fff;
-  }
+    .rechange-amount-wrap {
+        margin: 20px 0;
+    }
+    .btn-group {
+        margin-top: 12px;
+        text-align: center;
+    }
+    .btn-item {
+        display: inline-block;
+        background: #dddddd;
+        padding: 20px 0;
+        width: 100%;
+    }
+    input[name="rechangeBtn"]:checked + .btn-item {
+        background: #E6A23C;
+        color: #fff;
+    }
 
-  .other-amount {
+    .other-amount {
+        margin-top: 20px;
+        display: none;
+    }
+    .other-amount input {
+        height: 30px;
+        line-height: 30px;
+        padding-left: 6px;
+    }
+
+    .save-btn {
+        display: block;
+        width: 90%;
+        margin: 60px auto;
+    }
+  .checked-amount {
+    color: red;
     margin-top: 20px;
-    display: none;
-  }
-  .other-amount input {
-    height: 30px;
-    line-height: 30px;
-    padding-left: 6px;
-  }
-
-  .save-btn {
-    display: block;
-    width: 90%;
-    margin: 40px auto;
+    text-align: left;
   }
 </style>
 <body>
 <!--顶部搜索栏-s-->
 
 <!--顶部搜索栏-e-->
-  <section class="rechange-wrap">
+<section class="rechange-wrap">
     <div class="rechange-header">
-      <span>账户：324123</span>
-      <span class="remainder">余额：2134元</span>
+        <span>账户：{$user_info['nickname']}</span>
+        <span class="remainder">余额：{$user_info['money']}元</span>
     </div>
     <div class="rechange-amount-wrap">
-      <h4>充值金额：</h4>
-      <div class="layui-row layui-col-space30 btn-group">
-        <div class="layui-col-xs4">
-          <input id="btn1" type="radio" checked hidden name="rechangeBtn">
-          <label for="btn1" class="btn-item active-btn" onclick="getRechangeAmount('100')">
-            <span>100元</span>
-          </label>
+        <h4>充值金额：</h4>
+        <div class="layui-row layui-col-space30 btn-group">
+            {volist name="data" id="item"}
+            <div class="layui-col-xs4">
+                <input id="{$item['name']}" type="radio" checked hidden name="rechangeBtn">
+                <label for="{$item['name']}" class="btn-item active-btn" data-value="{$item['name']}" onclick="getRechangeAmount(event)">
+                  {$item['name']}
+                </label>
+            </div>
+            {/volist}
+            <div class="layui-col-xs4">
+                <input id="btn_other" type="radio" hidden name="rechangeBtn">
+                <label for="btn_other" class="btn-item active-btn" data-value="other" onclick="getRechangeAmount(event)">
+                  其他金额
+                </label>
+            </div>
         </div>
-        <div class="layui-col-xs4">
-          <input id="btn2" type="radio" hidden name="rechangeBtn">
-          <label for="btn2" class="btn-item active-btn" onclick="getRechangeAmount('200')">
-            <span>100元</span>
-          </label>
+      	<div id="checkedAmount" class="checked-amount"></div>
+        <div class="other-amount" id="otherAmountWrap">
+            其他金额：
+            <input type="text" id="otherAmount" placeholder="请输入要充值的金额">
         </div>
-        <div class="layui-col-xs4">
-          <input id="btn3" type="radio" hidden name="rechangeBtn">
-          <label for="btn3" class="btn-item active-btn" onclick="getRechangeAmount('200')">
-            <span>100元</span>
-          </label>
-        </div>
-      </div>
-      <div class="layui-row layui-col-space30 btn-group">
-        <div class="layui-col-xs4">
-          <input id="btn4" type="radio" hidden name="rechangeBtn">
-          <label for="btn4" class="btn-item active-btn" onclick="getRechangeAmount('200')">
-            <span>100元</span>
-          </label>
-        </div>
-        <div class="layui-col-xs4">
-          <input id="btn5" type="radio" hidden name="rechangeBtn">
-          <label for="btn5" class="btn-item active-btn" onclick="getRechangeAmount('200')">
-            <span>100元</span>
-          </label>
-        </div>
-        <div class="layui-col-xs4">
-          <input id="btn6" type="radio" hidden name="rechangeBtn">
-          <label for="btn6" class="btn-item active-btn" onclick="getRechangeAmount('other')">
-            <span>其他金额</span>
-          </label>
-        </div>
-      </div>
-      <div class="other-amount" id="otherAmountWrap">
-        其他金额：
-        <input type="text" id="otherAmount" placeholder="请输入要充值的金额">
-      </div>
     </div>
-     <button onclick="rechange()" type="button" class="layui-btn layui-btn-warm save-btn">确认充值</button>
-  </section>
+    <button onclick="rechange()" type="button" class="layui-btn layui-btn-warm save-btn">确认充值</button>
+</section>
 <!--底部-start-->
 
 <!--底部-end-->
 <!--底部导航-start-->
-  <script type="text/javascript">
+<script type="text/javascript">
     var layer = null
     layui.use('layer', function(){
-      layer = layui.layer
+        layer = layui.layer
     })
 
     var rechangeMoney = '100'
     // 获取选择的充值金额
-    function getRechangeAmount (val) {
-      if (val === 'other') {
-        $('#otherAmountWrap').show()
-      } else {
-        $('#otherAmountWrap').hide()
-      }
-      rechangeMoney = val
+    function getRechangeAmount (ev) {
+      	var val = $(ev.target).data('value')
+        if (val === 'other') {
+            $('#otherAmountWrap').show()
+          	$('#checkedAmount').hide()
+          	rechangeMoney = val
+        } else {
+            $('#otherAmountWrap').hide()
+          	$('#checkedAmount').show()
+          	$('#checkedAmount').text(val)
+          	var match = val.match(/^(\d+)/)
+          	rechangeMoney = match[0]
+        }
     }
 
     // 是否是微信客户端
     function isWechat () {
-      var userAgent = window.navigator.userAgent.toLowerCase()
-      if (userAgent.match(/MicroMessenger/i) === 'micromessenger') {
-        return true
-      } else {
-        return false
-      }
-      
+        var userAgent = window.navigator.userAgent.toLowerCase()
+        if (userAgent.match(/MicroMessenger/i) === 'micromessenger') {
+            return true
+        } else {
+            return false
+        }
+
     }
     // 确认支付
     function rechange () {
-      var money = rechangeMoney
-      if (rechangeMoney === 'other') {
-        money = $('#otherAmount').val()
-      }
-      var reg = /^(0\.)?\d+$/
-      if (!reg.test(money)) {
-        layer.msg('请正确输入金额', {time: 1000})
-        return false
-      }
-      console.log(money)
-      if (isWechat()) {
+        var money = rechangeMoney
+        if (rechangeMoney === 'other') {
+            money = $('#otherAmount').val()
+        }
+        var reg = /^(0\.)?\d+$/
+        if (!reg.test(money)) {
+            layer.msg('请正确输入金额', {time: 1000})
+            return false
+        }
+        console.log(money)
+        if (isWechat()) {
 
-      }
+        }
     }
-  </script>
+</script>
 </body>
 </html>

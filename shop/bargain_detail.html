@@ -2,20 +2,20 @@
 <html>
 <head>
 	<title>砍价详情</title>
-	{include file="index/header" /}
-  <link rel="stylesheet" href="../../../../../public/static/lib/layui/css/layui.css ">
-  <link href="../../../../../public/static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" /> 
-  <link href="../../../../../public/static/css/iconfont.css" rel="stylesheet" type="text/css" />
-  <script src="../../../../../public/static/js/jquery.min.js"></script>
-  <script src="../../../../../public/static/js/qrcode.min.js"></script>
-  <script src="../../../../../public/static/js/mobile-util.js"></script>
-  <script src="../../../../../public/static/js/swipeSlide.min.js"></script>
-  <script src="../../../../../public/static/lib/layui/layui.js"></script>
-  <script src="../../../../../public/static/lib/layer_mobile/layer.js "></script>
-  <script src="../../../../../public/static/js/style.js"></script>
-  <script src="../../../../../public/static/js/global.js "></script>
+
+  <link rel="stylesheet" href="../../../../static/lib/layui/css/layui.css ">
+  <link href="../../../../static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
+  <link href="../../../../static/css/iconfont.css" rel="stylesheet" type="text/css" />
+  <script src="../../../../static/js/jquery.min.js"></script>
+  <script src="../../../../static/js/qrcode.min.js"></script>
+  <script src="../../../../static/js/mobile-util.js"></script>
+  <script src="../../../../static/js/swipeSlide.min.js"></script>
+  <script src="../../../../static/lib/layui/layui.js"></script>
+  <script src="../../../../static/lib/layer_mobile/layer.js "></script>
+  <script src="../../../../static/js/style.js"></script>
+  <script src="../../../../static/js/global.js "></script>
   <style type="text/css">
-  	html, body {
+    html, body {
       background: #fff;
       color: #333;
       font-size: 16px;
@@ -30,7 +30,7 @@
       top: 20px;
       left: -10px;
     }
-    
+
     .strong-text {
       color: #FF5722;
     }
@@ -106,82 +106,87 @@
   </style>
 </head>
 <body>
-  <section class="bargain-detail-wrap">
-    <button type="button" class="activity-rule layui-btn layui-btn-radius layui-btn-warm layui-btn-sm" onclick="showActiveRule()">活动规则</button>
-  	<div class="bargain-detail">
-      <div class="remain-amount">还剩余<span class="strong-text">￥15</span>, 继续努力哦!</div>
-      <div class="layui-progress layui-progress-big bargain-progress" lay-showPercent="yes">
-        <div class="layui-progress-bar layui-bg-orange" lay-percent="50%"></div>
-        <span class="strong-text bargain-amount">￥11</span>
-      </div>
-      
-      <p class="remain-time">距离活动结束：<span class="strong-text">15天10:10:10</span></p>
-      <button type="button" class="invite-btn layui-btn layui-btn-lg layui-btn-radius layui-btn-danger">帮他砍一刀</button>
-  	</div>
-
-    <div class="bargain-item-wrap">
-      <h4 class="bargain-item-title">//&nbsp;&nbsp;好友帮忙&nbsp;&nbsp;//</h4>
-
-      <div class="bargain-row bargain-header">
-        <span class="avtor-img">头像</span>
-        <span class="nick-name">昵称</span>
-        <span class="amount">砍掉</span>
-      </div>
-      <div class="bargain-row">
-        <div class="avtor-img">
-          <img src="" alt="" class="avtor">
-        </div>
-        <div class="nick-name">
-          <p style="margin-bottom: 10px;">xxxxx</p>
-          <span>12-12 10:10</span>
-        </div>
-        <span class="amount strong-text">-11元</span>
-      </div>
-
-      <div class="bargain-row">
-        <div class="avtor-img">
-          <img src="" alt="" class="avtor">
-        </div>
-        <div class="nick-name">
-          <p style="margin-bottom: 10px;">xxxxx</p>
-          <span>12-12 10:10</span>
-        </div>
-        <span class="amount strong-text">-11元</span>
-      </div>
-      <div class="bargain-row">
-        <div class="avtor-img">
-          <img src="" alt="" class="avtor">
-        </div>
-        <div class="nick-name">
-          <p style="margin-bottom: 10px;">xxxxx</p>
-          <span>12-12 10:10</span>
-        </div>
-        <span class="amount strong-text">-11元</span>
-      </div>
+<section class="bargain-detail-wrap">
+  <button type="button" class="activity-rule layui-btn layui-btn-radius layui-btn-warm layui-btn-sm" onclick="showActiveRule()">活动规则</button>
+  <div class="bargain-detail">
+    <div class="remain-amount">最多可帮买<span class="strong-text">￥{$max_money}</span></div>
+    <div class="layui-progress layui-progress-big bargain-progress" lay-showPercent="yes">
+      <div class="layui-progress-bar layui-bg-orange" lay-percent="{$jindu}%"></div>
+      <span class="strong-text bargain-amount">￥{$aleady_cut_money}</span>
     </div>
-  </section>
-      
-  <script type="text/javascript">
+
+    <p class="remain-time">距离活动结束：<span class="strong-text">15天10:10:10</span></p>
+    <button type="button" class="invite-btn layui-btn layui-btn-lg layui-btn-radius layui-btn-danger kan">帮他买买买</button>
+  </div>
+  <input type="hidden" name="gohref" value="{:url('index/shop/cutMoneyOfOrder')}">
+  <input type="hidden" name="least_money" value="{$least_money}">
+  <input type="hidden" name="orderid" value="{$orderid}">
+  <input type="hidden" name="openid" value="{$openid}">
+  <div class="bargain-item-wrap">
+    <h4 class="bargain-item-title">//&nbsp;&nbsp;好友帮忙&nbsp;&nbsp;//</h4>
+
+    <div class="bargain-row bargain-header">
+      <span class="avtor-img">头像</span>
+      <span class="nick-name">昵称</span>
+      <span class="amount">砍掉</span>
+    </div>
+    {volist name="list" id="item"}
+    <div class="bargain-row">
+      <div class="avtor-img">
+        <img src="{$item['avatar']}" alt="" class="avtor">
+      </div>
+      <div class="nick-name">
+        <p style="margin-bottom: 10px;">{$item['nickname']}</p>
+        <span><?php echo date('Y-m-d',$item['ctime']); ?></span>
+      </div>
+      <span class="amount strong-text">-{$item['cutmoney']}元</span>
+    </div>
+    {/volist}
+
+  </div>
+</section>
+
+<script type="text/javascript">
     //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
     var layer = null
     layui.use(['element', 'layer'], function(){
-      var element = layui.element
-      layer = layui.layer
+        var element = layui.element
+        layer = layui.layer
     });
 
     function showActiveRule () {
-      var rule = '<h4>本次砍价活动规则如下：</h4>' +
-                 '<p>(1)相同的商品，只能给不同的用户砍。</p>' +
-                 '<p>(2)砍价有时间限制，一般为2小时，超时不能继续砍价。</p>' + 
-                 '<p>(3)砍价金额作为订单优惠金额，能抵扣订单支付。</p>' +
-                 '<p>(4)邀请越多好友砍价越多，新用户还会返还优惠券哦！</p>'
-      layer.open({
-        title: '活动规则',
-        content: rule,
-        btn: ['关闭'],
-        maxWidth: 400,
-      })
+        var rule = '<h4>本次砍价活动规则如下：</h4>' +
+            '<p>(1)相同的商品，只能给不同的用户砍。</p>' +
+            '<p>(2)砍价有时间限制，一般为2小时，超时不能继续砍价。</p>' +
+            '<p>(3)砍价金额作为订单优惠金额，能抵扣订单支付。</p>' +
+            '<p>(4)邀请越多好友砍价越多，新用户还会返还优惠券哦！</p>'
+        layer.open({
+            title: '活动规则',
+            content: rule,
+            btn: ['关闭'],
+            maxWidth: 400,
+        })
     }
+    $(document).on('click','.kan',function () {
+        var openid = $("input[name='openid']").val();
+        var orderid = $("input[name='orderid']").val();
+        var leastmoney = $("input[name='leastmoney']").val();
+        var url = $("input[name='gohref']").val();
+        $.ajax(
+            {
+                type : "POST",
+                url  :url,
+                data : {openid:openid,orderid:orderid,leastmoney:leastmoney},
+                dataType:"json",
+                success:function(data) {
+                    layui.use('layer', function(){
+                        layer.msg(data.msg, {time: 2000});
+                        window.location.reload();
+                    });
+                },
+
+            })
+    })
   </script>
 </body>
 </html>

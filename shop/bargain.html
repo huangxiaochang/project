@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <title>扫一扫砍价</title>
-    {include file="index/header" /}
-    <link rel="stylesheet" href="../../../../../public/static/lib/layui/css/layui.css ">
-    <link href="../../../../../public/static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" /> 
-    <link href="../../../../../public/static/css/iconfont.css" rel="stylesheet" type="text/css" />
-    <script src="../../../../../public/static/js/jquery.min.js"></script>
-    <script src="../../../../../public/static/js/qrcode.min.js"></script>
-    <script src="../../../../../public/static/js/mobile-util.js"></script>
-    <script src="../../../../../public/static/js/swipeSlide.min.js"></script>
-    <script src="../../../../../public/static/lib/layui/layui.js"></script>
-    <script src="../../../../../public/static/lib/layer_mobile/layer.js "></script>
-    <script src="../../../../../public/static/js/style.js"></script>
-    <script src="../../../../../public/static/js/global.js "></script>
+
+    <link rel="stylesheet" href="../../../../static/lib/layui/css/layui.css ">
+    <link href="../../../../static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
+    <link href="../../../../static/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <script src="../../../../static/js/jquery.min.js"></script>
+    <script src="../../../../static/js/qrcode.min.js"></script>
+    <script src="../../../../static/js/mobile-util.js"></script>
+    <script src="../../../../static/js/swipeSlide.min.js"></script>
+    <script src="../../../../static/lib/layui/layui.js"></script>
+    <script src="../../../../static/lib/layer_mobile/layer.js "></script>
+    <script src="../../../../static/js/style.js"></script>
+    <script src="../../../../static/js/global.js "></script>
 </head>
 <style>
   html, body {
@@ -33,9 +33,9 @@
   }
   .bargain-wrap {
     width: calc(80% - 40px);
-    padding: 20px 30px;  
+    padding: 20px;  
     position: relative;
-    margin-top: 60px;
+    margin-top: 200px;
   }
   .bargain-wrap::after,  .bargain-wrap::before{
     content: '';
@@ -88,7 +88,7 @@
     bottom: 0;
     background: rgba(0,0,0,0.5);
   }
-  .dialog-contetn {
+  .dialog-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -96,8 +96,9 @@
     width: 80%;
     transform: translate(-50%, -50%);
     color: #333;
-    padding: 30px;
-    line-height: 2;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.5;
     border-radius: 12px;
   }
   .dialog-title {
@@ -107,15 +108,17 @@
   }
   .close-btn {
     position: absolute;
-    bottom: -100px;
+    bottom: -80px;
     color: #fff;
     border-radius: 50%;
     border: 3px solid #fff;
     display: inline-block;
-    padding: 8px;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
     left: 50%;
     transform: translateX(-50%);
-    line-height: 1.25;
     z-index: 3000;
   }
 
@@ -123,6 +126,7 @@
     position: fixed;
     top: 20px;
     left: -10px;
+    z-index: 3000;
   }
 </style>
 <body>
@@ -131,8 +135,8 @@
 <!--顶部搜索栏-e-->
   <div class="bargain-wrap">
     <div class="btn-group">
-      <a href="{:url('index/shop/paydirect')}?orderid={$orderid}" type="button" class="layui-btn">直接支付</a>
-      <a href="{:url('index/shop/rechange')}?orderid={$orderid}" type="button" class="layui-btn layui-btn-normal">取整支付</a>
+      <a href="{:url('index/shop/paydirect')}?orderid={$orderid}" type="button" class="layui-btn layui-btn-sm">直接支付</a>
+      <a href="{:url('index/shop/rechange')}?orderid={$orderid}" type="button" class="layui-btn layui-btn-normal layui-btn-sm">取整支付</a>
     </div>
     <div class="had-bargain">
       <p class="layui-progress-title">已砍价{$kanmoney}元，最高可砍{$maxmoney}元</p>
@@ -152,13 +156,15 @@
   </div>
 
   <section class="dialog-warp" id="dialog">
-    <div class="dialog-contetn">
+    <div class="dialog-content">
       <h4 class="dialog-title">活动介绍</h4>
       <p>(1)相同的商品，只能给不同的用户砍。</p>
       <p>(2)砍价有时间限制，一般为2小时，超时不能继续砍价。</p>
       <p>(3)砍价金额作为订单优惠金额，能抵扣订单支付。</p>
       <p>(4)邀请越多好友砍价越多，新用户还会返还优惠券哦！</p>
-      <i id="dialogCloseBtn" class="layui-icon layui-icon-close close-btn"></i>
+      <span class="close-btn">
+        <i id="dialogCloseBtn" class="layui-icon layui-icon-close"></i>
+      </span>
     </div>
   </section>
 <!--底部-start-->

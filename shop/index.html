@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <title>支付</title>
-    {include file="index/header" /}
-    <!-- <link rel="stylesheet" href="../../../../../public/static/lib/layui/css/layui.css ">
-    <link href="../../../../../public/static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" />  
-    <link href="../../../../../public/static/css/iconfont.css" rel="stylesheet" type="text/css" />
-    <script src="../../../../../public/static/js/jquery.min.js"></script>
-    <script src="../../../../../public/static/js/qrcode.min.js"></script>
-    <script src="../../../../../public/static/js/mobile-util.js"></script>
-    <script src="../../../../../public/static/js/swipeSlide.min.js"></script>
-    <script src="../../../../../public/static/lib/layui/layui.js"></script>
-    <script src="../../../../../public/static/lib/layer_mobile/layer.js "></script>
-    <script src="../../../../../public/static/js/style.js"></script>
-    <script src="../../../../../public/static/js/global.js "></script> -->
+
+    <link rel="stylesheet" href="../../../../static/lib/layui/css/layui.css ">
+    <link href="../../../../static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
+    <link href="../../../../static/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <script src="../../../../static/js/jquery.min.js"></script>
+    <script src="../../../../static/js/qrcode.min.js"></script>
+    <script src="../../../../static/js/mobile-util.js"></script>
+    <script src="../../../../static/js/swipeSlide.min.js"></script>
+    <script src="../../../../static/lib/layui/layui.js"></script>
+    <script src="../../../../static/lib/layer_mobile/layer.js "></script>
+    <script src="../../../../static/js/style.js"></script>
+    <script src="../../../../static/js/global.js "></script>
 </head>
 <style>
-  html, body {
+    html, body {
     background: #fff;
   }
   .pay-input {
@@ -52,6 +52,7 @@
   .btn-group a {
     flex: 1;
     color: #5FB878;
+    border-color: #5FB878;
   }
 
   .logo {
@@ -65,25 +66,69 @@
     <span class="input-title">￥</span><input id="input_money" autofocus type="text" name="money" class="pay-input" placeholder="请输入应付金额">
 
     <div class="btn-group">
-      <a onclick="toPayDirect()" type="button" class="layui-btn layui-btn-primary">直接付款</a>
-      <a href="./bargain.html" type="button" class="layui-btn layui-btn-primary">请朋友扫码砍价</a>
+      <a href="javascript:;"  type="button" class="layui-btn layui-btn-primary pay" _href="{:url('index/shop/payDirect')}">直接付款</a>
+      <a href="javascript:;"  _href="{:url('index/shop/bargain')}" type="button" class="layui-btn layui-btn-primary saoma">请朋友扫码砍价</a>
     </div>
+      <input type="hidden" name="createsimpleorder" value="{:url('index/shop/csimpleorder')}">
+      <input type="hidden" name="createfullorder" value="{:url('index/shop/cfullorder')}">
+      <input type="hidden" name="orderopenid" value="{$orderopenid}">
   </div>
   <script type="text/javascript">
-    var layer = null
-    layui.use('layer', function(){
-      layer = layui.layer
-    })
-
-    function toPayDirect () {
-      var money = $('#input_money').val()
-      var reg = /^(0\.)?\d+$/
-      if (!reg.test(money)) {
+  $(document).on('click','.pay',function () {
+    var money = $('#input_money').val();
+    var reg = /^(0\.)?\d+$/;
+    if (!reg.test(money)) {
+      layui.use('layer', function(){
         layer.msg('请正确输入金额', {time: 1000})
-        return false
-      }
-      window.location.href = './pay_direct.html?amount=' + money
+      });
+
+      return false
     }
+      var url = $("input[name='createfullorder']").val();
+      var locateUrl = $(this).attr('_href');
+      var orderopenid = $("input[name='orderopenid']").val();
+      $.ajax(
+          {
+              type : "POST",
+              url  :url,
+              data : {money:money,orderopenid:orderopenid},
+              dataType:"json",
+              success:function(data) {
+                  if(data.status == 1) {
+                      window.location.href = locateUrl+"?orderid="+data.orderid;
+                  }
+              },
+
+          })
+
+  })
+  $(document).on('click','.saoma',function () {
+      var money = $('#input_money').val();
+      var reg = /^(0\.)?\d+$/;
+      if (!reg.test(money)) {
+          layui.use('layer', function(){
+              layer.msg('请正确输入金额', {time: 1000})
+          });
+
+          return false
+      }
+      var url = $("input[name='createsimpleorder']").val();
+      var locateUrl = $(this).attr('_href');
+      var orderopenid = $("input[name='orderopenid']").val();
+      $.ajax(
+          {
+              type : "POST",
+              url  :url,
+              data : {money:money,orderopenid:orderopenid},
+              dataType:"json",
+              success:function(data) {
+                  if(data.status == 1) {
+                      window.location.href = locateUrl+"?orderid="+data.orderid;
+                  }
+              },
+
+          })
+  })
   </script>
 </body>
 </html>

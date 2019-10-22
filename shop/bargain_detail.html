@@ -47,10 +47,11 @@
     .bargain-progress {
       display: inline-block;
       width: 50%;
+      position: relative;
     }
     .bargain-amount {
       position: absolute;
-      right: -34px;
+      right: -50px;
     }
     .remain-amount {
       margin-bottom: 20px;
@@ -97,7 +98,7 @@
       background: #ccc;
     }
     .amount {
-      width: 100px;
+      width: 80px;
       text-align: right;
     }
     .nick-name {
@@ -137,7 +138,7 @@
       </div>
       <div class="nick-name">
         <p style="margin-bottom: 10px;">{$item['nickname']}</p>
-        <span><?php echo date('Y-m-d',$item['ctime']); ?></span>
+        <p><?php echo date('Y-m-d',$item['ctime']); ?></p>
       </div>
       <span class="amount strong-text">-{$item['cutmoney']}元</span>
     </div>

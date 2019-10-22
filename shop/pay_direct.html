@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>直接支付</title>
 
-    <link rel="stylesheet" href="../../../../static/lib/layui/css/layui.css ">
+    <!-- <link rel="stylesheet" href="../../../../static/lib/layui/css/layui.css ">
     <link href="../../../../static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
     <link href="../../../../static/css/iconfont.css" rel="stylesheet" type="text/css" />
     <script src="../../../../static/js/jquery.min.js"></script>
@@ -14,8 +14,18 @@
     <script src="../../../../static/lib/layui/layui.js"></script>
     <script src="../../../../static/lib/layer_mobile/layer.js "></script>
     <script src="../../../../static/js/style.js"></script>
-    <script src="../../../../static/js/global.js "></script>
-
+    <script src="../../../../static/js/global.js "></script> -->
+    <link rel="stylesheet" href="../../../../../public/static/lib/layui/css/layui.css ">
+    <link href="../../../../../public/static/css/style.css?t=<?php echo time(); ?>" rel="stylesheet" type="text/css" />
+    <link href="../../../../../public/static/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <script src="../../../../../public/static/js/jquery.min.js"></script>
+    <script src="../../../../../public/static/js/qrcode.min.js"></script>
+    <script src="../../../../../public/static/js/mobile-util.js"></script>
+    <script src="../../../../../public/static/js/swipeSlide.min.js"></script>
+    <script src="../../../../../public/static/lib/layui/layui.js"></script>
+    <script src="../../../../../public/static/lib/layer_mobile/layer.js "></script>
+    <script src="../../../../../public/static/js/style.js"></script>
+    <script src="../../../../../public/static/js/global.js "></script>
 </head>
 <style>
     html, body {
@@ -85,16 +95,25 @@
         text-align: center;
         margin-bottom: 20px;
     }
+  
     .coupon-item {
         padding: 20px 12px;
-        height: 28px;
-        line-height: 28px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #e2e2e2;
+    }
+    .coupon-name {
+        flex: 1;
+    }
+    .coupon-amount {
+        width: 60px;
     }
     .coupon-btn {
         height: 28px;
         width: 28px;
         text-align: right;
     }
+  
     .check-save {
         display: block;
         width: 50%;
@@ -118,6 +137,24 @@
     .coupon-wrap{
         clear: both;
     }
+  
+    .pay-way-item {
+        margin: 18px 0;
+        display: flex;
+        align-items: center;
+    }
+    .pay-way-icon {
+        width: 45px;
+        font-size: 45px;
+    }
+    .pay-way-title {
+        flex: 1;
+        padding-left: 20px;
+    }
+    .pay-way-btn {
+        width: 60px;
+        height: 26px;
+    }
 </style>
 <body>
 <!--顶部搜索栏-s-->
@@ -125,10 +162,14 @@
 <!--顶部搜索栏-e-->
 <div class="pay-direct-wrap">
     <div class="bargain-amount">
-        <span class="amount-left">订单金额:</span><span class="amount-right">￥{$order['money']}</span>
+        <span class="amount-left">订单金额:</span>
+        <span class="amount-right">￥
+            <span id="orderMoney">{$order['money']}</span>
+        </span>
     </div>
     <div class="bargain-amount">
-        <span class="amount-left">砍价金额:</span> <span class="amount-right">￥{$order['cutmoney']}</span>
+        <span class="amount-left">砍价金额:</span> 
+        <span class="amount-right">￥<span id="cutmoney">{$order['cutmoney']}</span></span>
     </div>
     <div class="coupon-wrap">
         优惠券
@@ -136,15 +177,30 @@
     </div>
 
     <div class="total-discount">
-        合计优惠: ￥{$order['cutmoney']}
+        合计优惠: ￥<span id="totalDiscount">{$order['cutmoney']}</span>
     </div>
+    
+    <label class="pay-way-item">
+      <img src="../../../../../static/images/nmy.png" alt="" class="pay-way-icon">
+        <span class="pay-way-title">余额支付(￥{$userinfo['money']})</span>
+        <input type="radio" name="payWay" checked value="0" title="余额" class="pay-way-btn">
+    </label>
+    <label class="pay-way-item">
+        <img src="../../../../../static/images/wechat.png" alt="" class="pay-way-icon">
+        <span class="pay-way-title">微信支付</span>
+        <input type="radio" name="payWay" value="1" title="微信" class="pay-way-btn">
+    </label>
 </div>
 <div class="order-submit">
     <div class="order-amount-wrap">
-        <h4 class="order-amount">实付金额: ￥{$order['money']-$order['cutmoney']}</h4>
-        <div class="balance">余额: ￥{$userinfo['money']}</div>
+        <h4 class="order-amount">实付金额: 
+        ￥<span id="actualMoney">{$order['money']-$order['cutmoney']}</span>
+        </h4>
+        <div class="balance">余额: ￥
+            <span id="balanceMoney">{$userinfo['money']}</span>
+        </div>
     </div>
-    <button onclick="submitOrder(event)" class="layui-btn layui-btn-normal submit-btn">提交订单</button>
+    <button id="submitBtn" onclick="submitOrder(event)" class="layui-btn layui-btn-normal submit-btn">提交订单</button>
 </div>
 <div id="dialog" class="coupon-list-dialog">
     <div class="coupon-list-wrap">
@@ -152,15 +208,21 @@
         <i onclick="closeDialog()" class="layui-icon layui-icon-close close-btn"></i>
         <ul>
             {volist name="quan_list" id="item"}
-            <li class="coupon-item">
-                <label class="layui-row">
-                    <span class="layui-col-xs8">不使用优惠券</span>
-                    <span class="layui-col-xs2">￥{$item['money']}</span>
-                    <input type="radio" name="couponItem" class="coupon-btn layui-col-xs2" value="{$item['money']}">
+            <li>
+                <label class="coupon-item">
+                    <span class="coupon-name">{$item['name']}</span>
+                    <span class="coupon-amount">￥{$item['money']}</span>
+                    <input type="radio" name="couponItem" class="coupon-btn" value="{$item['money']}" disabled>
                 </label>
             </li>
             {/volist}
-
+            <li>
+                <label class="coupon-item">
+                    <span class="coupon-name">不使用优惠券</span>
+                    <span class="coupon-amount"></span>
+                    <input type="radio" name="couponItem" class="coupon-btn" checked value="0">
+                </label>
+            </li>
         </ul>
         <button onclick="checkCoupon()" type="button" class="layui-btn layui-btn-radius layui-btn-danger check-save">确定</button>
     </div>
@@ -170,12 +232,10 @@
 <!--底部-end-->
 <!--底部导航-start-->
 <script type="text/javascript">
-    // 提交订单
-    function submitOrder (ev) {
-        window.location.href = './rechange.html'
-
-    }
-
+    var layuiLayer = null
+    layui.use('layer', function(){
+      layuiLayer = layui.layer
+    })
     function openDialog (num) {
         if (num === 0) {
           return false
@@ -188,10 +248,73 @@
         })
     }
 
+    // 订单金额
+    var orderMoney = 1 * $("#orderMoney").text()
+    // 实付金额
+    var actualMoney = 1 * $("#actualMoney").text()
+    // 余额
+    var balanceMoney = 1 * $("#balanceMoney").text()
+
+
+    function checkPayWay () {
+        var payWay = $("input[name='payWay']:checked").val()
+
+        if (payWay === '1') {
+            // 微信支付
+            $("#submitBtn").text("提交订单")
+        } else {
+            if (balanceMoney >= actualMoney) {
+                $("#submitBtn").text("去支付")
+            } else {
+                $("#submitBtn").text("充值并支付")
+            }
+        }
+    }
+
+    checkPayWay()
+
+    // 选择支付方式
+    $(document).on('click', '.pay-way-item', checkPayWay)
+
     function checkCoupon () {
-        var val = $("input[name='couponItem']:checked").val();
-        console.log(val)
+        if (coupon + cutmoney > orderMoney) {
+            layuiLayer.msg('请重新选择优惠券', {time: 1000})
+            return
+        }
+        // 优惠劵金额
+        var coupon = 1 * $("input[name='couponItem']:checked").val()
+        // 砍价金额
+        var cutmoney = 1 * $("#cutmoney").text()
+        // 合计优惠金额
+        $('#totalDiscount').text(coupon + cutmoney)
+        // 实付金额
+        actualMoney = orderMoney - (coupon + cutmoney)
+        $("#actualMoney").text(actualMoney)
+
         layer.closeAll()
+    }
+
+    // 提交订单
+    function submitOrder (ev) {
+        if (coupon + cutmoney > orderMoney) {
+            layuiLayer.msg('请重新选择优惠券', {time: 1000})
+            return
+        }
+        // 支付方式
+        var payWay = $("input[name='payWay']:checked").val()
+
+        if (payWay === '1') {
+            // 微信支付
+            
+        } else {
+            if (balanceMoney < actualMoney) {
+            // 余额不足
+                window.location.href = './rechange.html'
+            } else {
+                // 直接支付
+                
+            }
+        }
     }
 
     function closeDialog () {
